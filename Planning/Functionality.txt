@@ -18,10 +18,11 @@ Main App Functions:
 		(Critically important)
 		-Upload score info: When someone scores any points in the match the user must then specify:
 			*which team scored,
-			*if the score is from a try, a subsequent conversion kick or a penalty kick,
+			*if the score is from a try, a subsequent conversion kick, a penalty kick or a drop kick
 			*which player scored (indicated either by the player's name, position/jersey number or indicated as "unknown" if it is unclear who scored
 			 or if the oppossing team scored and the user doesn't know the name or positio/jersey numbers of the opposing team's players; 
 			"unknown" factors can be edited post-game if any new information is gained then).
+			*which player(s) assisted the try (if a try was scored).
 	Substitutions:
 		(Important)
 		-Upload team changes: When a player on a team is swopped out for a reserve player then the app user must specify:
