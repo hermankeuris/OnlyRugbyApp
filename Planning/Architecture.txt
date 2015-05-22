@@ -1,23 +1,13 @@
 Technical requirements:
-	Android 4.0+
-	PHP
-	MySQL (database)
-	Laravel PHP Framework (MVC Framework):
-		-Query builder allows set of classes and methods used for programmable queries instead of SQL commands.
-		-Eloquent object relational mapping
-		-Bundles (kind of like Java packages)
-		-Allows IoC (inversion of control) 
-		-Version control for database schemas
-		-Database seeding (easy to populate database with default data)
-		-Implements unit testing
-	Vagrant virtualization manager (virtual machine)
-
-	HTML
-	CSS
-	Javascript (possibly)
-	Eclipse IDE with the Android Developer Tools plugin.
+	Android 4.0+ (From Ice Cream Sandwich to the new Lollipop).
+	MySQL (database).
+	
+	C-based languages for main application coding.
+	XML coding for styling
+	
+	Mainly Android Studios for development and initial testing and
+	Eclipse IDE with the Android Developer Tools plugin for further testing, to be thorough.
 
 Patterns & methodology:
 	Model-view-controller pattern
-	(Possible application of a multi-layer system too?)
-	Agile methodology with weekly sprints.
+	Agile methodology with bi-weekly sprints.
