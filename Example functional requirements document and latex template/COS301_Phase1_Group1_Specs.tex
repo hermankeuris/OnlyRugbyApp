@@ -1,0 +1,282 @@
+\documentclass[a4paper,12pt]{report}
+\addtolength{\oddsidemargin}{-1.cm}
+\addtolength{\textwidth}{2cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textheight}{3.5cm}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\makeindex
+
+\usepackage{longtable}
+\usepackage[pdftex]{graphicx}
+\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+
+% define the title
+\author{Group6_a}
+\title{ Assignment 1 Report}
+\begin{document}
+\setlength{\parskip}{6pt}
+
+% generates the title
+\begin{titlepage}
+
+\begin{center}
+% Upper part of the page       
+\includegraphics[width=1\textwidth]{./up-logo.jpg}\\[0.4cm]    
+\textsc{\LARGE Department of Computer Science}\\[1.5cm]
+\textsc{\Large COS 301 - Software Engineering}\\[0.5cm]
+% Title
+\HRule \\[0.4cm]
+{ \huge \bfseries COS 301 - Mini Project}\\[0.4cm]
+\HRule \\[0.4cm]
+% Author and supervisor
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Hanrich {Potgieter}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Student number:} \\
+u12287343
+\end{flushright}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+Chris {Cloete}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{} \\
+u13029721
+\end{flushright}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+Jason Richard {Evans}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{} \\
+u13032608
+\end{flushright}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+Kale-ab {Tessera}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{} \\
+u13048423
+\end{flushright}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+Lelethu {Zazaza}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{} \\
+u13028023
+\end{flushright}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+Goodness {Adegbenro}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{} \\
+u13046412
+\end{flushright}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+Herman Willem {Keuris}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{} \\
+u13037618
+\end{flushright}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+William {Seloma}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{} \\
+u10155865
+\end{flushright}
+\end{minipage}
+\vfill
+% Bottom of the page
+{\large \today}
+\end{center}
+\end{titlepage}
+\footnotesize
+\input{declaration_of_originality.tex}
+\normalsize
+
+\renewcommand{\thesection}{\arabic{section}}
+\newpage
+\begin{center}
+\textsc{\LARGE Software Requirements Specification and Technology Neutral Process Design}\\[1.5cm]
+\textsc{\Large Buzz Space Discussions/Mini Project}\\[0.5cm]
+Version: Version 0.2 Alpha 
+For further references see \href{ https://github.com/DieBaber/COS301-GROUP6-A.git}{gitHub}.
+\today
+\end{center}
+\tableofcontents{}
+For further references see \href{https://github.com/DieBaber/COS301-GROUP6-A.git}{gitHub} or got to the link https://github.com/DieBaber/COS301-GROUP6-A.git
+\section{Functional requirements}
+	\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Hanrich/BuzzElements.jpg}\\[0.4cm]    
+	\end{center}
+\subsection{Introduction}
+We use this document to give a high level overview of the buzz  discussion board. We have identified the various components of our system. The purpose of this document is to create a dynamic and scalable solution. We also want to include an achievement system that rewards users for using the discussion board. This document will inform you on how we will achieve a system that is both scalable and pluggable. We have identified the use cases of the various components of the discussion board and helped expand on them.
+% \newpage
+\subsection{Use case prioritiation}
+\textbf{Critical} 
+\begin{itemize}
+  \item BuzzSpace
+  \item CRUD posts(Creating,Reading; Updating; Deleting).
+  \item Access
+  \item Information Management
+  \end{itemize}
+\textbf{Important} 
+\begin{itemize}
+  \item User Management
+  \item Communication(Notifications)
+  \item Reporting
+\end{itemize}
+\textbf{Nice-To-Have} 
+\begin{itemize}
+  \item Achievement/Rewards System
+  \item Reporting
+  \item Summaries
+\end{itemize}
+\subsection{Use case/Service contracts}
+\begin{center}
+  \begin{longtable}{| p{3cm} | p{4cm} | p{4cm} | p{4cm} |}
+    \hline
+    Use Case & Pre Condition & Post Condition & Description \\ \hline \hline
+    BuzzSpace & There must be a valid user & User must still exist & This use case provides an interface that facilitates management of threads\\ \hline
+    Information Management & User specific information must be well documented (e.g. number of logins) and two or more threads, posts and tags must exist before their relevant search and display functions can be used & Anyone accessing the buzz space can view the profile of any registered user and search and display lists of the threads, posts and tags that have so far been created.  & This use case provides an interface that allows for the easy viewing of logically sorted information generated by the buzz space and other users (such as threads, posts and tags). It also allows for a simple display of individual user information (profiles) \\ \hline
+    Communication& A user needs to be registered in order to have notifications sent to his profile inside the application. For e-mails to be sent, a valid and up-to-date e-mail address is needed on the user database. & A notification should visibally be highlighted in the application with appropriate messages. In some cases, an email is sent out from the system. & This use case specifies all the functions that the Buzz system needs to have in order to communicate important information with the user. \\ \hline
+    Summaries & Although not strictly required it is very helpful to have a large number of posts on the thread and to already have a few preaviously generated thread summaries. Some user iput is usually required and all posts must make use of relevant tags.  & The semi-autonomous thread summary generator will attempt to generater parts of the thread summary (or atleast suggest possible words and phrases to be used) & This use case attempts to generate a thread summary with as little user intervention as possible. However in most cases the user will still be required to contribute some input. \\ \hline
+    Achievement Rewards System & A user's level requires Achievements to be allocated and/or rewards to be awarded & Achievements are allocated and/or rewards are awarded & This use case provides a system that allocates achievements to users based on their levels and the votes they aquired. it also provides a system that awards rewards to users based on their achievements.\\ \hline
+    Access & The user will need a browser to view the website. & Threads and posts are displayed in descending order by date. & Details how an end-user will be able to access the Buzz system. \\ \hline
+    Validation & Post is plagiarism and/or does not follow netiquette & Post is valid against rules  & \\ \hline
+    User Management & If the User is not involved in the course (not a registered student/ tutor/ teaching assistant).  & The User is still involved in the course & This is a basic system which manages the User's Login and logout. \\ \hline
+    Reporting & Data must be available to report on. & Data must not be corrupt. & This use case generate report for all actors\\ \hline
+    \hline
+  \end{longtable}
+\end{center}
+\newpage
+\subsection{Required functionality}
+\begin{itemize}
+	% We need to add the correct pictures here. We must also give a description of the elements.
+	\item \textbf{BuzzSpace}. A Buzz Space is a integral component of the Buzz System which facilitates the management of threads added by its users. Buzz Spaces may be created for each active module in the Computer Science Department in order to promote intuitive communication between the Computer Science staff and its students.	
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Lelethu/UseCase_BuzzSpace.jpg}\\[0.4cm]    
+		\end{center}
+\newpage
+\item \textbf{Validation}. This module will be used to make sure that post follow certain rules and help generate certain reports regarding these rules.
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Chris/Validation.jpg}\\[0.4cm]    
+		\end{center}
+\item  \textbf{Information Management} This use case deals with providing the user with an easy to use interface for searching and displaying lists of sorted information (specifically information about threads, posts and tags that have been created so far). User have complete control over the sorting methods used and whether these lists are displayed in an ascending or descending order. This use  case also provides an interface that can be used to view the information of registered users (information such as how many times have they logged in and lists of their recently created/used posts and threads).
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Herman/Information_Management.jpg}\\[0.4cm]    
+		\end{center}
+\item \textbf{Reporting}. We will use the reporting module to generate quite a few reports regarding the Buzz Space system. It will be a key player in adding value to lecturers and students. Each student can easily general a report regarding their own contributions towards a Buzz Space. Lecturers will be able to grade student performance and see how much plagiarism has occurred. The system administrators will be able to check for system bugs and see error logs. 
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Hanrich/Report.jpg}\\[0.4cm]    
+		\end{center}
+\newpage
+	\item \textbf{Communication (Notifications)}
+		\begin{flushleft}
+		This module describes the way the Buzz System will communicate with its users inside of the application as well as sending information and/or reports from the Buzz system to an external system such as email notifications.
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Jason/Communication_(Notifications).jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Summaries}
+		\begin{flushleft} This module uses a semi-autonomous thread summary generator to help the user create thread summaries by checking the posts in the thread for frequently used words and phrases which it can then suggest to the user to be used in the summary. It also suggests tags that are used often within the thread as possible keywords and checks previously generated thread summaries for any keywords and phrases which might be relevant to the creation of the new thread summary and suggests them to the user. After the completion of the thread summary the user is asked to mark which words in the summary are keywords; this makes generating all subsequent thread summaries easier as it allows for quicker comparisons between summaries (and better word/phrase suggestions by the generator).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Herman/Summaries.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Access}
+		\begin{flushleft}
+		The use case below shows how a end-user will be able to access the Buzz system. Although a user may not be registered, they should still be able to view and read threads and posts.
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Jason/Access.jpg}\\[0.4cm]
+		\end{center}
+\item \textbf{User Management}
+		\begin{flushleft}
+		This use case specifies how the user's themselves will be managed (not their data). This refers to who will be allowed to firstly login, access a buzzspace and then a specific thread and eventually logout. This displays what services help acheive User Management and also which servies are subsets of other services.
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Achievement/Rewards system}
+		\begin{flushleft}
+		The Achievement/Rewards system use case component shows how the Buzz System generates and awards rewards to users, based on their different achievements. The achievemnet is derived from each user's level of participation on the Buzz Space as well as the number of votes they acquire. The Achievement/Reward system incorporates the gamification functionality of the Buzz System. Therefore, forcing the users of the system to participate more often as there will be rewards for this.
+		\end{flushleft} 
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Goodness/Achievement_Rewards_System_Use_case_Diagram.jpg}\\[0.4cm]
+		\end{center}
+\end{itemize}
+\subsection{Process specification}
+We want to show various important process specification of our recommendation.
+\begin{itemize}
+	\item CreateBuzzSpace
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Functional_Requirements_Diagrams/ActivityDiagrams/ActivityDIagram_CreateBuzzSpace.jpg}\\[0.4cm]    
+		\end{center}
+	\item Validation
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Chris/Validationactivitydiagram.jpg}\\[0.4cm]    
+		\end{center}
+	\item Achievement/Rewards system
+		\begin{center}
+		\includegraphics[width=1\textwidth]
+		 {../Goodness/Achievement_Rewards_System_ActivityDiagram.jpg}\\[0.4cm]
+		\end{center}
+	\item Generating Thread Summary
+		\begin{center}
+		\includegraphics[width=1\textwidth]
+		 {../Herman/SummariesActivity.jpg}\\[0.4cm]
+		\end{center}
+\end{itemize}
+\subsection{Domain Model}
+	\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Hanrich/BuzzElements.jpg}\\[0.4cm]    
+	\end{center}
+\index{Vision}
+\newpage
+
+
+\bibliography{myrefs}{} 
+\bibliographystyle{ieeetr}
+\end{document}
