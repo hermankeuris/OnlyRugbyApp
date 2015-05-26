@@ -1,0 +1,13 @@
+Technical requirements:
+	Android 4.0+ (From Ice Cream Sandwich to the new Lollipop).
+	MySQL (database).
+	
+	C-based languages for main application coding.
+	XML coding for styling
+	
+	Mainly Android Studios for development and initial testing and
+	Eclipse IDE with the Android Developer Tools plugin for further testing, to be thorough.
+
+Patterns & methodology:
+	Model-view-controller pattern
+	Agile methodology with bi-weekly sprints.

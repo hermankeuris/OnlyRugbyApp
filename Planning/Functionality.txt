@@ -1,35 +1,76 @@
 Functionality present in all versions of the app:
-	(Critically important)
-	-Login/Logout: Allow the coach (or whoever is recording the team's match ifo) to be able to login and out of school/club team accounts.
-	(Critically important)
-	-Load Info: Once logged in the app must aotomatically get info on the current team layout (which players are playing which positions)
-and the next match the team will be playing (where, when and against who they'll be playing).
+	Login/Logout and info loading:
+		(Critically important)
+		-Login/Logout: Allow the coach (or whoever is recording the team's match ifo) to be able to login and out of school/club team accounts.
+		(Critically important)
+		-Load Info: Once logged in the app must aotomatically get info on the current team layout (which players are playing which positions)
+	and the next match the team will be playing (where, when and against who they'll be playing).
 
 Main App Functions:
-	(Critically important)
-	-Upload score info: When someone scores any points in the match the user must then specify:
-		*which team scored,
-		*if the score is from a try, a subsequent conversion kick or a penalty kick,
-		*which player scored (indicated either by the player's name, position/jersey number or indicated as "unknown" if it is unclear who scored
-		 or if the oppossing team scored and the user doesn't know the name or positio/jersey numbers of the opposing team's players; 
-		"unknown" factors can be edited post-game if any new information is gained then).
-	(Important)
-	-Upload team changes: When a player on a team is swopped out for a reserve player then the app user must specify:
-		*which team is changing its on-field line up,
-		*which players are being swapped out (again, implemented as when a player scores, meaning that the players can be specified as "unknown").
-		*specify if a change in the on-field line up is due to injuries.
-	(Important)
-	-Upload "fault" info: When someone receives a penalty card the app user must specify:
-		*which team the "guilty" player is on,
-		*if it is a yellow or red card,
-		*which player received the penalty card(indicated in the same way as the player which scored).
-
+	Game time:
+		(Critically important)
+		-Upload game-time info: user must upload the following info through the app:
+			*start time of the game,
+			*end of the first half,
+			*start of the second half,
+			*end of the match.
+	Scoring:
+		(Critically important)
+		-Upload score info: When someone scores any points in the match the user must then specify:
+			*which team scored,
+			*if the score is from a try, a subsequent conversion kick, a penalty kick or a drop kick
+			*which player scored (indicated either by the player's name, position/jersey number or indicated as "unknown" if it is unclear who scored
+			 or if the oppossing team scored and the user doesn't know the name or positio/jersey numbers of the opposing team's players; 
+			"unknown" factors can be edited post-game if any new information is gained then).
+			*which player(s) assisted the try (if a try was scored).
+	Substitutions:
+		(Important)
+		-Upload team changes: When a player on a team is swopped out for a reserve player then the app user must specify:
+			*which team is changing its on-field line up,
+			*which players are being swapped out (again, implemented as when a player scores, meaning that the players can be specified as "unknown").
+			*specify if a change in the on-field line up is due to injuries.
+		
 Support App Functions:
-	(Nice-to-have)
-	-Upload line-out info: When a line-out occurs the app user must specify:
-		*which team's line-out it is,
-		*which team won the line-out or if the line-out failed(i.e. if the coach wanted the line-out repeated because of any player faults such as throwing the ball skew in the line-out).
-	(Nice-to-have)
-	-Upload scrum info: When a scrum occurs the app user must specify:
-		*which team's scrum it is,
-		*which team won the scrum or if the scrum failed (e.g. if the scrum collapsed).
+	Discipline:
+		(Important)
+		-Upload "fault" info: When someone receives a penalty card the app user must specify:
+			*which team the "guilty" player is on,
+			*if it is a yellow or red card,
+			*which player received the penalty card (indicated in the same way as the player which scored).
+	Defensive info:
+	Line-outs:
+		(Nice-to-have)
+		-Upload line-out info: When a line-out occurs the app user must specify:
+			*which team's line-out it is,
+			*which team won the line-out 
+			or if the line-out failed(i.e. if the coach wanted the line-out repeated because of any player faults such as throwing the ball skew in the line-out).
+	Scrums:
+		(Nice-to-have)
+		-Upload scrum info: When a scrum occurs the app user must specify:
+			*which team's scrum it is,
+			*which team won the scrum or if the scrum failed (e.g. if the scrum collapsed).
+	Tackles:
+		(Nice-to-have)
+		-Upload tackle info: When one of the player's of the app user's team attaempts a tackle the user must specify:
+			*which player attempted the tackle (indicated in the same way as the player which scored).
+			*if the tackle was successful (if tackle was illegal the user gets redirected to the Discipline page).
+	Attacking info:
+	Possession:
+		(Nice-to-have)
+		-Upload ball possession info: When the ball changes possession between teams:
+			*The user presses a button to indicate that the opposition team now has the ball.
+			*This function must be initialised with the first team who has possession of the ball.
+	Territory:
+		(Nice-to-have)
+	Clean break:
+		(Nice-to-have)
+	Defenders Beaten:
+		(Nice-to-have)
+	Offloads:
+		(Nice-to-have)
+	Ruck:
+		(Nice-to-have)
+	Maul:
+		(Nice-to-have)
+	Turnovers:
+		(Nice-to-have)
