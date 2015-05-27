@@ -52,25 +52,37 @@ Support App Functions:
 	Tackles:
 		(Nice-to-have)
 		-Upload tackle info: When one of the player's of the app user's team attaempts a tackle the user must specify:
-			*which player attempted the tackle (indicated in the same way as the player which scored).
+			*which player attempted the tackle (indicated in the same way as the player which scored),
 			*if the tackle was successful (if tackle was illegal the user gets redirected to the Discipline page).
 	Attacking info:
 	Possession:
 		(Nice-to-have)
-		-Upload ball possession info: When the ball changes possession between teams:
-			*The user presses a button to indicate that the opposition team now has the ball.
-			*This function must be initialised with the first team who has possession of the ball.
-	Territory:
-		(Nice-to-have)
-	Clean break:
-		(Nice-to-have)
-	Defenders Beaten:
-		(Nice-to-have)
-	Offloads:
-		(Nice-to-have)
-	Ruck:
-		(Nice-to-have)
-	Maul:
-		(Nice-to-have)
+		-Upload ball possession info: When the ball changes possession between teams (be it through turn-over, decause the other team scored, etc.):
+			*the user presses a button to indicate that the opposition team now has the ball,
+			*this function must be initialised with the first team who has possession of the ball.
 	Turnovers:
 		(Nice-to-have)
+		-Upload turnover info: When ball possession is lost (in a ruck or a maul or any other instance and the other team gains possession) the user must specify: 
+			*the team which now has possession of the ball.
+		[In this sense it functions similarly to the "possession" function except a turn-over can only occur in play whereas "possession" might be changed for various other reasons too].]
+	Clean break:
+		(Nice-to-have)
+		-Upload clean break info: When a player breaks through the opposition's defensive line cleanly the the user must specify:
+			*which team the player is on,
+			*which player broke through the defensive line (indicated in the same way as the player which scored).
+	Offloads:
+		(Nice-to-have)
+		-Upload when an offload occurs: When the player currently holding the ball manages to pass it before a tackle on him is complete the user must specify:
+			*which team the player executing the offload is on (i.e. the one being tackled),
+			*which player executed the offload (indicated in the same way as the player which scored).
+	Ruck:
+		(Nice-to-have)
+		-Upload ruck info: When a number of people gather around a ball that has been dropped after a tackle the user must specify:
+			*which team wins the ruck (gains possession).
+		[Much like "turnovers" this function is also related to "possession"]
+	Maul:
+		(Nice-to-have)
+		-Upload maul info: When a maul is formed (when the ball carrier is held but not brought to the ground and there is a minimum of three people involved, being the ball carrier, an opponent and a team mate) the user must specify:
+			*which team the ball carrier is on,
+			*which player has possession of the ball (if possible).
+	
