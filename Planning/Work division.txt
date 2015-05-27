@@ -1,0 +1,22 @@
+Use case division:
+
+	Ivan: Login/logout, Scrums, Clean Breaks
+	Johan: Load Info, Tackles, Mauls
+	Herman: Scoring, Substitiutions, Ruck
+	Estian: Game Time, Line-outs, Offloads
+	Muller: Discipline, Possession, Turn-overs
+
+Must have the following for each use case:
+	*Use case diagram
+	*Service contract
+	
+Activity diagrams required for the critical- and important use cases, i.e.:
+	Login/logout (Ivan)
+	Load Info (Johan)
+	Scoring, Substitutions (Herman)
+	Game Time (Estian)
+	Disciplice (Muller)
+
+Finally a Domain Model will be required (All of us).
+
+Refer to the pdf in the "Example functional requirements ... " file for reference.
