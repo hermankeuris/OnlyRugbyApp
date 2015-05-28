@@ -1,0 +1,316 @@
+\documentclass[a4paper,12pt]{report}
+\addtolength{\oddsidemargin}{-1.cm}
+\addtolength{\textwidth}{2cm}
+\addtolength{\topmargin}{-2cm}
+\addtolength{\textheight}{3.5cm}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\makeindex
+
+\usepackage{longtable}
+\usepackage[pdftex]{graphicx}
+\usepackage{makeidx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+
+% define the title
+\author{Men-at-Work}
+\title{ OnlyRugby Functional Requirements}
+\begin{document}
+\setlength{\parskip}{6pt}
+
+% generates the title
+\begin{titlepage}
+
+\begin{center}
+% Upper part of the page       
+\includegraphics[width=1\textwidth]{./up-logo.jpg}\\[0.4cm]    
+\textsc{\LARGE Department of Computer Science}\\[1.5cm]
+\textsc{\Large COS 301 - Software Engineering}\\[0.5cm]
+% Title
+\HRule \\[0.4cm]
+{ \huge \bfseries OnlyRugby Functional Requirements}\\[0.4cm]
+\HRule \\[0.4cm]
+% Author and supervisor
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Herman {Keuris}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Student number:} \\
+u13037618
+\end{flushright}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+Johan {van Rooyen}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{} \\
+u11205131
+\end{flushright}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+Estian {Rosslee}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{} \\
+u
+\end{flushright}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+Ivan {Henning}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{} \\
+u13008219
+\end{flushright}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+Muller {Potgieter}
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{} \\
+u12003672
+\end{flushright}
+\end{minipage}
+\vfill
+% Bottom of the page
+{\large \today}
+\end{center}
+\end{titlepage}
+\footnotesize
+\input{declaration_of_originality.tex}
+\normalsize
+
+\renewcommand{\thesection}{\arabic{section}}
+\newpage
+\begin{center}
+\textsc{\LARGE Software Requirements Specification and Technology Neutral Process Design}\\[1.5cm]
+\textsc{\Large OnlyRugby Mobile App/Main Project}\\[0.5cm]
+Version: Version 0.2 Alpha 
+For further references see \href{ https://github.com/hermankeuris/OnlyRugbyApp.git}{gitHub}.
+\today
+\end{center}
+\tableofcontents{}
+For further references see \href{https://github.com/hermankeuris/OnlyRugbyApp.git
+\section{Functional requirements}
+\subsection{Introduction}
+We use this document to give a high level overview of the buzz  discussion board. We have identified the various components of our system. The purpose of this document is to create a dynamic and scalable solution. We also want to include an achievement system that rewards users for using the discussion board. This document will inform you on how we will achieve a system that is both scalable and pluggable. We have identified the use cases of the various components of the discussion board and helped expand on them.
+% \newpage
+\subsection{Use case prioritiation}
+\textbf{Critical} 
+\begin{itemize}
+  \item Log in/log out
+  \item Load info (from database)
+  \item Game time
+  \item Scoring
+\textbf{Important} 
+\begin{itemize}
+  \item Substitutions
+  \item Discipline
+\end{itemize}
+\textbf{Nice-To-Have} 
+\begin{itemize}
+  \item Line-outs
+  \item Scrums
+  \item Tackles
+  \item Possession 
+  \item Turn-overs
+  \item Clean breaks
+  \item Offloads
+  \item Rucks
+  \item Mauls
+\end{itemize}
+\subsection{Use case/Service contracts}
+\begin{center}
+  \begin{longtable}{| p{3cm} | p{4cm} | p{4cm} | p{4cm} |}
+    \hline
+    Use Case & Pre Condition & Post Condition & Description \\ \hline \hline
+    Log in/log out & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Load info & (Pre conditions) & (Post conditions)  & (Description) \\ \hline
+    Game time & & (Pre conditions) & (Post conditions)  & (Description) \\ \hline
+    Scoring & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Substitutions & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Discipline & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Scrums & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Tackles & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Possession & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Turn-overs & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Clean breaks & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Offloads & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Rucks & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Mauls & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+
+    \hline
+  \end{longtable}
+\end{center}
+\newpage
+\subsection{Required functionality}
+\begin{itemize}
+	% We need to add the correct pictures here. We must also give a description of the elements.
+	\item \textbf{Log in/log out}
+		\begin{flushleft}
+		 (Extended description).	
+		\end{flushleft}
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Lelethu/UseCase_BuzzSpace.jpg}\\[0.4cm]    
+		\end{center}
+\newpage
+\item \textbf{Load info}
+		\begin{flushleft}
+		 (Extended description).	
+		\end{flushleft}
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Chris/Validation.jpg}\\[0.4cm]    
+		\end{center}
+\item  \textbf{Game time}
+		\begin{flushleft}
+		 (Extended description).	
+		\end{flushleft}
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Herman/Information_Management.jpg}\\[0.4cm]    
+		\end{center}
+\item \textbf{Scoring}
+		\begin{flushleft}
+		 (Extended description).	
+		\end{flushleft}
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Hanrich/Report.jpg}\\[0.4cm]    
+		\end{center}
+\newpage
+	\item \textbf{Substitutions}
+		\begin{flushleft}
+		 (Extended description).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Jason/Communication_(Notifications).jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Discipline}
+		\begin{flushleft}
+		(Extended description).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Herman/Summaries.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Scrums}
+		\begin{flushleft}
+		(Extended description).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Jason/Access.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Tackles}
+		\begin{flushleft}
+		(Extended description).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Possession}
+		\begin{flushleft}
+		(Extended description).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Turn-overs}
+		\begin{flushleft}
+		(Extended description).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Clean breaks}
+		\begin{flushleft}
+		(Extended description).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Offloads}
+		\begin{flushleft}
+		(Extended description).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Rucks}
+		\begin{flushleft}
+		(Extended description).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Mauls}
+		\begin{flushleft}
+		(Extended description).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Achievement/Rewards system}
+		\begin{flushleft}
+\end{itemize}
+\subsection{Process specification}
+We want to show various important process specification of our recommendation.
+\begin{itemize}
+	\item Log in/ log out
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Functional_Requirements_Diagrams/ActivityDiagrams/ActivityDIagram_CreateBuzzSpace.jpg}\\[0.4cm]    
+		\end{center}
+	\item Load info
+		\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Chris/Validationactivitydiagram.jpg}\\[0.4cm]    
+		\end{center}
+	\item Game time
+		\begin{center}
+		\includegraphics[width=1\textwidth]
+		 {../Goodness/Achievement_Rewards_System_ActivityDiagram.jpg}\\[0.4cm]
+		\end{center}
+	\item Scoring
+		\begin{center}
+		\includegraphics[width=1\textwidth]
+		 {../Herman/SummariesActivity.jpg}\\[0.4cm]
+		\end{center}
+	\item Substitutions
+		\begin{center}
+		\includegraphics[width=1\textwidth]
+		 {../Herman/SummariesActivity.jpg}\\[0.4cm]
+		\end{center}
+	\item Discipline
+		\begin{center}
+		\includegraphics[width=1\textwidth]
+		 {../Herman/SummariesActivity.jpg}\\[0.4cm]
+		\end{center}
+\end{itemize}
+\subsection{Domain Model}
+	\begin{center}
+  	 	\includegraphics[width=1\textwidth] {../Hanrich/BuzzElements.jpg}\\[0.4cm]    
+	\end{center}
+\index{Vision}
+\newpage
+
+
+\bibliography{myrefs}{} 
+\bibliographystyle{ieeetr}
+\end{document}
