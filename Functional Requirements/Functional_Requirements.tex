@@ -149,8 +149,8 @@ We use this document to give a high level overview of the buzz  discussion board
     Log in/log out & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Load info & (Pre conditions) & (Post conditions)  & (Description) \\ \hline
     Game time & & (Pre conditions) & (Post conditions)  & (Description) \\ \hline
-    Scoring & (Pre conditions) & (Post conditions) & (Description)\\ \hline
-    Substitutions & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Scoring & The app must be aware that a match is currently being played (i.e. scoring can only occur during game time), the app must be aware of which teams are playing and also be aware of which players are currently on the field (i.e. it must know if any player substitutions have taken place). & All scores must be verified by the user and then uploaded to the database where it can be added to team-, player- and league statistics (including points scored, at what time during the match the points were scored, if it was a try, drop kick, etc). & This use case provides a system whereby event-, team- and player statistics can be gathered during a match so that it can be viewed, analysed and compared with at a later stage.\\ \hline
+    Substitutions & The app must be aware that a match is currently being played (although substitutions can still be allowed at half-time). The app must have a list of players currently on the field as well as players in reserve. & After a substitution is made the on-field team and the list of reserve players must be updated accordingly, the time of the substitution will be logged and any special reasons for the substitution (such as injury) will be noted. & This use case provides a way of logging changes in the on-field team (which is important to know for some other functions like Scoring). This use case also provides additional statistical information about the match such as which players were forced off the field due to injury.\\ \hline
     Discipline & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Scrums & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Tackles & (Pre conditions) & (Post conditions) & (Description)\\ \hline
@@ -158,7 +158,7 @@ We use this document to give a high level overview of the buzz  discussion board
     Turn-overs & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Clean breaks & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Offloads & (Pre conditions) & (Post conditions) & (Description)\\ \hline
-    Rucks & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Rucks & The app must be aware that a match is currently being played (i.e. rucks can only occur during game time) and the app must be aware of which teams are playing. & This function gathers information on when a ruck occured during game time, which team was defending in the ruck and which team "won" the ruck (i.e. if possession of the ball changed then the Possession function will also be notified). & This use case provides a way of quickly logging information about rucks.\\ \hline
     Mauls & (Pre conditions) & (Post conditions) & (Description)\\ \hline
 
     \hline
