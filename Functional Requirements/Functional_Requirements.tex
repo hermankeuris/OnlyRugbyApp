@@ -163,7 +163,7 @@ We use this document to give a high level overview of the buzz  discussion board
     Possession & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Turn-overs & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Clean breaks & (Pre conditions) & (Post conditions) & (Description)\\ \hline
-    Offloads & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Offloads & The app must be aware that a match is currently in play (i.e. offloads can only occur during game time) and the app must be aware of which teams are playing. & The team and identity (name or player number) of the player that made a successful offload should be persisted to the database. & This use case provides a way of quickly logging information about offloads.\\ \hline
     Rucks & The app must be aware that a match is currently being played (i.e. rucks can only occur during game time) and the app must be aware of which teams are playing. & This function gathers information on when a ruck occurred during game time, which team was defending in the ruck and which team "won" the ruck (i.e. if possession of the ball changed then the Possession function will also be notified). & This use case provides a way of quickly logging information about rucks.\\ \hline
     Mauls & The app must be aware that a match is currently being played which teams are currently playing (individual players are not a necessity). & It should be logged which team won the maul and if the ball was turned over (the other team won the ball) or not. & This use case provides a way to represent how many mauls were present in the match, by logging each time a player tried to defend the ball on the ground.\\ \hline
 
@@ -262,7 +262,7 @@ We use this document to give a high level overview of the buzz  discussion board
 		\end{center}
 	\item \textbf{Offloads}
 		\begin{flushleft}
-		(Extended description).
+		This use case will be used to log information on when an offload occurs, which team performed the offload, and the identity (name or player number) of the player that performed the offload.
 		\end{flushleft}
 		\begin{center}
 		%\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
