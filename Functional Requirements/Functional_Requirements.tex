@@ -152,18 +152,19 @@ We use this document to give a high level overview of the buzz  discussion board
     \hline
     Load info & The app has to be connected to the internet in order to load the info from or to the server (and by extension, the database). Specific info can only be loaded when a person is logged in (like profile information). Statistical information being uploaded needs to know and verify where it is being sent to (i.e. to a player's profile or a team's statistics page). & The information should be loaded into the app from the server and statistical match information should be uploaded and stored in the database via the server, in the correct locations where it is meant to go. This is done by verifying the destination and the data being received each time. & This use case provides a method of uploading and downloading data from the database via the server, to and from the app. \\ 
     \hline
-    Game time & (Pre conditions) & (Post conditions)  & (Description) \\ 
+    Game time & The user must be logged in, the app must be aware that a match is scheduled for play and the game state should be "Not started". & The start and end time of each half of the match along with game pause intervals and reasons should be persisted to the database. The game state should be set to "Finished".  & This use case provides an interface for capturing the game time of a rugby match. \\ 
     \hline
     Scoring & The app must be aware that a match is currently being played (i.e. scoring can only occur during game time), the app must be aware of which teams are playing and also be aware of which players are currently on the field (i.e. it must know if any player substitutions have taken place). & All scores must be verified by the user and then uploaded to the database where it can be added to team-, player- and league statistics (including points scored, at what time during the match the points were scored, if it was a try, drop kick, etc). & This use case provides a system whereby event-, team- and player statistics can be gathered during a match so that it can be viewed, analysed and compared with at a later stage.\\ \hline
     Substitutions & The app must be aware that a match is currently being played (although substitutions can still be allowed at half-time). The app must have a list of players currently on the field as well as players in reserve. & After a substitution is made the on-field team and the list of reserve players must be updated accordingly, the time of the substitution will be logged and any special reasons for the substitution (such as injury) will be noted. & This use case provides a way of logging changes in the on-field team (which is important to know for some other functions like Scoring). This use case also provides additional statistical information about the match such as which players were forced off the field due to injury.\\ \hline
     Discipline & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Lineouts & The app must be aware that a match is currently in play (i.e. lineouts can only occur during game time) and the app must be aware of which teams are playing. & This function gathers information on when a lineout occurred during game time, which team was responsible for throwing in the ball, the identity of the player throwing in the ball, whether or not the lineout was successful, if successful which team won the lineout, and a reason if the lineout failed. & This use case provides a way of quickly logging information about lineouts.\\ \hline
     Scrums & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Tackles & The app must be aware that a match is currently being played and have a list of all players (both sides) currently on the field to be able to log tackles made between teams. & The tackler's identity should be verified and the statistics added to the relevant player's profile in the database. & This case provides a way to be able to log how well some players can defend by seeing how many successful tackles they have made throughout their career.\\ \hline
     Possession & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Turn-overs & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Clean breaks & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Offloads & (Pre conditions) & (Post conditions) & (Description)\\ \hline
-    Rucks & The app must be aware that a match is currently being played (i.e. rucks can only occur during game time) and the app must be aware of which teams are playing. & This function gathers information on when a ruck occured during game time, which team was defending in the ruck and which team "won" the ruck (i.e. if possession of the ball changed then the Possession function will also be notified). & This use case provides a way of quickly logging information about rucks.\\ \hline
+    Rucks & The app must be aware that a match is currently being played (i.e. rucks can only occur during game time) and the app must be aware of which teams are playing. & This function gathers information on when a ruck occurred during game time, which team was defending in the ruck and which team "won" the ruck (i.e. if possession of the ball changed then the Possession function will also be notified). & This use case provides a way of quickly logging information about rucks.\\ \hline
     Mauls & The app must be aware that a match is currently being played which teams are currently playing (individual players are not a necessity). & It should be logged which team won the maul and if the ball was turned over (the other team won the ball) or not. & This use case provides a way to represent how many mauls were present in the match, by logging each time a player tried to defend the ball on the ground.\\ \hline
 
     \hline
@@ -190,7 +191,7 @@ We use this document to give a high level overview of the buzz  discussion board
 		\end{center}
 \item  \textbf{Game time}
 		\begin{flushleft}
-		 (Extended description).	
+		 This use case will be used to log the start and end time of each half of a match, as well as any intervals during which time was lost (the game was paused) and a reason for this time loss (injury, substitution, referee consultation, replacement of damaged player clothing).	
 		\end{flushleft}
 		\begin{center}
   	 	%\includegraphics[width=1\textwidth] {../Herman/Information_Management.jpg}\\[0.4cm]    
@@ -213,6 +214,13 @@ We use this document to give a high level overview of the buzz  discussion board
 	\item \textbf{Discipline}
 		\begin{flushleft}
 		(Extended description).
+		\end{flushleft}
+		\begin{center}
+		%\includegraphics[width=1\textwidth]{../Herman/Summaries.jpg}\\[0.4cm]
+		\end{center}
+	\item \textbf{Lineouts}
+		\begin{flushleft}
+		This use case will be used to log information on when a lineout occurred, which team was responsible for throwing in the ball, the identity (name or player number) of the player that threw in the ball, whether or not the lineout was successful, if successful which team won the lineout, and if unsuccessful a reason why the lineout failed.
 		\end{flushleft}
 		\begin{center}
 		%\includegraphics[width=1\textwidth]{../Herman/Summaries.jpg}\\[0.4cm]
