@@ -68,7 +68,7 @@ Estian {Rosslee}
 \begin{minipage}{0.4\textwidth}
 \begin{flushright} \large
 \emph{} \\
-u
+u12223426
 \end{flushright}
 \end{minipage}
 \begin{minipage}{0.4\textwidth}
@@ -99,7 +99,7 @@ u12003672
 \end{center}
 \end{titlepage}
 \footnotesize
-\input{declaration_of_originality.tex}
+%\input{declaration_of_originality.tex}
 \normalsize
 
 \renewcommand{\thesection}{\arabic{section}}
@@ -112,7 +112,7 @@ For further references see \href{ https://github.com/hermankeuris/OnlyRugbyApp.g
 \today
 \end{center}
 \tableofcontents{}
-For further references see \href{https://github.com/hermankeuris/OnlyRugbyApp.git
+\newpage
 \section{Functional requirements}
 \subsection{Introduction}
 We use this document to give a high level overview of the buzz  discussion board. We have identified the various components of our system. The purpose of this document is to create a dynamic and scalable solution. We also want to include an achievement system that rewards users for using the discussion board. This document will inform you on how we will achieve a system that is both scalable and pluggable. We have identified the use cases of the various components of the discussion board and helped expand on them.
@@ -124,6 +124,7 @@ We use this document to give a high level overview of the buzz  discussion board
   \item Load info (from database)
   \item Game time
   \item Scoring
+\end{itemize}
 \textbf{Important} 
 \begin{itemize}
   \item Substitutions
@@ -145,21 +146,25 @@ We use this document to give a high level overview of the buzz  discussion board
 \begin{center}
   \begin{longtable}{| p{3cm} | p{4cm} | p{4cm} | p{4cm} |}
     \hline
-    Use Case & Pre Condition & Post Condition & Description \\ \hline \hline
-    Log in/log out & (Pre conditions) & (Post conditions) & (Description)\\ \hline
-    Load info & (Pre conditions) & (Post conditions)  & (Description) \\ \hline
-    Game time & & (Pre conditions) & (Post conditions)  & (Description) \\ \hline
+    Use Case & Pre Condition & Post Condition & Description \\ 
+    \hline \hline
+    Log in/log out & (Pre conditions) & (Post conditions) & (Description)\\ 
+    \hline
+    Load info & The app has to be connected to the internet in order to load the info from or to the server (and by extension, the database). Specific info can only be loaded when a person is logged in (like profile information). Statistical information being uploaded needs to know and verify where it is being sent to (i.e. to a player's profile or a team's statistics page). & The information should be loaded into the app from the server and statistical match information should be uploaded and stored in the database via the server, in the correct locations where it is meant to go. This is done by verifying the destination and the data being received each time. & This use case provides a method of uploading and downloading data from the database via the server, to and from the app. \\ 
+    \hline
+    Game time & (Pre conditions) & (Post conditions)  & (Description) \\ 
+    \hline
     Scoring & The app must be aware that a match is currently being played (i.e. scoring can only occur during game time), the app must be aware of which teams are playing and also be aware of which players are currently on the field (i.e. it must know if any player substitutions have taken place). & All scores must be verified by the user and then uploaded to the database where it can be added to team-, player- and league statistics (including points scored, at what time during the match the points were scored, if it was a try, drop kick, etc). & This use case provides a system whereby event-, team- and player statistics can be gathered during a match so that it can be viewed, analysed and compared with at a later stage.\\ \hline
     Substitutions & The app must be aware that a match is currently being played (although substitutions can still be allowed at half-time). The app must have a list of players currently on the field as well as players in reserve. & After a substitution is made the on-field team and the list of reserve players must be updated accordingly, the time of the substitution will be logged and any special reasons for the substitution (such as injury) will be noted. & This use case provides a way of logging changes in the on-field team (which is important to know for some other functions like Scoring). This use case also provides additional statistical information about the match such as which players were forced off the field due to injury.\\ \hline
     Discipline & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Scrums & (Pre conditions) & (Post conditions) & (Description)\\ \hline
-    Tackles & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Tackles & The app must be aware that a match is currently being played and have a list of all players (both sides) currently on the field to be able to log tackles made between teams. & The tackler's identity should be verified and the statistics added to the relevant player's profile in the database. & This case provides a way to be able to log how well some players can defend by seeing how many successful tackles they have made throughout their career.\\ \hline
     Possession & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Turn-overs & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Clean breaks & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Offloads & (Pre conditions) & (Post conditions) & (Description)\\ \hline
     Rucks & The app must be aware that a match is currently being played (i.e. rucks can only occur during game time) and the app must be aware of which teams are playing. & This function gathers information on when a ruck occured during game time, which team was defending in the ruck and which team "won" the ruck (i.e. if possession of the ball changed then the Possession function will also be notified). & This use case provides a way of quickly logging information about rucks.\\ \hline
-    Mauls & (Pre conditions) & (Post conditions) & (Description)\\ \hline
+    Mauls & The app must be aware that a match is currently being played which teams are currently playing (individual players are not a necessity). & It should be logged which team won the maul and if the ball was turned over (the other team won the ball) or not. & This use case provides a way to represent how many mauls were present in the match, by logging each time a player tried to defend the ball on the ground.\\ \hline
 
     \hline
   \end{longtable}
@@ -173,29 +178,29 @@ We use this document to give a high level overview of the buzz  discussion board
 		 (Extended description).	
 		\end{flushleft}
 		\begin{center}
-  	 	\includegraphics[width=1\textwidth] {../Lelethu/UseCase_BuzzSpace.jpg}\\[0.4cm]    
+  	 	%\includegraphics[width=1\textwidth] {../Lelethu/UseCase_BuzzSpace.jpg}\\[0.4cm]    
 		\end{center}
 \newpage
 \item \textbf{Load info}
 		\begin{flushleft}
-		 (Extended description).	
+			The Load Info module will be used to transfer information to and from the database, using the server. All destinations are to be verified before attempting to access them and incoming connections to the server need to be verified that they are from a trusted source.
 		\end{flushleft}
 		\begin{center}
-  	 	\includegraphics[width=1\textwidth] {../Chris/Validation.jpg}\\[0.4cm]    
+  	 	%\includegraphics[width=1\textwidth] {../Chris/Validation.jpg}\\[0.4cm]    
 		\end{center}
 \item  \textbf{Game time}
 		\begin{flushleft}
 		 (Extended description).	
 		\end{flushleft}
 		\begin{center}
-  	 	\includegraphics[width=1\textwidth] {../Herman/Information_Management.jpg}\\[0.4cm]    
+  	 	%\includegraphics[width=1\textwidth] {../Herman/Information_Management.jpg}\\[0.4cm]    
 		\end{center}
 \item \textbf{Scoring}
 		\begin{flushleft}
 		 (Extended description).	
 		\end{flushleft}
 		\begin{center}
-  	 	\includegraphics[width=1\textwidth] {../Hanrich/Report.jpg}\\[0.4cm]    
+  	 	%\includegraphics[width=1\textwidth] {../Hanrich/Report.jpg}\\[0.4cm]    
 		\end{center}
 \newpage
 	\item \textbf{Substitutions}
@@ -203,109 +208,106 @@ We use this document to give a high level overview of the buzz  discussion board
 		 (Extended description).
 		\end{flushleft}
 		\begin{center}
-		\includegraphics[width=1\textwidth]{../Jason/Communication_(Notifications).jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth]{../Jason/Communication_(Notifications).jpg}\\[0.4cm]
 		\end{center}
 	\item \textbf{Discipline}
 		\begin{flushleft}
 		(Extended description).
 		\end{flushleft}
 		\begin{center}
-		\includegraphics[width=1\textwidth]{../Herman/Summaries.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth]{../Herman/Summaries.jpg}\\[0.4cm]
 		\end{center}
 	\item \textbf{Scrums}
 		\begin{flushleft}
 		(Extended description).
 		\end{flushleft}
 		\begin{center}
-		\includegraphics[width=1\textwidth]{../Jason/Access.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth]{../Jason/Access.jpg}\\[0.4cm]
 		\end{center}
 	\item \textbf{Tackles}
 		\begin{flushleft}
-		(Extended description).
+			This use case will be used to log the amount of tackles made, by which team member of which team and when it was made. Knowing who was tackled is not required, since it will not be recorded in their statistics.
 		\end{flushleft}
 		\begin{center}
-		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
 		\end{center}
 	\item \textbf{Possession}
 		\begin{flushleft}
 		(Extended description).
 		\end{flushleft}
 		\begin{center}
-		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
 		\end{center}
 	\item \textbf{Turn-overs}
 		\begin{flushleft}
 		(Extended description).
 		\end{flushleft}
 		\begin{center}
-		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
 		\end{center}
 	\item \textbf{Clean breaks}
 		\begin{flushleft}
 		(Extended description).
 		\end{flushleft}
 		\begin{center}
-		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
 		\end{center}
 	\item \textbf{Offloads}
 		\begin{flushleft}
 		(Extended description).
 		\end{flushleft}
 		\begin{center}
-		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
 		\end{center}
 	\item \textbf{Rucks}
 		\begin{flushleft}
 		(Extended description).
 		\end{flushleft}
 		\begin{center}
-		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
 		\end{center}
 	\item \textbf{Mauls}
 		\begin{flushleft}
-		(Extended description).
+			This use case will be used to log how many mauls occurred throughout the match. It will record how many occurred, when they occurred and who won the outcome of the maul (whether there was a turnover ball or not, or if a penalty was conceded).
 		\end{flushleft}
 		\begin{center}
-		\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth]{../Kale-ab/UserManagementUseCase.jpg}\\[0.4cm]
 		\end{center}
 	\item \textbf{Achievement/Rewards system}
 		\begin{flushleft}
+		\end{flushleft}
 \end{itemize}
 \subsection{Process specification}
 We want to show various important process specification of our recommendation.
 \begin{itemize}
 	\item Log in/ log out
 		\begin{center}
-  	 	\includegraphics[width=1\textwidth] {../Functional_Requirements_Diagrams/ActivityDiagrams/ActivityDIagram_CreateBuzzSpace.jpg}\\[0.4cm]    
+  	 	%\includegraphics[width=1\textwidth] {../Functional_Requirements_Diagrams/ActivityDiagrams/ActivityDIagram_CreateBuzzSpace.jpg}\\[0.4cm]    
 		\end{center}
 	\item Load info
 		\begin{center}
-  	 	\includegraphics[width=1\textwidth] {../Chris/Validationactivitydiagram.jpg}\\[0.4cm]    
+  	 	%\includegraphics[width=1\textwidth] {../Chris/Validationactivitydiagram.jpg}\\[0.4cm]    
 		\end{center}
 	\item Game time
 		\begin{center}
-		\includegraphics[width=1\textwidth]
-		 {../Goodness/Achievement_Rewards_System_ActivityDiagram.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth] {../Goodness/Achievement_Rewards_System_ActivityDiagram.jpg}\\[0.4cm]
 		\end{center}
 	\item Scoring
 		\begin{center}
-		\includegraphics[width=1\textwidth]
-		 {../Herman/SummariesActivity.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth] {../Herman/SummariesActivity.jpg}\\[0.4cm]
 		\end{center}
 	\item Substitutions
 		\begin{center}
-		\includegraphics[width=1\textwidth]
-		 {../Herman/SummariesActivity.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth] {../Herman/SummariesActivity.jpg}\\[0.4cm]
 		\end{center}
 	\item Discipline
 		\begin{center}
-		\includegraphics[width=1\textwidth]
-		 {../Herman/SummariesActivity.jpg}\\[0.4cm]
+		%\includegraphics[width=1\textwidth] {../Herman/SummariesActivity.jpg}\\[0.4cm]
 		\end{center}
 \end{itemize}
 \subsection{Domain Model}
 	\begin{center}
-  	 	\includegraphics[width=1\textwidth] {../Hanrich/BuzzElements.jpg}\\[0.4cm]    
+  	 	%\includegraphics[width=1\textwidth] {../Hanrich/BuzzElements.jpg}\\[0.4cm]    
 	\end{center}
 \index{Vision}
 \newpage
