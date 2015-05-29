@@ -148,7 +148,7 @@ The OnlyRugby App will be used to log various types of match time data and then 
     \hline
     Use Case & Pre Condition & Post Condition & Description \\ 
     \hline \hline
-    Log in/log out & (Pre conditions) & (Post conditions) & (Description)\\ 
+    Log in/log out & The app has to be connected to the internet in order to verify the information. Only an administrator of a rugby page or user given rights can log in to use the record details part of the app. Once the user is logged in he/she can then use the logout functionality to log out & The user is logged in now and information on upcoming games from the page that the user is a part of should be displayed. The user can then choose the game to record details for. & This use case provides a method for logging in to record match data and log out once done.\\ 
     \hline
     Load info & The app has to be connected to the internet in order to load the info from or to the server (and by extension, the database). Specific info can only be loaded when a person is logged in (like profile information). Statistical information being uploaded needs to know and verify where it is being sent to (i.e. to a player's profile or a team's statistics page). & The information should be loaded into the app from the server and statistical match information should be uploaded and stored in the database via the server, in the correct locations where it is meant to go. This is done by verifying the destination and the data being received each time. & This use case provides a method of uploading and downloading data from the database via the server, to and from the app. \\ 
     \hline
