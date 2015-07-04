@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+import java.util.Date;
+//import org.junit.Test;
+//import static org.junit.Assert.*;
+//import junit;
 
 public class main 
 {
@@ -9,6 +13,14 @@ public class main
     private ArrayList<Team> teams = new ArrayList<>(2);
     //A variable which keeps track of which team currently has possession of the ball.
     private Team possession = null;
+    //The date/time the match began
+    private Date matchStart = null;
+    //The date/time the first half of the match ended
+    private Date firstHalfEnd = null;
+    //The date/time the second half of the match started
+    private Date firstHalfStart = null;
+    //The date/time the match ended
+    private Date matchEnd = null;
     
     
     /**
@@ -24,6 +36,7 @@ public class main
     {
         YellowCard, RedCard, None
     }
+    
     
     /**
      * General classes used by all functions
@@ -110,7 +123,7 @@ public class main
             return reservePlayer;
         }
     }
-    //A class to encapsulate each player'sd individual info.
+    //A class to encapsulate each player's individual info.
     public class Team
     {
         private String teamName;
@@ -141,6 +154,7 @@ public class main
         }
     }
 
+    
     /**
      * Helper functions
      */
@@ -169,6 +183,7 @@ public class main
         return new Player();
     }
     
+    
     /**
      * Basic functionality
      */
@@ -186,7 +201,7 @@ public class main
      * @param kickerName In the case of a conversion kick this variable indicates the name of the kicker
      * @param kickerNum In the case of a conversion kick this variable indicates the jersey number of the kicker
      */
-    public void score (String _scoringTeam, ScoreType _score, String scoringPlayerName, int scoringPlayerNum, Boolean tryAssisted, String assistName, int assistNum, Boolean conversion, String kickerName, int kickerNum)
+    public ScoreAnswer score (String _scoringTeam, ScoreType _score, String scoringPlayerName, int scoringPlayerNum, Boolean tryAssisted, String assistName, int assistNum, Boolean conversion, String kickerName, int kickerNum)
     {
         //The team who scored
         Team scoringTeam = null;
@@ -253,6 +268,8 @@ public class main
         }
         scoringPlayer = selectPlayer(scoringTeam, scoringPlayerName, scoringPlayerNum);
         
+        //Log all the information about the score (including the date/time when the score occured)
+        return new ScoreAnswer(scoringTeam, score, scoringPlayer, assist, kicker, new Date(),error);
 
         //Select team
         //Select score type
@@ -270,7 +287,7 @@ public class main
      * @param playerOnNum
      * @param _injury 
      */
-    public void substitutions (String  _team, String playerOffName, int playerOffNum, String playerOnName, int playerOnNum, boolean _injury)
+    public SubsAnswer substitutions (String  _team, String playerOffName, int playerOffNum, String playerOnName, int playerOnNum, boolean _injury)
     {
         //The team who is substituting a player
         Team team = null;
@@ -322,6 +339,9 @@ public class main
         
         injury = _injury;
         
+        //Log all the information about the substitution (including the date/time when the sub occured)
+        return new SubsAnswer(team, playerOn, playerOn, injury, new Date(), error);
+        
         //Select team
         //Select on field player
         //Select reserve player
@@ -365,5 +385,86 @@ public class main
         //Select which team won the ruck
         //Call possession()
         //Log ruck
+    }
+    
+    
+    /**
+     * Unit test classes
+     */
+    
+    public class ScoreAnswer
+    {
+        //The team who scored
+        public Team scoringTeam;
+        //The type of score
+        public ScoreType score;
+        //The player who scored
+        public Player scoringPlayer;
+        //The player who assisted the try (if the score type was try and the scoring player was indeed assisted)
+        public Player assist;
+        //The player who scored the conversion kick (if the original score was type try and the subsequent conversion kick was successful)
+        public Player kicker;
+        //The date and time that the score was logged
+        public Date date = null;
+        //A flag for error detection
+        public boolean error;
+        
+        ScoreAnswer (Team st, ScoreType s, Player sp, Player a, Player k, Date d, boolean e)
+        {
+            scoringTeam = st;
+            score = s;
+            scoringPlayer = sp;
+            assist = a;
+            kicker = k;
+            date = d;
+            error = e;
+        }
+    }
+    
+    public class SubsAnswer
+    {
+        //The team who scored
+        public Team team;
+        //The player who is coming off the field
+        public Player playerOff = null;
+        //The player who is now going on the filed
+        public Player playerOn = null;
+        //A flag to indicate if the substitution is injury related
+        public boolean injury;
+        //The date and time that the substitution was logged
+        public Date date = null;
+        //A flag for error detection
+        public boolean error;
+        
+        SubsAnswer (Team t, Player pf, Player pn, boolean i, Date d, boolean e)
+        {
+            team = t;
+            playerOff = pf;
+            playerOn = pn;
+            injury = i;
+            date = d;
+            error = e;
+        }
+    }
+    
+    
+    /**
+     * Unit tests
+     */
+    //@Test
+    public void testScoring()
+    {
+        
+    }
+    //@Test
+    public void testSubstitutions()
+    {
+
+    }
+    
+    //Run tests
+    public static void main(String[] args)
+    {
+        
     }
 }
