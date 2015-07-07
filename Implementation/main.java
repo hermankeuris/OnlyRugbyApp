@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.sql.Timestamp;
 //import org.junit.Test;
 //import static org.junit.Assert.*;
 //import junit;
@@ -447,6 +448,124 @@ public class main
         }
     }
     
+	/**
+     * Function that loads information from the database via the server
+     * TODO
+     * 1: Discuss how the different types of information are to be loaded for different situations
+     */
+    public void loadInfo ()
+    {
+    	//no real implementation while decisions around storing data still needs to be made - only dummy data
+		teams.add(new Team("Team 1"));
+    	teams.add(new Team("Team 2"));
+
+    	for (int k = 0; k <= 1; ++k) //for the two (2) different teams
+    	{
+    		for (int i = 1; i <= 15; ++i) //for the fifteen (15) main players
+    		{
+    			teams.get(k).onField.add(new Player("P" + i + "(T" + (k+1) + ")", i, false)); //False, assuming the player is NOT a reserve player
+    		}
+    		
+    		for (int i = 16; i <= 30; ++i) //for the fifteen (15) reserve players
+    		{
+    			teams.get(k).onField.add(new Player("P" + i + "(T" + (k+1) + ")", i, true)); //False, assuming the player IS a reserve player
+    		}
+    	}
+    	
+    	echo("Team 1: ");
+    	for (int k = 0; k <= 1; ++k) //for the two (2) different teams
+    	{
+    		for (int i = 0; i < 30; ++i) //for the fifteen (15) main players
+    		{
+    			if (i != 0) echo(", ");
+    			echo(teams.get(k).onField.get(i).playerName + "");
+    		}
+    		echoln("");
+    		if (k == 0) echo("Team 2: ");
+    	}
+    }
+    
+    
+    /**
+     * TODO
+	* 1: To be implemented fully in Phase 3, showing who tackled who
+	* 		For now, only showing that a tackle took place at this time frame
+	* 2: Write a deep copy for Team constructor (copy constructor)
+     * @param tackler The team who performed the tackle
+     */
+    public void tackle (Team tackler)
+    {
+    	Team tackled = teams.get(0).equals(tackler) ? tackler : teams.get(1);
+    	String message = "Confirm that " + tackler.getTeamName() + " Tackled " + tackled.getTeamName() + "?";
+    	//call confirmOrder(message) to confirm selection
+    	//send info to server with time stamp
+    	
+    	/*
+		* Info to be sent to the server includes:
+		* 1: Which team/player had possession of the ball when the tackle took place
+		* 2: Tackler/s
+		* 3: Tackled (will be same as the one having possession, could possibly be left out)
+		* 4: Time stamp
+		*/
+    	
+    	/*
+		* Different ways to get time stamp:
+		* new Date().getTime();
+		* new Date().toString();
+		* System.currentTimeMillis();  <-- seems to be the fastest
+		* new Timestamp(new Date().getTime());
+		* new Timestamp(System.currentTimeMillis());
+		*/
+    }
+    
+    
+    /**
+     * Indicates that a maul took place at time stamp
+     * TODO
+     * 1: Possibly to be implemented fully in Phase 3, showing who took part in the maul
+	* 		For now, only showing that a maul took place at this time frame
+	* 2: Use try/catch blocks to catch any errors and call log function to log faults
+     */
+    public void maul ()
+    {
+    	String message = "Confirm that a Maul took place?";
+    	//call confirmOrder(message) to confirm selection
+    	//send info to server to log a maul took place
+    	
+    	/*
+		* Info to be sent to the server includes:
+		* 1: Which team/player had possession of the ball when the maul took place
+		* 2: Possible advantage for any teams
+		* 3: Time stamp
+		*/
+    	
+    	/*
+		* Different ways to get time stamp:
+		* new Date().getTime();
+		* new Date().toString();
+		* System.currentTimeMillis();  <-- seems to be the fastest
+		* new Timestamp(new Date().getTime());
+		* new Timestamp(System.currentTimeMillis());
+		*/
+    }
+	
+	 /**
+     * A helper function to shorten displaying a message to the console on a new line
+     * @param msg The message to be printed to the console
+     */
+    public void echoln(String msg)
+    {
+    	System.out.println(msg);
+    }
+    
+    /**
+     * A helper function to shorten displaying a message to the console on an existing line
+     * @param msg The message to be printed to the console
+     */
+    public void echo(String msg)
+    {
+    	System.out.print(msg);
+    }
     
     /**
      * Unit tests
