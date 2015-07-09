@@ -39,9 +39,32 @@
 	\end{itemize}
 	
 	\subsubsection*{Testability}
+	All the different modules of the OnlyRugby app system must be tested thoroughly before they are integrated and deployed in the final system.
+	\begin{itemize}
+		\item Each service provided by the system must be testable through a unit test that tests:
+		\begin{itemize}
+			\item That the service is provided if all pre-conditions specified in the service contract are met.
+			\item That all post-conditions specified in the service contract hold true once the service has been provided.
+		\end{itemize}
+	\end{itemize}
 	
 	\subsubsection*{Monitorability and Auditability}
-
+	User activities should be logged so that they can be audited at a later stage. Each action on the system must be recorded in an audit log that can be viewed and queried at a later date should the necessity to do so arise.
+	Information to be recorded must include:
+	\begin{itemize}
+		\item The identity of the individual carrying out the action.
+		\item A summary description of the action.
+		\item A timestamp indicating when action was performed.
+	\end{itemize}
+	
+	Other information may be logged which may provide useful statistical information about the system while in use. Examples of such data to be logged might include:
+	\begin{itemize}
+		\item Location data.
+		\item Failure to communicate with server.
+		\item How long data was kept in local storage before being pushed to the server successfully.
+		\item Miscellaneous errors.
+	\end{itemize}
+	
 	\subsubsection{Nice to have:}
 	
 	\subsubsection*{Security}		
