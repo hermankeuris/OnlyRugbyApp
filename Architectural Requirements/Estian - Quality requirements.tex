@@ -31,7 +31,12 @@
 		\item Must integrate with the social platform's database concerning teams, players, and scheduled games for retrieval of display information. If communication is not possible (e.g. a loss of data connection) then default/place-holder values (e.g. Team 1, Player number 23) should be used for local storage and replaced with actual data once the connection is restored, but before data is pushed to the server.
 	\end{itemize}
 	\subsubsection*{Maintainability}
-	
+	The OnlyRugby app system must be maintained to keep the system in a continual safe operating state.
+	\begin{itemize}
+		\item Should the system go down then it will be rolled back to a previous state in which the system was safe. This lets us recover from an error or a system fault.
+		\item Corrective maintenance is implemented to correct discovered problems in the system after the system has broken. This is the most expensive form of maintenance.
+		\item Preventative maintenance is implemented to correct discovered problems in the system after the system has been implemented but before the system breaks down.
+	\end{itemize}
 	
 	\subsubsection*{Testability}
 	
