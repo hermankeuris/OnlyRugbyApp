@@ -67,6 +67,16 @@
 	
 	\subsubsection{Nice to have:}
 	
-	\subsubsection*{Security}		
+	\subsubsection*{Security}
+	All system functionality is accessible to users who can be successfully authenticated against the user database. If connection to the server is not available functionality will be granted in a guest mode and the user will be asked to authenticate prior to the data being pushed to the server upon re-establishment of connection.
+	\begin{itemize}
+		\item All communication of sensitive data must be done securely through encryption and secure channels.
+	\end{itemize}
 	
 	\subsubsection*{Performance requirements}	
+	Long delays cause user frustration, may lead users to believe the system is not functioning, or that input has been ignored. To prevent this it is necessary to minimize the response time of user input to the system to ensure that the system works efficiently in real time.
+	\begin{itemize}
+		\item Performance will be measured with a scale of user frustration.
+		\item Steps on the scale indicate how long a service takes to respond to the user.
+		\item The three steps to be used are 0.1s, 1s, and 10s.
+	\end{itemize}
