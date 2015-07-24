@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">O_R_Demo1</string>
+
+    <string name="first_half">1st Half</string>
+    <string name="second_half">2nd Half</string>
+    <string name="action_settings">Settings</string>
+    <string name="button_text">Press Me!</string>
+</resources>
