@@ -1,0 +1,27 @@
+\subsection{Architectural Constraints}		
+	The following architecture constraints have been imposed:
+		\begin{enumerate}
+			\item The system must be developed using the following technologies
+			\begin{itemize}
+				\item Laravel PHP framework
+				\item Google;s Material Design
+				\item Android 4.0+
+				\item SQLite
+			\end{itemize}
+		\end{enumerate}
+
+\section{Use of reference architectures and frameworks}
+	The reference architecture that will be used is
+	
+\section{Technologies}
+	\subsection{Programming technologies}
+		\subsection{Android Studio}
+			Android studio will be used as the IDE and the app will be backwards compatible from Android 4.0. 
+		\subsection{MySql}
+			MySql will be used for the web server database.
+		\subsection{SQLite}
+			SQLite will be used for the local on device database.
+	\subsection{Web technologies}
+		\subsection{RESTful web service}
+			Laravel PHP framework will be used to create a RESTFul web api to interact with the web server database and provide data persistence
+	
