@@ -11,7 +11,7 @@
 		\end{enumerate}
 
 \section{Use of reference architectures and frameworks}
-	The reference architecture that will be used is
+	The reference architecture that will be used is Java Platform Enterprise Edition. This architecture was chosen because our system is based on a layered architecture. The framework that will be used is the Laravel PHP Framework as we will have a RESTful web service.
 	
 \section{Technologies}
 	\subsection{Programming technologies}
