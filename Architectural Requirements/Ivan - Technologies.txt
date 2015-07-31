@@ -1,10 +1,10 @@
 \subsection{Architectural Constraints}		
-	The following architecture constraints have been imposed:
+	The following architecture constraints have been imposed by the client:
 		\begin{enumerate}
 			\item The system must be developed using the following technologies
 			\begin{itemize}
 				\item Laravel PHP framework
-				\item Google;s Material Design
+				\item Google's Material Design
 				\item Android 4.0+
 				\item SQLite
 			\end{itemize}
