@@ -1,0 +1,55 @@
+\section{Architectural strategies and tactics}
+	\begin{enumerate}
+	
+		\item Authorization:
+		The user’s profile on the application is authorized against the one on the database. JSON web tokens are passed between the application and the database. These tokens are very small, but can contain all the relevant data that needs to be passed and making use of these tokens makes it so that the database does not have to keep of sessions. These tokens are widely used, as they can be easily authorized and encrypted.
+
+		The quality requirements addressed:
+		\begin{itemize}
+			\item Performance: Because the tokens are small, they will be easy and quick to process.
+			\item Security: By encrypting the tokens and authorizing the user, private information can be protected.
+			\item Auditability and Testability: Sending the indormation in these tokens will make it easier to see if the correct data was passed.
+		\end{itemize}
+		
+		\item Queuing and scheduling:
+		Queuing and scheduling can be used to maximize the performance of the application and the server. As new requests are received, they are placed into a queue and sequentially processed. This will assure fairness and that requests are processed in order. This will also be used if a user does not have internet access, but wishes to load new statistics. The data will be queued, until it can be sent.
+
+		The quality requirements addressed:
+		\begin{itemize}
+			\item Availability, by optimizing the processing of the requests.
+			\item Reliability and audit ability. This way, the order in which requests are processed can be guaranteed.
+			\item Auditability and Testability: Sending the indormation in these tokens will make it easier to see if the correct data was passed.
+		\end{itemize}
+		
+		\item Ping / Echo:
+		Ping is a computer network administration software utility used to test the reachability of a host on an Internet Protocol (IP) network and to measure the round-trip time for messages sent from the originating host to a destination computer and back. By having the application send these pings on a regular basis, perhaps daily and when the user logs in, to the database, it can ensure that it still has access to the central server and that it is up to date with both the latest statistics, as well as the newest version of the application.
+
+		The quality requirements addressed:
+		\begin{itemize}
+			\item Security. As it can ensure that all its security policies are up to date and that it can report any faults/errors.
+			\item Availability. It will inform the user if it was unable to reach the server.
+			\item Reliability. Any issues that arise may be reported and it ensures that a connection is available.
+			\item Monitor-ability and Audibility. It can log faults detected.
+			\item Testability. It will allow us to test the connection to the server and that it can make use of said connection.
+		\end{itemize}
+		
+		\item Message integrity:
+		We will be exchanging JSON files between the server and the application. These files will include any new data that either party may need. By including a checksum, these files can be checked for any errors that may have occurred during transportation. Should it find a checksum error, a request will be send and a new JSON file will be transmitted.
+
+		The quality requirements addressed:
+		\begin{itemize}
+			\item Security. This will help to protect the system from corrupted data that may hamper the application and/or server's functionality.
+			\item Reliability: This will help ensure that erroneous data is not used.
+			\item Monitor-ability and Audibility. It will allow us to test if the application/server constantly sends erroneous data and address the issue.
+		\end{itemize}
+		
+		\item Multi-Threading:
+		By using multiple threads, the application can process a larger amount of data simultaneously. While the user may be busy updating a game’s statistics, the application will assign another thread to process any incoming requests, improving the program’s overall performance.
+
+		The quality requirements addressed:
+		\begin{itemize}
+			\item Performance. It will be able to process more data, simultaneously.
+			\item Flexibility. By creating new threads, the program will be able to handle multiple tasks more easily.
+			\item Usability. By keeping the user unaware of any background actions that are taking place, it will be easier for them to use the app.
+		\end{itemize}
+	\end{enumerate}
