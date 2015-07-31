@@ -1,0 +1,55 @@
+\section{Access and integration channels}
+	\subsubsection{Human access channels}
+	\begin{itemize}
+		\item Must be able to access services through the OnlyRugby application installed on tablets and phones running Android 4.0+
+		\item The user can easily use the OnlyRugby application to communicate with the server (when registering, logging on and off of their profiles) and through the server they can communicate with the MySQL database.
+		\item Quality requirements addressed:
+			\begin{itemize}
+				\item Availability
+				\item Usability
+			\end{itemize}
+	\end{itemize}
+
+	\subsubsection{System access channels}
+	The OnlyRugbyApp system can only be directly accessed through a web page (i.e. using http) using the REST API provided by the server
+	\begin{itemize} Quality requirements addressed:
+		\item Security
+	\end{itemize}
+
+	\subsection{Integration Channel Used}
+	\subsubsection REST - Representational State Transfer
+	\begin{itemize}
+		\item Uses standard HTTP and thus simpler to use.
+		\item Allows different data formats where as SOAP only allows XML.
+		\item Has JSON support (faster parsing than XML).
+		\item Better performance and scalability with the ability to cache reads.
+		\item Protocol Independent, can use any protocol which has a standardised Uniform Resource Identifier (URI) scheme.
+		\item Quality requirements addressed:
+			\begin{itemize}
+				\item Integrability
+				\item Maintainability
+			\end{itemize}
+	\end{itemize}
+		
+
+	\subsection{Protocols}
+	\subsubsection HTTP - Hypertext Transfer Protocol
+	\begin{itemize}
+		\item Used to respond to requests and transfer data
+	\end{itemize}
+	\subsubsection IP - Internet Protocol
+	\begin{itemize}
+		\item Allows communications between client and server
+		\item In charge of sending, receiving and addressing data packets.
+	\end{itemize}
+	\subsubsection SMTP - Simple Mail Transfer Protocol
+	\begin{itemize}
+		\item Used to send emails (useful for registration confirmation)
+		\item MIME (Multi-purpose Internet Mail Extensions) which allows SMTP
+to send multimedia files.
+	\end{itemize}
+	\subsubsection TSL - Transport Layer Security
+	\begin{itemize}
+		\item Alternative to SSL.
+		\item Newer and more secure version of SSL.
+	\end{itemize}
