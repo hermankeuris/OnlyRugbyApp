@@ -1,0 +1,66 @@
+Architectural Patterns or Styles
+
+*Layered Architectural Style
+The OnlyRugby Application is strutured according to a layered architectural style that spans N-layers and comprises of:
+
+||Client Layer:
+	1. Client Access Layer:
+		-Provides an interface/front-end through which users/clients can access and interact with the Business Logic Layer/Application Layer
+		-This layer leaves all functional aspects (i.e. back-end services) to be handled by the Business Logic Layer/Application Layer (i.e. only handles receiving input and providing an interface)
+	2. Business Logic/Application Layer:
+		-Provides back-end services of the system (i.e. all functions and forms of data manipulation)
+		-Manages access to the web-services/server layer
+		-Manages client login authenetication
+		-Manages persistence to the main database (i.e. not the client persistence/temporary database).
+	3. Client persistence layer:
+		-Stores a temporary version of the data to be persisted if it can not be immediatley sent to the server layer
+
+||Server Layer:
+	1. Web-services/Server-side application/business logic Layer:
+		-Receives the processed client input from the business logic/application Layer and adds it to the database (i.e. persistence layer)
+		-Provides other server-side computation/services such as:
+			*conflict resolution when two different clients upload match stats
+			*sending emails to clients (for example when registering with OnlyRugby)
+			
+	2. Persistence:
+		-Stores the proccessed information on the database
+||Infrastructure Layer:
+	-Inludes the framework on which the system is built and all aspects of integration
+
+MVC and 3-layered pattern hybrid:
+
+||Presentation Layer:
+	1. View: 
+		(Functions as Interface)
+
+4-layer:
+
+||Presentation Layer:
+	The Presentation Layer is comprised of two main aspects:
+	1. Interface: Provides an interface/front-end through which users/clients can access and interact with the Application Layer.
+	2. Client Data Access: Captures the client's input and and passes it on to the Application Layer. Also responsable for validating input (but not for authentication).
+
+||Application Layer:
+	-Provides back-end services of the system (i.e. all functions and forms of data processing/manipulation).
+	-Manages access to the web-services layer.
+	-Manages client login authenetication.
+	-Manages persistence to the main database.
+	-If the app can not currently reach the database then this layer will provide a space to temporarily store all relevant data which needs to be uploaded to the database at a later time.
+||Web-services Layer:
+	This layer is where the server is situated.
+	-Receives the processed client input from the Application Layer and adds it to the database (i.e. allows reading from- and writing to database).
+	-Provides other server-side computation/services such as:
+		*conflict resolution when two different clients upload match stats.
+		*sending emails to clients (for example when registering with OnlyRugby).
+			
+||Data Layer:
+	This layer is where the database is situated.
+	-Stores all added information, even when the client is not communicating with the database (i.e. persists data).
+
+Reasons for choosing a layered architecture:
+-Complexity is reduced by abstracting and seperating a number of well defined layers which are then weakly coupled with each other. This allows the responsabilities of the system to be divided between the different layers and can prevent certain aspects of the system from becoming too dependant on (or needlessly intertwined with) another aspect of the system.
+-It allows for the posssability of layers, at times, being re-used across the system (for example the Presentation Layer relies on the Application Layer to verify all input whereas the Web-services Layer relies on the Application Layer to format the input so that it could be stored in the database).
+-Seperating certain aspects (such as interface and implementation) makes it easier to seperatley test different parts of the system.
+-The reduced dependancy of various parts of the system on each other will also improve maintainability as it allows parts of the system to be updated without requiring any unneccessary changes to other parts of the system.
+
+http://criticaltechnology.blogspot.com/2011/09/mvc-in-three-tier-architecture.html
