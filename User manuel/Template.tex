@@ -127,17 +127,53 @@ u12003672
 \section{User Manuel}
 \subsection{System Overview} 
 The OnlyRugby App will serve school rugby teams and rugby clubs who have registered their teams with the main OnlyRugby website (implemented by our clients) by allowing them to log basic match time information. This means that when the user's team is playing a match the user can log such information as which team and players have scored, any injuries or penalties during the game and which team has won the line-out/scrum etc. This information is then stored on the main website's database allowing user's to compare statistics through the site.
-\newpage
 \subsection{System Configuration}
-
+begin {itemize}
+	\item The user will run the app itself from a phone using Android 4.0 or higher.
+	\item All communication between the mobile app and the server will occur through HTTP and will consist of JSON objects which will be processed by a RESTful API on the server side (which will then format the information to be stored on the main OnlyRugby website's database) and the main app on the user's mobile device respectivley.
+	\item The mobile app will also manage a small temporary SQLite database which will store any information waiting to be sent to the server when a connection is again established.
+	\item The server will also use SMTP to send emails to an email account specified by the user in certain situations (e.g. when the user first registers an account with OnlyRugby). 
+\end{itemize}
+\begin{center}
+  	 \includegraphics[width=0.5\textwidth] {./Sysyem Configuration.jpg}\\[0.4cm]
+\end{center}
 \subsection{Installation}
 
 
 \subsection{Getting started}
 	
-
 \subsection{Using the system}
+The functionality of the app will be spread between the following use cases:
+	/subsection{Login/Logout}
+
+	/subsection{Load Info}
+
+	/subsection{Game Time}
+
+	/subsection{Scoring}
+
+	/subsection{Substitutions}
 	
+	/subsection{Discipline}
+
+	/subsection{Line-outs}
+
+	/subsection{Scrums}
+
+	/subsection{Tackles}
+
+	/subsection{Possession}
+
+	/subsection{Turnovers}
+
+	/subsection{Clean break}
+
+	/subsection{Offloads}
+
+	/subsection{Ruck}
+
+	/subsection{Maul}
+
 \subsection{Troubleshooting}
 		
 \end{document}
