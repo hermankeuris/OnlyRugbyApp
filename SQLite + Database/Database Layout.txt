@@ -1,0 +1,54 @@
+Works as follows:
+	table_name:
+		field1 type
+		field2 type(size)
+		field3	type
+		
+		Assume for now that all fields are not allowed to be null.
+		
+users:
+	user_id 				int AUTO_INCREMENT
+	name 				text [or varchar(32)]
+	surname 			text [or varchar(32)]
+	email 				text [or varchar(32)]
+	username			text [or varchar(16)]
+	password			text [or varchar(32)] //this field is hashed via the server using MD5
+
+teams:
+	team_id				int AUTO_INCREMENT
+	name					text [or varchar(32)]
+	
+players:
+	player_id			int AUTO_INCREMENT
+	name					text [or varchar(32)]
+	surname				text [or varchar(32)]
+	height				float
+	weight
+	curr_position
+	
+matches:
+	match_id
+	score_a
+	score_b
+	team_a_id
+	team_b_id
+	timestamp
+	
+statistics:
+	stat_id
+	player_id
+	match_id
+	tries
+	conversions
+	penalty_goal
+	drop_goal
+	timestamp
+	
+substitutions:
+	sub_id
+	player_off_id
+	player_on_id
+	timestamp
+	
+	
+	
