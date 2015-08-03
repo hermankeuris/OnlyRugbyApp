@@ -146,37 +146,49 @@ The OnlyRugby App will serve school rugby teams and rugby clubs who have registe
 	
 \subsection{Using the system}
 The functionality of the app will be spread between the following use cases:
-	/subsection{Login/Logout}
+	\subsection{Login/Logout}
 		\begin {itemize}
 			\item The first screen after running the App the user will be presented with two edit fields one for his username and one for his password, the user enters his details to login and continue using the app.
 		\end{itemize}
-	/subsection{Load Info}
+	\subsection{Load Info}
 
-	/subsection{Game Time}
+	\subsection{Game Time}
 
-	/subsection{Scoring}
+	\subsection{Scoring}
+		During game time (i.e. while the OnlyRugby app is being used to log the information of a match currently being played ) the Scoring function will be used each time a player from either team scores points for their team (be it through a try, penalty kick, dropkick or a conversion kick following a try). The Scoring function works as follows:
+		\begin{enumerate}
+			\item Once the user has pressed the button to log score information they are redirected to a page which asks them to indicate which team scored by pressing either of two buttons which each have the names of the respective teams on them.
+			\item The user is then redirected to a page which asks the user to specify what type of score it should log. This page displays buttons titled 'Try', 'Penalty Kick' and  'Dropkick' (note that 'Conversion Kick' is not an option as it can only be attempted after a succesful try). 
+			\item The app then redirects the user to another page which has 15 buttons representing the 15 on-field players of the previously selected team. Each button has the player's position/jersey number on it as well as the player's name (if that information is provided on the database). This page also has an 'Unknown' button incase the user, for some reason, is not sure who scored on this team. The user is asked to select one of these players/buttons as the player who scored.
+			\item In most cases the user is then done entering the score information but in the case of a 'Try' more steps must be completed:
+				\begin{itemize}
+					\item The user is first asked by a small pop-up message if the try was assisted by any other players with the options of clicking 'Yes' or 'No'. In the case of 'Yes' the user is then redirected to the same 'player selection page' as previously described were the user can then select a player which assisted the first player to score the try.
+					\item The player is then asked by another small pop-up message if the subsequent conversion kick was successful with the options of clicking 'Yes' or 'No'. Selecting 'Yes' once again redirects the user to the 'player selection page' to select a player which successfully scored the conversion kick.
+				\end{itemize}
+		\end{enumerate}
+	On all of the above described pages there are also buttons labeled 'Cancel' (to cancel logging the score) and 'Back' which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
 
-	/subsection{Substitutions}
+	\subsection{Substitutions}
 	
-	/subsection{Discipline}
+	\subsection{Discipline}
 
-	/subsection{Line-outs}
+	\subsection{Line-outs}
 
-	/subsection{Scrums}
+	\subsection{Scrums}
 
-	/subsection{Tackles}
+	\subsection{Tackles}
 
-	/subsection{Possession}
+	\subsection{Possession}
 
-	/subsection{Turnovers}
+	\subsection{Turnovers}
 
-	/subsection{Clean break}
+	\subsection{Clean break}
 
-	/subsection{Offloads}
+	\subsection{Offloads}
 
-	/subsection{Ruck}
+	\subsection{Ruck}
 
-	/subsection{Maul}
+	\subsection{Maul}
 
 \subsection{Troubleshooting}
 		
