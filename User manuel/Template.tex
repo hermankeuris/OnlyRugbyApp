@@ -128,7 +128,7 @@ u12003672
 \subsection{System Overview} 
 The OnlyRugby App will serve school rugby teams and rugby clubs who have registered their teams with the main OnlyRugby website (implemented by our clients) by allowing them to log basic match time information. This means that when the user's team is playing a match the user can log such information as which team and players have scored, any injuries or penalties during the game and which team has won the line-out/scrum etc. This information is then stored on the main website's database allowing user's to compare statistics through the site.
 \subsection{System Configuration}
-begin {itemize}
+\begin {itemize}
 	\item The user will run the app itself from a phone using Android 4.0 or higher.
 	\item All communication between the mobile app and the server will occur through HTTP and will consist of JSON objects which will be processed by a RESTful API on the server side (which will then format the information to be stored on the main OnlyRugby website's database) and the main app on the user's mobile device respectivley.
 	\item The mobile app will also manage a small temporary SQLite database which will store any information waiting to be sent to the server when a connection is again established.
@@ -138,14 +138,18 @@ begin {itemize}
   	 \includegraphics[width=0.5\textwidth] {./Sysyem Configuration.jpg}\\[0.4cm]
 \end{center}
 \subsection{Installation}
-
+\begin {itemize}
+	\item The user will have to choose to download the app from the Google App store and the rest will be done automatically by the app store itself. The user will be notified when the app finished downloading and is ready to run.
+\end{itemize}
 
 \subsection{Getting started}
 	
 \subsection{Using the system}
 The functionality of the app will be spread between the following use cases:
 	/subsection{Login/Logout}
-
+		\begin {itemize}
+			\item The first screen after running the App the user will be presented with two edit fields one for his username and one for his password, the user enters his details to login and continue using the app.
+		\end{itemize}
 	/subsection{Load Info}
 
 	/subsection{Game Time}
