@@ -153,6 +153,18 @@ The functionality of the app will be spread between the following use cases:
 	\subsection{Load Info}
 
 	\subsection{Game Time}
+	This use case is used to log the start and end time of each half of a match, as well as any intervals during which time was lost (the game was paused) and a reason for this time loss (injury, substitution, referee consultation, replacement of damaged player clothing). 
+	\begin{itemize}Usage:
+		\item The game time is displayed at the top of the UI.
+		\item One starts the clock by tapping on it once. Preferably at kickoff. In the future the user will be presented with a confirm option in the form of a pop up which will not affect the running clock if accepted and reset the clock if denied.
+		\item Once the clock is running a single tap on the clock will register a pause and activate a pop up asking the user for a reason for the pause, along with the legal options. The user will also have the option return should they accidentally activate this function.
+		\item Upon reaching 40 minutes the game clock:
+		\begin{itemize}
+		\item registers the end of the current half,
+		\item resets for the next half if there is one, and
+		\item resets for overtime if conditions for it are met.
+		\end{itemize}
+	\end{itemize}
 
 	\subsection{Scoring}
 		During game time (i.e. while the OnlyRugby app is being used to log the information of a match currently being played ) the Scoring function will be used each time a player from either team scores points for their team (be it through a try, penalty kick, dropkick or a conversion kick following a try). The Scoring function works as follows:
