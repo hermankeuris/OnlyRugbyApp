@@ -183,7 +183,14 @@ The functionality of the app will be spread between the following use cases:
 	On all of the above described pages there are also buttons labeled 'Cancel' (to cancel logging the score) and 'Back' which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
 
 	\subsection{Substitutions}
-	
+		During game time the Substitutions function will be used to log any changes made to both the on- and off-field players (i.e. reserve players) of either team. This function will work as follows:
+		\begin{enumerate}
+			\item Once the player has pressed the button to log player substitutions they are redirected to a page which asks them to indicate which team is substituting a player by pressing either of two buttons which each have the names of the respective teams on them.
+			\item The app then redirects the user to the 'player selection page' (as described in the Scoring section) which comprises of 15 buttons representing the on-field players of the selected team (i.e. without the 'Unknown' button). The user is then asked to select an on-field player which is being swapped out for a reserve player.
+			\item The app then redirects the user to a page similar to the standard 'player selection page' which has between 0 and 8 buttons representing the reserve players of the selected team. These buttons also have the player's jersey numbers and names on them (if they are stored on the server's database). The user is then asked to select a reserve player to swap out with the previously selected on-field player. The two selected players then swap their places (i.e. the reserve is now on-field and vice versa). There is also an 'Unknown' button on this page which is used when a reserve is put on field which was not part of the reserve team which is stored on the database (which means the app therefore does not have information about him).
+			\item When the player clicks the 'Unknown' button it displays a small pop-up menu which has two text-boxes and two buttons on it. The two text-boxes are there for the user to enter the new player's name and jersey number (either or both of these can be left empty). The two buttons are 'OK' which the user presses when they have completed the text-boxes to their satisfaction and 'Cancel' which cancels the process started by pressing the 'Unknown' button.
+	On all of the above described pages there are also buttons labeled 'Cancel' (to cancel logging the substitution) and 'Back' which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
+
 	\subsection{Discipline}
 		During game time (i.e. while the OnlyRugby app is being used to log the information of a match currently being played ) the Discipline function will be used each time a player performs an infraction that causes them to reveive a card. The Discipline function works as follows:
 		\begin{enumerate}
