@@ -183,6 +183,13 @@ The functionality of the app will be spread between the following use cases:
 	\subsection{Substitutions}
 	
 	\subsection{Discipline}
+		During game time (i.e. while the OnlyRugby app is being used to log the information of a match currently being played ) the Discipline function will be used each time a player performs an infraction that causes them to reveive a card. The Discipline function works as follows:
+		\begin{enumerate}
+			\item Once the user has pressed the button to log the disciplinary action's information they are redirected to a page which asks them to indicate which team's player was given a card, by pressing either of two buttons which each have the names of the respective teams on them.
+			\item The app then redirects the user to another page which has 15 buttons representing the 15 on-field players of the previously selected team. Each button has the player's position/jersey number on it as well as the player's name (if that information is provided on the database). This page also has an 'Unknown' button incase the user, for some reason, is not sure who the player being disciplined is. The user is asked to select one of these players/buttons as the player who was disciplined.
+			\item The app then redirects the user to another page which has 3 buttons, to indicate if a white, yellow or red card was given.
+		\end{enumerate}
+	On all of the above described pages there are also buttons labeled 'Cancel' (to cancel logging the discipline) and 'Back' which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
 
 	\subsection{Line-outs}
 	Currently not implemented. Usage likely to be similar to the following description:
@@ -206,6 +213,15 @@ The functionality of the app will be spread between the following use cases:
 	\subsection{Possession}
 
 	\subsection{Turnovers}
+		During game time (i.e. while the OnlyRugby app is being used to log the information of a match currently being played ) the Turnover function will be used each time a player from either team manages to take possession of the ball from an opposing player.The Turnover function works as follows:
+		\begin{enumerate}
+			\item Once the user has pressed the button to log the turnover's information they are redirected to a page which asks them to indicate which team won the turnover by pressing either of two buttons which each
+			have the names of the respective teams on them.
+			\item The app then redirects the user to another page which has 15 buttons representing the 15 on-field players of the previously selected team. Each button has the player's position/jersey number on it 
+			as well as the player's name (if that information is provided on the database). This page also has an 'Unknown' button incase the user, for some reason, is not sure who won the turnover. The user is asked to select one of these players/buttons as the player who won the turnover.
+			\item The user is then redirected to a page, similar to the one above, that has a list of the other team's 15 on-field players. Here, the user selects the player who lost the ruck.
+		\end{enumerate}
+	On all of the above described pages there are also buttons labeled 'Cancel' (to cancel logging the turnover) and 'Back' which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
 
 	\subsection{Clean break}
 
@@ -223,6 +239,12 @@ The functionality of the app will be spread between the following use cases:
 		\item Activating the return button will prompt the user to save data as default, what the user entered, or to cancel the registering of an offload.
 
 	\subsection{Ruck}
+		During game time (i.e. while the OnlyRugby app is being used to log the information of a match currently being played ) the Ruck function will be used each time the ball is on the ground and players are crowded around it.During this time, they must use their feet to maneuver it to the back of the rear player's feet, at which point it may be picked up. The Ruck function works as follows:
+		\begin{enumerate}
+			\item Once the user has pressed the button to log the ruck's information they are redirected to a page which asks them to indicate which
+			team won the ruck by pressing either of two buttons which each have the names of the respective teams on them.
+		\end{enumerate}
+	On the above described page there are also buttons labeled 'Cancel' (to cancel logging the ruck) and 'Back' which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
 
 	\subsection{Maul}
 
