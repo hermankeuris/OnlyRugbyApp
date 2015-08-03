@@ -157,7 +157,7 @@ The functionality of the app will be spread between the following use cases:
 	\begin{itemize}Usage:
 		\item The game time is displayed at the top of the UI.
 		\item One starts the clock by tapping on it once. Preferably at kickoff. In the future the user will be presented with a confirm option in the form of a pop up which will not affect the running clock if accepted and reset the clock if denied.
-		\item Once the clock is running a single tap on the clock will register a pause and activate a pop up asking the user for a reason for the pause, along with the legal options. The user will also have the option return should they accidentally activate this function.
+		\item Once the clock is running a single tap on the clock will register a pause and activate a pop up asking the user for a reason for the pause, along with the legal options. The user will also have the option return should they accidentally activate this function. After a legal reason has been given for the pause the user is presented with a blank page and a button to resume the game.
 		\item Upon reaching 40 minutes the game clock:
 		\begin{itemize}
 		\item registers the end of the current half,
@@ -185,6 +185,19 @@ The functionality of the app will be spread between the following use cases:
 	\subsection{Discipline}
 
 	\subsection{Line-outs}
+	Currently not implemented. Usage likely to be similar to the following description:
+	\begin{itemize}
+		\item Line out button present on landing page after login.
+		\item Button can only be activated during game time.
+		\item Activating the button registers a line out and redirects the interface to the line outs page. Here the user will be presented with options to specify:
+			\begin{enumerate}
+				\item The team to which the line out was given.
+				\item The player to perform the throw in, by player number or by name. (Defaults to "unknown player").
+				\item The team that won the line out.
+			\end{enumerate}
+		\item An option to return to the landing page will also be present
+		\item Activating the return button will present a pop up prompting the user to save data as default, what the user entered, or to cancel the line out.
+	\end{itemize}
 
 	\subsection{Scrums}
 
