@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Try"
+        android:id="@+id/Try"
+        android:onClick="selectTry"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="102dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Penalty Kick"
+        android:id="@+id/PenaltyKick"
+        android:onClick="selectPenKick"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drop Kick"
+        android:id="@+id/DropKick"
+        android:onClick="selectDropKick"
+        android:layout_below="@+id/PenaltyKick"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp" />
+</RelativeLayout>
