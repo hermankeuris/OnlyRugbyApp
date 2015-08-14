@@ -1,0 +1,10 @@
++Name getLoginData
+
++Request
+GET https://localhost/OnlyRugby/users/
++Headers
++Body
+
++Response
++Body
+{	"username":"username",	"password":"password"}
