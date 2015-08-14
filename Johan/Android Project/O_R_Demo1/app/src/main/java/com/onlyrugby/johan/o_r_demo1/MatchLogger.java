@@ -43,7 +43,8 @@ public class MatchLogger extends Activity implements View.OnClickListener {
 
         textMsg = (TextView) findViewById(R.id.textmsg);
 
-        new MyTask().execute();
+        LoadInfo t = new LoadInfo();
+        new LoadInfo.loadPreGameInfo().execute();
     }
 
     @Override
