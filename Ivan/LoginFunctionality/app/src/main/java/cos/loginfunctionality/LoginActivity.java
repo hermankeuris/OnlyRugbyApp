@@ -1,17 +1,6 @@
 package cos.loginfunctionality;
 
-import java.io.IOException;
-import java.io.InputStream;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
 import android.support.v7.app.ActionBarActivity;
-import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,7 +13,7 @@ import android.widget.EditText;
 public class LoginActivity extends ActionBarActivity implements OnClickListener {
 
     Button btnLogin;
-    EditText Username, Password;
+    EditText edtUsername, edtPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,60 +21,18 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener 
         setContentView(R.layout.activity_login);
 
         btnLogin = (Button)findViewById(R.id.buttonLogin);
+        edtUsername = (EditText)findViewById(R.id.edtUsername);
+        edtPassword = (EditText)findViewById(R.id.edtPassword);
 
         btnLogin.setOnClickListener(this);
-        /*new View.OnClickListener() {
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Username = (EditText)findViewById(R.id.edtUsername);
-                Password = (EditText)findViewById(R.id.edtPassword);
-            }
-        });*/
+
     }
 
     @Override
     public void onClick(View arg0) {
-        btnLogin.setClickable(false);
-        new LongRunningGetIO().execute();
-    }
-
-    private class LongRunningGetIO extends AsyncTask <Void, Void, String> {
-
-        protected String getASCIIContentFromEntity(HttpEntity entity) throws IllegalStateException, IOException {
-            InputStream in = entity.getContent();
-            StringBuffer out = new StringBuffer();
-            int n = 1;
-            while (n>0) {
-                byte[] b = new byte[4096];
-                n =  in.read(b);
-                if (n>0) out.append(new String(b, 0, n));
-            }
-            return out.toString();
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpContext localContext = new BasicHttpContext();
-            HttpGet httpGet = new HttpGet("restfulhttp");
-            String text = null;
-            try {
-                HttpResponse response = httpClient.execute(httpGet, localContext);
-                HttpEntity entity = response.getEntity();
-                text = getASCIIContentFromEntity(entity);
-            } catch (Exception e) {
-                return e.getLocalizedMessage();
-            }
-            return text;
-        }
-
-        protected void onPostExecute(String results) {
-            if (results!=null) {
-                EditText et = (EditText)findViewById(R.id.edtUsername);
-                et.setText(results);
-            }
-            btnLogin.setClickable(true);
-        }
+        String username = edtUsername.getText().toString();
+        String password = edtPassword.getText().toString();
+        new databaseInteraction().execute(username, password);
     }
 
     

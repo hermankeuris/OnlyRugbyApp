@@ -1,5 +1,4 @@
 <?php
-
 	include_once 'db_functions.php';
     $db = new DB_Functions();
     $finduser = $db->getLoginInfo($_POST['usrname'],$_POST['password']);
