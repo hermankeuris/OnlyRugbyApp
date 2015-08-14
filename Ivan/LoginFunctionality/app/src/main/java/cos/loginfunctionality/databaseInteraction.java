@@ -3,26 +3,21 @@ package cos.loginfunctionality;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
 import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class databaseInteraction extends AsyncTask<String,Void,String>
 {
+    private Context context;
 
-    public databaseInteraction()
+    public databaseInteraction(Context context)
     {
-
+        this.context = context;
     }
 
     protected void onPreExecute()
@@ -71,6 +66,10 @@ public class databaseInteraction extends AsyncTask<String,Void,String>
     @Override
     protected void onPostExecute(String result)
     {
+        CharSequence text = result;
+        int duration = Toast.LENGTH_SHORT;
 
+        Toast toast = Toast.makeText(this.context, text, duration);
+        toast.show();
     }
 }

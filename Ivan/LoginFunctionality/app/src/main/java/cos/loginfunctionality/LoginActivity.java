@@ -32,7 +32,7 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener 
     public void onClick(View arg0) {
         String username = edtUsername.getText().toString();
         String password = edtPassword.getText().toString();
-        new databaseInteraction().execute(username, password);
+        new databaseInteraction(this).execute(username, password);
     }
 
     
