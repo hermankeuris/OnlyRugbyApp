@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.herman.Info.Data;
 import com.example.herman.PlayerSelect.PlayerSelect;
 import com.example.herman.scoring.R;
 
@@ -15,7 +16,8 @@ import com.example.herman.scoring.R;
 
 public class SelectScoringMethod extends AppCompatActivity{
 
-    public static String selectedScoreType;
+    //public static String selectedScoreType;
+    private Data data = Data.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,16 +54,16 @@ public class SelectScoringMethod extends AppCompatActivity{
 
     public void selectTry()
     {
-        selectedScoreType = "Try";
+        data.setSelectedScoreType("Try");
     }
 
     public void selectPenKick()
     {
-        selectedScoreType = "Penalty Kick";
+        data.setSelectedScoreType("Penalty Kick");
     }
 
     public void selectDropKick()
     {
-        selectedScoreType = "Drop Kick";
+        data.setSelectedScoreType("Drop Kick");
     }
 }

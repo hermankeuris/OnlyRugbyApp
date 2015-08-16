@@ -9,44 +9,46 @@ import java.util.ArrayList;
  */
 public class Team {
     private String teamName;
-    static protected ArrayList<Player> onField = new ArrayList<>(15);
-    static protected ArrayList<Player> reserves = new ArrayList<>(7);
-    static private int currentMatchScore;
-    static private int  teamTry = 0;
-    static private int  teamConKick = 0;
-    static private int  teamPenKick = 0;
-    static private int  teamDropKick = 0;
+    protected ArrayList<Player> onField = new ArrayList<>(15);
+    protected ArrayList<Player> reserves = new ArrayList<>(7);
+    private int currentMatchScore;
+    private int  teamTry = 0;
+    private int  teamConKick = 0;
+    private int  teamPenKick = 0;
+    private int  teamDropKick = 0;
 
     public Team(String tm)
     {
-        teamName = tm;
+        this.teamName = tm;
 
-        currentMatchScore = 0;
+        this.currentMatchScore = 0;
     }
 
     public void setTeamName(String tn)
     {
-        teamName = tn;
+        this.teamName = tn;
     }
 
     public String getTeamName()
     {
-        return teamName;
+        return this.teamName;
     }
 
     public ArrayList<Player> getOnField()
     {
-        return onField;
+        return this.onField;
     }
 
     public ArrayList<Player> getReserves()
     {
-        return reserves;
+        return this.reserves;
     }
 
-    public void setOnField(ArrayList<Player> _onFiled)
+    public void setOnField(ArrayList<Player> _onField)
     {
-        this.onField = _onFiled;
+        System.out.println("1setOnField: " + this.teamName + " first player " + _onField.get(0).getPlayerName());
+        this.onField = _onField;
+        System.out.println("2setOnField: " + this.teamName + " first player " + this.onField.get(0).getPlayerName());
     }
 
     public void setReserves(ArrayList<Player> _reserves)
@@ -59,26 +61,26 @@ public class Team {
         switch(temp)
         {
             case "Try":
-                teamTry++;
-                currentMatchScore += 5;
+                this.teamTry++;
+                this.currentMatchScore += 5;
                 break;
             case "Conversion Kick" :
-                teamConKick++;
-                currentMatchScore += 2;
+                this.teamConKick++;
+                this.currentMatchScore += 2;
                 break;
             case "Penalty Kick":
-                teamPenKick++;
-                currentMatchScore += 3;
+                this.teamPenKick++;
+                this.currentMatchScore += 3;
                 break;
             case "Drop Kick":
-                teamDropKick++;
-                currentMatchScore += 3;
+                this.teamDropKick++;
+                this.currentMatchScore += 3;
                 break;
         }
     }
 
     public int getScore()
     {
-        return currentMatchScore;
+        return this.currentMatchScore;
     }
 }
