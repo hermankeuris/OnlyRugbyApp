@@ -106,4 +106,10 @@ public class Player {
                 break;
         }
     }
+
+    public int[] getPlayerScore()
+    {
+        int[] answer = {playerTry, playerConKick, playerPenKick, playerDropKick};
+        return answer;
+    }
 }

@@ -89,8 +89,8 @@ public class TeamSelect extends AppCompatActivity {
          //For testing only
          **/
         if (data.getTeamOne() == null && data.getTeamTwo() == null) {
-            data.setTeamOne(new Team("Pretoria Highschool"));
-            data.setTeamTwo(new Team("Bloemfontein Highschool"));
+            /*data.setTeamOne(new Team("Pretoria Highschool"));
+            data.setTeamTwo(new Team("Bloemfontein Highschool"));*/
 
             //The lists of team members
             ArrayList<Player> playersOneOnField = new ArrayList<Player>();
@@ -150,12 +150,7 @@ public class TeamSelect extends AppCompatActivity {
             playersTwoReserve.add(new Player("Paul TwentyOne", 21, true));
             playersTwoReserve.add(new Player("Paul TwentyTwo", 22, true));
 
-            //Assign the players to their teams
-            data.getTeamOne().setOnField(playersOneOnField);
-            data.getTeamOne().setReserves(playersOneReserve);
-
-            data.getTeamTwo().setOnField(playersTwoOnField);
-            data.getTeamTwo().setReserves(playersTwoReserve);
+            initialise("Pretoria Highschool", "Bloemfontein Highschool", playersOneOnField, playersTwoOnField, playersOneReserve, playersTwoReserve);
         }
         /**
          //End of dummy data
@@ -163,6 +158,20 @@ public class TeamSelect extends AppCompatActivity {
 
         teamOneBtn.setText(data.getTeamOne().getTeamName());
         teamTwoBtn.setText(data.getTeamTwo().getTeamName());
+    }
+
+    public void initialise(String teamName1, String teamName2, ArrayList<Player> field1, ArrayList<Player> field2, ArrayList<Player> reserve1, ArrayList<Player> reserve2)
+    {
+
+        data.setTeamOne(new Team(teamName1));
+        data.setTeamTwo(new Team(teamName2));
+
+        //Assign the players to their teams
+        data.getTeamOne().setOnField(field1);
+        data.getTeamOne().setReserves(reserve1);
+
+        data.getTeamTwo().setOnField(field2);
+        data.getTeamTwo().setReserves(reserve2);
     }
 
     public void selectOne()

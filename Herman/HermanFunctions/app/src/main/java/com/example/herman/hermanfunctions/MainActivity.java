@@ -1,5 +1,7 @@
 package com.example.herman.hermanfunctions;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -63,6 +65,36 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }**/
+
+    @Override
+    public void onBackPressed() {
+        //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+
+        // Setting Dialog Title
+        alertDialog.setTitle("Attempting to quit..");
+
+        // Setting Dialog Message
+        alertDialog.setMessage("Do you want to close the application?");
+        
+        //Setting Negative "NO" Button
+        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        // Setting Positive "Yes" Button
+        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+                System.exit(1);
+            }
+        });
+
+        // Showing Alert Message
+        alertDialog.show();
+    }
 
     public void selectScore()
     {
