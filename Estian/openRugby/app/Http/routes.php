@@ -16,3 +16,6 @@ Route::get('/', 'UserController@index');
 Route::post('login', array(
     'uses' => 'UserController@login' // the controller action to be used
 ));
+Route::post('register', array(
+    'uses' => 'UserController@register' // the controller action to be used
+));

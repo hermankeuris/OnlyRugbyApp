@@ -96,6 +96,42 @@ class UserController extends Controller
     }
     public function register()
     {
+        $statusCode = 200;
+        $response = 
+        [
+            'user_id' => 0,
+            'error' => 'no_error',
+        ];
 
+        try
+        {
+            $user = DB::table('users')->where('username',$_POST['username'])->first();//maybe email?
+            if(!$user)
+            {
+                $id = DB::table('users')->insertGetId(
+                array('name' => $_POST['name'],
+                'surname' => $_POST['surname'],
+                'email' => $_POST['email'],
+                'username' => $_POST['username'],
+                'password' => $_POST['password'])
+                );
+                if($id!=0)
+                {
+                    $response['user_id'] = $id;
+                }
+            }
+            else
+            {
+                $response['error']='username already in use';
+                $statusCode = 500;
+            }
+        }
+        catch(Exception $e)
+        {
+            $response['error']=$e;
+            $statusCode = 500;
+        }
+
+        return response()->json($response,$statusCode);
     }
 }
