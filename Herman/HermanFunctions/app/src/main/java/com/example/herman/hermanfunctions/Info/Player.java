@@ -15,6 +15,9 @@ public class Player {
     //A variable to indicate if the player is currently a reserve player (true) or an on-field player (fasle).
     private boolean reservePlayer;
 
+    private int index;
+    static private int count = 0;
+
     private int  playerTry = 0;
     private int  playerConKick = 0;
     private int  playerPenKick = 0;
@@ -23,18 +26,33 @@ public class Player {
     //Constructor with parameters
     public Player(String pn, int jn, boolean field)
     {
-        playerName = pn;
-        jerseyNum = jn;
+        index = count;
+        count++;
+
+        if(pn == null || pn == "")
+            playerName = "Unknown(" + index + ")";
+        else
+            playerName = pn;
+
+        if(jn < 0)
+            jerseyNum = 0;
+        else
+            jerseyNum = jn;
+
         matchTimeInjuries = 0;
         //status = Data.DisciplineType.None;
+
         reservePlayer = field;
     }
 
     //Constructor without parameters (i.e. default constructor)
     public Player()
     {
-        playerName = "Unknown";
-        jerseyNum = 99;
+        index = count;
+        count++;
+
+        playerName = "Unknown(" + index + ")";
+        jerseyNum = 0;
         matchTimeInjuries = 0;
         //status = Data.DisciplineType.None;
         reservePlayer = false;
@@ -43,7 +61,10 @@ public class Player {
     //A function which changes the player's name
     public void setPlayerName(String pn)
     {
-        playerName = pn;
+        if(pn == null || pn == "")
+            playerName = "Unknown(" + index + ")";
+        else
+            playerName = pn;
     }
 
     //A function which returns the player's name
@@ -53,9 +74,12 @@ public class Player {
     }
 
     //A function which changes the player's jersey number
-    public void setJerseyNum(int jn)
-    {
-        jerseyNum = jn;
+    public boolean setJerseyNum(int jn) {
+        if (jn > 0) {
+            jerseyNum = jn;
+            return true;
+        }
+        return false;
     }
 
     //A function which returns the player's jersey number
@@ -88,7 +112,7 @@ public class Player {
         return reservePlayer;
     }
 
-    public void playerScore(String temp)
+    public boolean playerScore(String temp)
     {
         switch(temp)
         {
@@ -104,12 +128,20 @@ public class Player {
             case "Drop Kick":
                 playerDropKick++;
                 break;
+            default:
+                return false;
         }
+        return true;
     }
 
     public int[] getPlayerScore()
     {
         int[] answer = {playerTry, playerConKick, playerPenKick, playerDropKick};
         return answer;
+    }
+
+    public void resetCount()
+    {
+        count = 0;
     }
 }

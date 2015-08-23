@@ -143,12 +143,12 @@ public class TeamSelect extends AppCompatActivity {
 
             //Team Two's reserve players
             playersTwoReserve.add(new Player("Paul Sixteen", 16, true));
-            playersTwoReserve.add(new Player("Paul Seventeen", 17, true));
+            /*playersTwoReserve.add(new Player("Paul Seventeen", 17, true));
             playersTwoReserve.add(new Player("Paul Eighteen", 18, true));
             playersTwoReserve.add(new Player("Paul Nineteen", 19, true));
             playersTwoReserve.add(new Player("Paul Twenty", 20, true));
             playersTwoReserve.add(new Player("Paul TwentyOne", 21, true));
-            playersTwoReserve.add(new Player("Paul TwentyTwo", 22, true));
+            playersTwoReserve.add(new Player("Paul TwentyTwo", 22, true));*/
 
             initialise("Pretoria Highschool", "Bloemfontein Highschool", playersOneOnField, playersTwoOnField, playersOneReserve, playersTwoReserve);
         }

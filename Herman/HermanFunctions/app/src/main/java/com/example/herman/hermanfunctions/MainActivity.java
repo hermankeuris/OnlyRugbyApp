@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Setting Dialog Message
         alertDialog.setMessage("Do you want to close the application?");
-        
+
         //Setting Negative "NO" Button
         alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {

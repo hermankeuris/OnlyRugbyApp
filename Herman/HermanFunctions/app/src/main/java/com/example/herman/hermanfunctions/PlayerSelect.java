@@ -27,11 +27,12 @@ public class PlayerSelect extends AppCompatActivity {
         setContentView(R.layout.activity_playerselect);
 
         ListView listOfPlayers = (ListView) findViewById(R.id.playerList);
-        ArrayList<String> players = new ArrayList<String>();
+        //ArrayList<String> players = new ArrayList<String>();
+        ArrayList<String> players = displayPlatyers();
         ArrayAdapter<String> playersAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, players);
         listOfPlayers.setAdapter(playersAdapter);
 
-        if (data.getOnFieldPlayers())
+        /*if (data.getOnFieldPlayers())
             for(int i = 0; i < 15; i++)
             {
                 players.add(data.getSelectedTeam().getOnField().get(i).getJerseyNum() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
@@ -40,7 +41,7 @@ public class PlayerSelect extends AppCompatActivity {
             for(int i = 0; i < 7; i++)
             {
                 players.add(data.getSelectedTeam().getReserves().get(i).getJerseyNum() + " " + data.getSelectedTeam().getReserves().get(i).getPlayerName());
-            }
+            }*/
 
         listOfPlayers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -110,5 +111,31 @@ public class PlayerSelect extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public ArrayList<String> displayPlatyers()
+    {
+        ArrayList<String> _players = new ArrayList<String>();
+        int num = 15;
+
+        if (data.getOnFieldPlayers() && data.getSelectedTeam() != null) {
+            if (data.getFunctionType() == "Score")
+                num = 16;
+
+            for (int i = 0; i < num; i++) {
+                if (data.getSelectedTeam().getOnField().get(i).getJerseyNum() == 0)
+                    _players.add("?? " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
+                else
+                    _players.add(data.getSelectedTeam().getOnField().get(i).getJerseyNum() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
+            }
+        }
+        else if (!data.getOnFieldPlayers() && data.getSelectedTeam() != null)
+            for(int i = 0; i < data.getSelectedTeam().getReserves().size(); i++) {
+                if (data.getSelectedTeam().getReserves().get(i).getJerseyNum() == 0)
+                    _players.add("?? " + data.getSelectedTeam().getReserves().get(i).getPlayerName());
+                else
+                    _players.add(data.getSelectedTeam().getReserves().get(i).getJerseyNum() + " " + data.getSelectedTeam().getReserves().get(i).getPlayerName());
+            }
+        return _players;
     }
 }
