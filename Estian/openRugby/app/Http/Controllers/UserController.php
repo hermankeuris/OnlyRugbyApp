@@ -31,7 +31,7 @@ class UserController extends Controller
             {
                 $response['users'][] = 
                 [
-                    'user_id' => $user->users_id,
+                    'user_id' => $user->user_id,
                     'name' => $user->name,
                     'surname' => $user->surname,
                     'email' => $user->email,
@@ -69,8 +69,6 @@ class UserController extends Controller
                         $response['error']='invalid_username_or_password';
                         $statusCode = 401;
                     }
-                    
-                    
                 }
                 catch (JWTException $e)
                 {
@@ -80,7 +78,6 @@ class UserController extends Controller
                     return response()->json($response, $statusCode);
                 }
             }
-
         }
         catch (Exception $e)
         {

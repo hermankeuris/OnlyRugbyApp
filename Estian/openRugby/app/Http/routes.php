@@ -19,3 +19,6 @@ Route::post('login', array(
 Route::post('register', array(
     'uses' => 'UserController@register' // the controller action to be used
 ));
+Route::post('dbInteract', array(
+	'uses' => 'DatabaseController@index'
+));
