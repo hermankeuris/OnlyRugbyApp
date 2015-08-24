@@ -1,5 +1,7 @@
 package cos.loginfunctionality;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,7 +34,14 @@ public class LoginActivity extends ActionBarActivity implements OnClickListener 
     public void onClick(View arg0) {
         String username = edtUsername.getText().toString();
         String password = edtPassword.getText().toString();
-        new databaseInteraction(this).execute(username, password);
+        int mode= Activity.MODE_PRIVATE;
+        SharedPreferences userData;
+        userData = getSharedPreferences("user_data",mode);
+
+        new databaseInteraction(this, userData).execute(username, password);
+
+        //Set all the logged in user info
+        username = userData.getString("username", "unknown");
     }
 
     
