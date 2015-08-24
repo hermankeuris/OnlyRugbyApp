@@ -56,6 +56,14 @@
 			$result = mysql_query("UPDATE user SET syncsts = $sts WHERE Id = $id");
 			return $result;
 		}
+		/**
+		 * Find if user exists and password correct
+		 */
+		public function getLoginInfo($usrname, $password)
+		{
+			$result = mysql_query("SELECT * FROM user WHERE username = $usrname AND password = $password");
+			return $result;
+		}
 	}
  
 ?>
