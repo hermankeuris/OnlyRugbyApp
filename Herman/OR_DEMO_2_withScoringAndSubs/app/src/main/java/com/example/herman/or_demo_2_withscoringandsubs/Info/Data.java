@@ -13,6 +13,8 @@ public class Data {
     private static Player selectedPlayer = null;
     private static Boolean onFieldTeam = true;
     private static String functionType = null;
+    private static Boolean setLineOutTeam = false;
+    private static Boolean offlineMode = false;
 
     private Data() {}
 
@@ -97,6 +99,26 @@ public class Data {
     public String getFunctionType()
     {
         return functionType;
+    }
+
+    public void setLineOutTeam(Boolean b)
+    {
+        setLineOutTeam = b;
+    }
+
+    public Boolean getLineOutTeam()
+    {
+        return setLineOutTeam;
+    }
+
+    public void setOfflineMode(Boolean b)
+    {
+        offlineMode = b;
+    }
+
+    public Boolean getOfflineMode()
+    {
+        return offlineMode;
     }
 }
 

@@ -14,12 +14,30 @@
         android:label="@string/app_name" >
 
         <activity
-            android:name="com.example.herman.or_demo_2_withscoringandsubs.OR_DEMO_2"
+            android:name="com.example.herman.or_demo_2_withscoringandsubs.Index"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.herman.or_demo_2_withscoringandsubs.LoginCode"
+            android:label="@string/help" >
+            <intent-filter>
+                <action  android:name="com.example.herman.or_demo_2_withscoringandsubs.LoginCode"/>
+
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.herman.or_demo_2_withscoringandsubs.MainMenu"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action  android:name="com.example.herman.or_demo_2_withscoringandsubs.MainMenu"/>
+
+                <category  android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <activity android:label="SettingsActivity" android:name="com.example.herman.or_demo_2_withscoringandsubs.SettingsActivity">
@@ -28,5 +46,41 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.herman.or_demo_2_withscoringandsubs.PlayerSelect"
+            android:label="@string/player_select" >
+            <intent-filter>
+                <action  android:name="com.example.herman.or_demo_2_withscoringandsubs.PlayerSelect"/>
+
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.herman.or_demo_2_withscoringandsubs.TeamSelect"
+            android:label="@string/team_select" >
+            <intent-filter>
+                <action  android:name="com.example.herman.or_demo_2_withscoringandsubs.TeamSelect"/>
+
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+        android:name="com.example.herman.or_demo_2_withscoringandsubs.AssignDiscipline"
+        android:label="@string/app_name" >
+        <intent-filter>
+            <action  android:name="com.example.herman.or_demo_2_withscoringandsubs.AssignDiscipline"/>
+
+            <category  android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+    </activity>
+    <activity
+        android:name="com.example.herman.or_demo_2_withscoringandsubs.helpList"
+        android:label="@string/help" >
+        <intent-filter>
+            <action  android:name="com.example.herman.or_demo_2_withscoringandsubs.helpList"/>
+
+            <category  android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+    </activity>
     </application>
 </manifest>

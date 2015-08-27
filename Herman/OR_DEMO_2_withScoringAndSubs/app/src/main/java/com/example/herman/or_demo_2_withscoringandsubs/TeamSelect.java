@@ -1,5 +1,6 @@
 package com.example.herman.or_demo_2_withscoringandsubs;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by Herman on 2015-08-17.
  */
-public class TeamSelect extends AppCompatActivity {
+public class TeamSelect extends Activity {
 
     private Data data = Data.getInstance();
 
@@ -24,6 +25,32 @@ public class TeamSelect extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teamselect);
 
+        TextView teamText = (TextView) findViewById(R.id.teamText);
+
+        switch(data.getFunctionType())
+        {
+            case "Score":
+                teamText.setText("Select the team which scored the " + String.valueOf(data.getSelectedScoreType()).toLowerCase() + ":");
+                break;
+            case "Substitution":
+                teamText.setText("Select the team which is substituting a player:");
+                break;
+            case "Discipline":
+                teamText.setText("Select the team whose player must be penalised:");
+                break;
+            case "Turnover":
+                teamText.setText("Select the team who won the turnover:");
+                break;
+            case "Ruck":
+                teamText.setText("Select the team who won the ruck:");
+                break;
+            case "LineOut":
+                if (!data.getLineOutTeam())
+                    teamText.setText("Select the team who's line out it is:");
+                else
+                    teamText.setText("Select the team who won the line out:");
+                break;
+        }
         /**TextView teamOneScore = (TextView) findViewById(R.id.teamOneScore);
         TextView teamTwoScore = (TextView) findViewById(R.id.teamTwoScore);
 
@@ -76,8 +103,78 @@ public class TeamSelect extends AppCompatActivity {
                  {
                  intent = new Intent(new Intent(TeamSelect.this, PlayerSelect.class));
                  }**/
-                Intent intent = new Intent(new Intent(TeamSelect.this, PlayerSelect.class));
-                startActivity(intent);
+                if (data.getFunctionType().equals("Turnover"))
+                {
+                    if (data.getSelectedTeam() == data.getTeamOne())
+                    {
+                        data.getTeamOne().incrementTurnoversWon();
+                        data.getTeamTwo().incrementTurnoversLost();
+                    }
+                    else
+                    {
+                        data.getTeamTwo().incrementTurnoversWon();
+                        data.getTeamOne().incrementTurnoversLost();
+                    }
+                    finish();
+                }
+                else if (data.getFunctionType().equals("Ruck"))
+                {
+                    if (data.getSelectedTeam() == data.getTeamOne())
+                    {
+                        data.getTeamOne().incrementRucksWon();
+                        data.getTeamTwo().incrementRucksLost();
+                    }
+                    else
+                    {
+                        data.getTeamTwo().incrementRucksWon();
+                        data.getTeamOne().incrementRucksLost();
+                    }
+                    finish();
+                }
+                else if (data.getFunctionType().equals("LineOut"))
+                {
+                    if(!data.getLineOutTeam())
+                    {
+                        data.setLineOutTeam(true);
+                        data.getSelectedTeam().setLineOut(true);
+                        Intent intent = new Intent(new Intent(TeamSelect.this, TeamSelect.class));
+                        startActivity(intent);
+                    }
+                    else
+                    {
+                        if (data.getSelectedTeam() == data.getTeamOne())
+                        {
+                            if(data.getTeamOne().getLineOut())
+                            {
+                                data.getTeamOne().incrementOwnLineOutsWon();
+                                data.getTeamTwo().incrementOpponentLineOutsLost();
+                            }
+                            else
+                            {
+                                data.getTeamOne().incrementOpponentLineOutsWon();
+                                data.getTeamTwo().incrementOwnLineOutsLost();
+                            }
+                        }
+                        else
+                        {
+                            if(data.getTeamOne().getLineOut())
+                            {
+                                data.getTeamOne().incrementOwnLineOutsLost();
+                                data.getTeamTwo().incrementOpponentLineOutsWon();
+                            }
+                            else
+                            {
+                                data.getTeamOne().incrementOpponentLineOutsLost();
+                                data.getTeamTwo().incrementOwnLineOutsWon();
+                            }
+                        }
+                        finish();
+                    }
+                }
+                else {
+                    Intent intent = new Intent(new Intent(TeamSelect.this, PlayerSelect.class));
+                    startActivity(intent);
+                }
             }
         };
         Button teamOneBtn =(Button) findViewById(R.id.teamOne);
@@ -98,4 +195,10 @@ public class TeamSelect extends AppCompatActivity {
     {
         data.setSelectedTeam("teamTwo");
     }**/
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
+    }
 }

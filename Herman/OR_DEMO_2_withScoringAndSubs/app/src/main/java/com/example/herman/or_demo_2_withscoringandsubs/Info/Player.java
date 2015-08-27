@@ -23,6 +23,14 @@ public class Player {
     private int  playerPenKick = 0;
     private int  playerDropKick = 0;
 
+    //The number of times a player has received a certain card
+    private int numWhiteCards = 0;
+    private int numYellowCards = 0;
+    private int numRedCards = 0;
+
+    private boolean redCard = false;
+    private boolean yellowCard = false;
+
     //Constructor with parameters
     public Player(String pn, int jn, boolean field)
     {
@@ -143,5 +151,23 @@ public class Player {
     public void resetCount()
     {
         count = 0;
+    }
+
+    public void giveWhiteCard(){numWhiteCards++;}
+    public void giveYellowCard(){numYellowCards++;
+    yellowCard = true;}
+    public void giveRedCard(){numRedCards++;
+    redCard = true;
+    yellowCard = true;}
+
+    public int getWhiteCardCount(){return numWhiteCards;}
+    public int getYellowCardCount(){return numYellowCards;}
+    public int getRedCardCount(){return numRedCards;}
+
+    public boolean getRedCard(){return redCard;}
+    public boolean getYellowCard(){return yellowCard;}
+    public void setYellowCard(Boolean b)
+    {
+        yellowCard = b;
     }
 }

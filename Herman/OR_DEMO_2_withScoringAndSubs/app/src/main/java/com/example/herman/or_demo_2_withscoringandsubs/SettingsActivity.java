@@ -50,6 +50,6 @@ public class SettingsActivity extends PreferenceActivity
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         // Sets refreshDisplay to true so that when the user returns to the main
         // activity, the display refreshes to reflect the new settings.
-        OR_DEMO_2.refreshDisplay = true;
+        MainMenu.refreshDisplay = true;
     }
 }

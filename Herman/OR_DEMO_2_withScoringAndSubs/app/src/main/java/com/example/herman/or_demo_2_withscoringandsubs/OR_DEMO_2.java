@@ -11,12 +11,16 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.preference.PreferenceManager;
+import android.speech.tts.TextToSpeech;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,21 +62,42 @@ public class OR_DEMO_2 extends Activity implements View.OnClickListener {
     //A handle to the singleton calss Data
     private Data data = Data.getInstance();
 
+
+    private Chronometer mChronometer;
+    private boolean started = false;
+    private GameClock clock;
+    private boolean firstHalf = true;
+    private boolean endOfGame = false;
+
+    private String endOfFirstHalf, startOfSecondHalf, endOfSecondHalf;
+    //private menuEventHandler chronoMenuListener;
+    Activity activity = this;
+    TextView textMsg;
+    final String textSource = "https://sites.google.com/site/androidersite/text.txt";
+
     Button btnLogin;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_login);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_match_logger);
         // Register BroadcastReceiver to track connection changes.
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         receiver = new NetworkReceiver();
         this.registerReceiver(receiver, filter);
 
-        btnLogin = (Button)findViewById(R.id.loginBtn);
+        // registerForContextMenu(findViewById(R.id.lineoutBtn));
+        registerForContextMenu(findViewById(R.id.chronometer));
 
-        btnLogin.setOnClickListener(this);
+        clock = new GameClock ((Chronometer) findViewById(R.id.chronometer));
+        clock.chronometer.setOnClickListener(this);
+
+        //textMsg = (TextView) findViewById(R.id.textmsg);
+
+        //btnLogin = (Button)findViewById(R.id.loginBtn);
+
+        //btnLogin.setOnClickListener(this);
 
         /**Initialise teams
          *
@@ -137,12 +162,12 @@ public class OR_DEMO_2 extends Activity implements View.OnClickListener {
          *
          */
 
+        TextView scoreTeamOne = (TextView) findViewById(R.id.team1);
+        TextView scoreTeamTwo = (TextView) findViewById(R.id.team2);
 
-        Button btnTeamOne = (Button)findViewById(R.id.team1);
-        Button btnTeamTwo = (Button)findViewById(R.id.team2);
+        scoreTeamOne.setText(String.valueOf(data.getTeamOne().getScore()));
+        scoreTeamTwo.setText(String.valueOf(data.getTeamTwo().getScore()));
 
-        btnTeamOne.setText(data.getTeamOne().getScore());
-        btnTeamTwo.setText(data.getTeamTwo().getScore());
     }
 
     @Override
@@ -152,7 +177,11 @@ public class OR_DEMO_2 extends Activity implements View.OnClickListener {
             loadPage();
         }
 
-        TextView score = (TextView) findViewById(R.id.team1);
+        String chronoText = clock.chronometer.getText().toString();
+        String array[] = chronoText.split(":");
+        int stoppedMilliseconds = 0;
+
+        //TextView score = (TextView) findViewById(R.id.team1);
         Integer total = 0;
 
         Intent intent = new Intent(new Intent(OR_DEMO_2.this, TeamSelect.class));
@@ -186,7 +215,203 @@ public class OR_DEMO_2 extends Activity implements View.OnClickListener {
                 data.setFunctionType("Substitution");
                 startActivity(intent);
                 break;
+            case R.id.disciplineBtn:
+                data.setFunctionType("Discipline");
+                startActivity(intent);
+                break;
+            case R.id.turnoverButton:
+                data.setFunctionType("Turnover");
+                startActivity(intent);
+                break;
+            case R.id.ruckBtn:
+                data.setFunctionType("Ruck");
+                startActivity(intent);
+                break;
+            case R.id.lineoutBtn:
+                data.setFunctionType("LineOut");
+                startActivity(intent);
+                break;
+            case R.id.helpButton:
+                data.setFunctionType("Help");
+                Intent intent1 = new Intent(new Intent(OR_DEMO_2.this, helpList.class));
+                startActivity(intent1);
+                break;
+            case R.id.chronometer:
+                if (array.length == 2)
+                {
+                    stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 1000 + Integer.parseInt(array[1]) * 1000;
+                }
+                else if (array.length == 3)
+                {
+                    stoppedMilliseconds = Integer.parseInt(array[0]) * 60 * 60 * 1000 + Integer.parseInt(array[1]) * 60 * 1000 + Integer.parseInt(array[2]) * 1000;
+                }
+
+                if (!started)
+                {
+                    clock.chronometer.setBase(SystemClock.elapsedRealtime() - stoppedMilliseconds);
+                    activity.openContextMenu(view);
+                    started = true;
+                }
+                else
+                {
+                    activity.openContextMenu(view);
+                    started = false;
+                }
+                break;
+            /**case R.id.startButton:
+                total = Integer.parseInt(score.getText().toString()) + 5;
+                System.out.println("\n\n\n\nHERE" + total + "\n\n\n\n");
+                score.setText(String.valueOf(total));
+                break;
+            case R.id.stopButton:
+                total = Integer.parseInt(score.getText().toString()) + 3;
+                System.out.println("\n\n\n\nHERE" + total + "\n\n\n\n");
+                score.setText(String.valueOf(total));
+                break;
+            case R.id.conversionBtn:
+                total = Integer.parseInt(score.getText().toString()) + 2;
+                System.out.println("\n\n\n\nHERE" + total + "\n\n\n\n");
+                score.setText(String.valueOf(total));
+                break;
+            default:
+                break;**/
         }
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,ContextMenu.ContextMenuInfo menuInfo)
+    {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        switch (v.getId())
+        {
+            //case R.id.lineoutBtn:
+            //if(depth == 0)
+            //{
+            //       inflater.inflate(R.menu.lineout_menu, menu);
+                /*}
+                else if(depth == 1 && teams)
+                {
+                    inflater.inflate(R.menu.lineout_menu_teams, menu);
+                }*/
+            //   break;
+            case R.id.chronometer:
+                if(!endOfGame) {
+                    if (firstHalf)
+                        inflater.inflate(R.menu.gameclock_menu, menu);
+                    else
+                        inflater.inflate(R.menu.gameclock_menu_second_half, menu);
+                }
+                break;
+        }
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(final MenuItem item)
+    {
+        View v = item.getActionView();
+        // Do the action by id here
+        switch (item.getItemId())
+        {
+            //lineouts, replace output with json
+            case R.id.lineoutteam:
+                //depth=1;
+                //teams = true;
+                break;
+            case R.id.team1:
+                System.out.println("Lineout goes to team 1");
+                //teams = false;
+                //depth = 0;
+                return true;
+            case R.id.team2:
+                System.out.println("Lineout goes to team 2");
+                //teams = false;
+                //depth = 0;
+                return true;
+            case R.id.lineoutplayer:
+                //depth=1;
+                return false;
+            case R.id.lineoutplayernumberlist:
+                System.out.println("Selected the player number list");//need to find a way to actually display a list
+                return false;
+            case R.id.lineoutplayernamelist:
+                System.out.println("Selected the player name list");//need to find a way to actually display a list
+            case R.id.lineoutwonteam:
+                //depth=1;
+                return false;
+            case R.id.lineoutwonteam1:
+                System.out.println("Lineout won by team 1");
+                return false;
+            case R.id.lineoutwonteam2:
+                System.out.println("Lineout won by team 2");
+                return false;
+            //gameclock
+            case R.id.startgame:
+                //chronometer.getCurrentClockTime();
+                if(!clock.started())
+                {
+                    System.out.println("Clicked Play first time");
+                    clock.chronometer.setBase(SystemClock.elapsedRealtime());//stoppedMilliseconds
+                    clock.start();
+                }
+                else
+                {
+                    //System.out.println("Clicked Play");
+                    clock.start();
+                }
+
+
+                Toast.makeText(getApplicationContext(), "Timer Started at: "+clock.chronometer.getText().toString(), Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.startSecondHalf:
+
+                Toast.makeText(getApplicationContext(), "Second half begun: "+clock.chronometer.getText().toString(), Toast.LENGTH_SHORT).show();
+
+                TextView mytextview = (TextView) findViewById(R.id.whichHalf);
+                mytextview.setText("2nd Half");
+                clock.chronometer.stop();
+
+
+                firstHalf = false;
+                return true;
+            case R.id.endGameClock:
+                // Toast.makeText(getApplicationContext(), "Game has ended: "+clock.chronometer.getText().toString(), Toast.LENGTH_SHORT).show();
+                endOfGame = true;
+                clock.chronometer.stop();
+                return true;
+
+
+            case R.id.pausegame:
+                clock.stop();
+                Toast.makeText(getApplicationContext(), "Timer Stopped at: "+clock.chronometer.getText().toString(), Toast.LENGTH_SHORT).show();
+                //create pop up prompt to ask for a reason for the pause
+                return true;
+            case R.id.pausereason1:
+                System.out.println("Injury");
+                //openContextMenu(v);
+                return true;
+            case R.id.pausereason2:
+                System.out.println("Substitution");
+                //openContextMenu(v);
+                return true;
+            case R.id.pausereason3:
+                System.out.println("Replace me with a prompt");
+                //openContextMenu(v);
+            case R.id.resetclock:
+                clock.reset();
+                return true;
+        }
+        /*final View v = item.getActionView();
+        v.post(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                v.showContextMenu();
+            }
+        });*/
+        return true;
     }
 
     // Refreshes the display if the network connection and the
@@ -217,6 +442,18 @@ public class OR_DEMO_2 extends Activity implements View.OnClickListener {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        TextView scoreTeamOne = (TextView) findViewById(R.id.team1);
+        TextView scoreTeamTwo = (TextView) findViewById(R.id.team2);
+
+        if(data.getTeamOne() != null && data.getTeamTwo() != null) {
+            scoreTeamOne.setText(String.valueOf(data.getTeamOne().getScore()));
+            scoreTeamTwo.setText(String.valueOf(data.getTeamTwo().getScore()));
+        }
+    }
+
     /**
      * Exist after second back press. Timer lasts 2 seconds.
      */
@@ -224,7 +461,7 @@ public class OR_DEMO_2 extends Activity implements View.OnClickListener {
     public void onBackPressed() {
         if (backPressedTwice) {
             super.onBackPressed();
-            return;
+            System.exit(0);
         }
 
         this.backPressedTwice = true;

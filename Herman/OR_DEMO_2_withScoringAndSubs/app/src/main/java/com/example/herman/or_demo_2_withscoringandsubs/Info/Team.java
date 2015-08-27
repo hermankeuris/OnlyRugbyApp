@@ -14,6 +14,15 @@ public class Team {
     private int  teamConKick = 0;
     private int  teamPenKick = 0;
     private int  teamDropKick = 0;
+    private int teamTurnoversWon = 0;
+    private int teamTurnoversLost = 0;
+    private int teamRucksWon = 0;
+    private int teamRucksLost = 0;
+    private int ownTeamLineOutsWon = 0;
+    private int opponentTeamLineOutsWon = 0;
+    private int ownTeamLineOutsLost = 0;
+    private int opponentTeamLineOutsLost = 0;
+    private boolean lineOut = false;
 
     public Team(String tm)
     {
@@ -168,4 +177,89 @@ public class Team {
         else
             return false;
     }
+
+    public void incrementTurnoversWon()
+    {
+        teamTurnoversWon++;
+    }
+
+    public void incrementTurnoversLost()
+    {teamTurnoversLost++;
+
+    }
+
+    public int getTurnoversWon()
+    {
+        return teamTurnoversWon;
+    }
+
+    public int getTurnoversLost() {
+        return teamTurnoversLost;
+    }
+
+    public void incrementRucksWon()
+    {
+        teamRucksWon++;
+    }
+
+    public void incrementRucksLost()
+    {teamRucksLost++;
+
+    }
+
+    public int getRucksWon()
+    {
+        return teamRucksWon;
+    }
+
+    public int getRucksLost() {
+        return teamRucksLost;
+    }
+
+    public void incrementOwnLineOutsWon()
+    {
+        ownTeamLineOutsWon++;
+    }
+
+    public void incrementOwnLineOutsLost()
+    {ownTeamLineOutsLost++;
+    }
+
+    public int getOwnLineOutsWon()
+    {
+        return ownTeamLineOutsWon;
+    }
+
+    public int getOwnLineOutsLost() {
+        return ownTeamLineOutsLost;
+    }
+
+    public void incrementOpponentLineOutsWon()
+    {
+        opponentTeamLineOutsWon++;
+    }
+
+    public void incrementOpponentLineOutsLost()
+    {opponentTeamLineOutsLost++;
+    }
+
+    public int getOpponentLineOutsWon()
+    {
+        return opponentTeamLineOutsWon;
+    }
+
+    public int getOpponentLineOutsLost() {
+        return opponentTeamLineOutsLost;
+    }
+
+    public void setLineOut(boolean b)
+    {
+        lineOut = b;
+    }
+
+    public boolean getLineOut()
+    {
+        return lineOut;
+    }
+
 }
