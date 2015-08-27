@@ -68,8 +68,9 @@ public class PlayerSelect extends Activity {
 
         listOfPlayers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
+            public void onItemClick(AdapterView<?> parent, View view, final int position,
                                     long id) {
+                final int temp = position;
 
                 if(data.getSelectedTeam().getOnField().get(position).getRedCard()) {
                     Toast.makeText(activity, "This player has a red card, select another player", Toast.LENGTH_SHORT).show();
@@ -77,9 +78,45 @@ public class PlayerSelect extends Activity {
                     startActivity(intent);
                 }
                 else if(data.getSelectedTeam().getOnField().get(position).getYellowCard()) {
-                    Toast.makeText(activity, "This player has a yellow card, select another player", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
-                    startActivity(intent);
+                    if (data.getFunctionType().equals("Discipline"))
+                    {
+                        //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
+                        AlertDialog.Builder alertDialog = new AlertDialog.Builder(PlayerSelect.this);
+
+                        // Setting Dialog Title
+                        alertDialog.setTitle("Yellow card..");
+
+                        // Setting Dialog Message
+                        alertDialog.setMessage("Do you want to remove this player's yellow card?");
+
+                        // Setting Positive "Yes" Button
+                        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                // Write your code here to invoke YES event
+                                data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(temp));
+                                data.getSelectedPlayer().setYellowCard(false);
+                                finish();
+                            }
+                        });
+
+                        //Setting Negative "NO" Button
+                        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Write your code here to invoke NO event
+                                Toast.makeText(activity, "This player has a yellow card, select another player", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
+                                startActivity(intent);
+                            }
+                        });
+
+                        // Showing Alert Message
+                        alertDialog.show();
+                    }else {
+                        Toast.makeText(activity, "This player has a yellow card, select another player", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
+                        startActivity(intent);
+                    }
                 }
                 else {
                     if (data.getFunctionType() == "Score") {

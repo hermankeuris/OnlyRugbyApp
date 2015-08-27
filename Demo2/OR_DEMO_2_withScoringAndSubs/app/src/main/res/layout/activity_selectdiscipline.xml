@@ -24,9 +24,9 @@
         android:id="@+id/yellowCardButton"
         android:onClick="onClick"
         android:layout_gravity="center_horizontal"
-        android:layout_above="@+id/redCardButton"
+        android:layout_below="@+id/whiteCardButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="86dp" />
+        android:layout_marginTop="59dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -35,10 +35,10 @@
         android:id="@+id/redCardButton"
         android:onClick="onClick"
         android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/yellowCardButton"
         android:layout_alignLeft="@+id/yellowCardButton"
         android:layout_alignStart="@+id/yellowCardButton"
-        android:layout_marginBottom="138dp"
+        android:layout_marginTop="74dp"
         android:layout_alignRight="@+id/yellowCardButton"
         android:layout_alignEnd="@+id/yellowCardButton" />
 
@@ -49,4 +49,5 @@
         android:id="@+id/disciplineText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

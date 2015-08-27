@@ -44,7 +44,7 @@ public class LoginCode extends Activity implements View.OnClickListener {
     public static final String ANY = "Any";
     private static final String URL = "http://leskommer.co.za/OnlyRugby/getLoginData.php";
 
-    private static boolean backPressedTwice = false;
+    //private static boolean backPressedTwice = false;
 
     // Check Wi-Fi connection.
     private static boolean wifiConnected = false;
@@ -70,7 +70,6 @@ public class LoginCode extends Activity implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_login);
         setContentView(R.layout.activity_login);
         // Register BroadcastReceiver to track connection changes.
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
@@ -126,25 +125,7 @@ public class LoginCode extends Activity implements View.OnClickListener {
      */
     @Override
     public void onBackPressed() {
-        if (backPressedTwice) {
-            super.onBackPressed();
-            Intent intent=new Intent(Intent.ACTION_MAIN);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-            finish();
-            System.exit(0);
-        }
-
-        this.backPressedTwice = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                backPressedTwice = false;
-            }
-        }, 2000);
+        finish();
     }
 
     // Checks the network connection and sets the wifiConnected and mobileConnected variables accordingly.

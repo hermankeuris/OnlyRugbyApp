@@ -158,7 +158,7 @@ public class Player {
     yellowCard = true;}
     public void giveRedCard(){numRedCards++;
     redCard = true;
-    yellowCard = false;}
+    yellowCard = true;}
 
     public int getWhiteCardCount(){return numWhiteCards;}
     public int getYellowCardCount(){return numYellowCards;}
@@ -166,4 +166,8 @@ public class Player {
 
     public boolean getRedCard(){return redCard;}
     public boolean getYellowCard(){return yellowCard;}
+    public void setYellowCard(Boolean b)
+    {
+        yellowCard = b;
+    }
 }

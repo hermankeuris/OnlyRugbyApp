@@ -26,8 +26,8 @@ public class AssignDiscipline extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectdiscipline);
 
-        TextView disciplineTetx = (TextView) findViewById(R.id.disciplineText);
-        disciplineTetx.setText("Give the following card to " + String.valueOf(data.getSelectedPlayer().getPlayerName()) + ":");
+        TextView disciplineText = (TextView) findViewById(R.id.disciplineText);
+        disciplineText.setText("Give the following card to " + String.valueOf(data.getSelectedPlayer().getPlayerName()) + ":");
 
         View.OnClickListener listener= new View.OnClickListener()
         {

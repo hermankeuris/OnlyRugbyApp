@@ -14,6 +14,7 @@ public class Data {
     private static Boolean onFieldTeam = true;
     private static String functionType = null;
     private static Boolean setLineOutTeam = false;
+    private static Boolean offlineMode = false;
 
     private Data() {}
 
@@ -108,6 +109,16 @@ public class Data {
     public Boolean getLineOutTeam()
     {
         return setLineOutTeam;
+    }
+
+    public void setOfflineMode(Boolean b)
+    {
+        offlineMode = b;
+    }
+
+    public Boolean getOfflineMode()
+    {
+        return offlineMode;
     }
 }
 
