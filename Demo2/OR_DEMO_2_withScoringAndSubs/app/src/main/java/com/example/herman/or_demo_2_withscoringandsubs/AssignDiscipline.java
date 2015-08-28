@@ -1,9 +1,7 @@
 package com.example.herman.or_demo_2_withscoringandsubs;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,9 +9,6 @@ import android.widget.TextView;
 import com.example.android.onlyrugbyDemo2.R;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
 
-/**
- * Created by Muller on 8/22/2015.
- */
 public class AssignDiscipline extends Activity
 {
     //public static String selectedScoreType;
@@ -22,7 +17,6 @@ public class AssignDiscipline extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectdiscipline);
 
@@ -47,8 +41,6 @@ public class AssignDiscipline extends Activity
                         break;
                 }
 
-                //Intent intent = new Intent(new Intent(AssignDiscipline.this, OR_DEMO_2.class));
-                //startActivity(intent);
                 finish();
             }
         };

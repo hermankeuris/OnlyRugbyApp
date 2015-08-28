@@ -47,7 +47,7 @@ public class helpList extends Activity {
         helpTopics.add("8   Discipline");
         helpTopics.add("9   Turnovers");
 
-        helpTopics.add("10  The timer");
+        //helpTopics.add("10  The timer");
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
