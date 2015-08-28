@@ -2,22 +2,16 @@ package com.example.herman.or_demo_2_withscoringandsubs;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.android.onlyrugbyDemo2.R;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
 
-/**
- * Created by Herman on 2015-08-27.
- */
 public class Index extends Activity implements View.OnClickListener{
-    //A handle to the singleton calss Data
+    //A handle to the singleton class Data
     private Data data = Data.getInstance();
     private static boolean backPressedTwice = false;
 

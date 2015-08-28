@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,9 +17,6 @@ import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
 
 import java.util.ArrayList;
 
-/**
- * Created by Herman on 2015-08-12.
- */
 public class PlayerSelect extends Activity {
 
     private Data data = Data.getInstance();
@@ -58,12 +54,12 @@ public class PlayerSelect extends Activity {
         /*if (data.getOnFieldPlayers())
             for(int i = 0; i < 15; i++)
             {
-                players.add(data.getSelectedTeam().getOnField().get(i).getJerseyNum() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
+                players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
             }
         else
             for(int i = 0; i < 7; i++)
             {
-                players.add(data.getSelectedTeam().getReserves().get(i).getJerseyNum() + " " + data.getSelectedTeam().getReserves().get(i).getPlayerName());
+                players.add(data.getSelectedTeam().getReserves().get(i).getCurr_position() + " " + data.getSelectedTeam().getReserves().get(i).getPlayerName());
             }*/
 
         listOfPlayers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -148,8 +144,6 @@ public class PlayerSelect extends Activity {
                                 alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         // Write your code here to invoke NO event
-                                        //Intent intent = new Intent(new Intent(PlayerSelect.this, OR_DEMO_2.class));
-                                        //startActivity(intent);
                                         finish();
                                     }
                                 });
@@ -160,8 +154,6 @@ public class PlayerSelect extends Activity {
                             case "Conversion Kick":
                             case "Penalty Kick":
                             case "Drop Kick":
-                                //Intent intent = new Intent(new Intent(PlayerSelect.this, OR_DEMO_2.class));
-                                //startActivity(intent);
                                 finish();
                                 break;
                         }
@@ -178,8 +170,6 @@ public class PlayerSelect extends Activity {
                             data.getSelectedTeam().subPlayers(data.getSelectedPlayer(), data.getSelectedTeam().getReserves().get(position));
                             data.setSelectedPlayer(data.getSelectedTeam().getReserves().get(position));
                             data.setOnFieldPlayers(true);
-                            //Intent intent = new Intent(new Intent(PlayerSelect.this, OR_DEMO_2.class));
-                            //startActivity(intent);
                             finish();
                         }
                     }
@@ -204,24 +194,24 @@ public class PlayerSelect extends Activity {
                 num = 16;
 
             for (int i = 0; i < num; i++) {
-                if (data.getSelectedTeam().getOnField().get(i).getJerseyNum() == 0)
+                if (data.getSelectedTeam().getOnField().get(i).getCurr_position() == 0)
                     _players.add("?? " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
                 else
                     if(data.getSelectedTeam().getOnField().get(i).getRedCard())
-                        _players.add(data.getSelectedTeam().getOnField().get(i).getJerseyNum() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName() + " [Red Card]");
+                        _players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName() + " [Red Card]");
                     else if(data.getSelectedTeam().getOnField().get(i).getYellowCard()) {
-                        _players.add(data.getSelectedTeam().getOnField().get(i).getJerseyNum() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName() + " [Yellow Card]");
+                        _players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName() + " [Yellow Card]");
                     }
                     else
-                        _players.add(data.getSelectedTeam().getOnField().get(i).getJerseyNum() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
+                        _players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
             }
         }
         else if (!data.getOnFieldPlayers() && data.getSelectedTeam() != null)
             for(int i = 0; i < data.getSelectedTeam().getReserves().size(); i++) {
-                if (data.getSelectedTeam().getReserves().get(i).getJerseyNum() == 0)
+                if (data.getSelectedTeam().getReserves().get(i).getCurr_position() == 0)
                     _players.add("?? " + data.getSelectedTeam().getReserves().get(i).getPlayerName());
                 else
-                    _players.add(data.getSelectedTeam().getReserves().get(i).getJerseyNum() + " " + data.getSelectedTeam().getReserves().get(i).getPlayerName());
+                    _players.add(data.getSelectedTeam().getReserves().get(i).getCurr_position() + " " + data.getSelectedTeam().getReserves().get(i).getPlayerName());
             }
         return _players;
     }

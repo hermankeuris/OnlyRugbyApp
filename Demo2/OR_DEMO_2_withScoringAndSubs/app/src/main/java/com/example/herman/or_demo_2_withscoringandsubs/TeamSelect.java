@@ -13,9 +13,6 @@ import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
 
 import java.util.ArrayList;
 
-/**
- * Created by Herman on 2015-08-17.
- */
 public class TeamSelect extends Activity {
 
     private Data data = Data.getInstance();

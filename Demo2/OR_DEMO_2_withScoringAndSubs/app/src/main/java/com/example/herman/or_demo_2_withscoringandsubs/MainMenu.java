@@ -4,16 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,13 +19,9 @@ import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Player;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Team;
 
-/**
- * Created by Muller on 27/08/2015.
- */
 public class MainMenu extends Activity implements View.OnClickListener {
-    //A handle to the singleton calss Data
+    //A handle to the singleton class Data
     private Data data = Data.getInstance();
-
 
     private Chronometer mChronometer;
     private boolean started = false;
@@ -39,10 +31,6 @@ public class MainMenu extends Activity implements View.OnClickListener {
 
     Activity activity = this;
     private String endOfFirstHalf, startOfSecondHalf, endOfSecondHalf;
-
-    private static boolean backPressedTwice = false;
-
-    public static boolean refreshDisplay = true;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -319,6 +307,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
 
     public void initialise()
     {
+        final String PLAYERS_URL = "http://10.0.0.3/openRugby/public/index.php/dbInteract";
         if(data.getOfflineMode())
         {
             data.setTeamOne(new Team("Team A"));
@@ -378,6 +367,9 @@ public class MainMenu extends Activity implements View.OnClickListener {
         }
         else
         {
+
+            new GetNewInfo(getApplicationContext(), data).execute(PLAYERS_URL);
+
             data.setTeamOne(new Team("Pretoria Highschool"));
             data.setTeamTwo(new Team("Bloemfontein Highschool"));
 

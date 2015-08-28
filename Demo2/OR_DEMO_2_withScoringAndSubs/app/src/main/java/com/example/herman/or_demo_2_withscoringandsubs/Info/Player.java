@@ -1,13 +1,16 @@
 package com.example.herman.or_demo_2_withscoringandsubs.Info;
 
-/**
- * Created by Herman on 2015-08-12.
- */
 public class Player {
+
+    //The player's id
+    private int id = -1;
     //The player's name
-    private String playerName;
+    private String name = "";
+    //The player's surname
+    private String surname = "";
     //The player's jersey number
-    private int jerseyNum;
+    private int curr_position = -1;
+
     //The number of times an injury forced the player off the field during match-time
     private int matchTimeInjuries;
     //A variable to store if the player is currently being penalised
@@ -38,19 +41,28 @@ public class Player {
         count++;
 
         if(pn == null || pn == "")
-            playerName = "Unknown(" + index + ")";
+             name = "Unknown(" + index + ")";
         else
-            playerName = pn;
+             name = pn;
 
         if(jn < 0)
-            jerseyNum = 0;
+            curr_position = 0;
         else
-            jerseyNum = jn;
+            curr_position = jn;
 
         matchTimeInjuries = 0;
         //status = Data.DisciplineType.None;
 
         reservePlayer = field;
+    }
+
+    //Copy Constructor
+    Player(Player player) {
+        this.setId(player.getId());
+        this.setName(player.getName());
+        this.setSurname(player.getSurname());
+        this.setCurr_position(player.getCurr_position());
+        this.setReserve(player.getReserve());
     }
 
     //Constructor without parameters (i.e. default constructor)
@@ -59,41 +71,41 @@ public class Player {
         index = count;
         count++;
 
-        playerName = "Unknown(" + index + ")";
-        jerseyNum = 0;
+        name = "Unknown(" + index + ")";
+        curr_position = 0;
         matchTimeInjuries = 0;
         //status = Data.DisciplineType.None;
         reservePlayer = false;
     }
 
     //A function which changes the player's name
-    public void setPlayerName(String pn)
+    public void setPlayerName(String name)
     {
-        if(pn == null || pn == "")
-            playerName = "Unknown(" + index + ")";
+        if(name == null || name == "")
+             this.name = "Unknown(" + index + ")";
         else
-            playerName = pn;
+             this.name = name;
     }
 
     //A function which returns the player's name
     public String getPlayerName()
     {
-        return playerName;
+        return  name;
     }
 
     //A function which changes the player's jersey number
-    public boolean setJerseyNum(int jn) {
+    public boolean setCurr_position(int jn) {
         if (jn > 0) {
-            jerseyNum = jn;
+            this.curr_position = jn;
             return true;
         }
         return false;
     }
 
     //A function which returns the player's jersey number
-    public int getJerseyNum()
+    public int getCurr_position()
     {
-        return jerseyNum;
+        return curr_position;
     }
 
     //A function which changes the player's current penalty status
@@ -169,5 +181,40 @@ public class Player {
     public void setYellowCard(Boolean b)
     {
         yellowCard = b;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String print() {
+        String printer = "\t[";
+        printer += "Player ID: " + this.getId();
+        printer += "\tPlayer Name: " + this.getName();
+        printer += "\tPlayer Surname: " + this.getSurname();
+        printer += "\tPlayer Position: " + this.getCurr_position();
+        printer += "],";
+
+        return printer;
     }
 }
