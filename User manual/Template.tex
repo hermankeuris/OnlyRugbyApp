@@ -29,7 +29,7 @@
 
 \begin{center}
 % Upper part of the page       
-\includegraphics[width=1\textwidth]{./up-logo.jpg}\\[0.4cm]    
+\includegraphics[width=1\textwidth]{./images/up-logo.jpg}\\[0.4cm]    
 \textsc{\LARGE Department of Computer Science}\\[1.5cm]
 \textsc{\Large COS 301 - Software Engineering}\\[0.5cm]
 % Title
@@ -135,7 +135,7 @@ The OnlyRugby App will serve school rugby teams and rugby clubs registered with 
 	\item The server will also use SMTP to send emails to an email account specified by the user in certain situations (e.g. when the user first registers an account with OnlyRugby). 
 \end{itemize}
 \begin{center}
-  	 \includegraphics[width=0.9\textwidth] {./System_Configuration.jpg}\\[0.4cm]
+  	 \includegraphics[width=0.9\textwidth] {./images/System_Configuration.jpg}\\[0.4cm]
 \end{center}
 \section{Installation}
 \begin {itemize}
@@ -156,23 +156,38 @@ The OnlyRugby App will serve school rugby teams and rugby clubs registered with 
 		\item Passwords can be changed using the websites Change Password function in account settings.
 		\item Pressing the "back" button on your device twice pops up a notification asking if you really want to exit to prevent accidental app closure. Choosing "Yes" will close the app and all relevant main threads running.
 	\end{itemize}
+	
 \newpage
+
 \section{Using the system}
 The functionality of the app will be spread between the following use cases:
+
 	\subsection{Login/Logout}
-	{\bfseries\{This section is still under development\}}
 		\begin {itemize}
-			\item The first screen after running the App the user will be presented with two fields: One for the username and one for the password. The user enters the details to login and continue using the app.
-			\item The login information will be used to find games that needs scoring.
-			\item A user can also logout of the app, allowing someone else to use it to score for another team as well.
+			\item The first screen after choosing "Login" on the main screen, the user will be presented with two fields: One for the username and one for the password. The user enters the requested details and it gets authenticated. Only when the correct information is supplied, will the user be able to continue to the game menu.
+			\item The login information will be used to load the next game that needs scoring.
+			\item The user gets logged out of the app every time they exit, allowing someone else to be able to log in as well and ensuring security of information.
 		\end{itemize}
+		
+		\begin{figure}[!htb]
+  		\centering
+  			\begin{minipage}[b]{0.4\textwidth}
+    			\includegraphics[width=0.9\textwidth]{./images/login_menu.png}
+    			\caption{Login Menu}
+  			\end{minipage}
+  		\hfill
+  			\begin{minipage}[b]{0.4\textwidth}
+    			\includegraphics[width=0.9\textwidth]{./images/wrong_login.png}
+    			\caption{Wrong Details}
+  			\end{minipage}
+		\end{figure}
+		
 	\subsection{Load Info}
 		This use case pertains to the loading of any and all info you can see and not see in the app itself. A version of it is called by nearly every other function in the app, since it handles all the retrieval from the database via the main server.
 		\begin{itemize}
-			\item After the user is logged in, information is loaded on what teams the user is allowed to score for and when their matches would take place. This is done by sending a query with the token (already received when logging in) to the server and retrieving the teams associated with this particular user.
+			\item After the user is logged in, information is loaded on what teams the user is allowed to score for and when their matches would take place. This is done by sending a query with the token (already received when logging in) to the server and retrieving the information associated with this particular user. All of the information is stored on the device's local database for offline usage.
 			\item After selecting the appropriate team, the user can view the matches available / scheduled for that team.
-			\item In the event that a match can be scored and the user decides to do so, a data retrieval request will be sent to the server, which returns the names and positions of the players of both teams (if available) as well as the name of the match official.
-			\item In the event that one or more of the player's information is missing or not yet supplied, there is an opportunity to enter this information before the start of the official match.
+			\item In the event that a match can be scored and the user decides to do so, the data pertaining to that match will be loaded from the device's local database, since it is already stored from the previous request to the server. This will return the names and positions of the players of both teams (if available).
 			\item During the match, local storage is implemented to store any data relevant to the match and then uploaded once the app establishes a connection with the server.
 		\end{itemize}
 
@@ -245,7 +260,6 @@ The functionality of the app will be spread between the following use cases:
 	{\bfseries\{This section is still under development\}}
 		\begin{itemize}
 			\item The scrum button will be on the game page when a game scoring is in progress.
-			\item It will then ask the reason for the scrum and which team the scrum belongs to.
 			\item It will then ask who won the scrum.
 		\end{itemize}
 		
@@ -256,11 +270,10 @@ The functionality of the app will be spread between the following use cases:
 			\item Tapping on tackle will provide the user with the means of choosing who performed the tackle, as well as if the tackle was successful or not.
 		\end{itemize}
 
-	\subsection{Possession}
+	\subsection{Possession \& Turnovers}
 		At the start of the match the player must indicate which of the two teams initially gains possession of the ball by clicking one of two buttons which have the names of the two teams on them. After that the player can easily indicate a change in possession by pressing a small button on the main tool bar which can be seen on each page.
-
-	\subsection{Turnovers}
-		During game time (i.e. while the OnlyRugby app is being used to log the information of a match currently being played ) the Turnover function will be used each time a player from either team manages to take possession of the ball from an opposing player.The Turnover function works as follows:
+		\\
+		During game time (i.e. while the OnlyRugby app is being used to log the information of a match currently being played ) the Turnover function will be used each time a player from either team manages to take possession of the ball from an opposing player. The Turnover function works as follows:
 		\begin{enumerate}
 			\item Once the user has pressed the button to log the turnover's information they are redirected to a page which asks them to indicate which team won the turnover by pressing either of two buttons which each
 			have the names of the respective teams on them.
@@ -269,6 +282,16 @@ The functionality of the app will be spread between the following use cases:
 			\item The user is then redirected to a page, similar to the one above, that has a list of the other team's 15 on-field players. Here, the user selects the player who lost the ruck.
 		\end{enumerate}
 	On all of the above described pages there are also buttons labelled 'Cancel' (to cancel logging the turnover) and 'Back' which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
+
+
+		\begin{figure}[!htb]
+  		\centering
+  			\begin{minipage}[b]{0.4\textwidth}
+    			\includegraphics[width=0.9\textwidth]{./images/choose_turnover.png}
+    			\caption{Choose turnover}
+  			\end{minipage}
+  		\hfill
+		\end{figure}
 
 	\subsection{Clean break}
 	{\bfseries\{This section is still under development\}}
