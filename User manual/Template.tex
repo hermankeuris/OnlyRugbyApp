@@ -210,25 +210,49 @@ The functionality of the app will be spread between the following use cases:
 	\subsection{Scoring}
 		During game time (i.e. while the OnlyRugby app is being used to log the information of a match currently being played ) the Scoring function will be used each time a player from either team scores points for their team (be it through a try, penalty kick, drop-kick or a conversion kick following a try). The Scoring function works as follows:
 		\begin{enumerate}
-			\item Once the user has pressed the button to log score information they are redirected to a page which asks them to indicate which team scored by pressing either of two buttons which each have the names of the respective teams on them.
-			\item The user is then redirected to a page which asks the user to specify what type of score it should log. This page displays buttons titled 'Try', 'Penalty Kick' and  'Drop-kick' (note that 'Conversion Kick' is not an option as it can only be attempted after a successful try). 
-			\item The app then redirects the user to another page which has 15 buttons representing the 15 on-field players of the previously selected team. Each button has the player's position/jersey number on it as well as the player's name (if that information is provided on the database). This page also has an 'Unknown' button in case the user, for some reason, is not sure who scored on this team. The user is asked to select one of these players/buttons as the player who scored.
+			\item At the main menu for the match logger the user gets to specify what type of score it should log. This page displays buttons titled 'Try', 'Penalty Kick' and  'Drop-kick' (note that 'Conversion Kick' is not an option as it can only be attempted after a successful try). 
+		\begin{center}
+	 	 	 \includegraphics[width=0.9\textwidth] {./images/game_menu.jpg}\\[0.4cm]
+		\end{center}
+			\item Once the user has selected a score type and pressed the relevant  button to log that type's score information they are redirected to a page which asks them to indicate which team scored by pressing either of two buttons which each have the names of the respective teams on them.
+		\begin{center}
+  			 \includegraphics[width=0.9\textwidth] {./images/choose_try_team.jpg}\\[0.4cm]
+		\end{center}
+			\item The app then redirects the user to another page which has a list of 16 options representing the 15 on-field players of the previously selected team and an 'Unknown' option. Each option has the player's position/jersey number on it as well as the player's name (if that information is provided on the database). This 'Unknown' option is in case the user, for some reason, is not sure who scored on this team. The user is asked to select one of these players/buttons as the player who scored.
+		\begin{center}
+  			 \includegraphics[width=0.9\textwidth] {./images/choose_try_player.jpg}\\[0.4cm]
+		\end{center}
 			\item In most cases the user is then done entering the score information but in the case of a 'Try' more steps must be completed:
 				\begin{itemize}
-					\item The user is first asked by a small pop-up message if the try was assisted by any other players with the options of clicking 'Yes' or 'No'. In the case of 'Yes' the user is then redirected to the same 'player selection page' as previously described were the user can then select a player which assisted the first player to score the try.
+					\item The user is first asked by a small pop-up message if the try was assisted by any other players with the options of clicking 'Yes' or 'No'. In the case of 'Yes' the user is then redirected to the same 'player selection page' as previously described were the user can then select a player which assisted the first player to score the try. (Note this function is not yet implemented as it is subject to change pending a meeting with the client).
 					\item The player is then asked by another small pop-up message if the subsequent conversion kick was successful with the options of clicking 'Yes' or 'No'. Selecting 'Yes' once again redirects the user to the 'player selection page' to select a player which successfully scored the conversion kick.
+				\begin{center}
+  					 \includegraphics[width=0.9\textwidth] {./images/try_converted.jpg}\\[0.4cm]
+				\end{center}
 				\end{itemize}
+		\item After a score has been logged the user is returned to the main match logger menu and the relevant team's score is updated.
+		\begin{center}
+  			 \includegraphics[width=0.9\textwidth] {./images/score_increased.jpg}\\[0.4cm]
+		\end{center}
 		\end{enumerate}
-	On all of the above described pages there are also buttons labelled 'Cancel' (to cancel logging the score) and 'Back' which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
+	On all of the above described pages the user also has the option of using the phone's  'Back' button which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
 
 	\subsection{Substitutions}
 		During game time the Substitutions function will be used to log any changes made to both the on- and off-field players (i.e. reserve players) of either team. This function will work as follows:
 		\begin{enumerate}
 			\item Once the player has pressed the button to log player substitutions they are redirected to a page which asks them to indicate which team is substituting a player by pressing either of two buttons which each have the names of the respective teams on them.
-			\item The app then redirects the user to the 'player selection page' (as described in the Scoring section) which comprises of 15 buttons representing the on-field players of the selected team (i.e. without the 'Unknown' button). The user is then asked to select an on-field player which is being swapped out for a reserve player.
-			\item The app then redirects the user to a page similar to the standard 'player selection page' which has between 0 and 8 buttons representing the reserve players of the selected team. These buttons also have the player's jersey numbers and names on them (if they are stored on the server's database). The user is then asked to select a reserve player to swap out with the previously selected on-field player. The two selected players then swap their places (i.e. the reserve is now on-field and vice versa). There is also an 'Unknown' button on this page which is used when a reserve is put on field which was not part of the reserve team which is stored on the database (which means the app therefore does not have information about him).
-			\item When the player clicks the 'Unknown' button it displays a small pop-up menu which has two text-boxes and two buttons on it. The two text-boxes are there for the user to enter the new player's name and jersey number (either or both of these can be left empty). The two buttons are 'OK' which the user presses when they have completed the text-boxes to their satisfaction and 'Cancel' which cancels the process started by pressing the 'Unknown' button.
-	On all of the above described pages there are also buttons labelled 'Cancel' (to cancel logging the substitution) and 'Back' which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
+			\begin{center}
+  				 \includegraphics[width=0.9\textwidth] {./images/choose_substitute.jpg}\\[0.4cm]
+			\end{center}
+			\item The app then redirects the user to the 'player selection page' (as described in the Scoring section) which comprises of 15 options representing the on-field players of the selected team (i.e. without the 'Unknown' button). The user is then asked to select an on-field player which is being swapped out for a reserve player.
+			\begin{center}
+  				 \includegraphics[width=0.9\textwidth] {./images/choose_substitute_player.jpg}\\[0.4cm]
+			\end{center}
+			\item The app then redirects the user to a page similar to the standard 'player selection page' which has between 0 and 7 options representing the reserve players of the selected team. These options also have the player's jersey numbers and names on them (if they are stored on the server's database). The user is then asked to select a reserve player to swap out with the previously selected on-field player. The two selected players then swap their places (i.e. the reserve is now on-field and vice versa). If there is not a full reserve team of 7 players stored on the server's database then the remaining players required to form a team of 7 are substituted with distinct 'Unknown' players to hold place for any players which might function as reserve players during match time but who were not logged on the main site's database (which means the app therefore does not have information about them).
+	On all of the above described pages the user also has the option of using the phone's  'Back' button which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
+		\begin{center}
+  				 \includegraphics[width=0.9\textwidth] {./images/choose_substitute_off_field.jpg}\\[0.4cm]
+			\end{center}
 		\end{enumerate}
 	\subsection{Discipline}
 	{\bfseries\{This section is still under development\}}\\ \\
@@ -321,7 +345,10 @@ The functionality of the app will be spread between the following use cases:
 			\item Once the user has pressed the button to log the ruck's information they are redirected to a page which asks them to indicate which
 			team won the ruck by pressing either of two buttons which each have the names of the respective teams on them.
 		\end{enumerate}
-	On the above described page there are also buttons labelled 'Cancel' (to cancel logging the ruck) and 'Back' which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
+		\begin{center}
+  			 \includegraphics[width=0.9\textwidth] {./images/choose_ruck_team.jpg}\\[0.4cm]
+		\end{center}
+	On all of the above described pages the user also has the option of using the phone's  'Back' button which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
 
 	\subsection{Maul}
 	{\bfseries\{This section is still under development\}}
