@@ -1,69 +1,34 @@
-The following work should be completed by Thursday, 13 August, 18h00.
+The following work should be completed by Thursday, 10 September, 20h00.
 
-+: MUST BE COMPLETED!
--: Optional for this sprint, however doing it will lighten your load on the next sprint.
-
-Ivan:
-	+ Finish writing the login/logout functionality. Most of the security issues etc depends on this working. 
-		If you are having problems with keeping a persistent login over multiple uses of the application, 
-		please ask for help from the others.
-		
-	- Scrum information.
-
-Herman:
-	+ Scoring. (Only get a chance for conversion after try etc)
-	
-	- Substitutions.
-
-Johan:
-	+ Loading of team player information when a game commences
-	
-	- Logging tackles made
-
-Estian:
-	+ Game time start/stop/pause due to various reasons, overtime and "Sudden death"? (Can't remember 
-		the correct terminology)
-		
-	- Line-out logging
-
-Muller:
-	+ Discipline (red card, yellow card, add option for white card as well)
-	
-	+ Possession and turn-overs. These two go hand-in-hand and will aid in almost all other functions that 
-		have to log who did what/which team did what. Focus on which team has possession, since when 
-		that is know, the option to choose a specific player who scored a try, for instance, is that much 
-		simpler.
+1: No buttons should be active before the timer starts.
+2: When the timer is paused and substitutions is selected, the substitution menu should appear.
+3: Remove "Play" from the timer menu when game is active.
+4: Remove "Pause" from timer menu when game is not active.
+5: User should be prompted before a game can be ended, especially before the full time has elapsed.
+6: When restart is pressed on the timer menu, is the current half restarted or the whole match? Also, prompt, prompt, prompt.
+7: Login button twice press error (Johan's fix).
+8: Local DB to server fix (Johan' fix).
+9: Log screen lower third or lower quarter of screen to track progress of what has been logged etc. Keep in mind this should be editable one record at a time.
+10: Add team names next to their respective scores.
 
 NOTES TO ALL:
-	* Use dummy data where your function relies on functions still to be implemented.
-	
-	* Do not worry about how the front-end/interface will look at this stage, create a simple interface for 
-		yourself and play around with it to get the feel of using Android Studios.
-	
-	* When you have completed your function/test case, write unit tests for it as well, covering all possible 
-		values that a user can enter and all possible combinations thereof. The idea is to create one big file 
-		after this sprint, combining all the unit tests and allowing one function to call them all.
+* Use dummy data where your function relies on functions still to be implemented.
 
-	* Familiarize yourself with Android Studios as best you can, since we will all be contributing to the UI 
-		in due time.
-
-	* If there are any questions or objections, problems or impedements, please ask the group for ideas or 
-		assistance. We will gladly help. If you are afraid to voice your opinion or to raise an objection in front 
-		of the group, contact group leader privately. He will handle the matter with sensitivity and care and 
-		make sure you remain anonymous if the need be.
-		
-	* If there are any problems with team members etc, contact group leader as well if you cannot resolve 
-		the issue yourself.
-		
-	* Any and all communication with the client are to go through or to be approved by the group leader first, 
-		unless the client initiated contact with you initially.
-		
-	* Please feel free in this group to voice your opinions or concerns. If you have an idea, share it. If you 
-		have a better way of doing something, explain it. If you don't like something, say so. Once again, if you 
-		feel uncomfortable talking in front of the whole group or don't want anyone to know the idea is yours 
-		or that a concern came from you, feel free to talk to the group leader about it. Your name will not be 
-		mentioned if you don't want it to be.
-		
-	* Have fun! We can have the back-end of this product very close to completion before demo #3 and then 
-		we can work on all the nice-to-have stuff, really rounding off the product and putting a smile on the 
-		clients' faces!
+* If there are any questions or objections, problems or impedements, please ask the group for ideas or 
+	assistance. We will gladly help. If you are afraid to voice your opinion or to raise an objection in front 
+	of the group, contact group leader privately. He will handle the matter with sensitivity and care and 
+	make sure you remain anonymous if the need be.
+	
+* If there are any problems with team members etc, contact group leader as well if you cannot resolve 
+	the issue yourself.
+	
+* Any and all communication with the client are to go through or to be approved by the group leader first, 
+	unless the client initiated contact with you initially.
+	
+* Please feel free in this group to voice your opinions or concerns. If you have an idea, share it. If you 
+	have a better way of doing something, explain it. If you don't like something, say so. Once again, if you 
+	feel uncomfortable talking in front of the whole group or don't want anyone to know the idea is yours 
+	or that a concern came from you, feel free to talk to the group leader about it. Your name will not be 
+	mentioned if you don't want it to be.
+	
+* Have fun!
