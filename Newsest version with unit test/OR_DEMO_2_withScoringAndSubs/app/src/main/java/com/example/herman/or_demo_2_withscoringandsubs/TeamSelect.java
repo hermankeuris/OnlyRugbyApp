@@ -27,6 +27,8 @@ public class TeamSelect extends Activity {
 
         TextView teamText = (TextView) findViewById(R.id.teamText);
 
+        data.setEndOfFunction(false);
+
         switch(data.getFunctionType())
         {
             case "Score":
@@ -115,6 +117,7 @@ public class TeamSelect extends Activity {
                         data.getTeamTwo().incrementTurnoversWon();
                         data.getTeamOne().incrementTurnoversLost();
                     }
+                    data.setEndOfFunction(true);
                     finish();
                 }
                 else if (data.getFunctionType().equals("Ruck"))
@@ -129,6 +132,7 @@ public class TeamSelect extends Activity {
                         data.getTeamTwo().incrementRucksWon();
                         data.getTeamOne().incrementRucksLost();
                     }
+                    data.setEndOfFunction(true);
                     finish();
                 }
                 else if (data.getFunctionType().equals("LineOut"))
@@ -168,6 +172,7 @@ public class TeamSelect extends Activity {
                                 data.getTeamTwo().incrementOwnLineOutsWon();
                             }
                         }
+                        data.setEndOfFunction(true);
                         finish();
                     }
                 }
@@ -196,9 +201,15 @@ public class TeamSelect extends Activity {
         data.setSelectedTeam("teamTwo");
     }**/
 
-    @Override
+    /**@Override
     protected void onPause() {
         super.onPause();
         finish();
+    }**/
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (data.getEndOfFunction())
+            finish();
     }
 }

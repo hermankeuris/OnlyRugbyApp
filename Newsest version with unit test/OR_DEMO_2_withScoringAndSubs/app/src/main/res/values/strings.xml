@@ -23,6 +23,7 @@
     <string name="player_select">Select a player</string>
     <string name="team_select">Select a team</string>
     <string name="help">Help</string>
+    <string name="login">Login</string>
 
     <string name="first_half">1st Half</string>
     <string name="second_half">2nd Half</string>

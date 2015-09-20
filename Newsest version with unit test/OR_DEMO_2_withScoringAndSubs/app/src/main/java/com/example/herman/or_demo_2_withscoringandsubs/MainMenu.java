@@ -44,6 +44,16 @@ public class MainMenu extends Activity implements View.OnClickListener {
 
     public static boolean refreshDisplay = true;
 
+    private Button tryBtn;
+    private Button penaltyBtn;
+    private Button dropBtn;
+    private Button lineoutBtn;
+    private Button ruckBtn;
+    private Button substituteBtn;
+    private Button disciplineBtn;
+    private Button turnoverBtn;
+    //private Button helpBtn;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +72,31 @@ public class MainMenu extends Activity implements View.OnClickListener {
         scoreTeamOne.setText(String.valueOf(data.getTeamOne().getScore()));
         scoreTeamTwo.setText(String.valueOf(data.getTeamTwo().getScore()));
 
+        TextView nameTeamOne = (TextView) findViewById(R.id.teamOneLbl);
+        TextView nameTeamTwo = (TextView) findViewById(R.id.teamTwoLbl);
+
+        nameTeamOne.setText(String.valueOf(data.getTeamOne().getTeamName()));
+        nameTeamTwo.setText(String.valueOf(data.getTeamTwo().getTeamName()));
+
+        tryBtn = (Button) findViewById(R.id.tryBtn);
+        penaltyBtn = (Button) findViewById(R.id.penaltyBtn);
+        dropBtn = (Button) findViewById(R.id.dropBtn);
+        lineoutBtn = (Button) findViewById(R.id.lineoutBtn);
+        ruckBtn = (Button) findViewById(R.id.ruckBtn);
+        substituteBtn = (Button) findViewById(R.id.substituteBtn);
+        disciplineBtn = (Button) findViewById(R.id.disciplineBtn);
+        turnoverBtn = (Button) findViewById(R.id.turnoverButton);
+        //helpBtn = (Button) findViewById(R.id.helpBtn);
+
+        tryBtn.setEnabled(false);
+        penaltyBtn.setEnabled(false);
+        dropBtn.setEnabled(false);
+        lineoutBtn.setEnabled(false);
+        ruckBtn.setEnabled(false);
+        substituteBtn.setEnabled(false);
+        disciplineBtn.setEnabled(false);
+        turnoverBtn.setEnabled(false);
+        //helpBtn.setEnabled(false);
     }
 
     @Override
@@ -128,7 +163,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
                     clock.chronometer.setBase(SystemClock.elapsedRealtime() - stoppedMilliseconds);
                     activity.openContextMenu(view);
                     started = true;
-                }
+                                    }
                 else
                 {
                     activity.openContextMenu(view);
@@ -221,6 +256,15 @@ public class MainMenu extends Activity implements View.OnClickListener {
                     clock.start();
                 }
 
+                tryBtn.setEnabled(true);
+                penaltyBtn.setEnabled(true);
+                dropBtn.setEnabled(true);
+                lineoutBtn.setEnabled(true);
+                ruckBtn.setEnabled(true);
+                substituteBtn.setEnabled(true);
+                disciplineBtn.setEnabled(true);
+                turnoverBtn.setEnabled(true);
+                //helpBtn.setEnabled(true);
 
                 Toast.makeText(getApplicationContext(), "Timer Started at: "+clock.chronometer.getText().toString(), Toast.LENGTH_SHORT).show();
                 return true;
@@ -254,6 +298,9 @@ public class MainMenu extends Activity implements View.OnClickListener {
             case R.id.pausereason2:
                 System.out.println("Substitution");
                 //openContextMenu(v);
+                Intent intent = new Intent(new Intent(MainMenu.this, TeamSelect.class));
+                data.setFunctionType("Substitution");
+                startActivity(intent);
                 return true;
             case R.id.pausereason3:
                 System.out.println("Replace me with a prompt");
@@ -321,6 +368,8 @@ public class MainMenu extends Activity implements View.OnClickListener {
     {
         if(data.getOfflineMode())
         {
+            setTitle("OnlyRugby Offline Score Keeper");
+
             data.setTeamOne(new Team("Team A"));
             data.setTeamTwo(new Team("Team B"));
 

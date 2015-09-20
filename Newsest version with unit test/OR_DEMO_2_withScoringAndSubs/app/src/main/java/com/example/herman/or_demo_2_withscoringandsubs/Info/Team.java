@@ -2,13 +2,11 @@ package com.example.herman.or_demo_2_withscoringandsubs.Info;
 
 import java.util.ArrayList;
 
-/**
- * Created by Herman on 2015-08-12.
- */
 public class Team {
+    //Name of the team
     private String teamName;
     protected ArrayList<Player> onField = new ArrayList<>(16);
-    protected ArrayList<Player> reserves = new ArrayList<>(7);
+    protected ArrayList<Player> reserves = new ArrayList<>(8);
     private int currentMatchScore;
     private int  teamTry = 0;
     private int  teamConKick = 0;
@@ -30,7 +28,7 @@ public class Team {
 
         this.currentMatchScore = 0;
 
-        for(int i = 0; i < 7; i++)
+        for(int i = 0; i < 8; i++)
             reserves.add(new Player());
     }
 
@@ -40,8 +38,17 @@ public class Team {
 
         this.currentMatchScore = 0;
 
-        for(int i = 0; i < 7; i++)
+        for(int i = 0; i < 8; i++)
             reserves.add(new Player());
+    }
+
+    public Team(Team team) {
+        setTeamName(team.getTeamName());
+        this.currentMatchScore = 0;
+        setOnField(team.getOnField());
+        for(int i = 0; i < 8; i++)
+            reserves.add(new Player());
+        setReserves(team.getReserves());
     }
 
     public void setTeamName(String tn)
@@ -64,77 +71,76 @@ public class Team {
         return this.reserves;
     }
 
-    public void setOnField(ArrayList<Player> _onField)
+    public void setOnField(ArrayList<Player> onField)
     {
-        for (int i = 0; i < 15; i++)
+        this.onField = new ArrayList<Player>();
+
+        for (int i = 0; i < onField.size(); i++)
         {
-            this.onField.add(_onField.get(i));
+            this.onField.add(onField.get(i));
         }
         onField.add(new Player("Unknown Player", 0, false));
     }
 
     public boolean addPlayer(Player p)
-     {
-         if(p.getReserve())
-         {
-             for (int i = 0; i < reserves.size(); i++)
-             {
-                 if (reserves.get(i).getJerseyNum() == p.getJerseyNum() && p.getJerseyNum() != 0)
-                 {
-                     return false;
-                 }
-             }
-             /**if(reserves.size() < 7)
-             {
-                 reserves.add(p);
-                 return true;
-             }
-             else
-                 return false;**/
-             for (int i = 0; i < reserves.size(); i++)
-             {
-                 if (reserves.get(i).getJerseyNum() == 0)
-                 {
-                     reserves.set(i, p);
-                     return true;
-                 }
-             }
-             return false;
-         }
-         else
-         {
-             for (int i = 0; i < onField.size(); i++)
-             {
-                 if (onField.get(i).getJerseyNum() == p.getJerseyNum() && p.getJerseyNum() != 0)
-                 {
-                     return false;
-                 }
-             }
-             if(onField.size() < 15)
-             {
-                 onField.add(p);
-                 if(onField.size() == 15)
-                 {
-                     onField.add(new Player("Unknown Player", 0, false));
-                 }
-                 return true;
-             }
-             else
-                 return false;
-         }
-     }
-
-    public void setReserves(ArrayList<Player> _reserves)
     {
-        for (int i = 0; i < 7; i++)
+        if(p.getReserve())
         {
+            for (int i = 0; i < reserves.size(); i++)
+            {
+                if (reserves.get(i).getCurr_position() == p.getCurr_position() && p.getCurr_position() != 0)
+                {
+                    return false;
+                }
+            }
+            /**if(reserves.size() < 8)
+             {
+             reserves.add(p);
+             return true;
+             }
+             else
+             return false;**/
+            for (int i = 0; i < reserves.size(); i++)
+            {
+                if (reserves.get(i).getCurr_position() == 0)
+                {
+                    reserves.set(i, p);
+                    return true;
+                }
+            }
+            return false;
+        }
+        else
+        {
+            for (int i = 0; i < onField.size(); i++)
+            {
+                if (onField.get(i).getCurr_position() == p.getCurr_position() && p.getCurr_position() != 0)
+                {
+                    return false;
+                }
+            }
+            if(onField.size() < 15)
+            {
+                onField.add(p);
+                if(onField.size() == 15)
+                {
+                    onField.add(new Player("Unknown Player", 0, false));
+                }
+                return true;
+            }
+            else
+                return false;
+        }
+    }
+
+    public void setReserves(ArrayList<Player> _reserves) {
+        for (int i = 0; i < 8; i++) {
             if (i < _reserves.size())
                 this.reserves.set(i, _reserves.get(i));
         }
     }
 
-    public boolean addScore(String temp)
-    {
+    public boolean addScore(String temp) {
         switch(temp)
         {
             case "Try":
@@ -159,13 +165,11 @@ public class Team {
         return true;
     }
 
-    public int getScore()
-    {
+    public int getScore() {
         return this.currentMatchScore;
     }
 
-    public boolean subPlayers(Player first, Player second)
-    {
+    public boolean subPlayers(Player first, Player second) {
         int temp1 = onField.indexOf(first);
         int temp2 = reserves.indexOf(second);
 
@@ -178,18 +182,15 @@ public class Team {
             return false;
     }
 
-    public void incrementTurnoversWon()
-    {
+    public void incrementTurnoversWon() {
         teamTurnoversWon++;
     }
 
-    public void incrementTurnoversLost()
-    {teamTurnoversLost++;
-
+    public void incrementTurnoversLost() {
+        teamTurnoversLost++;
     }
 
-    public int getTurnoversWon()
-    {
+    public int getTurnoversWon() {
         return teamTurnoversWon;
     }
 
@@ -197,18 +198,15 @@ public class Team {
         return teamTurnoversLost;
     }
 
-    public void incrementRucksWon()
-    {
+    public void incrementRucksWon() {
         teamRucksWon++;
     }
 
-    public void incrementRucksLost()
-    {teamRucksLost++;
-
+    public void incrementRucksLost() {
+        teamRucksLost++;
     }
 
-    public int getRucksWon()
-    {
+    public int getRucksWon() {
         return teamRucksWon;
     }
 
@@ -216,17 +214,15 @@ public class Team {
         return teamRucksLost;
     }
 
-    public void incrementOwnLineOutsWon()
-    {
+    public void incrementOwnLineOutsWon() {
         ownTeamLineOutsWon++;
     }
 
-    public void incrementOwnLineOutsLost()
-    {ownTeamLineOutsLost++;
+    public void incrementOwnLineOutsLost() {
+        ownTeamLineOutsLost++;
     }
 
-    public int getOwnLineOutsWon()
-    {
+    public int getOwnLineOutsWon() {
         return ownTeamLineOutsWon;
     }
 
@@ -234,17 +230,15 @@ public class Team {
         return ownTeamLineOutsLost;
     }
 
-    public void incrementOpponentLineOutsWon()
-    {
+    public void incrementOpponentLineOutsWon() {
         opponentTeamLineOutsWon++;
     }
 
-    public void incrementOpponentLineOutsLost()
-    {opponentTeamLineOutsLost++;
+    public void incrementOpponentLineOutsLost() {
+        opponentTeamLineOutsLost++;
     }
 
-    public int getOpponentLineOutsWon()
-    {
+    public int getOpponentLineOutsWon() {
         return opponentTeamLineOutsWon;
     }
 
@@ -252,14 +246,31 @@ public class Team {
         return opponentTeamLineOutsLost;
     }
 
-    public void setLineOut(boolean b)
-    {
+    public void setLineOut(boolean b) {
         lineOut = b;
     }
 
-    public boolean getLineOut()
-    {
+    public boolean getLineOut() {
         return lineOut;
+    }
+
+    public Player getOnFieldPlayer(int i) {
+        return getOnField().get(i);
+    }
+
+    public Player getReservesPlayer(int i) {
+        return getReserves().get(i);
+    }
+
+    public String print() {
+        String printer = "";
+        printer += "Team Name: " + this.getTeamName();
+
+        for (int i = 0; i < getOnField().size(); ++i) {
+            printer += this.getOnFieldPlayer(i).print();
+        }
+
+        return printer;
     }
 
 }

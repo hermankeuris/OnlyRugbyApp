@@ -1,13 +1,16 @@
 package com.example.herman.or_demo_2_withscoringandsubs.Info;
 
-/**
- * Created by Herman on 2015-08-12.
- */
 public class Player {
+
+    //The player's id
+    private int id = -1;
     //The player's name
-    private String playerName;
+    private String name = "";
+    //The player's surname
+    private String surname = "";
     //The player's jersey number
-    private int jerseyNum;
+    private int curr_position = -1;
+
     //The number of times an injury forced the player off the field during match-time
     private int matchTimeInjuries;
     //A variable to store if the player is currently being penalised
@@ -32,20 +35,19 @@ public class Player {
     private boolean yellowCard = false;
 
     //Constructor with parameters
-    public Player(String pn, int jn, boolean field)
-    {
+    public Player(String pn, int jn, boolean field) {
         index = count;
         count++;
 
         if(pn == null || pn == "")
-            playerName = "Unknown(" + index + ")";
+            name = "Unknown(" + index + ")";
         else
-            playerName = pn;
+            name = pn;
 
         if(jn < 0)
-            jerseyNum = 0;
+            curr_position = 0;
         else
-            jerseyNum = jn;
+            curr_position = jn;
 
         matchTimeInjuries = 0;
         //status = Data.DisciplineType.None;
@@ -53,77 +55,76 @@ public class Player {
         reservePlayer = field;
     }
 
+    //Copy Constructor
+    Player(Player player) {
+        this.setId(player.getId());
+        this.setName(player.getName());
+        this.setSurname(player.getSurname());
+        this.setCurr_position(player.getCurr_position());
+        this.setReserve(player.getReserve());
+    }
+
     //Constructor without parameters (i.e. default constructor)
-    public Player()
-    {
+    public Player() {
         index = count;
         count++;
 
-        playerName = "Unknown(" + index + ")";
-        jerseyNum = 0;
+        name = "Unknown(" + index + ")";
+        curr_position = 0;
         matchTimeInjuries = 0;
         //status = Data.DisciplineType.None;
         reservePlayer = false;
     }
 
     //A function which changes the player's name
-    public void setPlayerName(String pn)
-    {
+    public void setPlayerName(String pn) {
         if(pn == null || pn == "")
-            playerName = "Unknown(" + index + ")";
+            name = "Unknown(" + index + ")";
         else
-            playerName = pn;
+            name = pn;
     }
 
     //A function which returns the player's name
-    public String getPlayerName()
-    {
-        return playerName;
+    public String getPlayerName() {
+        return name;
     }
 
     //A function which changes the player's jersey number
-    public boolean setJerseyNum(int jn) {
+    public boolean setCurr_position(int jn) {
         if (jn > 0) {
-            jerseyNum = jn;
+            curr_position = jn;
             return true;
         }
         return false;
     }
 
     //A function which returns the player's jersey number
-    public int getJerseyNum()
-    {
-        return jerseyNum;
+    public int getCurr_position() {
+        return curr_position;
     }
 
     //A function which changes the player's current penalty status
-    /*public void setStatus(Data.DisciplineType s)
-    {
+    /*public void setStatus(Data.DisciplineType s) {
         status = s;
     }*/
 
     //A function which returns the player's current penalty status
-    /*public Data.DisciplineType getStatus()
-    {
+    /*public Data.DisciplineType getStatus() {
         return status;
     }*/
 
     //A function which changes whether a player is on field or not
-    public void setReserve(boolean of)
-    {
+    public void setReserve(boolean of) {
         reservePlayer = of;
     }
 
     //A function which returns whether the player is on field or not
-    public boolean getReserve()
-    {
+    public boolean getReserve() {
         return reservePlayer;
     }
 
-    public boolean playerScore(String temp)
-    {
-        switch(temp)
-        {
+    public boolean playerScore(String temp) {
+        switch(temp) {
             case "Try":
                 playerTry++;
                 break;
@@ -142,32 +143,86 @@ public class Player {
         return true;
     }
 
-    public int[] getPlayerScore()
-    {
+    public int[] getPlayerScore() {
         int[] answer = {playerTry, playerConKick, playerPenKick, playerDropKick};
         return answer;
     }
 
-    public void resetCount()
-    {
+    public void resetCount() {
         count = 0;
     }
 
-    public void giveWhiteCard(){numWhiteCards++;}
-    public void giveYellowCard(){numYellowCards++;
-    yellowCard = true;}
-    public void giveRedCard(){numRedCards++;
-    redCard = true;
-    yellowCard = true;}
+    public void giveWhiteCard() {
+        numWhiteCards++;
+    }
 
-    public int getWhiteCardCount(){return numWhiteCards;}
-    public int getYellowCardCount(){return numYellowCards;}
-    public int getRedCardCount(){return numRedCards;}
+    public void giveYellowCard() {
+        numYellowCards++;
+        yellowCard = true;
+    }
 
-    public boolean getRedCard(){return redCard;}
-    public boolean getYellowCard(){return yellowCard;}
-    public void setYellowCard(Boolean b)
-    {
+    public void giveRedCard() {
+        numRedCards++;
+        redCard = true;
+        yellowCard = true;
+    }
+
+    public int getWhiteCardCount() {
+        return numWhiteCards;
+    }
+
+    public int getYellowCardCount() {
+        return numYellowCards;
+    }
+
+    public int getRedCardCount() {
+        return numRedCards;
+    }
+
+    public boolean getRedCard() {
+        return redCard;
+    }
+
+    public boolean getYellowCard() {
+        return yellowCard;
+    }
+
+    public void setYellowCard(Boolean b) {
         yellowCard = b;
+    }
+	
+	public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String print() {
+        String printer = "\t[";
+        printer += "Player ID: " + this.getId();
+        printer += "\tPlayer Name: " + this.getName();
+        printer += "\tPlayer Surname: " + this.getSurname();
+        printer += "\tPlayer Position: " + this.getCurr_position();
+        printer += "],";
+
+        return printer;
     }
 }

@@ -15,6 +15,7 @@ public class Data {
     private static String functionType = null;
     private static Boolean setLineOutTeam = false;
     private static Boolean offlineMode = false;
+    private static Boolean endOfFunction = false;
 
     private Data() {}
 
@@ -119,6 +120,16 @@ public class Data {
     public Boolean getOfflineMode()
     {
         return offlineMode;
+    }
+
+    public void setEndOfFunction(Boolean b)
+    {
+        endOfFunction = b;
+    }
+
+    public Boolean getEndOfFunction()
+    {
+        return endOfFunction;
     }
 }
 

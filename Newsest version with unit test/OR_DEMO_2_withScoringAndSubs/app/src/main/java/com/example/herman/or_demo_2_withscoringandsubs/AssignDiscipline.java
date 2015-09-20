@@ -29,6 +29,8 @@ public class AssignDiscipline extends Activity
         TextView disciplineText = (TextView) findViewById(R.id.disciplineText);
         disciplineText.setText("Give the following card to " + String.valueOf(data.getSelectedPlayer().getPlayerName()) + ":");
 
+        data.setEndOfFunction(false);
+
         View.OnClickListener listener= new View.OnClickListener()
         {
             @Override
@@ -47,8 +49,7 @@ public class AssignDiscipline extends Activity
                         break;
                 }
 
-                //Intent intent = new Intent(new Intent(AssignDiscipline.this, OR_DEMO_2.class));
-                //startActivity(intent);
+                data.setEndOfFunction(true);
                 finish();
             }
         };
