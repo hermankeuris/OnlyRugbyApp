@@ -113,7 +113,7 @@ public class IndexTest {
         if(testTeam.getOnField().get(0) != null)
         {
             assertEquals(testTeam.getOnField().get(0).getPlayerName(), "Unknown(0)");
-            assertEquals(testTeam.getOnField().get(0).getJerseyNum(), 0);
+            assertEquals(testTeam.getOnField().get(0).getCurr_position(), 0);
             assertEquals(testTeam.getOnField().get(0).getReserve(), false);
         }
 
@@ -123,7 +123,7 @@ public class IndexTest {
         if(testTeam.getReserves().get(0) != null)
         {
             assertEquals(testTeam.getReserves().get(0).getPlayerName(), "Unknown(1)");
-            assertEquals(testTeam.getReserves().get(0).getJerseyNum(), 1);
+            assertEquals(testTeam.getReserves().get(0).getCurr_position(), 1);
             assertEquals(testTeam.getReserves().get(0).getReserve(), true);
         }
 
@@ -133,7 +133,7 @@ public class IndexTest {
         if(testTeam.getReserves().get(1) != null)
         {
             assertEquals(testTeam.getReserves().get(1).getPlayerName(), "Fake name");
-            assertEquals(testTeam.getReserves().get(1).getJerseyNum(), 0);
+            assertEquals(testTeam.getReserves().get(1).getCurr_position(), 0);
             assertEquals(testTeam.getReserves().get(1).getReserve(), true);
         }
     }
@@ -351,49 +351,49 @@ public class IndexTest {
     {
         boolean check = true;
 
-        if (t.getOnField().size() > 0 && !(t.getOnField().get(0).getJerseyNum() == 1 && t.getOnField().get(0).getPlayerName() == "John One" && t.getOnField().get(0).getReserve() == false))
+        if (t.getOnField().size() > 0 && !(t.getOnField().get(0).getCurr_position() == 1 && t.getOnField().get(0).getPlayerName() == "John One" && t.getOnField().get(0).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 1 && !(t.getOnField().get(1).getJerseyNum() == 2 && t.getOnField().get(1).getPlayerName() == "John Two" && t.getOnField().get(1).getReserve() == false))
+        if (t.getOnField().size() > 1 && !(t.getOnField().get(1).getCurr_position() == 2 && t.getOnField().get(1).getPlayerName() == "John Two" && t.getOnField().get(1).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 2 && !(t.getOnField().get(2).getJerseyNum() == 3 && t.getOnField().get(2).getPlayerName() == "John Three" && t.getOnField().get(2).getReserve() == false))
+        if (t.getOnField().size() > 2 && !(t.getOnField().get(2).getCurr_position() == 3 && t.getOnField().get(2).getPlayerName() == "John Three" && t.getOnField().get(2).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 3 && !(t.getOnField().get(3).getJerseyNum() == 4 && t.getOnField().get(3).getPlayerName() == "John Four" && t.getOnField().get(3).getReserve() == false))
+        if (t.getOnField().size() > 3 && !(t.getOnField().get(3).getCurr_position() == 4 && t.getOnField().get(3).getPlayerName() == "John Four" && t.getOnField().get(3).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 4 && !(t.getOnField().get(4).getJerseyNum() == 5 && t.getOnField().get(4).getPlayerName() == "John Five" && t.getOnField().get(4).getReserve() == false))
+        if (t.getOnField().size() > 4 && !(t.getOnField().get(4).getCurr_position() == 5 && t.getOnField().get(4).getPlayerName() == "John Five" && t.getOnField().get(4).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 5 && !(t.getOnField().get(5).getJerseyNum() == 6 && t.getOnField().get(5).getPlayerName() == "John Six" && t.getOnField().get(5).getReserve() == false))
+        if (t.getOnField().size() > 5 && !(t.getOnField().get(5).getCurr_position() == 6 && t.getOnField().get(5).getPlayerName() == "John Six" && t.getOnField().get(5).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 6 && !(t.getOnField().get(6).getJerseyNum() == 7 && t.getOnField().get(6).getPlayerName() == "John Seven" && t.getOnField().get(6).getReserve() == false))
+        if (t.getOnField().size() > 6 && !(t.getOnField().get(6).getCurr_position() == 7 && t.getOnField().get(6).getPlayerName() == "John Seven" && t.getOnField().get(6).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 7 && !(t.getOnField().get(7).getJerseyNum() == 8 && t.getOnField().get(7).getPlayerName() == "John Eight" && t.getOnField().get(7).getReserve() == false))
+        if (t.getOnField().size() > 7 && !(t.getOnField().get(7).getCurr_position() == 8 && t.getOnField().get(7).getPlayerName() == "John Eight" && t.getOnField().get(7).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 8 && !(t.getOnField().get(8).getJerseyNum() == 9 && t.getOnField().get(8).getPlayerName() == "John Nine" && t.getOnField().get(8).getReserve() == false))
+        if (t.getOnField().size() > 8 && !(t.getOnField().get(8).getCurr_position() == 9 && t.getOnField().get(8).getPlayerName() == "John Nine" && t.getOnField().get(8).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 9 && !(t.getOnField().get(9).getJerseyNum() == 10 && t.getOnField().get(9).getPlayerName() == "John Ten" && t.getOnField().get(9).getReserve() == false))
+        if (t.getOnField().size() > 9 && !(t.getOnField().get(9).getCurr_position() == 10 && t.getOnField().get(9).getPlayerName() == "John Ten" && t.getOnField().get(9).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 10 && !(t.getOnField().get(10).getJerseyNum() == 11 && t.getOnField().get(10).getPlayerName() == "John Eleven" && t.getOnField().get(10).getReserve() == false))
+        if (t.getOnField().size() > 10 && !(t.getOnField().get(10).getCurr_position() == 11 && t.getOnField().get(10).getPlayerName() == "John Eleven" && t.getOnField().get(10).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 11 && !(t.getOnField().get(11).getJerseyNum() == 12 && t.getOnField().get(11).getPlayerName() == "John Twelve" && t.getOnField().get(11).getReserve() == false))
+        if (t.getOnField().size() > 11 && !(t.getOnField().get(11).getCurr_position() == 12 && t.getOnField().get(11).getPlayerName() == "John Twelve" && t.getOnField().get(11).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 12 && !(t.getOnField().get(12).getJerseyNum() == 13 && t.getOnField().get(12).getPlayerName() == "John Thirteen" && t.getOnField().get(12).getReserve() == false))
+        if (t.getOnField().size() > 12 && !(t.getOnField().get(12).getCurr_position() == 13 && t.getOnField().get(12).getPlayerName() == "John Thirteen" && t.getOnField().get(12).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 13 && !(t.getOnField().get(13).getJerseyNum() == 14 && t.getOnField().get(13).getPlayerName() == "John Fourteen" && t.getOnField().get(13).getReserve() == false))
+        if (t.getOnField().size() > 13 && !(t.getOnField().get(13).getCurr_position() == 14 && t.getOnField().get(13).getPlayerName() == "John Fourteen" && t.getOnField().get(13).getReserve() == false))
             check = false;
-        if (t.getOnField().size() > 14 && !(t.getOnField().get(14).getJerseyNum() == 15 && t.getOnField().get(14).getPlayerName() == "John Fifteen" && t.getOnField().get(14).getReserve() == false))
+        if (t.getOnField().size() > 14 && !(t.getOnField().get(14).getCurr_position() == 15 && t.getOnField().get(14).getPlayerName() == "John Fifteen" && t.getOnField().get(14).getReserve() == false))
             check = false;
-        if (t.getReserves().size() > 0 && !(t.getReserves().get(0).getJerseyNum() == 16 && t.getReserves().get(0).getPlayerName() == "John Sixteen" && t.getReserves().get(0).getReserve() == true))
+        if (t.getReserves().size() > 0 && !(t.getReserves().get(0).getCurr_position() == 16 && t.getReserves().get(0).getPlayerName() == "John Sixteen" && t.getReserves().get(0).getReserve() == true))
             check = false;
-        if (t.getReserves().size() > 1 && !(t.getReserves().get(1).getJerseyNum() == 17 && t.getReserves().get(1).getPlayerName() == "John Seventeen" && t.getReserves().get(1).getReserve() == true))
+        if (t.getReserves().size() > 1 && !(t.getReserves().get(1).getCurr_position() == 17 && t.getReserves().get(1).getPlayerName() == "John Seventeen" && t.getReserves().get(1).getReserve() == true))
             check = false;
-        if (t.getReserves().size() > 2 && !(t.getReserves().get(2).getJerseyNum() == 18 && t.getReserves().get(2).getPlayerName() == "John Eighteen" && t.getReserves().get(2).getReserve() == true))
+        if (t.getReserves().size() > 2 && !(t.getReserves().get(2).getCurr_position() == 18 && t.getReserves().get(2).getPlayerName() == "John Eighteen" && t.getReserves().get(2).getReserve() == true))
             check = false;
-        if (t.getReserves().size() > 3 && !(t.getReserves().get(3).getJerseyNum() == 19 && t.getReserves().get(3).getPlayerName() == "John Nineteen" && t.getReserves().get(3).getReserve() == true))
+        if (t.getReserves().size() > 3 && !(t.getReserves().get(3).getCurr_position() == 19 && t.getReserves().get(3).getPlayerName() == "John Nineteen" && t.getReserves().get(3).getReserve() == true))
             check = false;
-        if (t.getReserves().size() > 4 && !(t.getReserves().get(4).getJerseyNum() == 20 && t.getReserves().get(4).getPlayerName() == "John Twenty" && t.getReserves().get(4).getReserve() == true))
+        if (t.getReserves().size() > 4 && !(t.getReserves().get(4).getCurr_position() == 20 && t.getReserves().get(4).getPlayerName() == "John Twenty" && t.getReserves().get(4).getReserve() == true))
             check = false;
-        if (t.getReserves().size() > 5 && !(t.getReserves().get(5).getJerseyNum() == 21 && t.getReserves().get(5).getPlayerName() == "John TwentyOne" && t.getReserves().get(5).getReserve() == true))
+        if (t.getReserves().size() > 5 && !(t.getReserves().get(5).getCurr_position() == 21 && t.getReserves().get(5).getPlayerName() == "John TwentyOne" && t.getReserves().get(5).getReserve() == true))
             check = false;
-        if (t.getReserves().size() > 6 && !(t.getReserves().get(6).getJerseyNum() == 22 && t.getReserves().get(6).getPlayerName() == "John TwentyTwo" && t.getReserves().get(6).getReserve() == true))
+        if (t.getReserves().size() > 6 && !(t.getReserves().get(6).getCurr_position() == 22 && t.getReserves().get(6).getPlayerName() == "John TwentyTwo" && t.getReserves().get(6).getReserve() == true))
             check = false;
 
         return check;

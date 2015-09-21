@@ -21,7 +21,6 @@ public class Data {
 
     public static synchronized Data getInstance() {
         if (instance == null) {
-            System.out.println("*******Should only happen once!*******");
             instance = new Data();
         }
         return instance;
