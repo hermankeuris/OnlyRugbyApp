@@ -57,9 +57,9 @@ public class helpList extends Activity {
                         setContentView(R.layout.helppage);
                         helpText = (TextView) findViewById(R.id.helpPageText);
 
-                        message =   "1. Press on the Timer" +
-                                    "2. Press Play" +
-                                    "3. Proceed to Score the Match";
+                        message =   "1. Press on the Timer \n" +
+                                    "2. Press Play \n" +
+                                    "3. Proceed to Score the Match \n";
 
                         helpText.setText(message);
                         break;
