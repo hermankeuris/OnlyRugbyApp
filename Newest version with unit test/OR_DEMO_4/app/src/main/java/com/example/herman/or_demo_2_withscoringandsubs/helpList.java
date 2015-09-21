@@ -151,11 +151,11 @@ public class helpList extends Activity {
 
                         message =   "1. Press on the Timer \n" +
                                     "2. Choose one of the options available: \n" +
-                                        "\t2.1 Play: Starts the game \n" +
-                                        "\t2.2 Pause: Pauses the game \n" +
-                                        "\t2.3 Reset: Resets the timer to 00:00 - Use with caution" +
-                                        "\t2.4 Start Second Half: Starts the second half of the game" +
-                                        "\t2.5 End Game Clock: Ends the match";
+                                    "2.1 Play: Starts the game \n" +
+                                    "2.2 Pause: Pauses the game \n" +
+                                    "2.3 Reset: Resets the timer to 00:00 - Use with caution \n" +
+                                    "2.4 Start Second Half: Starts the second half of the game \n" +
+                                    "2.5 End Game Clock: Ends the match";
 
                         helpText.setText(message);
                         break;
