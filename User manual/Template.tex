@@ -20,7 +20,7 @@
 
 % define the title
 \author{Men-at-Work}
-\title{ OnlyRugby User Manual: Demo 2}
+\title{ OnlyRugby Mobile Application User Manual}
 \begin{document}
 \setlength{\parskip}{6pt}
 
@@ -38,6 +38,7 @@
 { \huge \bfseries User Manual: Demo 2}\\[0.4cm]
 \HRule \\[0.4cm]
 % Author and supervisor
+\textsc{\Large Men-At-Work}\\[0.5cm]
 \begin{minipage}{0.4\textwidth}
 \begin{flushleft} \large
 \emph{Authors:}
@@ -126,16 +127,15 @@ u12003672
 
 \newpage
 \section{System Overview} 
-The OnlyRugby App will serve school rugby teams and rugby clubs registered with the main website by allowing them to log basic match time information. This means that when the user's team is playing a match the user can log information such as which team and players have scored, any injuries or penalties during the game and which team has won the line-out/scrum etc. This information is then stored on the main website's database allowing user's to compare statistics through the site.
+The OnlyRugby App will serve school rugby teams and rugby clubs registered with the main website by allowing them to log basic match time information. This means that when the user's team is playing a match an elected ''candidate'' of the registered team/club, which has been chosen to represent the team/club and has been registered as such on the main OnlyRugby website, can then log information such as which team and players have scored, any injuries or penalties during the game and which team has won the line-out/scrum etc. This information is then stored on the main website's database allowing users to compare statistics through the site. This app is therefore primarily to be used by user's who are registered on the OnlyRugby website and have been granted the authority to log match-time information on behalf of their team/club. There is however an ''offline'' option in the app which allows users without an OnlyRugby account to log match information, but this logged information will be volatile (i.e. as soon as the user exits the app the logged information will be lost and will not be persisted to the OnlyRugby database).
 \section{System Configuration}
 \begin {itemize}
 	\item The user will run the app itself from a mobile device, such as a smartphone or tablet using Android 4.0 or higher.
-	\item All communication between the mobile app and the server will occur through HTTP and will consist of JSON objects which will be processed by a RESTful API on the server side (which will then format the information to be stored on the main OnlyRugby website's database) and the main app on the user's mobile device respectively.
-	\item The mobile app will also manage a small temporary SQLite database which will store any information waiting to be sent to the server when a connection is established.
-	\item The server will also use SMTP to send emails to an email account specified by the user in certain situations (e.g. when the user first registers an account with OnlyRugby). 
+	\item The user requires internet access on the mobile device on which the OnlyRugby match-logger app is installed, as well as a valid OnlyRugby account with the proper authority to log match information, on the main OnlyRugby website.
+	\item In the case of a user only using the offline functions of the app no internet access or OnlyRugby account is recquired.
 \end{itemize}
 \begin{center}
-  	 \includegraphics[width=0.9\textwidth] {./images/System_Configuration.jpg}\\[0.4cm]
+  	 \includegraphics[width=0.9\textwidth] {./images/SystemConfiguration2.jpg}\\[0.4cm]
 \end{center}
 \section{Installation}
 \begin {itemize}
