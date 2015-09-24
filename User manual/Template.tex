@@ -34,8 +34,10 @@
 \textsc{\Large COS 301 - Software Engineering}\\[0.5cm]
 % Title
 \HRule \\[0.4cm]
-{ \huge \bfseries OnlyRugby}\\[0.4cm]
-{ \huge \bfseries User Manual: Demo 2}\\[0.4cm]
+\includegraphics[width=0.05\textwidth]{./images/logo.png}
+{ \huge \bfseries OnlyRugby}
+\includegraphics[width=0.05\textwidth]{./images/logo.png}\\[0.4cm]
+{ \huge \bfseries User Manual}\\[0.4cm]
 \HRule \\[0.4cm]
 % Author and supervisor
 \textsc{\Large Men-At-Work}\\[0.5cm]
@@ -127,31 +129,31 @@ u12003672
 
 \newpage
 \section{System Overview} 
-The OnlyRugby App will serve school rugby teams and rugby clubs registered with the main website by allowing them to log basic match time information. This means that when the user's team is playing a match an elected ''candidate'' of the registered team/club, which has been chosen to represent the team/club and has been registered as such on the main OnlyRugby website, can then log information such as which team and players have scored, any injuries or penalties during the game and which team has won the line-out/scrum etc. This information is then stored on the main website's database allowing users to compare statistics through the site. This app is therefore primarily to be used by user's who are registered on the OnlyRugby website and have been granted the authority to log match-time information on behalf of their team/club. There is however an ''offline'' option in the app which allows users without an OnlyRugby account to log match information, but this logged information will be volatile (i.e. as soon as the user exits the app the logged information will be lost and will not be persisted to the OnlyRugby database).
+The OnlyRugby App will serve school rugby teams and rugby clubs registered with the main website by allowing them to log basic match time information. This means that when the user's team is playing a match an elected "candidate" of the registered team/club, which has been chosen to represent the team/club and has been registered as such on the main OnlyRugby website, can then log information such as which team and players have scored, any injuries or penalties during the game and which team has won the line-out/scrum etc. This information is then stored on the main website's database allowing users to compare statistics through the site. This app is therefore primarily to be used by user's who are registered on the OnlyRugby website and have been granted the authority to log match-time information on behalf of their team/club. There is however an "offline" option in the app which allows users without an OnlyRugby account to log match information, but this logged information will be volatile (i.e. as soon as the user exits the app the logged information will be lost and will not be persisted to the OnlyRugby database).
 \section{System Configuration}
 \begin {itemize}
-	\item The user will run the app itself from a mobile device, such as a smartphone or tablet using Android 4.0 or higher.
+	\item The user will run the app itself from a mobile device, such as a smart-phone or tablet using Android 4.0 or higher.
 	\item The user requires internet access on the mobile device on which the OnlyRugby match-logger app is installed, as well as a valid OnlyRugby account with the proper authority to log match information, on the main OnlyRugby website.
-	\item In the case of a user only using the offline functions of the app no internet access or OnlyRugby account is recquired.
+	\item In the case of a user only using the offline functions of the app no internet access or OnlyRugby account is required.
 \end{itemize}
 \begin{center}
-  	 \includegraphics[width=0.9\textwidth] {./images/SystemConfiguration2.jpg}\\[0.4cm]
+  	 \includegraphics[width=1.0\textwidth] {./images/SystemConfiguration2.png}\\[0.4cm]
 \end{center}
 \section{Installation}
 \begin {itemize}
 	\item The user will have to choose to download the app from the Google App store (once released) and the rest will be done automatically by the app store itself. The user will be notified when the app is finished downloading and is ready to run. (Yet to be implemented).
-	\item Alternativley the user could go on GitHub (https://github.com/hermankeuris/OnlyRugbyApp/tree/master/Instal)l and download the application's APK directly (i.e. Only Rugby Score Keeper.apk). You can either download this through your mobile device's web browser directly or first download it on a computer and then copy the APK file to your andriod device through a USB connection with the computer.
+	\item Alternatively the user could go on GitHub \\(https://github.com/hermankeuris/OnlyRugbyApp/tree/master/Install) and download the application's APK directly (i.e. Only Rugby Score Keeper.apk). You can either download this through your mobile device's web browser directly or first download it on a computer and then copy the APK file to your android device through a USB connection with the computer.
 	\begin{center}
-  		 \includegraphics[width=0.9\textwidth] {./images/APKdownload.jpg}\\[0.4cm]
+  		 \includegraphics[width=1.0\textwidth] {./images/APKdownload.png}\\[0.4cm]
 	\end{center}
-	\item To allow your Andriod device to run this APK you will first have to enable your device to allow the installation of files from ''unknown'' sources. This is done by going to your device's Settings > Security and checking the ''Unknown Sources'' checkbox.
+	\item To allow your Android device to run this APK you will first have to enable your device to allow the installation of files from "unknown" sources. This is done by going to your device's Settings, then Security and checking the "Unknown Sources" checkbox.
 	\begin{center}
-  		 \includegraphics[width=0.9\textwidth] {./images/unknownsources.jpg}\\[0.4cm]
+  		 \includegraphics[width=0.3\textwidth] {./images/unknownsources.png}\\[0.4cm]
 	\end{center}
-	\item In the case of having directly downloaded the APK on your Android device you could then go to the directory where the APK is stored (most likely the ''Downloads'' folder) and click the APK's icon. A pop-up will then appear giving you the option of installing the APK on your device.
-	\item In the case of having first downloaded the APK on a computer you should then copy the APK file to some easily accessable directory on the Andriod device (e.g. ''Downloads'') and then follow the same steps as specified in the previous bullet.
+	\item In the case of having directly downloaded the APK on your Android device you could then go to the directory where the APK is stored (most likely the "Downloads" folder) and click the APK's icon. A pop-up will then appear giving you the option of installing the APK on your device.
+	\item In the case of having first downloaded the APK on a computer you should then copy the APK file to some easily accessible directory on the Android device (e.g. "Downloads") and then follow the same steps as specified in the previous bullet.
 	\begin{center}
-  		 \includegraphics[width=0.9\textwidth] {./images/installation.jpg}\\[0.4cm]
+  		 \includegraphics[width=0.3\textwidth] {./images/installation.png}\\[0.4cm]
 	\end{center}
 	\item To be able to use the application to its full potential the user will have to have both themselves and their club/team registered on the main OnlyRugby website. The user will also have to be registered as having the proper authority to log match information on behalf of his/her club/team. (Yet to be implemented).
 	\item Note that for demo and testing purposes, all login and data upload functionality within the application have been temporarily disabled to increase ease of use.
@@ -210,7 +212,7 @@ The functionality of the app will be spread between the following use cases:
 	\\ \\
 	Usage:
 	\begin{itemize}
-		\item The game time is displayed at the top of the UI.
+		\item The game time is displayed at the top of the user interface.
 		\item One starts the clock by tapping on it once. Preferably at kick-off. In the future the user will be presented with a confirm option in the form of a pop up which will not affect the running clock if accepted and reset the clock if denied.
 		\item Once the clock is running a single tap on the clock will register a pause and activate a pop up asking the user for a reason for the pause, along with the legal options. The user will also have the option return should they accidentally activate this function. After a legal reason has been given for the pause the user is presented with a blank page and a button to resume the game.
 		\item Upon reaching 40 minutes the game clock:
