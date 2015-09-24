@@ -34,8 +34,10 @@
 \textsc{\Large COS 301 - Software Engineering}\\[0.5cm]
 % Title
 \HRule \\[0.4cm]
-{ \huge \bfseries OnlyRugby}\\[0.4cm]
-{ \huge \bfseries User Manual: Demo 2}\\[0.4cm]
+\includegraphics[width=0.05\textwidth]{./images/logo.png} 
+{ \huge \bfseries OnlyRugby}
+\includegraphics[width=0.05\textwidth]{./images/logo.png}\\[0.4cm] 
+{ \huge \bfseries User Manual}\\[0.4cm]
 \HRule \\[0.4cm]
 % Author and supervisor
 \textsc{\Large Men-At-Work}\\[0.5cm]
@@ -135,27 +137,23 @@ The OnlyRugby App will serve school rugby teams and rugby clubs registered with 
 	\item In the case of a user only using the offline functions of the app no internet access or OnlyRugby account is recquired.
 \end{itemize}
 \begin{center}
-  	 \includegraphics[width=0.9\textwidth] {./images/SystemConfiguration2.jpg}\\[0.4cm]
-  	 \caption{System Layout}
+  	 \includegraphics[width=0.9\textwidth] {./images/SystemConfiguration2.png}\\[0.4cm]
 \end{center}
 \section{Installation}
 \begin {itemize}
 	\item The user will have to choose to download the app from the Google App store (once released) and the rest will be done automatically by the app store itself. The user will be notified when the app is finished downloading and is ready to run. (Yet to be implemented).
 	\item Alternativley the user could go on GitHub (https://github.com/hermankeuris/OnlyRugbyApp/tree/master/Instal)l and download the application's APK directly (i.e. Only Rugby Score Keeper.apk). You can either download this through your mobile device's web browser directly or first download it on a computer and then copy the APK file to your andriod device through a USB connection with the computer.
 	\begin{center}
-  		 \includegraphics[width=0.9\textwidth] {./images/APKdownload.jpg}\\[0.4cm]
-  		 \caption{Git download}
+  		 \includegraphics[width=0.9\textwidth] {./images/APKdownload.png}\\[0.4cm]
 	\end{center}
 	\item To allow your Andriod device to run this APK you will first have to enable your device to allow the installation of files from ''unknown'' sources. This is done by going to your device's Settings > Security and checking the ''Unknown Sources'' checkbox.
 	\begin{center}
-  		 \includegraphics[width=0.9\textwidth] {./images/unknownsources.jpg}\\[0.4cm]
-  		 \caption{Andriod Settings}
+  		 \includegraphics[width=0.3\textwidth] {./images/unknownsources.png}\\[0.4cm]
 	\end{center}
 	\item In the case of having directly downloaded the APK on your Android device you could then go to the directory where the APK is stored (most likely the ''Downloads'' folder) and click the APK's icon. A pop-up will then appear giving you the option of installing the APK on your device.
-	\item In the case of having first downloaded the APK on a computer you should then copy the APK file to some easily accessable directory on the Andriod device (e.g. ''Downloads'') and then follow the same steps as specified in the previous bullet.
+	\item In the case of having first downloaded the APK on a computer you should then copy the APK file to some easily accessible directory on the Android device (e.g. ''Downloads'') and then follow the same steps as specified in the previous bullet.
 	\begin{center}
-  		 \includegraphics[width=0.9\textwidth] {./images/installation.jpg}\\[0.4cm]
-  		 \caption{Installation}
+  		 \includegraphics[width=0.3\textwidth] {./images/installation.png}\\[0.4cm]
 	\end{center}
 	\item To be able to use the application to its full potential the user will have to have both themselves and their club/team registered on the main OnlyRugby website. The user will also have to be registered as having the proper authority to log match information on behalf of his/her club/team. (Yet to be implemented).
 	\item Note that for demo and testing purposes, all login and data upload functionality within the application have been temporarily disabled to increase ease of use.
@@ -189,7 +187,6 @@ The functionality of the app will be spread between the following use cases:
 		
   		\begin{minipage}[b]{0.4\textwidth}
     			\includegraphics[width=0.9\textwidth]{./images/login_menu.png}
-    			\caption{Login Menu}
   		\end{minipage}
 
 		
@@ -226,17 +223,14 @@ The functionality of the app will be spread between the following use cases:
 			\item At the main menu for the match logger the user gets to specify what type of score it should log. This page displays buttons titled 'Try', 'Penalty Kick' and  'Drop-kick' (note that 'Conversion Kick' is not an option as it can only be attempted after a successful try). 
 		\begin{center}
 	 	 	 \includegraphics[width=0.3\textwidth] {./images/game_menu.png}\\[0.4cm]
-	 	 	 \caption{Main Menu}
 		\end{center}
 			\item Once the user has selected a score type and pressed the relevant  button to log that type's score information they are redirected to a page which asks them to indicate which team scored by pressing either of two buttons which each have the names of the respective teams on them.
 		\begin{center}
   			 \includegraphics[width=0.3\textwidth] {./images/choose_try_team.png}\\[0.4cm]
-  			 \caption{Choose try team}
 		\end{center}
 			\item The app then redirects the user to another page which has a list of 16 options representing the 15 on-field players of the previously selected team and an 'Unknown' option. Each option has the player's position/jersey number on it as well as the player's name (if that information is provided on the database). This 'Unknown' option is in case the user, for some reason, is not sure who scored on this team. The user is asked to select one of these players/buttons as the player who scored.
 		\begin{center}
   			 \includegraphics[width=0.3\textwidth] {./images/choose_try_player.png}\\[0.4cm]
-  			 \caption{Choose try player}
 		\end{center}
 			\item In most cases the user is then done entering the score information but in the case of a 'Try' more steps must be completed:
 				\begin{itemize}
@@ -244,13 +238,11 @@ The functionality of the app will be spread between the following use cases:
 					\item The player is then asked by another small pop-up message if the subsequent conversion kick was successful with the options of clicking 'Yes' or 'No'. Selecting 'Yes' once again redirects the user to the 'player selection page' to select a player which successfully scored the conversion kick.
 				\begin{center}
   					 \includegraphics[width=0.3\textwidth] {./images/try_converted.png}\\[0.4cm]
-  					 \caption{If try converted}
 				\end{center}
 				\end{itemize}
 		\item After a score has been logged the user is returned to the main match logger menu and the relevant team's score is updated.
 		\begin{center}
   			 \includegraphics[width=0.3\textwidth] {./images/score_increased.png}\\[0.4cm]
-  			 \caption{Score increased}
 		\end{center}
 		\end{enumerate}
 	On all of the above described pages the user also has the option of using the phone's  'Back' button which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
@@ -261,18 +253,15 @@ The functionality of the app will be spread between the following use cases:
 			\item Once the player has pressed the button to log player substitutions they are redirected to a page which asks them to indicate which team is substituting a player by pressing either of two buttons which each have the names of the respective teams on them.
 			\begin{center}
   				 \includegraphics[width=0.3\textwidth] {./images/choose_substitute.png}\\[0.4cm]
-  				 \caption{Substitution}
 			\end{center}
 			\item The app then redirects the user to the 'player selection page' (as described in the Scoring section) which comprises of 15 options representing the on-field players of the selected team (i.e. without the 'Unknown' button). The user is then asked to select an on-field player which is being swapped out for a reserve player.
 			\begin{center}
   				 \includegraphics[width=0.3\textwidth] {./images/choose_substitute_player.png}\\[0.4cm]
-  				 \caption{Choose substitute}
 			\end{center}
 			\item The app then redirects the user to a page similar to the standard 'player selection page' which has between 0 and 7 options representing the reserve players of the selected team. These options also have the player's jersey numbers and names on them (if they are stored on the server's database). The user is then asked to select a reserve player to swap out with the previously selected on-field player. The two selected players then swap their places (i.e. the reserve is now on-field and vice versa). If there is not a full reserve team of 7 players stored on the server's database then the remaining players required to form a team of 7 are substituted with distinct 'Unknown' players to hold place for any players which might function as reserve players during match time but who were not logged on the main site's database (which means the app therefore does not have information about them).
 	On all of the above described pages the user also has the option of using the phone's  'Back' button which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
 		\begin{center}
   				 \includegraphics[width=0.3\textwidth] {./images/choose_substitute_off_field.png}\\[0.4cm]
-  				  \caption{Choose reserve player}
 			\end{center}
 		\end{enumerate}
 	\subsection{Discipline}
@@ -357,7 +346,6 @@ The functionality of the app will be spread between the following use cases:
 		\end{enumerate}
 		\begin{center}
   			 \includegraphics[width=0.3\textwidth] {./images/choose_ruck_team.png}\\[0.4cm]
-  			 \caption{Choose team who won the ruck}
 		\end{center}
 	On all of the above described pages the user also has the option of using the phone's  'Back' button which redirects the user to the previous page and ignores the information that was logged on the page it is now leaving.
 

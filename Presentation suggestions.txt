@@ -1,0 +1,17 @@
+Add conversion button
+
+Add a button to set posession
+
+Determine possession percentage
+
+Larger buttons + spaces
+
+Confirmation to end game clock and swithing halves
+
+Minimize button presses
+
+Recovery email button
+
+Show stats at the end of the half time and game
+
+Usability: #1
