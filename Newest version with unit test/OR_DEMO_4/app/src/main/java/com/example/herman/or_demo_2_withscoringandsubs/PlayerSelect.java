@@ -173,8 +173,8 @@ public class PlayerSelect extends Activity {
                         {
                             data.setOnFieldPlayers(false);
                             data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
-                            /*Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
-                            startActivity(intent);*/
+                            Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
+                            startActivity(intent);
                         }
                         else {
                             data.getSelectedTeam().subPlayers(data.getSelectedPlayer(), data.getSelectedTeam().getReserves().get(position));
