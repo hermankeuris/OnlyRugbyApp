@@ -1,0 +1,13 @@
+Please check that the line-outs' and turnover's removal is correct.
+When removing red/yellow cards, should their card status(boolean) be revoked?
+List page doesnt reload, any way to fix/circumvent?
+Player select- who scored the conversion?
+
+Yellow/red card's removal should put player back - I will implement
+
+Add substitutions to events - I will implement
+
+Final report page + upload button - suggestion
+
+Further, please look through the code for any errors. It isn't final, but what is in place should
+be correct.
