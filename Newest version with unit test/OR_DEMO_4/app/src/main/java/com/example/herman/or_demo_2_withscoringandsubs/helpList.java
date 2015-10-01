@@ -19,7 +19,8 @@ import java.util.ArrayList;
 /**
  * Created by Muller on 26/08/2015.
  */
-public class helpList extends Activity {
+public class helpList extends Activity
+{
 
     private Data data = Data.getInstance();
     private String message;
@@ -50,6 +51,8 @@ public class helpList extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 TextView helpText;
+
+
 
                 switch (position)
                 {

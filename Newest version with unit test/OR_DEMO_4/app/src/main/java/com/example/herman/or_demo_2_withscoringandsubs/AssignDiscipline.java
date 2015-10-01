@@ -40,12 +40,15 @@ public class AssignDiscipline extends Activity
                 {
                     case R.id.whiteCardButton:
                         data.getSelectedPlayer().giveWhiteCard();
+                        data.addDiscipline("0", data.getSelectedTeam(), data.getSelectedPlayer(), "White");
                         break;
                     case R.id.yellowCardButton:
                         data.getSelectedPlayer().giveYellowCard();
+                        data.addDiscipline("0", data.getSelectedTeam(), data.getSelectedPlayer(), "Yellow");
                         break;
                     case R.id.redCardButton:
                         data.getSelectedPlayer().giveRedCard();
+                        data.addDiscipline("0", data.getSelectedTeam(), data.getSelectedPlayer(), "Red");
                         break;
                 }
 

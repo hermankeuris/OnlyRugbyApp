@@ -109,11 +109,13 @@ public class TeamSelect extends Activity {
                 {
                     if (data.getSelectedTeam() == data.getTeamOne())
                     {
+                        data.addTurnover("0",data.getTeamOne(),data.getTeamTwo());
                         data.getTeamOne().incrementTurnoversWon();
                         data.getTeamTwo().incrementTurnoversLost();
                     }
                     else
                     {
+                        data.addTurnover("0", data.getTeamTwo(), data.getTeamOne());
                         data.getTeamTwo().incrementTurnoversWon();
                         data.getTeamOne().incrementTurnoversLost();
                     }
@@ -122,13 +124,19 @@ public class TeamSelect extends Activity {
                 }
                 else if (data.getFunctionType().equals("Ruck"))
                 {
+
+
                     if (data.getSelectedTeam() == data.getTeamOne())
                     {
+                        data.addRuck("0", data.getTeamOne(), data.getTeamTwo());
+
                         data.getTeamOne().incrementRucksWon();
                         data.getTeamTwo().incrementRucksLost();
                     }
                     else
                     {
+                        data.addRuck("0", data.getTeamTwo(), data.getTeamOne());
+
                         data.getTeamTwo().incrementRucksWon();
                         data.getTeamOne().incrementRucksLost();
                     }
@@ -148,6 +156,8 @@ public class TeamSelect extends Activity {
                     {
                         if (data.getSelectedTeam() == data.getTeamOne())
                         {
+                            data.addLineOut("0", data.getTeamOne(), data.getTeamTwo());
+
                             if(data.getTeamOne().getLineOut())
                             {
                                 data.getTeamOne().incrementOwnLineOutsWon();
@@ -161,6 +171,8 @@ public class TeamSelect extends Activity {
                         }
                         else
                         {
+                            data.addLineOut("0", data.getTeamTwo(), data.getTeamOne());
+
                             if(data.getTeamOne().getLineOut())
                             {
                                 data.getTeamOne().incrementOwnLineOutsLost();
@@ -172,6 +184,7 @@ public class TeamSelect extends Activity {
                                 data.getTeamTwo().incrementOwnLineOutsWon();
                             }
                         }
+
                         data.setEndOfFunction(true);
                         finish();
                     }

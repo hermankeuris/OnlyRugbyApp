@@ -28,6 +28,7 @@ public class GameClock
         //if pauseTimeElapsed > 0 then log maybe?
         started = true;
         running = true;
+
         chronometer.start();
     }
 

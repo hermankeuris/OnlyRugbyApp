@@ -76,5 +76,44 @@
                 <category  android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.herman.or_demo_2_withscoringandsubs.eventsList"
+            android:label="Events List" >
+            <intent-filter>
+                <action  android:name="com.example.herman.or_demo_2_withscoringandsubs.eventsList"/>
+
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.herman.or_demo_2_withscoringandsubs.editOrDeleteEvent"
+            android:label="Edit or delete event" >
+            <intent-filter>
+                <action  android:name="com.example.herman.or_demo_2_withscoringandsubs.editOrDeleteEvent"/>
+
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.herman.or_demo_2_withscoringandsubs.createNewEvent"
+            android:label="Create new event" >
+            <intent-filter>
+                <action  android:name="com.example.herman.or_demo_2_withscoringandsubs.createNewEvent"/>
+
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.herman.or_demo_2_withscoringandsubs.AlterEvent"
+            android:label="Alter event" >
+            <intent-filter>
+                <action  android:name="com.example.herman.or_demo_2_withscoringandsubs.AlterEvent"/>
+
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+
+
     </application>
 </manifest>

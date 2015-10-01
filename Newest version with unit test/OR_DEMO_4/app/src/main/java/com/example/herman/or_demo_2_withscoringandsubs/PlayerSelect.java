@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.android.onlyrugbyDemo2.R;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
+import com.example.herman.or_demo_2_withscoringandsubs.Info.Player;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,7 @@ public class PlayerSelect extends Activity {
 
     private Data data = Data.getInstance();
     private Activity activity = this;
+    private Player sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,10 +124,12 @@ public class PlayerSelect extends Activity {
                     }
                 }
                 else {
-                    if (data.getFunctionType() == "Score") {
+                    if (data.getFunctionType() == "Score")
+                    {
                         data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
                         data.getSelectedTeam().addScore(data.getSelectedScoreType());
-                        switch (data.getSelectedScoreType()) {
+                        switch (data.getSelectedScoreType())
+                        {
                             case "Try":
                                 //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
                                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(PlayerSelect.this);
@@ -137,14 +141,19 @@ public class PlayerSelect extends Activity {
                                 alertDialog.setMessage("Did the team score the subsequent conversion kick?");
 
                                 // Setting Positive "Yes" Button
-                                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
+                                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                                {
+                                    public void onClick(DialogInterface dialog, int which)
+                                    {
 
                                         // Write your code here to invoke YES event
                                         //Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
                                         data.setSelectedScoreType("Conversion Kick");
                                         TextView playerText = (TextView) findViewById(R.id.playerText);
                                         playerText.setText("Select the player which scored the " + String.valueOf(data.getSelectedScoreType()).toLowerCase() + ":");
+
+                                        //data.addToEvents("Try+Penalty", "0", data.getSelectedTeam(), null, data.getSelectedTeam().getOnField().get(position), null, null);
+                                        data.addTryConversion("0", data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position), data.getSelectedTeam().getOnField().get(position));
                                         //startActivity(intent);
                                     }
                                 });
@@ -152,6 +161,9 @@ public class PlayerSelect extends Activity {
                                 //Setting Negative "NO" Button
                                 alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
+                                        data.getSelectedTeam().getOnField().get(position).print();
+                                        //data.addToEvents("Try", "1", data.getSelectedTeam(), null, data.getSelectedTeam().getOnField().get(position), null, null);
+                                        data.addTry("0", data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position));
                                         data.setEndOfFunction(true);
                                         finish();
                                     }
@@ -161,24 +173,39 @@ public class PlayerSelect extends Activity {
                                 alertDialog.show();
                                 break;
                             case "Conversion Kick":
+                                data.setEndOfFunction(true);
+                                finish();
+                                break;
                             case "Penalty Kick":
+                                data.addPenaltyKick("0", data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position));
+                                data.setEndOfFunction(true);
+                                finish();
+                                break;
                             case "Drop Kick":
+                                data.addDropKick("0", data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position));
                                 data.setEndOfFunction(true);
                                 finish();
                                 break;
                         }
                     }
-                    else if (data.getFunctionType() == "Substitution") {
+                    else if (data.getFunctionType() == "Substitution")
+                    {
+
                         if (data.getOnFieldPlayers())
                         {
+                            System.out.println("aaaaaaaaaaaaaaaaaaaa");
                             data.setOnFieldPlayers(false);
                             data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
+                            sub = data.getSelectedTeam().getOnField().get(position);
                             /*Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
                             startActivity(intent);*/
                         }
                         else {
+                            System.out.println("bbbbbbbbbbbbbbbbbbbbbb");
                             data.getSelectedTeam().subPlayers(data.getSelectedPlayer(), data.getSelectedTeam().getReserves().get(position));
                             data.setSelectedPlayer(data.getSelectedTeam().getReserves().get(position));
+
+                            data.addToEvents("Substitution", "0:00", data.getSelectedTeam() ,null, sub, data.getSelectedTeam().getReserves().get(position), null);
                             data.setOnFieldPlayers(true);
                             data.setEndOfFunction(true);
                             finish();
