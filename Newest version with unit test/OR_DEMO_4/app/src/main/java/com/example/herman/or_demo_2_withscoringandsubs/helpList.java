@@ -31,7 +31,9 @@ public class helpList extends Activity {
 
         ListView list = (ListView) findViewById(R.id.helpList);
         ArrayList<String> helpTopics = new ArrayList<String>();
-        ArrayAdapter<String> helpAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, helpTopics);
+        /*ArrayAdapter<String> helpAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, helpTopics);
+        list.setAdapter(helpAdapter);*/
+        ArrayAdapter<String> helpAdapter = new CustomListAdapter(this , R.layout.custom_list , helpTopics);
         list.setAdapter(helpAdapter);
 
         helpTopics.add("1   Getting Started");

@@ -47,11 +47,12 @@ public class CustomListAdapter extends ArrayAdapter {
             text.setTextColor(Color.BLACK);
             text.setText(items.get(position));
             //text.setBackgroundColor(Color.RED);
-            if (data.getSelectedTeam().getOnField().get(position).getRedCard() && data.getOnFieldPlayers()) {
-                text.setBackgroundColor(Color.argb(200, 255, 64, 64));
-            }
-            else if (data.getSelectedTeam().getOnField().get(position).getYellowCard() && data.getOnFieldPlayers()) {
-                text.setBackgroundColor(Color.argb(200, 255, 255, 64));
+            if (data.getFunctionType() != "Help") {
+                if (data.getSelectedTeam().getOnField().get(position).getRedCard() && data.getOnFieldPlayers()) {
+                    text.setBackgroundColor(Color.argb(200, 255, 64, 64));
+                } else if (data.getSelectedTeam().getOnField().get(position).getYellowCard() && data.getOnFieldPlayers()) {
+                    text.setBackgroundColor(Color.argb(200, 255, 255, 64));
+                }
             }
         }
         return currentView;
