@@ -54,7 +54,9 @@ public class PlayerSelect extends Activity {
         ListView listOfPlayers = (ListView) findViewById(R.id.playerList);
         //ArrayList<String> players = new ArrayList<String>();
         ArrayList<String> players = displayPlayers();
-        ArrayAdapter<String> playersAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, players);
+        /*ArrayAdapter<String> playersAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, players);
+        listOfPlayers.setAdapter(playersAdapter);*/
+        ArrayAdapter<String> playersAdapter = new CustomListAdapter(this , R.layout.custom_list , players);
         listOfPlayers.setAdapter(playersAdapter);
 
         /*if (data.getOnFieldPlayers())
@@ -74,12 +76,12 @@ public class PlayerSelect extends Activity {
                                     long id) {
                 final int temp = position;
 
-                if(data.getSelectedTeam().getOnField().get(position).getRedCard()) {
+                if(data.getSelectedTeam().getOnField().get(position).getRedCard() && data.getOnFieldPlayers()) {
                     Toast.makeText(activity, "This player has a red card, select another player", Toast.LENGTH_SHORT).show();
                     /**Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
-                    startActivity(intent);**/
+                     startActivity(intent);**/
                 }
-                else if(data.getSelectedTeam().getOnField().get(position).getYellowCard()) {
+                else if(data.getSelectedTeam().getOnField().get(position).getYellowCard() && data.getOnFieldPlayers()) {
                     if (data.getFunctionType().equals("Discipline"))
                     {
                         //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
@@ -109,7 +111,7 @@ public class PlayerSelect extends Activity {
                                 // Write your code here to invoke NO event
                                 Toast.makeText(activity, "This player has a yellow card, select another player", Toast.LENGTH_SHORT).show();
                                 /**Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
-                                startActivity(intent);**/
+                                 startActivity(intent);**/
                             }
                         });
 
@@ -118,7 +120,7 @@ public class PlayerSelect extends Activity {
                     }else {
                         Toast.makeText(activity, "This player has a yellow card, select another player", Toast.LENGTH_SHORT).show();
                         /**Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
-                        startActivity(intent);**/
+                         startActivity(intent);**/
                     }
                 }
                 else {
@@ -208,13 +210,7 @@ public class PlayerSelect extends Activity {
                 if (data.getSelectedTeam().getOnField().get(i).getCurr_position() == 0)
                     _players.add("?? " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
                 else
-                    if(data.getSelectedTeam().getOnField().get(i).getRedCard())
-                        _players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName() + " [Red Card]");
-                    else if(data.getSelectedTeam().getOnField().get(i).getYellowCard()) {
-                        _players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName() + " [Yellow Card]");
-                    }
-                    else
-                        _players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
+                    _players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
             }
         }
         else if (!data.getOnFieldPlayers() && data.getSelectedTeam() != null)
@@ -229,8 +225,8 @@ public class PlayerSelect extends Activity {
 
     /**@Override
     protected void onPause() {
-        super.onPause();
-        finish();
+    super.onPause();
+    finish();
     }**/
     @Override
     protected void onResume() {
