@@ -225,37 +225,4 @@ public class Player {
 
         return printer;
     }
-
-    public void decreaseTries()
-    {
-        playerTry--;
-    }
-
-    public void decreaseConversionKicks()
-    {
-        playerConKick--;
-    }
-    public void decreasePenaltyKicks()
-    {
-        playerPenKick--;
-    }
-    public void decreaseDropKicks()
-    {
-        playerDropKick--;
-    }
-    public void decreaseWhiteCards()
-    {
-        numWhiteCards--;
-    }
-    public void removeYellowCard()
-    {
-        numYellowCards--;
-        yellowCard = false;
-
-    }
-    public void removeRedCard()
-    {
-        numRedCards--;
-        redCard = false;
-    }
 }

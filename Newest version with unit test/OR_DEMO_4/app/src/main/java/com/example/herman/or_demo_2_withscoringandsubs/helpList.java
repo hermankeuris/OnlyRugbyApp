@@ -19,8 +19,7 @@ import java.util.ArrayList;
 /**
  * Created by Muller on 26/08/2015.
  */
-public class helpList extends Activity
-{
+public class helpList extends Activity {
 
     private Data data = Data.getInstance();
     private String message;
@@ -32,7 +31,9 @@ public class helpList extends Activity
 
         ListView list = (ListView) findViewById(R.id.helpList);
         ArrayList<String> helpTopics = new ArrayList<String>();
-        ArrayAdapter<String> helpAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, helpTopics);
+        /*ArrayAdapter<String> helpAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, helpTopics);
+        list.setAdapter(helpAdapter);*/
+        ArrayAdapter<String> helpAdapter = new CustomListAdapter(this , R.layout.custom_list , helpTopics);
         list.setAdapter(helpAdapter);
 
         helpTopics.add("1   Getting Started");
@@ -51,8 +52,6 @@ public class helpList extends Activity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
                 TextView helpText;
-
-
 
                 switch (position)
                 {

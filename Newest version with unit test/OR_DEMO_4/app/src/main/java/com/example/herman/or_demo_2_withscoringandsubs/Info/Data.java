@@ -1,31 +1,21 @@
 package com.example.herman.or_demo_2_withscoringandsubs.Info;
 
-import java.util.ArrayList;
-
 /**
  * Created by Herman on 2015-08-12.
  */
 public class Data {
 
     private static Data instance = null;
-
+    private static String selectedTeam = null;
     private static Team teamOne = null;
     private static Team teamTwo = null;
-
-    private static Player selectedPlayer = null;
-
     private static String selectedScoreType = null;
-    private static String selectedTeam = null;
-    private static String functionType = null;
-
+    private static Player selectedPlayer = null;
     private static Boolean onFieldTeam = true;
+    private static String functionType = null;
     private static Boolean setLineOutTeam = false;
     private static Boolean offlineMode = false;
     private static Boolean endOfFunction = false;
-
-    private static ArrayList<Event> eventsList = new ArrayList();
-
-    private static int eventIndex;
 
     private Data() {}
 
@@ -140,229 +130,5 @@ public class Data {
     {
         return endOfFunction;
     }
-
-    public ArrayList getEvents(){return eventsList;}
-
-    public void addToEvents(String eventType, String time ,Team teamOne, Team teamTwo, Player playerOne, Player platerTwo,String disciplineType)
-    {
-        Event temp = new Event();
-        temp.setEventValues(eventType, time, teamOne, teamTwo, playerOne, platerTwo, disciplineType);
-        eventsList.add(temp);
-
-        System.out.println("==========================");
-
-        for(int i = 0; i < eventsList.size(); i++) {
-
-            Event a = (Event) eventsList.get(i);
-            System.out.println(a.getEvent());
-            System.out.println(a.getTime());
-
-            if(a.getPlayerOne() != null)
-                System.out.println("One" + a.getPlayerOne().getName());
-            if(a.getPlayerTwo() != null)
-            System.out.println("Two" + a.getPlayerTwo().getName());
-        }
-
-        System.out.println("==========================");
-    }
-
-    public void addTry(String time ,Team teamOne, Player playerOne)
-    {
-        Event temp = new Event();
-        temp.addTry(time, teamOne, playerOne);
-        eventsList.add(temp);
-
-        System.out.println("==========================");
-
-        for(int i = 0; i < eventsList.size(); i++) {
-
-            Event a = (Event) eventsList.get(i);
-            System.out.println(a.getEvent());
-            System.out.println(a.getTime());
-
-            if(a.getPlayerOne() != null)
-                System.out.println("One" + a.getPlayerOne().getName());
-            if(a.getPlayerTwo() != null)
-                System.out.println("Two" + a.getPlayerTwo().getName());
-        }
-
-        System.out.println("==========================");
-    }
-
-    public void addTryConversion(String time ,Team teamOne, Player playerOne, Player playerTwo)
-    {
-        Event temp = new Event();
-        temp.addTryConversion(time, teamOne, playerOne, playerTwo);
-        eventsList.add(temp);
-
-        System.out.println("==========================");
-
-        for(int i = 0; i < eventsList.size(); i++) {
-
-            Event a = (Event) eventsList.get(i);
-            System.out.println(a.getEvent());
-            System.out.println(a.getTime());
-
-            if(a.getPlayerOne() != null)
-                System.out.println("One" + a.getPlayerOne().getName());
-            if(a.getPlayerTwo() != null)
-                System.out.println("Two" + a.getPlayerTwo().getName());
-        }
-
-        System.out.println("==========================");
-    }
-
-    public void addPenaltyKick(String time ,Team teamOne, Player playerOne)
-    {
-        Event temp = new Event();
-        temp.addPenaltyKick(time, teamOne, playerOne);
-        eventsList.add(temp);
-
-        System.out.println("==========================");
-
-        for(int i = 0; i < eventsList.size(); i++) {
-
-            Event a = (Event) eventsList.get(i);
-            System.out.println(a.getEvent());
-            System.out.println(a.getTime());
-
-            if(a.getPlayerOne() != null)
-                System.out.println("One" + a.getPlayerOne().getName());
-            if(a.getPlayerTwo() != null)
-                System.out.println("Two" + a.getPlayerTwo().getName());
-        }
-        System.out.println("==========================");
-    }
-
-    public void addDropKick(String time ,Team teamOne, Player playerOne)
-    {
-        Event temp = new Event();
-        temp.addDropKick(time, teamOne, playerOne);
-        eventsList.add(temp);
-
-        System.out.println("==========================");
-
-        for(int i = 0; i < eventsList.size(); i++) {
-
-            Event a = (Event) eventsList.get(i);
-            System.out.println(a.getEvent());
-            System.out.println(a.getTime());
-
-            if(a.getPlayerOne() != null)
-                System.out.println("One" + a.getPlayerOne().getName());
-            if(a.getPlayerTwo() != null)
-                System.out.println("Two" + a.getPlayerTwo().getName());
-        }
-        System.out.println("==========================");
-    }
-
-    public void addRuck(String time ,Team teamOne, Team teamTwo)
-    {
-        Event temp = new Event();
-        temp.addRuck(time, teamOne, teamTwo);
-        eventsList.add(temp);
-
-        System.out.println("==========================");
-
-        for(int i = 0; i < eventsList.size(); i++) {
-
-            Event a = (Event) eventsList.get(i);
-            System.out.println(a.getEvent());
-            System.out.println(a.getTime());
-
-            if(a.getPlayerOne() != null)
-                System.out.println("One" + a.getPlayerOne().getName());
-            if(a.getPlayerTwo() != null)
-                System.out.println("Two" + a.getPlayerTwo().getName());
-        }
-        System.out.println("==========================");
-    }
-
-    public void addLineOut(String time ,Team teamOne,Team teamTwo)
-    {
-        Event temp = new Event();
-        temp.addLineOut(time, teamOne, teamTwo);
-        eventsList.add(temp);
-
-        System.out.println("==========================");
-
-        for(int i = 0; i < eventsList.size(); i++) {
-
-            Event a = (Event) eventsList.get(i);
-            System.out.println(a.getEvent());
-            System.out.println(a.getTime());
-
-            if(a.getPlayerOne() != null)
-                System.out.println("One" + a.getPlayerOne().getName());
-            if(a.getPlayerTwo() != null)
-                System.out.println("Two" + a.getPlayerTwo().getName());
-        }
-        System.out.println("==========================");
-    }
-
-    public void addDiscipline(String time ,Team teamOne,Player playerOne, String card)
-    {
-        Event temp = new Event();
-        temp.addDiscipline(time, teamOne, playerOne, card);
-        eventsList.add(temp);
-
-        System.out.println("==========================");
-
-        for(int i = 0; i < eventsList.size(); i++) {
-
-            Event a = (Event) eventsList.get(i);
-            System.out.println(a.getEvent());
-            System.out.println(a.getTime());
-
-            if(a.getPlayerOne() != null)
-                System.out.println("One" + a.getPlayerOne().getName());
-            if(a.getPlayerTwo() != null)
-                System.out.println("Two" + a.getPlayerTwo().getName());
-        }
-        System.out.println("==========================");
-    }
-
-    public void addTurnover(String time ,Team teamOne,Team teamTwo)
-    {
-        Event temp = new Event();
-        temp.addTurnover(time, teamOne, teamTwo);
-        eventsList.add(temp);
-
-        System.out.println("==========================");
-
-        for(int i = 0; i < eventsList.size(); i++) {
-
-            Event a = (Event) eventsList.get(i);
-            System.out.println(a.getEvent());
-            System.out.println(a.getTime());
-
-            if(a.getPlayerOne() != null)
-                System.out.println("One" + a.getPlayerOne().getName());
-            if(a.getPlayerTwo() != null)
-                System.out.println("Two" + a.getPlayerTwo().getName());
-        }
-        System.out.println("==========================");
-    }
-
-    public void setEventIndex(int i) {eventIndex = i;}
-
-    public int getEventIndex() {return eventIndex;}
-
-    public String getDescriptionAt(int index)
-    {
-        return eventsList.get(index).getDescription();
-    }
-
-    public void removeEventAtIndex(int index)
-    {
-        eventsList.remove(index);
-    }
-
-    public Event getEventAtIndex(int index)
-    {
-        return eventsList.get(index);
-    }
-
-
 }
 

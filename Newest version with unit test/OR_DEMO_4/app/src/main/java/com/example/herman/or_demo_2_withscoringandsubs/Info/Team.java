@@ -214,10 +214,6 @@ public class Team {
         return teamRucksLost;
     }
 
-    public int getPenaltyKicks() {
-        return teamPenKick;
-    }
-
     public void incrementOwnLineOutsWon() {
         ownTeamLineOutsWon++;
     }
@@ -276,58 +272,5 @@ public class Team {
 
         return printer;
     }
-
-    public void decreaseTries() {
-        teamTry--;
-    }
-
-    public void decreaseConversionKicks() {
-        teamConKick--;
-    }
-
-    public void decreasePenaltyKicks() {
-        teamPenKick--;
-    }
-
-    public void decreaseDropKicks() {
-        teamDropKick--;
-    }
-
-    public void decreaseScore(int score) {
-        currentMatchScore -= score;
-    }
-
-    public void decreaseTurnoverLost() {
-        teamTurnoversLost--;
-    }
-
-    public void decreaseTurnoverWon() {
-        teamTurnoversWon--;
-    }
-
-    public void decreaseRuckWon() {
-        teamRucksWon--;
-    }
-
-    public void decreaseRuckLost() {
-        teamRucksLost--;
-    }
-
-    public void decreaseOwnTeamLineOutsWon() {
-        ownTeamLineOutsWon--;
-    }
-
-    public void decreaseOpponentTeamLineOutsWon() {
-        opponentTeamLineOutsWon--;
-    }
-
-    public void decreaseOwnTeamLineOutsLost() {
-        opponentTeamLineOutsLost--;
-    }
-
-    public void decreaseOpponentTeamLineOutsLost() {
-        opponentTeamLineOutsLost--;
-    }
-
 
 }

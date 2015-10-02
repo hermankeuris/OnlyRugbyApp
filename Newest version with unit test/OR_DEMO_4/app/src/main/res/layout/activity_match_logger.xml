@@ -68,7 +68,7 @@
         android:onClick="onClick"
         android:layout_x="100dp"
         android:layout_y="300dp"
-        android:layout_below="@+id/tryBtn"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -80,9 +80,10 @@
         android:onClick="onClick"
         android:layout_x="340dp"
         android:layout_y="300dp"
-        android:layout_alignTop="@+id/ruckBtn"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginTop="38dp"
+        android:layout_below="@+id/substituteBtn"
+        android:layout_alignLeft="@+id/substituteBtn"
+        android:layout_alignStart="@+id/substituteBtn" />
 
     <Button
         android:layout_width="150dp"
@@ -93,9 +94,9 @@
         android:layout_x="100dp"
         android:layout_y="400dp"
         android:singleLine="false"
-        android:layout_below="@+id/dropBtn"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/lineoutBtn"
+        android:layout_alignLeft="@+id/dropBtn"
+        android:layout_alignStart="@+id/dropBtn" />
 
     <Button
         android:layout_width="150dp"
@@ -138,7 +139,7 @@
         android:text="Discipline"
         android:id="@+id/disciplineBtn"
         android:onClick="onClick"
-        android:layout_below="@+id/ruckBtn"
+        android:layout_above="@+id/helpButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/ruckBtn"
@@ -191,19 +192,5 @@
         android:layout_toEndOf="@+id/team2"
         android:layout_toRightOf="@+id/team2"
         android:layout_marginLeft="10dp" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start of Game"
-        android:id="@+id/listButton"
-        android:layout_above="@+id/helpButton"
-        android:layout_marginBottom="29dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="onClick" />
 
 </RelativeLayout>

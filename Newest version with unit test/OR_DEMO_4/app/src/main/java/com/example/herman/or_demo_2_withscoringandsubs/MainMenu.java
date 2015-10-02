@@ -52,7 +52,6 @@ public class MainMenu extends Activity implements View.OnClickListener {
     private Button substituteBtn;
     private Button disciplineBtn;
     private Button turnoverBtn;
-    private Button listBtn;
     //private Button helpBtn;
 
     @Override
@@ -87,7 +86,6 @@ public class MainMenu extends Activity implements View.OnClickListener {
         substituteBtn = (Button) findViewById(R.id.substituteBtn);
         disciplineBtn = (Button) findViewById(R.id.disciplineBtn);
         turnoverBtn = (Button) findViewById(R.id.turnoverButton);
-        listBtn = (Button) findViewById(R.id.listButton);
         //helpBtn = (Button) findViewById(R.id.helpBtn);
 
         tryBtn.setEnabled(false);
@@ -98,7 +96,6 @@ public class MainMenu extends Activity implements View.OnClickListener {
         substituteBtn.setEnabled(false);
         disciplineBtn.setEnabled(false);
         turnoverBtn.setEnabled(false);
-        listBtn.setEnabled(false);
         //helpBtn.setEnabled(false);
     }
 
@@ -150,11 +147,6 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 data.setFunctionType("Help");
                 Intent intent1 = new Intent(new Intent(MainMenu.this, helpList.class));
                 startActivity(intent1);
-                break;
-            case R.id.listButton:
-                listBtn.setText("Pressed");
-                Intent intent2 = new Intent(new Intent(MainMenu.this, eventsList.class));
-                startActivity(intent2);
                 break;
             case R.id.chronometer:
                 if (array.length == 2)
@@ -256,7 +248,6 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 {
                     System.out.println("Clicked Play first time");
                     clock.chronometer.setBase(SystemClock.elapsedRealtime());//stoppedMilliseconds
-                    data.addToEvents("Start of Game", "0:00", null, null, null, null, null);
                     clock.start();
                 }
                 else
@@ -273,7 +264,6 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 substituteBtn.setEnabled(true);
                 disciplineBtn.setEnabled(true);
                 turnoverBtn.setEnabled(true);
-                listBtn.setEnabled(true);
                 //helpBtn.setEnabled(true);
 
                 Toast.makeText(getApplicationContext(), "Timer Started at: "+clock.chronometer.getText().toString(), Toast.LENGTH_SHORT).show();
@@ -286,15 +276,12 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 mytextview.setText("2nd Half");
                 clock.chronometer.stop();
 
+
                 firstHalf = false;
-
-                data.addToEvents("Start of Second Half" , (String) clock.chronometer.getText(), null, null, null, null, null);
-
                 return true;
             case R.id.endGameClock:
                 // Toast.makeText(getApplicationContext(), "Game has ended: "+clock.chronometer.getText().toString(), Toast.LENGTH_SHORT).show();
                 endOfGame = true;
-                data.addToEvents("End of Game" , (String) clock.chronometer.getText(), null, null, null, null, null);
                 clock.chronometer.stop();
                 return true;
 

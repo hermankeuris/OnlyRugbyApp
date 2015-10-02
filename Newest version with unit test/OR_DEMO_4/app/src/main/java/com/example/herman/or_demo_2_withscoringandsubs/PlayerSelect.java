@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.example.android.onlyrugbyDemo2.R;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
-import com.example.herman.or_demo_2_withscoringandsubs.Info.Player;
 
 import java.util.ArrayList;
 
@@ -26,7 +25,6 @@ public class PlayerSelect extends Activity {
 
     private Data data = Data.getInstance();
     private Activity activity = this;
-    private Player sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +54,9 @@ public class PlayerSelect extends Activity {
         ListView listOfPlayers = (ListView) findViewById(R.id.playerList);
         //ArrayList<String> players = new ArrayList<String>();
         ArrayList<String> players = displayPlayers();
-        ArrayAdapter<String> playersAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, players);
+        /*ArrayAdapter<String> playersAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, players);
+        listOfPlayers.setAdapter(playersAdapter);*/
+        ArrayAdapter<String> playersAdapter = new CustomListAdapter(this , R.layout.custom_list , players);
         listOfPlayers.setAdapter(playersAdapter);
 
         /*if (data.getOnFieldPlayers())
@@ -76,12 +76,12 @@ public class PlayerSelect extends Activity {
                                     long id) {
                 final int temp = position;
 
-                if(data.getSelectedTeam().getOnField().get(position).getRedCard()) {
+                if(data.getSelectedTeam().getOnField().get(position).getRedCard() && data.getOnFieldPlayers()) {
                     Toast.makeText(activity, "This player has a red card, select another player", Toast.LENGTH_SHORT).show();
                     /**Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
-                    startActivity(intent);**/
+                     startActivity(intent);**/
                 }
-                else if(data.getSelectedTeam().getOnField().get(position).getYellowCard()) {
+                else if(data.getSelectedTeam().getOnField().get(position).getYellowCard() && data.getOnFieldPlayers()) {
                     if (data.getFunctionType().equals("Discipline"))
                     {
                         //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
@@ -111,7 +111,7 @@ public class PlayerSelect extends Activity {
                                 // Write your code here to invoke NO event
                                 Toast.makeText(activity, "This player has a yellow card, select another player", Toast.LENGTH_SHORT).show();
                                 /**Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
-                                startActivity(intent);**/
+                                 startActivity(intent);**/
                             }
                         });
 
@@ -120,16 +120,14 @@ public class PlayerSelect extends Activity {
                     }else {
                         Toast.makeText(activity, "This player has a yellow card, select another player", Toast.LENGTH_SHORT).show();
                         /**Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
-                        startActivity(intent);**/
+                         startActivity(intent);**/
                     }
                 }
                 else {
-                    if (data.getFunctionType() == "Score")
-                    {
+                    if (data.getFunctionType() == "Score") {
                         data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
                         data.getSelectedTeam().addScore(data.getSelectedScoreType());
-                        switch (data.getSelectedScoreType())
-                        {
+                        switch (data.getSelectedScoreType()) {
                             case "Try":
                                 //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
                                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(PlayerSelect.this);
@@ -141,19 +139,14 @@ public class PlayerSelect extends Activity {
                                 alertDialog.setMessage("Did the team score the subsequent conversion kick?");
 
                                 // Setting Positive "Yes" Button
-                                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener()
-                                {
-                                    public void onClick(DialogInterface dialog, int which)
-                                    {
+                                alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
 
                                         // Write your code here to invoke YES event
                                         //Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
                                         data.setSelectedScoreType("Conversion Kick");
                                         TextView playerText = (TextView) findViewById(R.id.playerText);
                                         playerText.setText("Select the player which scored the " + String.valueOf(data.getSelectedScoreType()).toLowerCase() + ":");
-
-                                        //data.addToEvents("Try+Penalty", "0", data.getSelectedTeam(), null, data.getSelectedTeam().getOnField().get(position), null, null);
-                                        data.addTryConversion("0", data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position), data.getSelectedTeam().getOnField().get(position));
                                         //startActivity(intent);
                                     }
                                 });
@@ -161,9 +154,6 @@ public class PlayerSelect extends Activity {
                                 //Setting Negative "NO" Button
                                 alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        data.getSelectedTeam().getOnField().get(position).print();
-                                        //data.addToEvents("Try", "1", data.getSelectedTeam(), null, data.getSelectedTeam().getOnField().get(position), null, null);
-                                        data.addTry("0", data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position));
                                         data.setEndOfFunction(true);
                                         finish();
                                     }
@@ -173,39 +163,24 @@ public class PlayerSelect extends Activity {
                                 alertDialog.show();
                                 break;
                             case "Conversion Kick":
-                                data.setEndOfFunction(true);
-                                finish();
-                                break;
                             case "Penalty Kick":
-                                data.addPenaltyKick("0", data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position));
-                                data.setEndOfFunction(true);
-                                finish();
-                                break;
                             case "Drop Kick":
-                                data.addDropKick("0", data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position));
                                 data.setEndOfFunction(true);
                                 finish();
                                 break;
                         }
                     }
-                    else if (data.getFunctionType() == "Substitution")
-                    {
-
+                    else if (data.getFunctionType() == "Substitution") {
                         if (data.getOnFieldPlayers())
                         {
-                            System.out.println("aaaaaaaaaaaaaaaaaaaa");
                             data.setOnFieldPlayers(false);
                             data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
-                            sub = data.getSelectedTeam().getOnField().get(position);
-                            /*Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
-                            startActivity(intent);*/
+                            Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
+                            startActivity(intent);
                         }
                         else {
-                            System.out.println("bbbbbbbbbbbbbbbbbbbbbb");
                             data.getSelectedTeam().subPlayers(data.getSelectedPlayer(), data.getSelectedTeam().getReserves().get(position));
                             data.setSelectedPlayer(data.getSelectedTeam().getReserves().get(position));
-
-                            data.addToEvents("Substitution", "0:00", data.getSelectedTeam() ,null, sub, data.getSelectedTeam().getReserves().get(position), null);
                             data.setOnFieldPlayers(true);
                             data.setEndOfFunction(true);
                             finish();
@@ -235,13 +210,7 @@ public class PlayerSelect extends Activity {
                 if (data.getSelectedTeam().getOnField().get(i).getCurr_position() == 0)
                     _players.add("?? " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
                 else
-                    if(data.getSelectedTeam().getOnField().get(i).getRedCard())
-                        _players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName() + " [Red Card]");
-                    else if(data.getSelectedTeam().getOnField().get(i).getYellowCard()) {
-                        _players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName() + " [Yellow Card]");
-                    }
-                    else
-                        _players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
+                    _players.add(data.getSelectedTeam().getOnField().get(i).getCurr_position() + " " + data.getSelectedTeam().getOnField().get(i).getPlayerName());
             }
         }
         else if (!data.getOnFieldPlayers() && data.getSelectedTeam() != null)
@@ -256,8 +225,8 @@ public class PlayerSelect extends Activity {
 
     /**@Override
     protected void onPause() {
-        super.onPause();
-        finish();
+    super.onPause();
+    finish();
     }**/
     @Override
     protected void onResume() {
