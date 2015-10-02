@@ -1,0 +1,5 @@
+When trying to delete an event, a popup should appear to confirm their descision. I tried copying the code 
+for conversion kicks, but it appears for half a second and does nothing.
+
+After an event has been added/altered/deleted, it should redirect back to main page. It flashes white then
+returns back to the list.
