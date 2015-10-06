@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stripedgrass"
+>
+
+    <ListView
+        android:layout_width="335dp"
+        android:layout_height="483dp"
+        android:id="@+id/helpList"
+        android:layout_gravity="center"
+        android:textColor="#000000"
+        style="@style/listView"
+        tools:listitem="@android:layout/simple_list_item_1"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>
