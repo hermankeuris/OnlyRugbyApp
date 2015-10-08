@@ -39,7 +39,9 @@ public class eventsList extends Activity implements View.OnClickListener
 
         ListView list = (ListView) findViewById(R.id.eventsList);
         ArrayList<String> eventsList = new ArrayList<String>();
-        ArrayAdapter<String> eventsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, eventsList);
+        /*ArrayAdapter<String> eventsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, eventsList);
+        list.setAdapter(eventsAdapter);*/
+        ArrayAdapter<String> eventsAdapter = new CustomListAdapter(this , R.layout.custom_list , eventsList);
         list.setAdapter(eventsAdapter);
 
         final int[] timesArr = data.getTimeEventIndexes();

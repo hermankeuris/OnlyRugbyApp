@@ -247,4 +247,10 @@ public class PlayerSelect extends Activity {
         if (data.getEndOfFunction())
             finish();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        data.setOnFieldPlayers(true);
+    }
 }

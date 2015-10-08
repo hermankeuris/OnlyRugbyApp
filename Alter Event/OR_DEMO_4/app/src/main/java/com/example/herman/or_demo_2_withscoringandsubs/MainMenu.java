@@ -159,6 +159,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 startActivity(intent1);
                 break;
             case R.id.listButton:
+                data.setFunctionType("EventList");
                 listBtn.setText("Pressed");
                 Intent intent2 = new Intent(new Intent(MainMenu.this, eventsList.class));
                 startActivity(intent2);

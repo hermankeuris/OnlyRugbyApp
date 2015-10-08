@@ -47,7 +47,7 @@ public class CustomListAdapter extends ArrayAdapter {
             text.setTextColor(Color.BLACK);
             text.setText(items.get(position));
             //text.setBackgroundColor(Color.RED);
-            if (data.getFunctionType() != "Help") {
+            if (!(data.getFunctionType() == "Help" || data.getFunctionType() == "EventList")) {
                 if (data.getSelectedTeam().getOnField().get(position).getRedCard() && data.getOnFieldPlayers()) {
                     text.setBackgroundColor(Color.argb(200, 255, 64, 64));
                 } else if (data.getSelectedTeam().getOnField().get(position).getYellowCard() && data.getOnFieldPlayers()) {
