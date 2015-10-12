@@ -1,0 +1,205 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MatchLogger"
+    android:background="@drawable/stripedgrass"
+>
+
+    <TextView
+        android:text="@string/first_half"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:id="@+id/whichHalf"
+        android:textSize="40sp"
+        android:layout_y="14dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:textColor="#000000" />
+
+    <Chronometer
+        android:id="@+id/chronometer"
+        android:format="%s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:layout_x="337dp"
+        android:layout_y="14dp"
+        android:layout_above="@+id/tryBtn"
+        android:layout_alignLeft="@+id/penaltyBtn"
+        android:layout_alignStart="@+id/penaltyBtn"
+        android:textColor="#8B0000" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Try"
+        android:id="@+id/tryBtn"
+        android:layout_marginTop="76dp"
+        android:onClick="onClick"
+        android:layout_x="100dp"
+        android:layout_y="200dp"
+        android:layout_below="@+id/whichHalf"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Penalty-Kick"
+        android:id="@+id/penaltyBtn"
+        android:onClick="onClick"
+        android:layout_x="340dp"
+        android:layout_y="200dp"
+        android:layout_alignTop="@+id/tryBtn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Drop-Kick"
+        android:id="@+id/dropBtn"
+        android:onClick="onClick"
+        android:layout_x="100dp"
+        android:layout_y="300dp"
+        android:layout_below="@+id/tryBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Line-Out"
+        android:id="@+id/lineoutBtn"
+        android:onClick="onClick"
+        android:layout_x="340dp"
+        android:layout_y="300dp"
+        android:layout_alignTop="@+id/ruckBtn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Ruck"
+        android:id="@+id/ruckBtn"
+        android:onClick="onClick"
+        android:layout_x="100dp"
+        android:layout_y="400dp"
+        android:singleLine="false"
+        android:layout_below="@+id/dropBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Substitution"
+        android:id="@+id/substituteBtn"
+        android:onClick="onClick"
+        android:layout_x="340dp"
+        android:layout_y="400dp"
+        android:layout_alignTop="@+id/dropBtn"
+        android:layout_alignLeft="@+id/penaltyBtn"
+        android:layout_alignStart="@+id/penaltyBtn" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0"
+        android:id="@+id/team1"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/whichHalf"
+        android:layout_alignRight="@+id/tryBtn"
+        android:layout_alignEnd="@+id/tryBtn"
+        android:textColor="#000000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="0"
+        android:id="@+id/team2"
+        android:layout_alignTop="@+id/team1"
+        android:layout_alignLeft="@+id/penaltyBtn"
+        android:layout_alignStart="@+id/chronometer"
+        android:textColor="#000000" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Discipline"
+        android:id="@+id/disciplineBtn"
+        android:onClick="onClick"
+        android:layout_below="@+id/ruckBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/ruckBtn"
+        android:layout_alignEnd="@+id/ruckBtn" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turnover"
+        android:id="@+id/turnoverButton"
+        android:onClick="onClick"
+        android:layout_alignTop="@+id/disciplineBtn"
+        android:layout_alignLeft="@+id/lineoutBtn"
+        android:layout_alignStart="@+id/lineoutBtn"
+        android:layout_alignRight="@+id/lineoutBtn"
+        android:layout_alignEnd="@+id/lineoutBtn" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help"
+        android:id="@+id/helpButton"
+        android:onClick="onClick"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/teamOneLbl"
+        android:layout_alignTop="@+id/team1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/helpButton"
+        android:layout_toStartOf="@+id/helpButton"
+        android:textColor="#000000"
+        android:layout_marginRight="10dp"
+        android:gravity="right" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/teamTwoLbl"
+        android:layout_alignTop="@+id/team2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textColor="#000000"
+        android:layout_toEndOf="@+id/team2"
+        android:layout_toRightOf="@+id/team2"
+        android:layout_marginLeft="10dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start of Game"
+        android:id="@+id/listButton"
+        android:onClick="onClick"
+        android:layout_above="@+id/helpButton"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
