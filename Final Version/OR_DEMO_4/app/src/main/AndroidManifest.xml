@@ -103,5 +103,14 @@
                 <category  android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.herman.or_demo_2_withscoringandsubs.AlterEvent"
+            android:label="Alter event" >
+            <intent-filter>
+                <action  android:name="com.example.herman.or_demo_2_withscoringandsubs.AlterEvent"/>
+
+                <category  android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

@@ -162,7 +162,7 @@ public class Event
         else if(eventType.equals("TryConversion"))
         {
             description = timeStamp.substring(timeStamp.indexOf(" ") + 1) + " " + teamOne.getTeamName() + ": Try by " + playerOne.getPlayerName()
-                    + ", Conversion-kick by " + playerTwo.getPlayerName();
+                    + ", Conversion-kick by " + playerOne.getPlayerName();
             return description;
         }
         else if(eventType.equals("PenaltyKick"))

@@ -56,9 +56,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
     private Button disciplineBtn;
     private Button turnoverBtn;
     private Button listBtn;
-
-    private Button playersBtn;
-    private Button teamBtn;
+    //private Button helpBtn;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -85,8 +83,8 @@ public class MainMenu extends Activity implements View.OnClickListener {
         TextView nameTeamOne = (TextView) findViewById(R.id.teamOneLbl);
         TextView nameTeamTwo = (TextView) findViewById(R.id.teamTwoLbl);
 
-        nameTeamOne.setText(String.valueOf(data.getTeamOne().getTeamName()));
-        nameTeamTwo.setText(String.valueOf(data.getTeamTwo().getTeamName()));
+       // nameTeamOne.setText(String.valueOf(data.getTeamOne().getTeamName()));
+       // nameTeamTwo.setText(String.valueOf(data.getTeamTwo().getTeamName()));
 
         tryBtn = (Button) findViewById(R.id.tryBtn);
         penaltyBtn = (Button) findViewById(R.id.penaltyBtn);
@@ -161,6 +159,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 startActivity(intent1);
                 break;
             case R.id.listButton:
+                data.setFunctionType("EventList");
                 listBtn.setText("Pressed");
                 Intent intent2 = new Intent(new Intent(MainMenu.this, eventsList.class));
                 startActivity(intent2);
@@ -419,7 +418,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
             data.setTeamTwo(new Team("Team B"));
 
             //Team One's on field players
-            data.getTeamOne().addPlayer(new Player("TeamA, Player One", 1, false));
+            data.getTeamOne().addPlayer(new Player("Player One", 1, false));
             data.getTeamOne().addPlayer(new Player("TeamA, Player Two", 2, false));
             data.getTeamOne().addPlayer(new Player("TeamA, Player Three", 3, false));
             data.getTeamOne().addPlayer(new Player("TeamA, Player Four", 4, false));
@@ -459,7 +458,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
             data.getTeamTwo().addPlayer(new Player("TeamB, Player Twelve", 12, false));
             data.getTeamTwo().addPlayer(new Player("TeamB, Player Thirteen", 13, false));
             data.getTeamTwo().addPlayer(new Player("TeamB, Player Fourteen", 14, false));
-            data.getTeamTwo().addPlayer(new Player("Fifteen", 15, false));
+            data.getTeamTwo().addPlayer(new Player("TeamB, Player Fifteen", 15, false));
 
             //Team Two's reserve players
             data.getTeamTwo().addPlayer(new Player("TeamB, Player Sixteen", 16, true));

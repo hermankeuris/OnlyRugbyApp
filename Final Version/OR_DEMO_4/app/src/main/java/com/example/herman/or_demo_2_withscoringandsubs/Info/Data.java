@@ -1,7 +1,6 @@
 package com.example.herman.or_demo_2_withscoringandsubs.Info;
 
 import android.content.Intent;
-import android.widget.ArrayAdapter;
 
 import com.example.android.onlyrugbyDemo2.R;
 
@@ -36,10 +35,6 @@ public class Data {
     private static Boolean customTimeStamp = false;
     private static String timeStampString;
     private static String currentEventString = "Current events";
-
-    private Team lineOutTeam;
-
-    private static ArrayAdapter<String> eventsAdapter;
 
     public int swapIndex;
     public int[] timeEventIndexes = new int[3];
@@ -284,7 +279,7 @@ public class Data {
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        if (calendar.get(Calendar.AM_PM) == Calendar.AM)
+        if(Calendar.AM_PM == 0)
             hour = calendar.get(Calendar.HOUR);
         else
             hour = calendar.get(Calendar.HOUR) + 12;
@@ -292,6 +287,11 @@ public class Data {
         minute = calendar.get(Calendar.MINUTE);
         second = calendar.get(Calendar.SECOND);
 
+        System.out.println("++++++++++++++++++++++++++++++++++");
+        System.out.println(hour);
+        //Ma middag = 1
+        //Voor middag = ?
+        System.out.println("++++++++++++++++++++++++++++++++++");
 
         if(!customTimeStamp) {
             timeStamp = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
@@ -644,6 +644,5 @@ public class Data {
         }
 
     }
-
 }
 

@@ -27,18 +27,18 @@
         android:layout_height="wrap_content"
         android:text="Try"
         android:id="@+id/tryBtn"
-        android:layout_marginTop="47dp"
         android:layout_below="@+id/timeText"
-        android:layout_toLeftOf="@+id/textView4"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/timeText"
+        android:layout_toStartOf="@+id/timeText" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Penalty Kick"
         android:id="@+id/penaltyBtn"
-        android:layout_alignTop="@+id/tryBtn"
+        android:layout_below="@+id/timeText"
         android:layout_toRightOf="@+id/textView4"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -48,10 +48,9 @@
         android:layout_height="wrap_content"
         android:text="Drop-Kick"
         android:id="@+id/dropBtn"
-        android:layout_below="@+id/tryBtn"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="38dp"
         android:layout_alignRight="@+id/tryBtn"
         android:layout_alignEnd="@+id/tryBtn" />
 
@@ -74,7 +73,6 @@
         android:layout_below="@+id/dropBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="34dp"
         android:layout_alignRight="@+id/dropBtn"
         android:layout_alignEnd="@+id/dropBtn" />
 
@@ -97,7 +95,6 @@
         android:layout_below="@+id/ruckBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="34dp"
         android:layout_alignRight="@+id/ruckBtn"
         android:layout_alignEnd="@+id/ruckBtn" />
 

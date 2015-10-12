@@ -18,7 +18,9 @@
         android:layout_height="wrap_content"
         android:text="Delete event"
         android:id="@+id/deleteEventBtn"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/alterEventButton"
+        android:layout_alignLeft="@+id/alterEventButton"
+        android:layout_alignStart="@+id/alterEventButton"
+        android:layout_marginTop="66dp" />
 
 </RelativeLayout>

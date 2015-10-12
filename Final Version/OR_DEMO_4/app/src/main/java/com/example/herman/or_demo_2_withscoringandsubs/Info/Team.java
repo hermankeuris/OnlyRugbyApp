@@ -286,12 +286,6 @@ public class Team {
         teamTry--;
     }
 
-    public int getTries() {
-        return teamTry;
-    }
-    public int getConversionKicks() { return teamConKick;}
-
-
     public void decreaseConversionKicks() {
         teamConKick--;
     }
@@ -349,6 +343,4 @@ public class Team {
         reserves.set(reservesIndex, tempPlayerOne);
     }
 
-    public int getTeamPenKick(){return teamPenKick;}
-    public int getTeamDropKick(){return teamDropKick;}
 }

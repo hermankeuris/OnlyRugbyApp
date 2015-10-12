@@ -44,7 +44,7 @@ public class eventsList extends Activity implements View.OnClickListener
 
         list = (ListView) findViewById(R.id.eventsList);
         eventsList = new ArrayList<String>();
-        eventsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, eventsList);
+        eventsAdapter = new CustomListAdapter(this , R.layout.custom_list , eventsList);
 
         System.out.println("eventsAdapter.toString() 1 " + eventsAdapter.toString());
         list.setAdapter(eventsAdapter);
@@ -65,21 +65,21 @@ public class eventsList extends Activity implements View.OnClickListener
         eventsAdapter.notifyDataSetChanged();
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                TextView helpText;
-                if(position == timesArr[0] || position == timesArr[1] || position == timesArr[2])
-                    Toast.makeText(getApplicationContext(), "Time events cannot be altered or deleted", Toast.LENGTH_SHORT).show();
-                else {
-                    Intent intent = new Intent(new Intent(eventsList.this, editOrDeleteEvent.class));
+                                    {
+                                        @Override
+                                        public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                                        {
+                                            TextView helpText;
+                                            if(position == timesArr[0] || position == timesArr[1] || position == timesArr[2])
+                                                Toast.makeText(getApplicationContext(), "Time events cannot be altered or deleted", Toast.LENGTH_SHORT).show();
+                                            else {
+                                                Intent intent = new Intent(new Intent(eventsList.this, editOrDeleteEvent.class));
 
-                    data.setEventIndex(position);
-                    startActivity(intent);
-                }
-            }
-        }
+                                                data.setEventIndex(position);
+                                                startActivity(intent);
+                                            }
+                                        }
+                                    }
 
 
 

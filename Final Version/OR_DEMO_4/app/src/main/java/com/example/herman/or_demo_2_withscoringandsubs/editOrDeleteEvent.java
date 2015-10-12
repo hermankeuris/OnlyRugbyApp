@@ -42,7 +42,7 @@ public class editOrDeleteEvent extends Activity
             @Override
             public void onClick(View v)
             {
-               // int index1, index2;
+                // int index1, index2;
 
                 switch(v.getId())
                 {
@@ -108,23 +108,20 @@ public class editOrDeleteEvent extends Activity
                         }
 
                         break;
-    //******************************************************************************************************************
+                    //******************************************************************************************************************
                     case R.id.deleteEventBtn:
                         int index = data.getEventIndex();
                         Event temp = data.getEventAtIndex(index);
 
-                        if(temp.getEvent().equals("Try"))
-                        {
-                            if(temp.getTeamOne().hashCode() == data.getTeamOne().hashCode())
-                            {
+                        if(temp.getEvent().equals("Try")) {
+                            if(temp.getTeamOne().hashCode() == data.getTeamOne().hashCode()) {
                                 System.out.println("Team " + temp.getTeamOne().getTeamName());
 
                                 data.getTeamOne().decreaseTries();
                                 data.getTeamOne().decreaseScore(5);
 
-                                for(int i = 0; i < data.getTeamOne().getOnField().size(); i++)
-                                {
-                                    if(temp.getPlayerOne().hashCode() == data.getTeamOne().getOnField().get(i).hashCode()) {
+                                for (int i = 0; i < data.getTeamOne().getOnField().size(); i++) {
+                                    if (temp.getPlayerOne().hashCode() == data.getTeamOne().getOnField().get(i).hashCode()) {
                                         System.out.println("Player " + temp.getPlayerOne().getPlayerName());
                                         playerIndexOne = i;
                                     }
@@ -352,27 +349,27 @@ public class editOrDeleteEvent extends Activity
                             }
                             else
                             {
-                                    for (int i = 0; i < data.getTeamOne().getOnField().size(); i++) {
-                                        if (temp.getPlayerTwo().hashCode() == data.getTeamTwo().getOnField().get(i).hashCode()) {
-                                            playerIndexOne = i;
-                                        }
+                                for (int i = 0; i < data.getTeamOne().getOnField().size(); i++) {
+                                    if (temp.getPlayerTwo().hashCode() == data.getTeamTwo().getOnField().get(i).hashCode()) {
+                                        playerIndexOne = i;
                                     }
+                                }
 
-                                    for (int i = 0; i < data.getTeamTwo().getReserves().size(); i++) {
-                                        if (temp.getPlayerOne().hashCode() == data.getTeamTwo().getReserves().get(i).hashCode()) {
-                                            playerIndexTwo = i;
-                                        }
+                                for (int i = 0; i < data.getTeamTwo().getReserves().size(); i++) {
+                                    if (temp.getPlayerOne().hashCode() == data.getTeamTwo().getReserves().get(i).hashCode()) {
+                                        playerIndexTwo = i;
                                     }
+                                }
 
-                                    data.getTeamTwo().swapOnFieldAndReserves(playerIndexOne, playerIndexTwo);
+                                data.getTeamTwo().swapOnFieldAndReserves(playerIndexOne, playerIndexTwo);
                             }
                         }
 
 
                         data.removeEventAtIndex(index);
 
-                       // Intent intent = new Intent(new Intent(editOrDeleteEvent.this, eventsList.class));
-                       // Intent intent = data.getMainIntent();
+                        // Intent intent = new Intent(new Intent(editOrDeleteEvent.this, eventsList.class));
+                        // Intent intent = data.getMainIntent();
                         //startActivity(intent);
 
                         //setContentView(R.layout.main);

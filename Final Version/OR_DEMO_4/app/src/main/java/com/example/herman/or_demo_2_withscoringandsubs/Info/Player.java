@@ -123,8 +123,7 @@ public class Player {
         return reservePlayer;
     }
 
-    public boolean playerScore(String temp)
-    {System.out.println("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+    public boolean playerScore(String temp) {
         switch(temp) {
             case "Try":
                 playerTry++;
@@ -248,13 +247,6 @@ public class Player {
         numWhiteCards--;
     }
 
-    public int getPlayerConKick(){return playerConKick;}
-
-    public int getTries()
-    {
-        return  playerTry;
-    }
-
     public void removeYellowCard()
     {
         numYellowCards--;
@@ -266,8 +258,4 @@ public class Player {
         numRedCards--;
         redCard = false;
     }
-
-    public int getPlayerPenKick(){return playerPenKick;}
-
-    public int getPlayerDropKick(){return playerDropKick;}
 }
