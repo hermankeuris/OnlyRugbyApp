@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -83,8 +84,8 @@ public class MainMenu extends Activity implements View.OnClickListener {
         TextView nameTeamOne = (TextView) findViewById(R.id.teamOneLbl);
         TextView nameTeamTwo = (TextView) findViewById(R.id.teamTwoLbl);
 
-       // nameTeamOne.setText(String.valueOf(data.getTeamOne().getTeamName()));
-       // nameTeamTwo.setText(String.valueOf(data.getTeamTwo().getTeamName()));
+        nameTeamOne.setText(String.valueOf(data.getTeamOne().getTeamName()));
+        nameTeamTwo.setText(String.valueOf(data.getTeamTwo().getTeamName()));
 
         tryBtn = (Button) findViewById(R.id.tryBtn);
         penaltyBtn = (Button) findViewById(R.id.penaltyBtn);
@@ -375,6 +376,39 @@ public class MainMenu extends Activity implements View.OnClickListener {
             scoreTeamOne.setText(String.valueOf(data.getTeamOne().getScore()));
             scoreTeamTwo.setText(String.valueOf(data.getTeamTwo().getScore()));
         }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+        }
+        TextView scoreTeamOne = (TextView) findViewById(R.id.team1);
+        TextView scoreTeamTwo = (TextView) findViewById(R.id.team2);
+        TextView nameTeamOne = (TextView) findViewById(R.id.teamOneLbl);
+        TextView nameTeamTwo = (TextView) findViewById(R.id.teamTwoLbl);
+
+        if(data.getTeamOne() != null && data.getTeamTwo() != null) {
+            scoreTeamOne.setText(String.valueOf(data.getTeamOne().getScore()));
+            scoreTeamTwo.setText(String.valueOf(data.getTeamTwo().getScore()));
+            nameTeamOne.setText(String.valueOf(data.getTeamOne().getTeamName()));
+            nameTeamTwo.setText(String.valueOf(data.getTeamTwo().getTeamName()));
+        }
+
+        tryBtn.setEnabled(true);
+        penaltyBtn.setEnabled(true);
+        dropBtn.setEnabled(true);
+        lineoutBtn.setEnabled(true);
+        ruckBtn.setEnabled(true);
+        substituteBtn.setEnabled(true);
+        disciplineBtn.setEnabled(true);
+        turnoverBtn.setEnabled(true);
+        listBtn.setEnabled(true);
     }
 
     @Override

@@ -132,6 +132,8 @@ public class PlayerSelect extends Activity {
                                 //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
                                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(PlayerSelect.this);
 
+                                alertDialog.setCancelable(false);
+
                                 // Setting Dialog Title
                                 alertDialog.setTitle("Successful try..");
 
@@ -251,5 +253,12 @@ public class PlayerSelect extends Activity {
         super.onResume();
         if (data.getEndOfFunction())
             finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (data.getSelectedScoreType() != "Conversion kick")
+            super.onBackPressed();
+        data.setOnFieldPlayers(true);
     }
 }
