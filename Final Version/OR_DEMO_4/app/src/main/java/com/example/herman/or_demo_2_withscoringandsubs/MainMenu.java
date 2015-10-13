@@ -205,12 +205,14 @@ public class MainMenu extends Activity implements View.OnClickListener {
                         if(!clock.gameStarted)
                         {
                             inflater.inflate(R.menu.gameclock_start_half, menu);
-                            clock.startClock();
+
+                           //R.menu.gameclock_start_half
+                            //clock.startClock();
                         }
                         else if(clock.clockPlaying)
                         {
                             inflater.inflate(R.menu.gameclock_menu_first_half_playing, menu);
-                            clock.pauseClock();
+                            //clock.pauseClock();
                         }
                         else if(clock.clockPaused)
                         {
@@ -222,7 +224,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
                         if(!clock.gameStarted)
                         {
                             inflater.inflate(R.menu.gameclock_start_half, menu);
-                            clock.startClock();
+                            //clock.startClock();
                             //clock.secondHalfStarted = true;
                         }
                         else if(clock.clockPlaying)
@@ -286,14 +288,17 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 if(!clock.started)
                 {
                     data.addClockEvent(data.generateTimeStamp(), "StartOfGame");
-                    System.out.println("Clicked Play first time");
+                    //System.out.println("Clicked Play first time");
                     clock.chronometer.setBase(SystemClock.elapsedRealtime());//stoppedMilliseconds
+                    clock.startClock();
+                    clock.startClock();
                     clock.start();
                 }
                 else
                 {
                     //System.out.println("Clicked Play");
                     clock.start();
+                    clock.startClock();
                 }
 
                 tryBtn.setEnabled(true);
@@ -335,6 +340,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 clock.stop();
                 Toast.makeText(getApplicationContext(), "Timer Stopped at: "+clock.chronometer.getText().toString(), Toast.LENGTH_SHORT).show();
                 //create pop up prompt to ask for a reason for the pause
+                clock.pauseClock();
                 return true;
             case R.id.pausereason1:
                 System.out.println("Injury");
@@ -353,6 +359,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
             case R.id.resetclock:
                 clock.reset();
                 return true;
+
         }
         /*final View v = item.getActionView();
         v.post(new Runnable()
