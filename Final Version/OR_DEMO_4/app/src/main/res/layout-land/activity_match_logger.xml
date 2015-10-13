@@ -92,7 +92,7 @@
         android:layout_x="100dp"
         android:layout_y="400dp"
         android:singleLine="false"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/tryBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -134,12 +134,11 @@
         android:text="Discipline"
         android:id="@+id/disciplineBtn"
         android:onClick="onClick"
-        android:layout_below="@+id/tryBtn"
+        android:layout_below="@+id/ruckBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="55dp"
-        android:layout_alignRight="@+id/tryBtn"
-        android:layout_alignEnd="@+id/tryBtn" />
+        android:layout_alignRight="@+id/ruckBtn"
+        android:layout_alignEnd="@+id/ruckBtn" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
