@@ -107,13 +107,15 @@ public class editOrDeleteEvent extends Activity
                             startActivity(intent);
                         }
 
+                        data.setEndOfFunction(true);
+                        finish();
                         break;
                     //******************************************************************************************************************
                     case R.id.deleteEventBtn:
-                        /*//AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
+                        //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
                         AlertDialog.Builder alertDialog = new AlertDialog.Builder(editOrDeleteEvent.this);
 
-                        alertDialog.setCancelable(false);
+                        //alertDialog.setCancelable(false);
 
                         // Setting Dialog Title
                         alertDialog.setTitle("Deleting event..");
@@ -124,7 +126,7 @@ public class editOrDeleteEvent extends Activity
                         // Setting Positive "Yes" Button
                         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which)
-                            {*/
+                            {
 
                                 int index = data.getEventIndex();
                                 Event temp = data.getEventAtIndex(index);
@@ -381,11 +383,11 @@ public class editOrDeleteEvent extends Activity
                                     }
                                 }
 
-
                                 data.removeEventAtIndex(index);
-
-                        /*    }
-                        });*/
+                                data.setEndOfFunction(true);
+                                finish();
+                            }
+                        });
 
                         // Intent intent = new Intent(new Intent(editOrDeleteEvent.this, eventsList.class));
                         // Intent intent = data.getMainIntent();
@@ -393,7 +395,7 @@ public class editOrDeleteEvent extends Activity
 
                         //setContentView(R.layout.main);
 
-                        /*//Setting Negative "NO" Button
+                        //Setting Negative "NO" Button
                         alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
@@ -401,13 +403,12 @@ public class editOrDeleteEvent extends Activity
                         });
 
                         // Showing Alert Message
-                        alertDialog.show();*/
-
+                        alertDialog.show();
                         break;
                 }
 
-                data.setEndOfFunction(true);
-                finish();
+                /*data.setEndOfFunction(true);
+                finish();*/
             }
         };
 

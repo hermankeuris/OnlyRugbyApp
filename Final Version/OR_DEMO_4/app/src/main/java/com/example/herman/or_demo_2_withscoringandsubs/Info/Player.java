@@ -22,6 +22,7 @@ public class Player {
     static private int count = 0;
 
     private int  playerTry = 0;
+    private int playerConKickAttempt = 0;
     private int  playerConKick = 0;
     private int  playerPenKick = 0;
     private int  playerDropKick = 0;
@@ -122,6 +123,8 @@ public class Player {
     public boolean getReserve() {
         return reservePlayer;
     }
+
+    public void playerAttemptConversion(){playerConKickAttempt++;}
 
     public boolean playerScore(String temp) {
         switch(temp) {

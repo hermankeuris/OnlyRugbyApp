@@ -126,52 +126,52 @@ public class PlayerSelect extends Activity {
                 else {
                     if (data.getFunctionType() == "Score") {
                         data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
-                        data.getSelectedTeam().addScore(data.getSelectedScoreType());
+                        if (data.getSelectedScoreType() != "Conversion Kick")
+                            data.getSelectedTeam().addScore(data.getSelectedScoreType());
                         switch (data.getSelectedScoreType()) {
                             case "Try":
+                                data.getSelectedPlayer().playerScore("Try");
+                                data.setConversionTryPlayer(data.getSelectedPlayer());
+
+                                data.setSelectedScoreType("Conversion Kick");
+                                data.getSelectedPlayer().playerAttemptConversion();
+                                TextView playerText = (TextView) findViewById(R.id.playerText);
+                                playerText.setText("Select the player which scored the " + String.valueOf(data.getSelectedScoreType()).toLowerCase() + ":");
+                                break;
+                            case "Conversion Kick":
                                 //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
                                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(PlayerSelect.this);
 
                                 alertDialog.setCancelable(false);
 
                                 // Setting Dialog Title
-                                alertDialog.setTitle("Successful try..");
+                                alertDialog.setTitle("Conversion attempt..");
 
                                 // Setting Dialog Message
-                                alertDialog.setMessage("Did the team score the subsequent conversion kick?");
+                                alertDialog.setMessage("Was the conversion kick successful?");
 
                                 // Setting Positive "Yes" Button
                                 alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which)
-                                    {
-                                        data.setSelectedScoreType("Conversion Kick");
-                                        TextView playerText = (TextView) findViewById(R.id.playerText);
-                                        data.setConversionTryPlayer(data.getSelectedPlayer());
-                                        playerText.setText("Select the player which scored the " + String.valueOf(data.getSelectedScoreType()).toLowerCase() + ":");
-
-                                        data.getSelectedPlayer().playerScore("Try");
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        data.getSelectedPlayer().playerScore("Conversion Kick");
+                                        data.getSelectedTeam().addScore("Conversion Kick");
+                                        data.addTryConversion(data.generateTimeStamp(), data.getSelectedTeam(), data.getConversionTryPlayer(), data.getSelectedPlayer());
+                                        data.setEndOfFunction(true);
+                                        finish();
                                     }
                                 });
 
                                 //Setting Negative "NO" Button
                                 alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        data.setEndOfFunction(true);
                                         data.addTry(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedPlayer());
-                                        data.getSelectedPlayer().playerScore("Try");
+                                        data.setEndOfFunction(true);
                                         finish();
                                     }
                                 });
 
                                 // Showing Alert Message
                                 alertDialog.show();
-                                break;
-                            case "Conversion Kick":
-                                data.setEndOfFunction(true);
-                                data.getSelectedPlayer().playerScore("Conversion Kick");
-
-                                data.addTryConversion(data.generateTimeStamp(), data.getSelectedTeam(), data.getConversionTryPlayer(), data.getSelectedPlayer());
-                                finish();
                                 break;
                             case "Penalty Kick":
                                 data.addPenaltyKick(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position));
