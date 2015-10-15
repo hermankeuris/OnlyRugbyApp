@@ -135,11 +135,11 @@ public class PlayerSelect extends Activity {
                                 data.setConversionTryPlayer(data.getSelectedPlayer());
 
                                 data.setSelectedScoreType("Conversion Kick");
+                                TextView playerText = (TextView) findViewById(R.id.playerText);
+                                playerText.setText("Select the player which scored the " + String.valueOf(data.getSelectedScoreType()).toLowerCase() + ":");
                                 break;
                             case "Conversion Kick":
                                 data.getSelectedPlayer().playerAttemptConversion();
-                                TextView playerText = (TextView) findViewById(R.id.playerText);
-                                playerText.setText("Select the player which scored the " + String.valueOf(data.getSelectedScoreType()).toLowerCase() + ":");
 
                                 //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
                                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(PlayerSelect.this);
