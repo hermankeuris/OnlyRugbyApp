@@ -101,9 +101,9 @@ public class editOrDeleteEvent extends Activity
                             data.setFunctionType("Discipline");
                             startActivity(intent);
                         }
-                        else if(temp1.getEvent().equals("Ruck"))
+                        else if(temp1.getEvent().equals("Scrum"))
                         {
-                            data.setFunctionType("Ruck");
+                            data.setFunctionType("Scrum");
                             startActivity(intent);
                         }
 
@@ -274,32 +274,32 @@ public class editOrDeleteEvent extends Activity
                                         data.getTeamTwo().getOnField().get(playerIndexOne).decreaseDropKicks();
                                     }
                                 }
-                                else if(temp.getEvent().equals("Ruck"))
+                                else if(temp.getEvent().equals("Scrum"))
                                 {
                                     if(temp.getTeamOne().hashCode() == data.getTeamOne().hashCode())
                                     {
-                                        data.getTeamOne().decreaseRuckWon();
-                                        data.getTeamTwo().decreaseRuckLost();
+                                        data.getTeamOne().decreaseScrumsWon();
+                                        data.getTeamTwo().decreaseScrumsLost();
                                     }
                                     else
                                     {
                                         System.out.println("Team " + temp.getTeamOne().getTeamName());
 
-                                        data.getTeamTwo().decreaseRuckWon();
-                                        data.getTeamOne().decreaseRuckLost();
+                                        data.getTeamTwo().decreaseScrumsWon();
+                                        data.getTeamOne().decreaseScrumsLost();
                                     }
                                 }
                                 else if(temp.getEvent().equals("LineOut"))//?? how to increment/decrement lossess
                                 {
                                     if(temp.getTeamOne().hashCode() == data.getTeamOne().hashCode())
                                     {
-                                        data.getTeamOne().decreaseRuckWon();
-                                        data.getTeamTwo().decreaseRuckLost();
+                                        //data.getTeamOne().decreaseRuckWon();
+                                        //data.getTeamTwo().decreaseRuckLost();
                                     }
                                     else
                                     {
-                                        data.getTeamTwo().decreaseRuckWon();
-                                        data.getTeamOne().decreaseRuckLost();
+                                        //data.getTeamTwo().decreaseRuckWon();
+                                        //data.getTeamOne().decreaseRuckLost();
                                     }
                                 }
                                 else if(temp.getEvent().equals("Discipline"))

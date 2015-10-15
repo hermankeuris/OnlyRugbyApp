@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ruck"
-        android:id="@+id/ruckBtn"
+        android:id="@+id/scrumBtn"
         android:layout_below="@+id/dropBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:text="Line-Out"
         android:id="@+id/lineOutBtn"
-        android:layout_alignTop="@+id/ruckBtn"
+        android:layout_alignTop="@+id/scrumBtn"
         android:layout_alignRight="@+id/substituteBtn"
         android:layout_alignEnd="@+id/substituteBtn"
         android:layout_alignLeft="@+id/penaltyBtn"
@@ -93,11 +93,11 @@
         android:layout_height="wrap_content"
         android:text="Discipline"
         android:id="@+id/disciplineBtn"
-        android:layout_below="@+id/ruckBtn"
+        android:layout_below="@+id/scrumBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/ruckBtn"
-        android:layout_alignEnd="@+id/ruckBtn" />
+        android:layout_alignRight="@+id/scrumBtn"
+        android:layout_alignEnd="@+id/scrumBtn" />
 
     <Button
         android:layout_width="wrap_content"

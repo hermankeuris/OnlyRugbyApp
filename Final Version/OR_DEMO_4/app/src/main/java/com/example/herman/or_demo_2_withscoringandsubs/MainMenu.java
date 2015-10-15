@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.res.Configuration;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -23,8 +20,6 @@ import com.example.android.onlyrugbyDemo2.R;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Player;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Team;
-
-import java.util.Collections;
 
 /**
  * Created by Muller on 27/08/2015.
@@ -52,7 +47,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
     private Button penaltyBtn;
     private Button dropBtn;
     private Button lineoutBtn;
-    private Button ruckBtn;
+    private Button scrumBtn;
     private Button substituteBtn;
     private Button disciplineBtn;
     private Button turnoverBtn;
@@ -91,7 +86,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
         penaltyBtn = (Button) findViewById(R.id.penaltyBtn);
         dropBtn = (Button) findViewById(R.id.dropBtn);
         lineoutBtn = (Button) findViewById(R.id.lineoutBtn);
-        ruckBtn = (Button) findViewById(R.id.ruckBtn);
+        scrumBtn = (Button) findViewById(R.id.scrumBtn);
         substituteBtn = (Button) findViewById(R.id.substituteBtn);
         disciplineBtn = (Button) findViewById(R.id.disciplineBtn);
         turnoverBtn = (Button) findViewById(R.id.turnoverButton);
@@ -102,7 +97,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
         penaltyBtn.setEnabled(false);
         dropBtn.setEnabled(false);
         lineoutBtn.setEnabled(false);
-        ruckBtn.setEnabled(false);
+        scrumBtn.setEnabled(false);
         substituteBtn.setEnabled(false);
         disciplineBtn.setEnabled(false);
         turnoverBtn.setEnabled(false);
@@ -146,8 +141,8 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 data.setFunctionType("Turnover");
                 startActivity(intent);
                 break;
-            case R.id.ruckBtn:
-                data.setFunctionType("Ruck");
+            case R.id.scrumBtn:
+                data.setFunctionType("Scrum");
                 startActivity(intent);
                 break;
             case R.id.lineoutBtn:
@@ -302,7 +297,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 penaltyBtn.setEnabled(true);
                 dropBtn.setEnabled(true);
                 lineoutBtn.setEnabled(true);
-                ruckBtn.setEnabled(true);
+                scrumBtn.setEnabled(true);
                 substituteBtn.setEnabled(true);
                 disciplineBtn.setEnabled(true);
                 turnoverBtn.setEnabled(true);
@@ -407,7 +402,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
         penaltyBtn.setEnabled(true);
         dropBtn.setEnabled(true);
         lineoutBtn.setEnabled(true);
-        ruckBtn.setEnabled(true);
+        scrumBtn.setEnabled(true);
         substituteBtn.setEnabled(true);
         disciplineBtn.setEnabled(true);
         turnoverBtn.setEnabled(true);

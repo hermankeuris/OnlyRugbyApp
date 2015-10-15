@@ -41,7 +41,7 @@ public class helpList extends Activity {
         helpTopics.add("3   Penalty-Kicks");
         helpTopics.add("4   Drop-Kicks");
         helpTopics.add("5   Substitutions");
-        helpTopics.add("6   Rucks");
+        helpTopics.add("6   Scrums");
         helpTopics.add("7   Line-outs");
         helpTopics.add("8   Discipline");
         helpTopics.add("9   Turnovers");

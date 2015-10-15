@@ -39,8 +39,8 @@ public class TeamSelect extends Activity {
             case "Turnover":
                 teamText.setText("Select the team who won the turnover:");
                 break;
-            case "Ruck":
-                teamText.setText("Select the team who won the ruck:");
+            case "Scrum":
+                teamText.setText("Select the team who won the scrum:");
                 break;
             case "LineOut":
                 if (!data.getLineOutTeam())
@@ -118,23 +118,23 @@ public class TeamSelect extends Activity {
                     data.setEndOfFunction(true);
                     finish();
                 }
-                else if (data.getFunctionType().equals("Ruck"))
+                else if (data.getFunctionType().equals("Scrum"))
                 {
 
 
                     if (data.getSelectedTeam() == data.getTeamOne())
                     {
-                        data.addRuck(data.generateTimeStamp(), data.getTeamOne(), data.getTeamTwo());
+                        data.addScrum(data.generateTimeStamp(), data.getTeamOne(), data.getTeamTwo());
 
-                        data.getTeamOne().incrementRucksWon();
-                        data.getTeamTwo().incrementRucksLost();
+                        data.getTeamOne().incrementScrumsWon();
+                        data.getTeamTwo().incrementScrumsLost();
                     }
                     else
                     {
-                        data.addRuck(data.generateTimeStamp(), data.getTeamTwo(), data.getTeamOne());
+                        data.addScrum(data.generateTimeStamp(), data.getTeamTwo(), data.getTeamOne());
 
-                        data.getTeamTwo().incrementRucksWon();
-                        data.getTeamOne().incrementRucksLost();
+                        data.getTeamTwo().incrementScrumsWon();
+                        data.getTeamOne().incrementScrumsLost();
                     }
                     data.setEndOfFunction(true);
                     finish();

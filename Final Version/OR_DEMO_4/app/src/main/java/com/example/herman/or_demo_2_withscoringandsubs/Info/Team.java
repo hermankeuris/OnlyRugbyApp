@@ -14,8 +14,8 @@ public class Team {
     private int  teamDropKick = 0;
     private int teamTurnoversWon = 0;
     private int teamTurnoversLost = 0;
-    private int teamRucksWon = 0;
-    private int teamRucksLost = 0;
+    private int teamScrumsWon = 0;
+    private int teamScrumsLost = 0;
     private int ownTeamLineOutsWon = 0;
     private int opponentTeamLineOutsWon = 0;
     private int ownTeamLineOutsLost = 0;
@@ -198,25 +198,25 @@ public class Team {
         return teamTurnoversLost;
     }
 
-    public void incrementRucksWon() {
-        teamRucksWon++;
+    public void incrementScrumsWon() {
+        teamScrumsWon++;
     }
 
-    public void incrementRucksLost() {
-        teamRucksLost++;
+    public void incrementScrumsLost() {
+        teamScrumsLost++;
     }
 
     public int getPenaltyKicks() {
         return teamPenKick;
     }
 
-    public int getRucksWon()
+    public int getScrumsWon()
     {
-        return teamRucksWon;
+        return teamScrumsWon;
     }
 
-    public int getRucksLost() {
-        return teamRucksLost;
+    public int getScrumsLost() {
+        return teamScrumsLost;
     }
 
     public void incrementOwnLineOutsWon() {
@@ -310,12 +310,12 @@ public class Team {
         teamTurnoversWon--;
     }
 
-    public void decreaseRuckWon() {
-        teamRucksWon--;
+    public void decreaseScrumsWon() {
+        teamScrumsWon--;
     }
 
-    public void decreaseRuckLost() {
-        teamRucksLost--;
+    public void decreaseScrumsLost() {
+        teamScrumsLost--;
     }
 
     public void decreaseOwnTeamLineOutsWon() {

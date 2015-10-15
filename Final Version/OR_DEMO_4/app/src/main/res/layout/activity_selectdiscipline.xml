@@ -17,7 +17,8 @@
         android:layout_alignRight="@+id/yellowCardButton"
         android:layout_alignEnd="@+id/yellowCardButton"
         android:layout_alignLeft="@+id/yellowCardButton"
-        android:layout_alignStart="@+id/yellowCardButton" />
+        android:layout_alignStart="@+id/yellowCardButton"
+        android:visibility="invisible" />
 
     <Button
         android:layout_width="wrap_content"
@@ -54,6 +55,7 @@
         android:text="TEST"
         android:maxWidth="300dp"
         android:gravity="center"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:textStyle="bold" />
 
 </RelativeLayout>

@@ -196,10 +196,10 @@ public class Data {
         eventsList.add(temp);
     }
 
-    public void addRuck(String time, Team teamOne, Team teamTwo)
+    public void addScrum(String time, Team teamOne, Team teamTwo)
     {
         Event temp = new Event();
-        temp.addRuck(time, teamOne, teamTwo);
+        temp.addScrum(time, teamOne, teamTwo);
         eventsList.add(temp);
     }
 
@@ -534,32 +534,32 @@ public class Data {
                 getTeamTwo().getOnField().get(playerIndexOne).decreaseDropKicks();
             }
         }
-        else if(temp.getEvent().equals("Ruck"))
+        else if(temp.getEvent().equals("Scrum"))
         {
             if(temp.getTeamOne().hashCode() == getTeamOne().hashCode())
             {
-                getTeamOne().decreaseRuckWon();
-                getTeamTwo().decreaseRuckLost();
+                getTeamOne().decreaseScrumsWon();
+                getTeamTwo().decreaseScrumsLost();
             }
             else
             {
                 System.out.println("Team " + temp.getTeamOne().getTeamName());
 
-                getTeamTwo().decreaseRuckWon();
-                getTeamOne().decreaseRuckLost();
+                getTeamTwo().decreaseScrumsWon();
+                getTeamOne().decreaseScrumsLost();
             }
         }
         else if(temp.getEvent().equals("LineOut"))//?? how to increment/decrement lossess
         {
             if(temp.getTeamOne().hashCode() == getTeamOne().hashCode())
             {
-                getTeamOne().decreaseRuckWon();
-                getTeamTwo().decreaseRuckLost();
+                //getTeamOne().decreaseRuckWon();
+                //getTeamTwo().decreaseRuckLost();
             }
             else
             {
-                getTeamTwo().decreaseRuckWon();
-                getTeamOne().decreaseRuckLost();
+                //getTeamTwo().decreaseRuckWon();
+                //getTeamOne().decreaseRuckLost();
             }
         }
         else if(temp.getEvent().equals("Discipline"))
