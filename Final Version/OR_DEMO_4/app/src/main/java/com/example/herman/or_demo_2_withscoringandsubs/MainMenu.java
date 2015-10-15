@@ -205,12 +205,12 @@ public class MainMenu extends Activity implements View.OnClickListener {
                         if(!clock.gameStarted)
                         {
                             inflater.inflate(R.menu.gameclock_start_half, menu);
-                            clock.startClock();
+                            //clock.startClock();
                         }
                         else if(clock.clockPlaying)
                         {
                             inflater.inflate(R.menu.gameclock_menu_first_half_playing, menu);
-                            clock.pauseClock();
+                            //clock.pauseClock();
                         }
                         else if(clock.clockPaused)
                         {
@@ -222,7 +222,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
                         if(!clock.gameStarted)
                         {
                             inflater.inflate(R.menu.gameclock_start_half, menu);
-                            clock.startClock();
+                            //clock.startClock();
                             //clock.secondHalfStarted = true;
                         }
                         else if(clock.clockPlaying)
@@ -288,11 +288,13 @@ public class MainMenu extends Activity implements View.OnClickListener {
                     data.addClockEvent(data.generateTimeStamp(), "StartOfGame");
                     System.out.println("Clicked Play first time");
                     clock.chronometer.setBase(SystemClock.elapsedRealtime());//stoppedMilliseconds
-                    clock.start();
+                    clock.startClock();
+		    clock.start();
                 }
                 else
                 {
                     //System.out.println("Clicked Play");
+			clock.startClock();
                     clock.start();
                 }
 
@@ -335,6 +337,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 clock.stop();
                 Toast.makeText(getApplicationContext(), "Timer Stopped at: "+clock.chronometer.getText().toString(), Toast.LENGTH_SHORT).show();
                 //create pop up prompt to ask for a reason for the pause
+	    clock.pauseClock();
                 return true;
             case R.id.pausereason1:
                 System.out.println("Injury");
