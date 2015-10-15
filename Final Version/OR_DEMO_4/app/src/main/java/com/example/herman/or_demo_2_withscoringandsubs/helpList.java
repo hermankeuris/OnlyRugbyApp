@@ -41,11 +41,15 @@ public class helpList extends Activity {
         helpTopics.add("3   Penalty-Kicks");
         helpTopics.add("4   Drop-Kicks");
         helpTopics.add("5   Substitutions");
-        helpTopics.add("6   Scrums");
+        helpTopics.add("6   Rucks");
         helpTopics.add("7   Line-outs");
         helpTopics.add("8   Discipline");
         helpTopics.add("9   Turnovers");
         helpTopics.add("10  The Timer");
+        helpTopics.add("11  Events List");
+        helpTopics.add("11  Events List: Add new event");
+        helpTopics.add("12  Events List: Alter event");
+        helpTopics.add("13  Events List: Delete event");
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -148,17 +152,65 @@ public class helpList extends Activity {
                         helpText.setText(message);
                         break;
                     case 9:
+                    setContentView(R.layout.helppage);
+                    helpText = (TextView) findViewById(R.id.helpPageText);
+
+                    message =   "1. Press on the Timer \n" +
+                            "2. Choose one of the options available: \n" +
+                            "2.1 Play: Starts the game \n" +
+                            "2.2 Pause: Pauses the game \n" +
+                            "2.3 Reset: Resets the timer to 00:00 - Use with caution \n" +
+                            "2.4 Start Second Half: Starts the second half of the game \n" +
+                            "2.5 End Game Clock: Ends the match";
+
+                    helpText.setText(message);
+                    break;
+                    case 10:
                         setContentView(R.layout.helppage);
                         helpText = (TextView) findViewById(R.id.helpPageText);
 
-                        message =   "1. Press on the Timer \n" +
-                                    "2. Choose one of the options available: \n" +
-                                    "2.1 Play: Starts the game \n" +
-                                    "2.2 Pause: Pauses the game \n" +
-                                    "2.3 Reset: Resets the timer to 00:00 - Use with caution \n" +
-                                    "2.4 Start Second Half: Starts the second half of the game \n" +
-                                    "2.5 End Game Clock: Ends the match";
+                        message =   "1. Displays all events in chronological order \n" +
+                                    "2. Pressing Add new event will open a page to add an event with a custom time. See 12 \n" +
+                                    "3  Pressing an event will allow you to alter/delete the event. See 13 and 14 respectively\n" +
+                                    "4  Start Of Game, Start Of SecondHalf and End Of Game events cannot be altered/deleted \n";
+                        helpText.setText(message);
+                        break;
+                    case 11:
+                        setContentView(R.layout.helppage);
+                        helpText = (TextView) findViewById(R.id.helpPageText);
 
+                        message =   "1. The box at the top allows you to enter a custom time stamp. \n" +
+                                    "2. The format is: hh:mm:ss. \n" +
+                                    "3  If the format is incorrect, the current time will be used as the timestamp\n" +
+                                    "4  You can then choose the event that occurred. Their data is added in the same way" +
+                                        " as those in the main menu\n";
+                        helpText.setText(message);
+                        break;
+                    case 12:
+                        setContentView(R.layout.helppage);
+                        helpText = (TextView) findViewById(R.id.helpPageText);
+
+                        message =   "1. You will follow the same process that was used to create the origonal event. \n" +
+                                    "2. But, the alterations will replace the origonal event \n";
+                        helpText.setText(message);
+                        break;
+                    case 13:
+                        setContentView(R.layout.helppage);
+                        helpText = (TextView) findViewById(R.id.helpPageText);
+
+                        message =   "1. Tap on and event and choose Alter Event. \n" +
+                                    "2. You will follow the same process that was used to create the origonal event. \n" +
+                                    "3. But, the alterations will replace the origonal event \n";
+                        helpText.setText(message);
+                        break;
+                    case 14:
+                        setContentView(R.layout.helppage);
+                        helpText = (TextView) findViewById(R.id.helpPageText);
+
+                        message =   "1. Tap on and event and choose Delete Event. \n" +
+                                    "2. A popup will appear, asking if you wish to delete the event. \n" +
+                                    "3. Choosing yes will delete the event and reverse its changes (decrementing score, etc.) \n" +
+                                    "4. Choosing no will not cause any changes \n";
                         helpText.setText(message);
                         break;
                 }
