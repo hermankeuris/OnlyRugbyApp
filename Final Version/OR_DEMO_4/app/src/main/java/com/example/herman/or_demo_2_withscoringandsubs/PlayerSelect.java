@@ -75,13 +75,14 @@ public class PlayerSelect extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, final int position,
                                     long id) {
                 final int temp = position;
+                data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(temp));
 
-                if(data.getSelectedTeam().getOnField().get(position).getRedCard() && data.getOnFieldPlayers()) {
+                if(data.getSelectedTeam().getPlayers().get(position).getRedCard() && data.getOnFieldPlayers()) {
                     Toast.makeText(activity, "This player has a red card, select another player", Toast.LENGTH_SHORT).show();
                     /**Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
                      startActivity(intent);**/
                 }
-                else if(data.getSelectedTeam().getOnField().get(position).getYellowCard() && data.getOnFieldPlayers()) {
+                else if(data.getSelectedTeam().getPlayers().get(position).getYellowCard() && data.getOnFieldPlayers()) {
                     if (data.getFunctionType().equals("Discipline"))
                     {
                         //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
@@ -98,7 +99,7 @@ public class PlayerSelect extends Activity {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 // Write your code here to invoke YES event
-                                data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(temp));
+                                //data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(temp));
                                 data.getSelectedPlayer().setYellowCard(false);
                                 data.setEndOfFunction(true);
                                 finish();
@@ -125,7 +126,7 @@ public class PlayerSelect extends Activity {
                 }
                 else {
                     if (data.getFunctionType() == "Score") {
-                        data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
+                        data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
                         if (data.getSelectedScoreType() != "Conversion Kick")
                             data.getSelectedTeam().addScore(data.getSelectedScoreType());
                         switch (data.getSelectedScoreType()) {
@@ -134,11 +135,12 @@ public class PlayerSelect extends Activity {
                                 data.setConversionTryPlayer(data.getSelectedPlayer());
 
                                 data.setSelectedScoreType("Conversion Kick");
+                                break;
+                            case "Conversion Kick":
                                 data.getSelectedPlayer().playerAttemptConversion();
                                 TextView playerText = (TextView) findViewById(R.id.playerText);
                                 playerText.setText("Select the player which scored the " + String.valueOf(data.getSelectedScoreType()).toLowerCase() + ":");
-                                break;
-                            case "Conversion Kick":
+
                                 //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
                                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(PlayerSelect.this);
 
@@ -174,13 +176,13 @@ public class PlayerSelect extends Activity {
                                 alertDialog.show();
                                 break;
                             case "Penalty Kick":
-                                data.addPenaltyKick(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position));
+                                data.addPenaltyKick(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedTeam().getPlayers().get(position));
                                 data.setEndOfFunction(true);
                                 data.getSelectedPlayer().playerScore("Penalty Kick");
                                 finish();
                                 break;
                             case "Drop Kick":
-                                data.addDropKick(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position));
+                                data.addDropKick(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedTeam().getPlayers().get(position));
                                 data.setEndOfFunction(true);
                                 data.getSelectedPlayer().playerScore("Drop Kick");
                                 finish();
@@ -191,15 +193,15 @@ public class PlayerSelect extends Activity {
                         if (data.getOnFieldPlayers())
                         {
                             data.setOnFieldPlayers(false);
-                            data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
-                            data.setSubstitutePlayer(data.getSelectedTeam().getOnField().get(position));
+                            data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
+                            data.setSubstitutePlayer(data.getSelectedTeam().getPlayers().get(position));
                             Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
                             startActivity(intent);
                         }
                         else {
-                            data.addSubstitution(data.generateTimeStamp(), data.getSelectedTeam(), data.getSubstitutePlayer(), data.getSelectedTeam().getReserves().get(position));
-                            data.getSelectedTeam().subPlayers(data.getSelectedPlayer(), data.getSelectedTeam().getReserves().get(position));
-                            data.setSelectedPlayer(data.getSelectedTeam().getReserves().get(position));
+                            data.addSubstitution(data.generateTimeStamp(), data.getSelectedTeam(), data.getSubstitutePlayer(), data.getSelectedTeam().getPlayers().get(position));
+                            //data.getSelectedTeam().subPlayers(data.getSelectedPlayer(), data.getSelectedTeam().getPlayers().get(position));
+                            data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
                             data.setOnFieldPlayers(true);
                             data.setEndOfFunction(true);
 
@@ -208,7 +210,7 @@ public class PlayerSelect extends Activity {
                     }
                     else if (data.getFunctionType() == "Discipline")
                     {
-                        data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
+                        data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
                         Intent intent = new Intent(new Intent(PlayerSelect.this, AssignDiscipline.class));
                         startActivity(intent);
                     }
@@ -220,7 +222,7 @@ public class PlayerSelect extends Activity {
     public ArrayList<String> displayPlayers()
     {
         ArrayList<String> _players = new ArrayList<String>();
-        int num = 15;
+        /*int num = 15;
 
         if (data.getOnFieldPlayers() && data.getSelectedTeam() != null) {
             if (data.getFunctionType() == "Score")
@@ -240,6 +242,16 @@ public class PlayerSelect extends Activity {
                 else
                     _players.add(data.getSelectedTeam().getReserves().get(i).getCurr_position() + " " + data.getSelectedTeam().getReserves().get(i).getPlayerName());
             }
+        return _players;*/
+        if (data.getSelectedTeam() != null) {
+            for (int i = 0; i < 23; i++) {
+                if (data.getSelectedTeam().getPlayers().get(i).getCurr_position() == 0)
+                    _players.add("?? " + data.getSelectedTeam().getPlayers().get(i).getPlayerName());
+                else
+                    _players.add(data.getSelectedTeam().getPlayers().get(i).getCurr_position() + " " + data.getSelectedTeam().getPlayers().get(i).getPlayerName());
+            }
+        }
+
         return _players;
     }
 

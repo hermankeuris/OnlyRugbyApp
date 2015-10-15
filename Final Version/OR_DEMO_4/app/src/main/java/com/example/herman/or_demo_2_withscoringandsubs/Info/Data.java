@@ -397,29 +397,29 @@ public class Data {
                 getTeamOne().decreaseTries();
                 getTeamOne().decreaseScore(5);
 
-                for(int i = 0; i < getTeamOne().getOnField().size(); i++)
+                for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerOne().hashCode() == getTeamOne().getOnField().get(i).hashCode()) {
+                    if(temp.getPlayerOne().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
                         System.out.println("Player " + temp.getPlayerOne().getPlayerName());
                         playerIndexOne = i;
                     }
                 }
 
-                getTeamOne().getOnField().get(playerIndexOne).decreaseTries();
+                getTeamOne().getPlayers().get(playerIndexOne).decreaseTries();
             }
             else
             {
                 getTeamTwo().decreaseTries();
                 getTeamTwo().decreaseScore(5);
 
-                for(int i = 0; i < getTeamTwo().getOnField().size(); i++)
+                for(int i = 0; i < getTeamTwo().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerOne().hashCode() == getTeamTwo().getOnField().get(i).hashCode()) {
+                    if(temp.getPlayerOne().hashCode() == getTeamTwo().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                getTeamTwo().getOnField().get(playerIndexOne).decreaseTries();
+                getTeamTwo().getPlayers().get(playerIndexOne).decreaseTries();
             }
         }
         else if(temp.getEvent().equals("TryConversion"))
@@ -430,22 +430,22 @@ public class Data {
                 getTeamOne().decreaseConversionKicks();
                 getTeamOne().decreaseScore(7);
 
-                for(int i = 0; i < getTeamOne().getOnField().size(); i++)
+                for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerOne().hashCode() == getTeamOne().getOnField().get(i).hashCode()) {
+                    if(temp.getPlayerOne().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                getTeamOne().getOnField().get(playerIndexOne).decreaseTries();
+                getTeamOne().getPlayers().get(playerIndexOne).decreaseTries();
 
-                for(int i = 0; i < getTeamOne().getOnField().size(); i++)
+                for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerTwo().hashCode() == getTeamOne().getOnField().get(i).hashCode()) {
+                    if(temp.getPlayerTwo().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
-                getTeamOne().getOnField().get(playerIndexTwo).decreaseConversionKicks();
+                getTeamOne().getPlayers().get(playerIndexTwo).decreaseConversionKicks();
             }
             else
             {
@@ -453,23 +453,23 @@ public class Data {
                 getTeamTwo().decreaseConversionKicks();
                 getTeamTwo().decreaseScore(7);
 
-                for(int i = 0; i < getTeamTwo().getOnField().size(); i++)
+                for(int i = 0; i < getTeamTwo().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerOne().hashCode() == getTeamTwo().getOnField().get(i).hashCode()) {
+                    if(temp.getPlayerOne().hashCode() == getTeamTwo().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                getTeamTwo().getOnField().get(playerIndexOne).decreaseTries();
+                getTeamTwo().getPlayers().get(playerIndexOne).decreaseTries();
 
-                for(int i = 0; i < getTeamOne().getOnField().size(); i++)
+                for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerTwo().hashCode() == getTeamTwo().getOnField().get(i).hashCode()) {
+                    if(temp.getPlayerTwo().hashCode() == getTeamTwo().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                getTeamOne().getOnField().get(playerIndexTwo).decreaseConversionKicks();
+                getTeamOne().getPlayers().get(playerIndexTwo).decreaseConversionKicks();
             }
         }
         if(temp.getEvent().equals("PenaltyKick"))
@@ -479,28 +479,28 @@ public class Data {
                 getTeamOne().decreasePenaltyKicks();
                 getTeamOne().decreaseScore(3);
 
-                for(int i = 0; i < getTeamOne().getOnField().size(); i++)
+                for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerOne().hashCode() == getTeamOne().getOnField().get(i).hashCode()) {
+                    if(temp.getPlayerOne().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                getTeamOne().getOnField().get(playerIndexOne).decreasePenaltyKicks();
+                getTeamOne().getPlayers().get(playerIndexOne).decreasePenaltyKicks();
             }
             else
             {
                 getTeamTwo().decreasePenaltyKicks();
                 getTeamTwo().decreaseScore(3);
 
-                for(int i = 0; i < getTeamTwo().getOnField().size(); i++)
+                for(int i = 0; i < getTeamTwo().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerOne().hashCode() == getTeamTwo().getOnField().get(i).hashCode()) {
+                    if(temp.getPlayerOne().hashCode() == getTeamTwo().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                getTeamTwo().getOnField().get(playerIndexOne).decreasePenaltyKicks();
+                getTeamTwo().getPlayers().get(playerIndexOne).decreasePenaltyKicks();
             }
         }
         else if(temp.getEvent().equals("DropKick"))
@@ -510,28 +510,28 @@ public class Data {
                 getTeamOne().decreaseDropKicks();
                 getTeamOne().decreaseScore(3);
 
-                for(int i = 0; i < getTeamOne().getOnField().size(); i++)
+                for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerOne().hashCode() == getTeamOne().getOnField().get(i).hashCode()) {
+                    if(temp.getPlayerOne().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                getTeamOne().getOnField().get(playerIndexOne).decreaseDropKicks();
+                getTeamOne().getPlayers().get(playerIndexOne).decreaseDropKicks();
             }
             else
             {
                 getTeamTwo().decreaseDropKicks();
                 getTeamTwo().decreaseScore(3);
 
-                for(int i = 0; i < getTeamTwo().getOnField().size(); i++)
+                for(int i = 0; i < getTeamTwo().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerOne().hashCode() == getTeamTwo().getOnField().get(i).hashCode()) {
+                    if(temp.getPlayerOne().hashCode() == getTeamTwo().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                getTeamTwo().getOnField().get(playerIndexOne).decreaseDropKicks();
+                getTeamTwo().getPlayers().get(playerIndexOne).decreaseDropKicks();
             }
         }
         else if(temp.getEvent().equals("Scrum"))
@@ -565,30 +565,30 @@ public class Data {
         else if(temp.getEvent().equals("Discipline"))
         {
             if (temp.getTeamOne().hashCode() == getTeamOne().hashCode()) {
-                for (int i = 0; i < getTeamOne().getOnField().size(); i++) {
-                    if (temp.getPlayerOne().hashCode() == getTeamOne().getOnField().get(i).hashCode()) {
+                for (int i = 0; i < getTeamOne().getPlayers().size(); i++) {
+                    if (temp.getPlayerOne().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                if (getTeamOne().getOnField().get(playerIndexOne).getYellowCard()) {
-                    getTeamOne().getOnField().get(playerIndexOne).removeYellowCard();
+                if (getTeamOne().getPlayers().get(playerIndexOne).getYellowCard()) {
+                    getTeamOne().getPlayers().get(playerIndexOne).removeYellowCard();
                 } else {
-                    getTeamOne().getOnField().get(playerIndexOne).removeRedCard();
+                    getTeamOne().getPlayers().get(playerIndexOne).removeRedCard();
                 }
             } else {
                 System.out.println("Team " + temp.getTeamOne().getTeamName());
 
-                for (int i = 0; i < getTeamOne().getOnField().size(); i++) {
-                    if (temp.getPlayerOne().hashCode() == getTeamTwo().getOnField().get(i).hashCode()) {
+                for (int i = 0; i < getTeamOne().getPlayers().size(); i++) {
+                    if (temp.getPlayerOne().hashCode() == getTeamTwo().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                if (getTeamTwo().getOnField().get(playerIndexOne).getYellowCard()) {
-                    getTeamTwo().getOnField().get(playerIndexOne).removeYellowCard();
+                if (getTeamTwo().getPlayers().get(playerIndexOne).getYellowCard()) {
+                    getTeamTwo().getPlayers().get(playerIndexOne).removeYellowCard();
                 } else {
-                    getTeamTwo().getOnField().get(playerIndexOne).removeRedCard();
+                    getTeamTwo().getPlayers().get(playerIndexOne).removeRedCard();
                 }
             }
         }
@@ -609,37 +609,37 @@ public class Data {
         {
             if(temp.getTeamOne().hashCode() == getTeamOne().hashCode())
             {
-                for(int i = 0; i < getTeamOne().getOnField().size(); i++)
+                for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerTwo().hashCode() == getTeamOne().getOnField().get(i).hashCode()) {
+                    if(temp.getPlayerTwo().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                for(int i = 0; i < getTeamOne().getReserves().size(); i++)
+                for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerOne().hashCode() == getTeamOne().getReserves().get(i).hashCode()) {
+                    if(temp.getPlayerOne().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
                         playerIndexTwo = i;
                     }
                 }
 
-                getTeamOne().swapOnFieldAndReserves(playerIndexOne, playerIndexTwo);
+                //getTeamOne().swapOnFieldAndReserves(playerIndexOne, playerIndexTwo);
             }
             else
             {
-                for (int i = 0; i < getTeamOne().getOnField().size(); i++) {
-                    if (temp.getPlayerTwo().hashCode() == getTeamTwo().getOnField().get(i).hashCode()) {
+                for (int i = 0; i < getTeamOne().getPlayers().size(); i++) {
+                    if (temp.getPlayerTwo().hashCode() == getTeamTwo().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
 
-                for (int i = 0; i < getTeamTwo().getReserves().size(); i++) {
-                    if (temp.getPlayerOne().hashCode() == getTeamTwo().getReserves().get(i).hashCode()) {
+                for (int i = 0; i < getTeamTwo().getPlayers().size(); i++) {
+                    if (temp.getPlayerOne().hashCode() == getTeamTwo().getPlayers().get(i).hashCode()) {
                         playerIndexTwo = i;
                     }
                 }
 
-                getTeamTwo().swapOnFieldAndReserves(playerIndexOne, playerIndexTwo);
+                //getTeamTwo().swapOnFieldAndReserves(playerIndexOne, playerIndexTwo);
             }
         }
 

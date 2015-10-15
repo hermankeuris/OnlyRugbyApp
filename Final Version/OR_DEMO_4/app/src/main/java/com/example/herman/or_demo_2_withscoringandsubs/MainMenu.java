@@ -452,7 +452,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
             data.setTeamTwo(new Team("Team B"));
 
             //Team One's on field players
-            data.getTeamOne().addPlayer(new Player("Player One", 1, false));
+            data.getTeamOne().addPlayer(new Player("TeamA, Player One", 1, false));
             data.getTeamOne().addPlayer(new Player("TeamA, Player Two", 2, false));
             data.getTeamOne().addPlayer(new Player("TeamA, Player Three", 3, false));
             data.getTeamOne().addPlayer(new Player("TeamA, Player Four", 4, false));

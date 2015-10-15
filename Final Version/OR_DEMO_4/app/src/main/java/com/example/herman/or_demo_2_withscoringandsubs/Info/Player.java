@@ -9,7 +9,7 @@ public class Player {
     //The player's surname
     private String surname = "";
     //The player's jersey number
-    private int curr_position = -1;
+    private int curr_position = 0;
 
     //The number of times an injury forced the player off the field during match-time
     private int matchTimeInjuries;

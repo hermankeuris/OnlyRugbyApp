@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class Team {
     //Name of the team
     private String teamName;
-    protected ArrayList<Player> onField = new ArrayList<>(16);
-    protected ArrayList<Player> reserves = new ArrayList<>(8);
+    protected ArrayList<Player> players = new ArrayList<>(23);
     private int currentMatchScore;
     private int  teamTry = 0;
     private int  teamConKick = 0;
@@ -28,8 +27,9 @@ public class Team {
 
         this.currentMatchScore = 0;
 
-        for(int i = 0; i < 8; i++)
-            reserves.add(new Player());
+        for(int i = 0; i < 22; i++)
+            players.add(new Player());
+        players.add(new Player("Unknown Player", 0, false));
     }
 
     public Team()
@@ -38,17 +38,15 @@ public class Team {
 
         this.currentMatchScore = 0;
 
-        for(int i = 0; i < 8; i++)
-            reserves.add(new Player());
+        for(int i = 0; i < 22; i++)
+            players.add(new Player());
+        players.add(new Player("Unknown Player", 0, false));
     }
 
     public Team(Team team) {
         setTeamName(team.getTeamName());
-        this.currentMatchScore = 0;
-        setOnField(team.getOnField());
-        for(int i = 0; i < 8; i++)
-            reserves.add(new Player());
-        setReserves(team.getReserves());
+        this.currentMatchScore = team.getScore();
+        setPlayers(team.getPlayers());
     }
 
     public void setTeamName(String tn)
@@ -61,83 +59,40 @@ public class Team {
         return this.teamName;
     }
 
-    public ArrayList<Player> getOnField()
+    public ArrayList<Player> getPlayers()
     {
-        return this.onField;
+        return this.players;
     }
 
-    public ArrayList<Player> getReserves()
+    public void setPlayers(ArrayList<Player> p)
     {
-        return this.reserves;
-    }
+        this.players = new ArrayList<Player>();
 
-    public void setOnField(ArrayList<Player> onField)
-    {
-        this.onField = new ArrayList<Player>();
-
-        for (int i = 0; i < onField.size(); i++)
+        for (int i = 0; i < players.size() - 1; i++)
         {
-            this.onField.add(onField.get(i));
+            if (p.get(i) != null)
+                this.players.add(p.get(i));
         }
-        onField.add(new Player("Unknown Player", 0, false));
     }
 
     public boolean addPlayer(Player p)
     {
-        if(p.getReserve())
+        for (int i = 0; i < players.size(); i++)
         {
-            for (int i = 0; i < reserves.size(); i++)
+            if (players.get(i).getCurr_position() == p.getCurr_position() && p.getCurr_position() != 0)
             {
-                if (reserves.get(i).getCurr_position() == p.getCurr_position() && p.getCurr_position() != 0)
-                {
-                    return false;
-                }
+                return false;
             }
-            /**if(reserves.size() < 8)
-             {
-             reserves.add(p);
-             return true;
-             }
-             else
-             return false;**/
-            for (int i = 0; i < reserves.size(); i++)
-            {
-                if (reserves.get(i).getCurr_position() == 0)
-                {
-                    reserves.set(i, p);
-                    return true;
-                }
-            }
-            return false;
         }
-        else
-        {
-            for (int i = 0; i < onField.size(); i++)
-            {
-                if (onField.get(i).getCurr_position() == p.getCurr_position() && p.getCurr_position() != 0)
-                {
-                    return false;
-                }
-            }
-            if(onField.size() < 15)
-            {
-                onField.add(p);
-                if(onField.size() == 15)
-                {
-                    onField.add(new Player("Unknown Player", 0, false));
-                }
+
+        for (int i = 0; i < players.size(); i++) {
+            if (players.get(i).getCurr_position() == 0) {
+                players.set(i, p);
                 return true;
             }
-            else
-                return false;
         }
-    }
 
-    public void setReserves(ArrayList<Player> _reserves) {
-        for (int i = 0; i < 8; i++) {
-            if (i < _reserves.size())
-                this.reserves.set(i, _reserves.get(i));
-        }
+        return false;
     }
 
     public boolean addScore(String temp) {
@@ -169,7 +124,7 @@ public class Team {
         return this.currentMatchScore;
     }
 
-    public boolean subPlayers(Player first, Player second) {
+    /*public boolean subPlayers(Player first, Player second) {
         int temp1 = onField.indexOf(first);
         int temp2 = reserves.indexOf(second);
 
@@ -180,7 +135,7 @@ public class Team {
         }
         else
             return false;
-    }
+    }*/
 
     public void incrementTurnoversWon() {
         teamTurnoversWon++;
@@ -259,20 +214,16 @@ public class Team {
         return lineOut;
     }
 
-    public Player getOnFieldPlayer(int i) {
-        return getOnField().get(i);
-    }
-
-    public Player getReservesPlayer(int i) {
-        return getReserves().get(i);
+    public Player getPlayer(int i) {
+        return players.get(i);
     }
 
     public String print() {
         String printer = "";
         printer += "Team Name: " + this.getTeamName();
 
-        for (int i = 0; i < getOnField().size(); ++i) {
-            printer += this.getOnFieldPlayer(i).print();
+        for (int i = 0; i < players.size(); ++i) {
+            printer += this.getPlayer(i).print();
         }
 
         return printer;
@@ -334,13 +285,13 @@ public class Team {
         opponentTeamLineOutsLost--;
     }
 
-    public void swapOnFieldAndReserves(int onFieldIndex, int reservesIndex)
+    /*public void swapOnFieldAndReserves(int onFieldIndex, int reservesIndex)
     {
         Player tempPlayerOne = onField.get(onFieldIndex);
         Player tempPlayerTwo = reserves.get(reservesIndex);
 
         onField.set(onFieldIndex, tempPlayerTwo);
         reserves.set(reservesIndex, tempPlayerOne);
-    }
+    }*/
 
 }

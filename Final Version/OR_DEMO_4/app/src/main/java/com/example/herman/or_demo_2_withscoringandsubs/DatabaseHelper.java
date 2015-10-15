@@ -286,8 +286,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			teamB_name = matches.get(m).getTeamB().getTeamName();
 
 			//Loop through the players of Team A of the current match
-			for (int p = 0; p < matches.get(m).getTeamA().getOnField().size(); ++p) {
-				currPlayer = matches.get(m).getTeamA().getOnFieldPlayer(p);
+			for (int p = 0; p < matches.get(m).getTeamA().getPlayers().size(); ++p) {
+				currPlayer = matches.get(m).getTeamA().getPlayer(p);
 
 				//Add the match information
 				values.put(KEY_MATCH_ID, match_id);
@@ -307,8 +307,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 			}
 
 			//Select Team B of the current match
-			for (int p = 0; p < matches.get(m).getTeamB().getOnField().size(); ++p) {
-				currPlayer = matches.get(m).getTeamB().getOnFieldPlayer(p);
+			for (int p = 0; p < matches.get(m).getTeamB().getPlayers().size(); ++p) {
+				currPlayer = matches.get(m).getTeamB().getPlayer(p);
 
 				//Add the match information
 				values.put(KEY_MATCH_ID, match_id);
