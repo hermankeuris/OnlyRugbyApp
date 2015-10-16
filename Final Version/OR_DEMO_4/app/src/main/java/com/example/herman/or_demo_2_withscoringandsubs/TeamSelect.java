@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.android.onlyrugbyDemo2.R;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
 
@@ -15,6 +17,7 @@ import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
 public class TeamSelect extends Activity {
 
     private Data data = Data.getInstance();
+    private Activity activity = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +42,8 @@ public class TeamSelect extends Activity {
             case "Turnover":
                 teamText.setText("Select the team who won the turnover:");
                 break;
-            case "Ruck":
-                teamText.setText("Select the team who won the ruck:");
+            case "Scrum":
+                teamText.setText("Select the team who won the scrum:");
                 break;
             case "LineOut":
                 if (!data.getLineOutTeam())
@@ -105,7 +108,7 @@ public class TeamSelect extends Activity {
                 {
                     if (data.getSelectedTeam() == data.getTeamOne())
                     {
-                        data.addTurnover(data.generateTimeStamp(),data.getTeamOne(),data.getTeamTwo());
+                        data.addTurnover(data.generateTimeStamp(), data.getTeamOne(), data.getTeamTwo());
                         data.getTeamOne().incrementTurnoversWon();
                         data.getTeamTwo().incrementTurnoversLost();
                     }
@@ -116,27 +119,29 @@ public class TeamSelect extends Activity {
                         data.getTeamOne().incrementTurnoversLost();
                     }
                     data.setEndOfFunction(true);
+                    Toast.makeText(activity, data.getSelectedTeam().getTeamName() + " now has possession", Toast.LENGTH_SHORT).show();
                     finish();
                 }
-                else if (data.getFunctionType().equals("Ruck"))
+                else if (data.getFunctionType().equals("Scrum"))
                 {
 
 
                     if (data.getSelectedTeam() == data.getTeamOne())
                     {
-                        data.addRuck(data.generateTimeStamp(), data.getTeamOne(), data.getTeamTwo());
+                        data.addScrum(data.generateTimeStamp(), data.getTeamOne(), data.getTeamTwo());
 
-                        data.getTeamOne().incrementRucksWon();
-                        data.getTeamTwo().incrementRucksLost();
+                        data.getTeamOne().incrementScrumsWon();
+                        data.getTeamTwo().incrementScrumsLost();
                     }
                     else
                     {
-                        data.addRuck(data.generateTimeStamp(), data.getTeamTwo(), data.getTeamOne());
+                        data.addScrum(data.generateTimeStamp(), data.getTeamTwo(), data.getTeamOne());
 
-                        data.getTeamTwo().incrementRucksWon();
-                        data.getTeamOne().incrementRucksLost();
+                        data.getTeamTwo().incrementScrumsWon();
+                        data.getTeamOne().incrementScrumsLost();
                     }
                     data.setEndOfFunction(true);
+                    Toast.makeText(activity, data.getSelectedTeam().getTeamName() + " won the scrum", Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 else if (data.getFunctionType().equals("LineOut"))
@@ -158,11 +163,13 @@ public class TeamSelect extends Activity {
                             {
                                 data.getTeamOne().incrementOwnLineOutsWon();
                                 data.getTeamTwo().incrementOpponentLineOutsLost();
+                                Toast.makeText(activity, data.getSelectedTeam().getTeamName() + " won their own lineout", Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
                                 data.getTeamOne().incrementOpponentLineOutsWon();;
                                 data.getTeamTwo().incrementOwnLineOutsLost();
+                                Toast.makeText(activity, data.getTeamTwo().getTeamName() + " won their opponent's lineout", Toast.LENGTH_SHORT).show();
                             }
                         }
                         else
@@ -173,11 +180,13 @@ public class TeamSelect extends Activity {
                             {
                                 data.getTeamOne().incrementOwnLineOutsLost();
                                 data.getTeamTwo().incrementOpponentLineOutsWon();
+                                Toast.makeText(activity, data.getTeamTwo().getTeamName() + " won their opponent's lineout", Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
                                 data.getTeamOne().incrementOpponentLineOutsLost();;
                                 data.getTeamTwo().incrementOwnLineOutsWon();
+                                Toast.makeText(activity, data.getSelectedTeam().getTeamName() + " won their own lineout", Toast.LENGTH_SHORT).show();
                             }
                         }
 

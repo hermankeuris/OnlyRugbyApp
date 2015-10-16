@@ -7,8 +7,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".MatchLogger"
-    android:background="@drawable/stripedgrass"
->
+    android:background="@drawable/stripedgrass">
 
     <TextView
         android:text="@string/first_half"
@@ -20,7 +19,8 @@
         android:layout_y="14dp"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/team1"
-        android:layout_toStartOf="@+id/team1" />
+        android:layout_toStartOf="@+id/team1"
+        android:textColor="#000000"/>
 
     <Chronometer
         android:id="@+id/chronometer"
@@ -32,7 +32,8 @@
         android:layout_y="14dp"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/team2"
-        android:layout_toEndOf="@+id/team2" />
+        android:layout_toEndOf="@+id/team2"
+        android:textColor="#8B0000"/>
 
     <Button
         android:layout_width="150dp"
@@ -45,8 +46,8 @@
         android:layout_below="@+id/team1"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/ruckBtn"
-        android:layout_alignEnd="@+id/ruckBtn" />
+        android:layout_alignRight="@+id/scrumBtn"
+        android:layout_alignEnd="@+id/scrumBtn" />
 
     <Button
         android:layout_width="150dp"
@@ -86,8 +87,8 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Ruck"
-        android:id="@+id/ruckBtn"
+        android:text="Scrum"
+        android:id="@+id/scrumBtn"
         android:onClick="onClick"
         android:layout_x="100dp"
         android:layout_y="400dp"
@@ -134,11 +135,11 @@
         android:text="Discipline"
         android:id="@+id/disciplineBtn"
         android:onClick="onClick"
-        android:layout_below="@+id/ruckBtn"
+        android:layout_below="@+id/scrumBtn"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/ruckBtn"
-        android:layout_alignEnd="@+id/ruckBtn" />
+        android:layout_alignRight="@+id/scrumBtn"
+        android:layout_alignEnd="@+id/scrumBtn" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -147,7 +148,7 @@
         android:text="Turnover"
         android:id="@+id/turnoverButton"
         android:onClick="onClick"
-        android:layout_alignBottom="@+id/ruckBtn"
+        android:layout_alignBottom="@+id/scrumBtn"
         android:layout_alignLeft="@+id/lineoutBtn"
         android:layout_alignStart="@+id/lineoutBtn"
         android:layout_alignRight="@+id/lineoutBtn"

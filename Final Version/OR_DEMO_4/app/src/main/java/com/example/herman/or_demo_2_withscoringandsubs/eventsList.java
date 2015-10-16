@@ -54,6 +54,7 @@ public class eventsList extends Activity implements View.OnClickListener
 
         if(data.getAlterSwap())
         {
+            System.out.println("swapAtIndexAndEnd");
             data.swapAtIndexAndEnd();
         }
 
@@ -127,6 +128,11 @@ public class eventsList extends Activity implements View.OnClickListener
     @Override
     public void onResume()
     {
+        if(data.getAlterSwap())
+        {
+            //System.out.println("swapAtIndexAndEnd222");
+            data.swapAtIndexAndEnd();
+        }
         super.onResume();
         eventsList.clear();
         for(int i = 0; i < data.getEvents().size();i++)
@@ -135,5 +141,6 @@ public class eventsList extends Activity implements View.OnClickListener
         }
         list.setAdapter(eventsAdapter);
         eventsAdapter.notifyDataSetChanged();
+        data.setFunctionType("EventList");
     }
 }

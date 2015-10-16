@@ -101,9 +101,9 @@ public class editOrDeleteEvent extends Activity
                             data.setFunctionType("Discipline");
                             startActivity(intent);
                         }
-                        else if(temp1.getEvent().equals("Ruck"))
+                        else if(temp1.getEvent().equals("Scrum"))
                         {
-                            data.setFunctionType("Ruck");
+                            data.setFunctionType("Scrum");
                             startActivity(intent);
                         }
 
@@ -138,28 +138,28 @@ public class editOrDeleteEvent extends Activity
                                         data.getTeamOne().decreaseTries();
                                         data.getTeamOne().decreaseScore(5);
 
-                                        for (int i = 0; i < data.getTeamOne().getOnField().size(); i++) {
-                                            if (temp.getPlayerOne().hashCode() == data.getTeamOne().getOnField().get(i).hashCode()) {
+                                        for (int i = 0; i < data.getTeamOne().getPlayers().size(); i++) {
+                                            if (temp.getPlayerOne().hashCode() == data.getTeamOne().getPlayers().get(i).hashCode()) {
                                                 System.out.println("Player " + temp.getPlayerOne().getPlayerName());
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        data.getTeamOne().getOnField().get(playerIndexOne).decreaseTries();
+                                        data.getTeamOne().getPlayers().get(playerIndexOne).decreaseTries();
                                     }
                                     else
                                     {
                                         data.getTeamTwo().decreaseTries();
                                         data.getTeamTwo().decreaseScore(5);
 
-                                        for(int i = 0; i < data.getTeamTwo().getOnField().size(); i++)
+                                        for(int i = 0; i < data.getTeamTwo().getPlayers().size(); i++)
                                         {
-                                            if(temp.getPlayerOne().hashCode() == data.getTeamTwo().getOnField().get(i).hashCode()) {
+                                            if(temp.getPlayerOne().hashCode() == data.getTeamTwo().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        data.getTeamTwo().getOnField().get(playerIndexOne).decreaseTries();
+                                        data.getTeamTwo().getPlayers().get(playerIndexOne).decreaseTries();
                                     }
                                 }
                                 else if(temp.getEvent().equals("TryConversion"))
@@ -170,22 +170,22 @@ public class editOrDeleteEvent extends Activity
                                         data.getTeamOne().decreaseConversionKicks();
                                         data.getTeamOne().decreaseScore(7);
 
-                                        for(int i = 0; i < data.getTeamOne().getOnField().size(); i++)
+                                        for(int i = 0; i < data.getTeamOne().getPlayers().size(); i++)
                                         {
-                                            if(temp.getPlayerOne().hashCode() == data.getTeamOne().getOnField().get(i).hashCode()) {
+                                            if(temp.getPlayerOne().hashCode() == data.getTeamOne().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        data.getTeamOne().getOnField().get(playerIndexOne).decreaseTries();
+                                        data.getTeamOne().getPlayers().get(playerIndexOne).decreaseTries();
 
-                                        for(int i = 0; i < data.getTeamOne().getOnField().size(); i++)
+                                        for(int i = 0; i < data.getTeamOne().getPlayers().size(); i++)
                                         {
-                                            if(temp.getPlayerTwo().hashCode() == data.getTeamOne().getOnField().get(i).hashCode()) {
+                                            if(temp.getPlayerTwo().hashCode() == data.getTeamOne().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
-                                        data.getTeamOne().getOnField().get(playerIndexTwo).decreaseConversionKicks();
+                                        data.getTeamOne().getPlayers().get(playerIndexTwo).decreaseConversionKicks();
                                     }
                                     else
                                     {
@@ -193,23 +193,23 @@ public class editOrDeleteEvent extends Activity
                                         data.getTeamTwo().decreaseConversionKicks();
                                         data.getTeamTwo().decreaseScore(7);
 
-                                        for(int i = 0; i < data.getTeamTwo().getOnField().size(); i++)
+                                        for(int i = 0; i < data.getTeamTwo().getPlayers().size(); i++)
                                         {
-                                            if(temp.getPlayerOne().hashCode() == data.getTeamTwo().getOnField().get(i).hashCode()) {
+                                            if(temp.getPlayerOne().hashCode() == data.getTeamTwo().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        data.getTeamTwo().getOnField().get(playerIndexOne).decreaseTries();
+                                        data.getTeamTwo().getPlayers().get(playerIndexOne).decreaseTries();
 
-                                        for(int i = 0; i < data.getTeamOne().getOnField().size(); i++)
+                                        for(int i = 0; i < data.getTeamOne().getPlayers().size(); i++)
                                         {
-                                            if(temp.getPlayerTwo().hashCode() == data.getTeamTwo().getOnField().get(i).hashCode()) {
+                                            if(temp.getPlayerTwo().hashCode() == data.getTeamTwo().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        data.getTeamOne().getOnField().get(playerIndexTwo).decreaseConversionKicks();
+                                        data.getTeamOne().getPlayers().get(playerIndexTwo).decreaseConversionKicks();
                                     }
                                 }
                                 if(temp.getEvent().equals("PenaltyKick"))
@@ -219,28 +219,28 @@ public class editOrDeleteEvent extends Activity
                                         data.getTeamOne().decreasePenaltyKicks();
                                         data.getTeamOne().decreaseScore(3);
 
-                                        for(int i = 0; i < data.getTeamOne().getOnField().size(); i++)
+                                        for(int i = 0; i < data.getTeamOne().getPlayers().size(); i++)
                                         {
-                                            if(temp.getPlayerOne().hashCode() == data.getTeamOne().getOnField().get(i).hashCode()) {
+                                            if(temp.getPlayerOne().hashCode() == data.getTeamOne().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        data.getTeamOne().getOnField().get(playerIndexOne).decreasePenaltyKicks();
+                                        data.getTeamOne().getPlayers().get(playerIndexOne).decreasePenaltyKicks();
                                     }
                                     else
                                     {
                                         data.getTeamTwo().decreasePenaltyKicks();
                                         data.getTeamTwo().decreaseScore(3);
 
-                                        for(int i = 0; i < data.getTeamTwo().getOnField().size(); i++)
+                                        for(int i = 0; i < data.getTeamTwo().getPlayers().size(); i++)
                                         {
-                                            if(temp.getPlayerOne().hashCode() == data.getTeamTwo().getOnField().get(i).hashCode()) {
+                                            if(temp.getPlayerOne().hashCode() == data.getTeamTwo().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        data.getTeamTwo().getOnField().get(playerIndexOne).decreasePenaltyKicks();
+                                        data.getTeamTwo().getPlayers().get(playerIndexOne).decreasePenaltyKicks();
                                     }
                                 }
                                 else if(temp.getEvent().equals("DropKick"))
@@ -250,85 +250,87 @@ public class editOrDeleteEvent extends Activity
                                         data.getTeamOne().decreaseDropKicks();
                                         data.getTeamOne().decreaseScore(3);
 
-                                        for(int i = 0; i < data.getTeamOne().getOnField().size(); i++)
+                                        for(int i = 0; i < data.getTeamOne().getPlayers().size(); i++)
                                         {
-                                            if(temp.getPlayerOne().hashCode() == data.getTeamOne().getOnField().get(i).hashCode()) {
+                                            if(temp.getPlayerOne().hashCode() == data.getTeamOne().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        data.getTeamOne().getOnField().get(playerIndexOne).decreaseDropKicks();
+                                        data.getTeamOne().getPlayers().get(playerIndexOne).decreaseDropKicks();
                                     }
                                     else
                                     {
                                         data.getTeamTwo().decreaseDropKicks();
                                         data.getTeamTwo().decreaseScore(3);
 
-                                        for(int i = 0; i < data.getTeamTwo().getOnField().size(); i++)
+                                        for(int i = 0; i < data.getTeamTwo().getPlayers().size(); i++)
                                         {
-                                            if(temp.getPlayerOne().hashCode() == data.getTeamTwo().getOnField().get(i).hashCode()) {
+                                            if(temp.getPlayerOne().hashCode() == data.getTeamTwo().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        data.getTeamTwo().getOnField().get(playerIndexOne).decreaseDropKicks();
+                                        data.getTeamTwo().getPlayers().get(playerIndexOne).decreaseDropKicks();
                                     }
                                 }
-                                else if(temp.getEvent().equals("Ruck"))
+                                else if(temp.getEvent().equals("Scrum"))
                                 {
                                     if(temp.getTeamOne().hashCode() == data.getTeamOne().hashCode())
                                     {
-                                        data.getTeamOne().decreaseRuckWon();
-                                        data.getTeamTwo().decreaseRuckLost();
+                                        data.getTeamOne().decreaseScrumsWon();
+                                        data.getTeamTwo().decreaseScrumsLost();
                                     }
                                     else
                                     {
                                         System.out.println("Team " + temp.getTeamOne().getTeamName());
 
-                                        data.getTeamTwo().decreaseRuckWon();
-                                        data.getTeamOne().decreaseRuckLost();
+                                        data.getTeamTwo().decreaseScrumsWon();
+                                        data.getTeamOne().decreaseScrumsLost();
                                     }
                                 }
                                 else if(temp.getEvent().equals("LineOut"))//?? how to increment/decrement lossess
                                 {
                                     if(temp.getTeamOne().hashCode() == data.getTeamOne().hashCode())
                                     {
-                                        data.getTeamOne().decreaseRuckWon();
-                                        data.getTeamTwo().decreaseRuckLost();
+                                        //data.getTeamOne().decreaseRuckWon();
+                                        //data.getTeamTwo().decreaseRuckLost();
                                     }
                                     else
                                     {
-                                        data.getTeamTwo().decreaseRuckWon();
-                                        data.getTeamOne().decreaseRuckLost();
+                                        //data.getTeamTwo().decreaseRuckWon();
+                                        //data.getTeamOne().decreaseRuckLost();
                                     }
                                 }
                                 else if(temp.getEvent().equals("Discipline"))
                                 {
                                     if (temp.getTeamOne().hashCode() == data.getTeamOne().hashCode()) {
-                                        for (int i = 0; i < data.getTeamOne().getOnField().size(); i++) {
-                                            if (temp.getPlayerOne().hashCode() == data.getTeamOne().getOnField().get(i).hashCode()) {
+                                        for (int i = 0; i < data.getTeamOne().getPlayers().size(); i++) {
+                                            if (temp.getPlayerOne().hashCode() == data.getTeamOne().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        if (data.getTeamOne().getOnField().get(playerIndexOne).getYellowCard()) {
-                                            data.getTeamOne().getOnField().get(playerIndexOne).removeYellowCard();
-                                        } else {
-                                            data.getTeamOne().getOnField().get(playerIndexOne).removeRedCard();
+                                        if (data.getTeamOne().getPlayers().get(playerIndexOne).getYellowCard()) {
+                                            data.getTeamOne().getPlayers().get(playerIndexOne).removeYellowCard();
+                                        } else
+                                        {
+                                            data.getTeamOne().getPlayers().get(playerIndexOne).removeRedCard();
                                         }
                                     } else {
                                         System.out.println("Team " + temp.getTeamOne().getTeamName());
 
-                                        for (int i = 0; i < data.getTeamOne().getOnField().size(); i++) {
-                                            if (temp.getPlayerOne().hashCode() == data.getTeamTwo().getOnField().get(i).hashCode()) {
+                                        for (int i = 0; i < data.getTeamOne().getPlayers().size(); i++) {
+                                            if (temp.getPlayerOne().hashCode() == data.getTeamTwo().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        if (data.getTeamTwo().getOnField().get(playerIndexOne).getYellowCard()) {
-                                            data.getTeamTwo().getOnField().get(playerIndexOne).removeYellowCard();
-                                        } else {
-                                            data.getTeamTwo().getOnField().get(playerIndexOne).removeRedCard();
+                                        if (data.getTeamTwo().getPlayers().get(playerIndexOne).getYellowCard()) {
+                                            data.getTeamTwo().getPlayers().get(playerIndexOne).removeYellowCard();
+                                        } else
+                                        {System.out.println("rrrrrrrrrrrrrrr" + data.getTeamTwo().getPlayers().get(playerIndexOne).getName());
+                                            data.getTeamTwo().getPlayers().get(playerIndexOne).removeRedCard();
                                         }
                                     }
                                 }
@@ -349,37 +351,37 @@ public class editOrDeleteEvent extends Activity
                                 {
                                     if(temp.getTeamOne().hashCode() == data.getTeamOne().hashCode())
                                     {
-                                        for(int i = 0; i < data.getTeamOne().getOnField().size(); i++)
+                                        for(int i = 0; i < data.getTeamOne().getPlayers().size(); i++)
                                         {
-                                            if(temp.getPlayerTwo().hashCode() == data.getTeamOne().getOnField().get(i).hashCode()) {
+                                            if(temp.getPlayerTwo().hashCode() == data.getTeamOne().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        for(int i = 0; i < data.getTeamOne().getReserves().size(); i++)
+                                        for(int i = 0; i < data.getTeamOne().getPlayers().size(); i++)
                                         {
-                                            if(temp.getPlayerOne().hashCode() == data.getTeamOne().getReserves().get(i).hashCode()) {
+                                            if(temp.getPlayerOne().hashCode() == data.getTeamOne().getPlayers().get(i).hashCode()) {
                                                 playerIndexTwo = i;
                                             }
                                         }
 
-                                        data.getTeamOne().swapOnFieldAndReserves(playerIndexOne, playerIndexTwo);
+                                        //data.getTeamOne().swapOnFieldAndReserves(playerIndexOne, playerIndexTwo);
                                     }
                                     else
                                     {
-                                        for (int i = 0; i < data.getTeamOne().getOnField().size(); i++) {
-                                            if (temp.getPlayerTwo().hashCode() == data.getTeamTwo().getOnField().get(i).hashCode()) {
+                                        for (int i = 0; i < data.getTeamOne().getPlayers().size(); i++) {
+                                            if (temp.getPlayerTwo().hashCode() == data.getTeamTwo().getPlayers().get(i).hashCode()) {
                                                 playerIndexOne = i;
                                             }
                                         }
 
-                                        for (int i = 0; i < data.getTeamTwo().getReserves().size(); i++) {
-                                            if (temp.getPlayerOne().hashCode() == data.getTeamTwo().getReserves().get(i).hashCode()) {
+                                        for (int i = 0; i < data.getTeamTwo().getPlayers().size(); i++) {
+                                            if (temp.getPlayerOne().hashCode() == data.getTeamTwo().getPlayers().get(i).hashCode()) {
                                                 playerIndexTwo = i;
                                             }
                                         }
 
-                                        data.getTeamTwo().swapOnFieldAndReserves(playerIndexOne, playerIndexTwo);
+                                        //data.getTeamTwo().swapOnFieldAndReserves(playerIndexOne, playerIndexTwo);
                                     }
                                 }
 

@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.res.Configuration;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -23,8 +20,6 @@ import com.example.android.onlyrugbyDemo2.R;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Player;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Team;
-
-import java.util.Collections;
 
 /**
  * Created by Muller on 27/08/2015.
@@ -52,7 +47,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
     private Button penaltyBtn;
     private Button dropBtn;
     private Button lineoutBtn;
-    private Button ruckBtn;
+    private Button scrumBtn;
     private Button substituteBtn;
     private Button disciplineBtn;
     private Button turnoverBtn;
@@ -91,7 +86,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
         penaltyBtn = (Button) findViewById(R.id.penaltyBtn);
         dropBtn = (Button) findViewById(R.id.dropBtn);
         lineoutBtn = (Button) findViewById(R.id.lineoutBtn);
-        ruckBtn = (Button) findViewById(R.id.ruckBtn);
+        scrumBtn = (Button) findViewById(R.id.scrumBtn);
         substituteBtn = (Button) findViewById(R.id.substituteBtn);
         disciplineBtn = (Button) findViewById(R.id.disciplineBtn);
         turnoverBtn = (Button) findViewById(R.id.turnoverButton);
@@ -102,7 +97,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
         penaltyBtn.setEnabled(false);
         dropBtn.setEnabled(false);
         lineoutBtn.setEnabled(false);
-        ruckBtn.setEnabled(false);
+        scrumBtn.setEnabled(false);
         substituteBtn.setEnabled(false);
         disciplineBtn.setEnabled(false);
         turnoverBtn.setEnabled(false);
@@ -146,8 +141,8 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 data.setFunctionType("Turnover");
                 startActivity(intent);
                 break;
-            case R.id.ruckBtn:
-                data.setFunctionType("Ruck");
+            case R.id.scrumBtn:
+                data.setFunctionType("Scrum");
                 startActivity(intent);
                 break;
             case R.id.lineoutBtn:
@@ -161,7 +156,6 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 break;
             case R.id.listButton:
                 data.setFunctionType("EventList");
-                listBtn.setText("Pressed");
                 Intent intent2 = new Intent(new Intent(MainMenu.this, eventsList.class));
                 startActivity(intent2);
                 break;
@@ -302,7 +296,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
                 penaltyBtn.setEnabled(true);
                 dropBtn.setEnabled(true);
                 lineoutBtn.setEnabled(true);
-                ruckBtn.setEnabled(true);
+                scrumBtn.setEnabled(true);
                 substituteBtn.setEnabled(true);
                 disciplineBtn.setEnabled(true);
                 turnoverBtn.setEnabled(true);
@@ -407,7 +401,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
         penaltyBtn.setEnabled(true);
         dropBtn.setEnabled(true);
         lineoutBtn.setEnabled(true);
-        ruckBtn.setEnabled(true);
+        scrumBtn.setEnabled(true);
         substituteBtn.setEnabled(true);
         disciplineBtn.setEnabled(true);
         turnoverBtn.setEnabled(true);
@@ -430,6 +424,7 @@ public class MainMenu extends Activity implements View.OnClickListener {
             public void onClick(DialogInterface dialog, int which) {
 
                 // Write your code here to invoke YES event
+                data.resetEventsList();
                 clock.gameStarted = false;
                 clock.reset();
                 finish();
@@ -453,117 +448,117 @@ public class MainMenu extends Activity implements View.OnClickListener {
         {
             setTitle("OnlyRugby Offline Score Keeper");
 
-            data.setTeamOne(new Team("Team A"));
-            data.setTeamTwo(new Team("Team B"));
+            data.setTeamOne(new Team("Blue Bulls"));
+            data.setTeamTwo(new Team("Sharks"));
 
             //Team One's on field players
-            data.getTeamOne().addPlayer(new Player("Player One", 1, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Two", 2, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Three", 3, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Four", 4, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Five", 5, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Six", 6, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Seven", 7, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Eight", 8, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Nine", 9, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Ten", 10, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Eleven", 11, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Twelve", 12, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Thirteen", 13, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Fourteen", 14, false));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Fifteen", 15, false));
+            data.getTeamOne().addPlayer(new Player("Pierre Schoeman", 1, false));
+            data.getTeamOne().addPlayer(new Player("Bandise Maku", 2, false));
+            data.getTeamOne().addPlayer(new Player("Marcel van der Merwe", 3, false));
+            data.getTeamOne().addPlayer(new Player("Jacques du Plessis", 4, false));
+            data.getTeamOne().addPlayer(new Player("Marvin Orie", 5, false));
+            data.getTeamOne().addPlayer(new Player("Deon Stegmann", 6, false));
+            data.getTeamOne().addPlayer(new Player("Lappies Labuschagne (c)", 7, false));
+            data.getTeamOne().addPlayer(new Player("Arno Botha", 8, false));
+            data.getTeamOne().addPlayer(new Player("Francois Hougaard", 9, false));
+            data.getTeamOne().addPlayer(new Player("Tian Schoeman", 10, false));
+            data.getTeamOne().addPlayer(new Player("Jamba Ulengo", 11, false));
+            data.getTeamOne().addPlayer(new Player("Burger Odendaal", 12, false));
+            data.getTeamOne().addPlayer(new Player("Jan Serfontein", 13, false));
+            data.getTeamOne().addPlayer(new Player("Travis Ismaiel", 14, false));
+            data.getTeamOne().addPlayer(new Player("Warrick Gelant", 15, false));
 
             //Team One's reserve players
-            data.getTeamOne().addPlayer(new Player(" Player Sixteen", 16, true));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Seventeen", 17, true));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Eighteen", 18, true));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Nineteen", 19, true));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player Twenty", 20, true));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player TwentyOne", 21, true));
-            data.getTeamOne().addPlayer(new Player("TeamA, Player TwentyTwo", 22, true));
+            data.getTeamOne().addPlayer(new Player("Jaco Visagie", 16, true));
+            data.getTeamOne().addPlayer(new Player("Werner Kruger", 17, true));
+            data.getTeamOne().addPlayer(new Player("RG Snyman", 18, true));
+            data.getTeamOne().addPlayer(new Player("Ruan Steenkamp", 19, true));
+            data.getTeamOne().addPlayer(new Player("Ivan van Zyl", 20, true));
+            data.getTeamOne().addPlayer(new Player("Louis Fouche", 21, true));
+            data.getTeamOne().addPlayer(new Player("Dries Swanepoel", 22, true));
 
             //Team Two's on field players
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player One", 1, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Two", 2, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Three", 3, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Four", 4, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Five", 5, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Six", 6, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Seven", 7, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Eight", 8, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Nine", 9, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Ten", 10, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Eleven", 11, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Twelve", 12, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Thirteen", 13, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Fourteen", 14, false));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Fifteen", 15, false));
+            data.getTeamTwo().addPlayer(new Player("Thomas du Toit", 1, false));
+            data.getTeamTwo().addPlayer(new Player("Franco Marais", 2, false));
+            data.getTeamTwo().addPlayer(new Player("Gerhard Engelbrecht", 3, false));
+            data.getTeamTwo().addPlayer(new Player("Etienne Oosthuizen", 4, false));
+            data.getTeamTwo().addPlayer(new Player("Dave McDuling", 5, false));
+            data.getTeamTwo().addPlayer(new Player("Francois Kleinhans", 6, false));
+            data.getTeamTwo().addPlayer(new Player("Christiaan de Bruin", 7, false));
+            data.getTeamTwo().addPlayer(new Player("Philip van der Walt (c)", 8, false));
+            data.getTeamTwo().addPlayer(new Player("Cobus Reinach", 9, false));
+            data.getTeamTwo().addPlayer(new Player("Joe Pietersen", 10, false));
+            data.getTeamTwo().addPlayer(new Player("S'bura Sithole", 11, false));
+            data.getTeamTwo().addPlayer(new Player("Andre Esterhuizen", 12, false));
+            data.getTeamTwo().addPlayer(new Player("Paul Jordaan", 13, false));
+            data.getTeamTwo().addPlayer(new Player("Wandile Mjekevu", 14, false));
+            data.getTeamTwo().addPlayer(new Player("Odwa Ndungane", 15, false));
 
             //Team Two's reserve players
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Sixteen", 16, true));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Seventeen", 17, true));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Eighteen", 18, true));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Nineteen", 19, true));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player Twenty", 20, true));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player TwentyOne", 21, true));
-            data.getTeamTwo().addPlayer(new Player("TeamB, Player TwentyTwo", 22, true));
+            data.getTeamTwo().addPlayer(new Player("Kyle Cooper", 16, true));
+            data.getTeamTwo().addPlayer(new Player("Mzamo Majola", 17, true));
+            data.getTeamTwo().addPlayer(new Player("Marco Wentzel", 18, true));
+            data.getTeamTwo().addPlayer(new Player("Jean Deysel", 19, true));
+            data.getTeamTwo().addPlayer(new Player("Michael Claassens", 20, true));
+            data.getTeamTwo().addPlayer(new Player("Heimar Williams", 21, true));
+            data.getTeamTwo().addPlayer(new Player("Garth April", 22, true));
         }
         else
         {
-            data.setTeamOne(new Team("Pretoria Highschool"));
-            data.setTeamTwo(new Team("Bloemfontein Highschool"));
+                        data.setTeamOne(new Team("Blue Bulls"));
+            data.setTeamTwo(new Team("Sharks"));
 
             //Team One's on field players
-            data.getTeamOne().addPlayer(new Player("John One", 1, false));
-            data.getTeamOne().addPlayer(new Player("John Two", 2, false));
-            data.getTeamOne().addPlayer(new Player("John Three", 3, false));
-            data.getTeamOne().addPlayer(new Player("John Four", 4, false));
-            data.getTeamOne().addPlayer(new Player("John Five", 5, false));
-            data.getTeamOne().addPlayer(new Player("John Six", 6, false));
-            data.getTeamOne().addPlayer(new Player("John Seven", 7, false));
-            data.getTeamOne().addPlayer(new Player("John Eight", 8, false));
-            data.getTeamOne().addPlayer(new Player("John Nine", 9, false));
-            data.getTeamOne().addPlayer(new Player("John Ten", 10, false));
-            data.getTeamOne().addPlayer(new Player("John Eleven", 11, false));
-            data.getTeamOne().addPlayer(new Player("John Twelve", 12, false));
-            data.getTeamOne().addPlayer(new Player("John Thirteen", 13, false));
-            data.getTeamOne().addPlayer(new Player("John Fourteen", 14, false));
-            data.getTeamOne().addPlayer(new Player("John Fifteen", 15, false));
+            data.getTeamOne().addPlayer(new Player("Pierre Schoeman", 1, false));
+            data.getTeamOne().addPlayer(new Player("Bandise Maku", 2, false));
+            data.getTeamOne().addPlayer(new Player("Marcel van der Merwe", 3, false));
+            data.getTeamOne().addPlayer(new Player("Jacques du Plessis", 4, false));
+            data.getTeamOne().addPlayer(new Player("Marvin Orie", 5, false));
+            data.getTeamOne().addPlayer(new Player("Deon Stegmann", 6, false));
+            data.getTeamOne().addPlayer(new Player("Lappies Labuschagne (c)", 7, false));
+            data.getTeamOne().addPlayer(new Player("Arno Botha", 8, false));
+            data.getTeamOne().addPlayer(new Player("Francois Hougaard", 9, false));
+            data.getTeamOne().addPlayer(new Player("Tian Schoeman", 10, false));
+            data.getTeamOne().addPlayer(new Player("Jamba Ulengo", 11, false));
+            data.getTeamOne().addPlayer(new Player("Burger Odendaal", 12, false));
+            data.getTeamOne().addPlayer(new Player("Jan Serfontein", 13, false));
+            data.getTeamOne().addPlayer(new Player("Travis Ismaiel", 14, false));
+            data.getTeamOne().addPlayer(new Player("Warrick Gelant", 15, false));
 
             //Team One's reserve players
-            data.getTeamOne().addPlayer(new Player("John Sixteen", 16, true));
-            data.getTeamOne().addPlayer(new Player("John Seventeen", 17, true));
-            data.getTeamOne().addPlayer(new Player("John Eighteen", 18, true));
-            data.getTeamOne().addPlayer(new Player("John Nineteen", 19, true));
-            data.getTeamOne().addPlayer(new Player("John Twenty", 20, true));
-            data.getTeamOne().addPlayer(new Player("John TwentyOne", 21, true));
-            data.getTeamOne().addPlayer(new Player("John TwentyTwo", 22, true));
+            data.getTeamOne().addPlayer(new Player("Jaco Visagie", 16, true));
+            data.getTeamOne().addPlayer(new Player("Werner Kruger", 17, true));
+            data.getTeamOne().addPlayer(new Player("RG Snyman", 18, true));
+            data.getTeamOne().addPlayer(new Player("Ruan Steenkamp", 19, true));
+            data.getTeamOne().addPlayer(new Player("Ivan van Zyl", 20, true));
+            data.getTeamOne().addPlayer(new Player("Louis Fouche", 21, true));
+            data.getTeamOne().addPlayer(new Player("Dries Swanepoel", 22, true));
 
             //Team Two's on field players
-            data.getTeamTwo().addPlayer(new Player("Paul One", 1, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Two", 2, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Three", 3, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Four", 4, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Five", 5, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Six", 6, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Seven", 7, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Eight", 8, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Nine", 9, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Ten", 10, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Eleven", 11, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Twelve", 12, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Thirteen", 13, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Fourteen", 14, false));
-            data.getTeamTwo().addPlayer(new Player("Paul Fifteen", 15, false));
+            data.getTeamTwo().addPlayer(new Player("Thomas du Toit", 1, false));
+            data.getTeamTwo().addPlayer(new Player("Franco Marais", 2, false));
+            data.getTeamTwo().addPlayer(new Player("Gerhard Engelbrecht", 3, false));
+            data.getTeamTwo().addPlayer(new Player("Etienne Oosthuizen", 4, false));
+            data.getTeamTwo().addPlayer(new Player("Dave McDuling", 5, false));
+            data.getTeamTwo().addPlayer(new Player("Francois Kleinhans", 6, false));
+            data.getTeamTwo().addPlayer(new Player("Christiaan de Bruin", 7, false));
+            data.getTeamTwo().addPlayer(new Player("Philip van der Walt (c)", 8, false));
+            data.getTeamTwo().addPlayer(new Player("Cobus Reinach", 9, false));
+            data.getTeamTwo().addPlayer(new Player("Joe Pietersen", 10, false));
+            data.getTeamTwo().addPlayer(new Player("S'bura Sithole", 11, false));
+            data.getTeamTwo().addPlayer(new Player("Andre Esterhuizen", 12, false));
+            data.getTeamTwo().addPlayer(new Player("Paul Jordaan", 13, false));
+            data.getTeamTwo().addPlayer(new Player("Wandile Mjekevu", 14, false));
+            data.getTeamTwo().addPlayer(new Player("Odwa Ndungane", 15, false));
 
             //Team Two's reserve players
-            data.getTeamTwo().addPlayer(new Player("Paul Sixteen", 16, true));
-            data.getTeamTwo().addPlayer(new Player("Paul Seventeen", 17, true));
-            data.getTeamTwo().addPlayer(new Player("Paul Eighteen", 18, true));
-            data.getTeamTwo().addPlayer(new Player("Paul Nineteen", 19, true));
-            data.getTeamTwo().addPlayer(new Player("Paul Twenty", 20, true));
-            data.getTeamTwo().addPlayer(new Player("Paul TwentyOne", 21, true));
-            data.getTeamTwo().addPlayer(new Player("Paul TwentyTwo", 22, true));
+            data.getTeamTwo().addPlayer(new Player("Kyle Cooper", 16, true));
+            data.getTeamTwo().addPlayer(new Player("Mzamo Majola", 17, true));
+            data.getTeamTwo().addPlayer(new Player("Marco Wentzel", 18, true));
+            data.getTeamTwo().addPlayer(new Player("Jean Deysel", 19, true));
+            data.getTeamTwo().addPlayer(new Player("Michael Claassens", 20, true));
+            data.getTeamTwo().addPlayer(new Player("Heimar Williams", 21, true));
+            data.getTeamTwo().addPlayer(new Player("Garth April", 22, true));
         }
     }
 }

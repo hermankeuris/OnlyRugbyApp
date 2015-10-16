@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.onlyrugbyDemo2.R;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
@@ -18,6 +19,7 @@ public class AssignDiscipline extends Activity
 {
     //public static String selectedScoreType;
     private Data data = Data.getInstance();
+    private Activity activity = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,14 +43,17 @@ public class AssignDiscipline extends Activity
                     case R.id.whiteCardButton:
                         data.addDiscipline(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedPlayer(), "white");
                         data.getSelectedPlayer().giveWhiteCard();
+                        Toast.makeText(activity, data.getSelectedPlayer().getName() + " has a white card", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.yellowCardButton:
                         data.addDiscipline(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedPlayer(), "yellow");
                         data.getSelectedPlayer().giveYellowCard();
+                        Toast.makeText(activity, data.getSelectedPlayer().getName() + " has a yellow card", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.redCardButton:
                         data.addDiscipline(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedPlayer(), "red");
                         data.getSelectedPlayer().giveRedCard();
+                        Toast.makeText(activity, data.getSelectedPlayer().getName() + " has a red card", Toast.LENGTH_SHORT).show();
                         break;
                 }
 

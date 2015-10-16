@@ -64,9 +64,9 @@ public class Event
         this.playerOne = playerOne;
     }
 
-    public void addRuck(String time, Team teamOne, Team teamTwo)
+    public void addScrum(String time, Team teamOne, Team teamTwo)
     {
-        this.eventType = "Ruck";
+        this.eventType = "Scrum";
         this.time = time;
         this.timeStamp = setTimeToCorrectFormat(this.time);
         this.teamOne = teamOne;
@@ -162,7 +162,7 @@ public class Event
         else if(eventType.equals("TryConversion"))
         {
             description = timeStamp.substring(timeStamp.indexOf(" ") + 1) + " " + teamOne.getTeamName() + ": Try by " + playerOne.getPlayerName()
-                    + ", Conversion-kick by " + playerOne.getPlayerName();
+                    + ", Conversion-kick by " + playerTwo.getPlayerName();
             return description;
         }
         else if(eventType.equals("PenaltyKick"))
@@ -175,9 +175,9 @@ public class Event
             description = timeStamp.substring(timeStamp.indexOf(" ") + 1) + " " + teamOne.getTeamName() + ": Drop-Kick by " + playerOne.getPlayerName();
             return description;
         }
-        else if(eventType.equals("Ruck"))
+        else if(eventType.equals("Scrum"))
         {
-            description = timeStamp.substring(timeStamp.indexOf(" ") + 1) + " " + teamOne.getTeamName() + ": Won the Ruck ";
+            description = timeStamp.substring(timeStamp.indexOf(" ") + 1) + " " + teamOne.getTeamName() + ": Won the Scrum ";
             return description;
         }
         else if(eventType.equals("LineOut"))

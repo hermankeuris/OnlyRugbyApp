@@ -9,7 +9,7 @@ public class Player {
     //The player's surname
     private String surname = "";
     //The player's jersey number
-    private int curr_position = -1;
+    private int curr_position = 0;
 
     //The number of times an injury forced the player off the field during match-time
     private int matchTimeInjuries;
@@ -24,6 +24,7 @@ public class Player {
     private int  playerTry = 0;
     private int playerConKickAttempt = 0;
     private int  playerConKick = 0;
+    private int playerPenAttempt = 0;
     private int  playerPenKick = 0;
     private int  playerDropKick = 0;
 
@@ -126,6 +127,8 @@ public class Player {
 
     public void playerAttemptConversion(){playerConKickAttempt++;}
 
+    public void playerAttemptPenalty(){playerPenAttempt++;}
+
     public boolean playerScore(String temp) {
         switch(temp) {
             case "Try":
@@ -167,7 +170,7 @@ public class Player {
     public void giveRedCard() {
         numRedCards++;
         redCard = true;
-        yellowCard = true;
+        //yellowCard = true;
     }
 
     public int getWhiteCardCount() {

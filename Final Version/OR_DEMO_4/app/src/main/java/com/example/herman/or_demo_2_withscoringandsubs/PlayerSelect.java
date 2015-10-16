@@ -75,13 +75,14 @@ public class PlayerSelect extends Activity {
             public void onItemClick(AdapterView<?> parent, View view, final int position,
                                     long id) {
                 final int temp = position;
+                data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(temp));
 
-                if(data.getSelectedTeam().getOnField().get(position).getRedCard() && data.getOnFieldPlayers()) {
+                if(data.getSelectedTeam().getPlayers().get(position).getRedCard() && data.getOnFieldPlayers()) {
                     Toast.makeText(activity, "This player has a red card, select another player", Toast.LENGTH_SHORT).show();
                     /**Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
                      startActivity(intent);**/
                 }
-                else if(data.getSelectedTeam().getOnField().get(position).getYellowCard() && data.getOnFieldPlayers()) {
+                else if(data.getSelectedTeam().getPlayers().get(position).getYellowCard() && data.getOnFieldPlayers()) {
                     if (data.getFunctionType().equals("Discipline"))
                     {
                         //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
@@ -98,9 +99,10 @@ public class PlayerSelect extends Activity {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 // Write your code here to invoke YES event
-                                data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(temp));
+                                //data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(temp));
                                 data.getSelectedPlayer().setYellowCard(false);
                                 data.setEndOfFunction(true);
+                                Toast.makeText(activity, data.getSelectedPlayer().getName() + " received a yellow card", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });
@@ -125,24 +127,27 @@ public class PlayerSelect extends Activity {
                 }
                 else {
                     if (data.getFunctionType() == "Score") {
-                        data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
-                        if (data.getSelectedScoreType() != "Conversion Kick")
+                        data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
+                        if (!(data.getSelectedScoreType() == "Conversion Kick" || data.getSelectedScoreType() == "Penalty Kick"))
                             data.getSelectedTeam().addScore(data.getSelectedScoreType());
                         switch (data.getSelectedScoreType()) {
                             case "Try":
                                 data.getSelectedPlayer().playerScore("Try");
                                 data.setConversionTryPlayer(data.getSelectedPlayer());
+                                Toast.makeText(activity, data.getSelectedPlayer().getName() + " scored a try", Toast.LENGTH_SHORT).show();
 
                                 data.setSelectedScoreType("Conversion Kick");
-                                data.getSelectedPlayer().playerAttemptConversion();
                                 TextView playerText = (TextView) findViewById(R.id.playerText);
                                 playerText.setText("Select the player which scored the " + String.valueOf(data.getSelectedScoreType()).toLowerCase() + ":");
                                 break;
                             case "Conversion Kick":
+                                data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
+                                data.getSelectedPlayer().playerAttemptConversion();
+
                                 //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
                                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(PlayerSelect.this);
 
-                                alertDialog.setCancelable(false);
+                                //alertDialog.setCancelable(false);
 
                                 // Setting Dialog Title
                                 alertDialog.setTitle("Conversion attempt..");
@@ -157,6 +162,7 @@ public class PlayerSelect extends Activity {
                                         data.getSelectedTeam().addScore("Conversion Kick");
                                         data.addTryConversion(data.generateTimeStamp(), data.getSelectedTeam(), data.getConversionTryPlayer(), data.getSelectedPlayer());
                                         data.setEndOfFunction(true);
+                                        Toast.makeText(activity, data.getSelectedPlayer().getName() + " scored the conversion kick", Toast.LENGTH_SHORT).show();
                                         finish();
                                     }
                                 });
@@ -164,8 +170,9 @@ public class PlayerSelect extends Activity {
                                 //Setting Negative "NO" Button
                                 alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        data.addTry(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedPlayer());
+                                        data.addTry(data.generateTimeStamp(), data.getSelectedTeam(), data.getConversionTryPlayer());
                                         data.setEndOfFunction(true);
+                                        Toast.makeText(activity, data.getSelectedPlayer().getName() + " missed the conversion kick", Toast.LENGTH_SHORT).show();
                                         finish();
                                     }
                                 });
@@ -174,15 +181,47 @@ public class PlayerSelect extends Activity {
                                 alertDialog.show();
                                 break;
                             case "Penalty Kick":
-                                data.addPenaltyKick(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position));
-                                data.setEndOfFunction(true);
-                                data.getSelectedPlayer().playerScore("Penalty Kick");
-                                finish();
+                                data.getSelectedPlayer().playerAttemptPenalty();
+                                //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
+                                AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(PlayerSelect.this);
+
+                                //alertDialog.setCancelable(false);
+
+                                // Setting Dialog Title
+                                alertDialog2.setTitle("Penalty kick attempt..");
+
+                                // Setting Dialog Message
+                                alertDialog2.setMessage("Was the penalty kick successful?");
+
+                                // Setting Positive "Yes" Button
+                                alertDialog2.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        data.getSelectedPlayer().playerScore("Penalty Kick");
+                                        data.getSelectedTeam().addScore("Penalty Kick");
+                                        data.addPenaltyKick(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedTeam().getPlayers().get(position));
+                                        data.setEndOfFunction(true);
+                                        Toast.makeText(activity, data.getSelectedPlayer().getName() + " scored the penalty kick", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }
+                                });
+
+                                //Setting Negative "NO" Button
+                                alertDialog2.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        data.setEndOfFunction(true);
+                                        Toast.makeText(activity, data.getSelectedPlayer().getName() + " missed the penalty kick", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }
+                                });
+
+                                // Showing Alert Message
+                                alertDialog2.show();
                                 break;
                             case "Drop Kick":
-                                data.addDropKick(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedTeam().getOnField().get(position));
+                                data.addDropKick(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedTeam().getPlayers().get(position));
                                 data.setEndOfFunction(true);
                                 data.getSelectedPlayer().playerScore("Drop Kick");
+                                Toast.makeText(activity, data.getSelectedPlayer().getName() + " scored the drop kick", Toast.LENGTH_SHORT).show();
                                 finish();
                                 break;
                         }
@@ -191,24 +230,23 @@ public class PlayerSelect extends Activity {
                         if (data.getOnFieldPlayers())
                         {
                             data.setOnFieldPlayers(false);
-                            data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
-                            data.setSubstitutePlayer(data.getSelectedTeam().getOnField().get(position));
+                            data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
+                            data.setSubstitutePlayer(data.getSelectedTeam().getPlayers().get(position));
                             Intent intent = new Intent(new Intent(PlayerSelect.this, PlayerSelect.class));
                             startActivity(intent);
                         }
                         else {
-                            data.addSubstitution(data.generateTimeStamp(), data.getSelectedTeam(), data.getSubstitutePlayer(), data.getSelectedTeam().getReserves().get(position));
-                            data.getSelectedTeam().subPlayers(data.getSelectedPlayer(), data.getSelectedTeam().getReserves().get(position));
-                            data.setSelectedPlayer(data.getSelectedTeam().getReserves().get(position));
+                            data.addSubstitution(data.generateTimeStamp(), data.getSelectedTeam(), data.getSubstitutePlayer(), data.getSelectedTeam().getPlayers().get(position));
+                            //data.getSelectedTeam().subPlayers(data.getSelectedPlayer(), data.getSelectedTeam().getPlayers().get(position));
+                            data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
                             data.setOnFieldPlayers(true);
                             data.setEndOfFunction(true);
-
+                            Toast.makeText(activity, "Substituted " + data.getSubstitutePlayer().getName() + " for " + data.getSelectedTeam().getPlayers().get(position).getName(), Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }
-                    else if (data.getFunctionType() == "Discipline")
-                    {
-                        data.setSelectedPlayer(data.getSelectedTeam().getOnField().get(position));
+                    else if (data.getFunctionType() == "Discipline") {
+                        data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
                         Intent intent = new Intent(new Intent(PlayerSelect.this, AssignDiscipline.class));
                         startActivity(intent);
                     }
@@ -220,7 +258,7 @@ public class PlayerSelect extends Activity {
     public ArrayList<String> displayPlayers()
     {
         ArrayList<String> _players = new ArrayList<String>();
-        int num = 15;
+        /*int num = 15;
 
         if (data.getOnFieldPlayers() && data.getSelectedTeam() != null) {
             if (data.getFunctionType() == "Score")
@@ -240,6 +278,16 @@ public class PlayerSelect extends Activity {
                 else
                     _players.add(data.getSelectedTeam().getReserves().get(i).getCurr_position() + " " + data.getSelectedTeam().getReserves().get(i).getPlayerName());
             }
+        return _players;*/
+        if (data.getSelectedTeam() != null) {
+            for (int i = 0; i < 23; i++) {
+                if (data.getSelectedTeam().getPlayers().get(i).getCurr_position() == 0)
+                    _players.add("?? " + data.getSelectedTeam().getPlayers().get(i).getPlayerName());
+                else
+                    _players.add(data.getSelectedTeam().getPlayers().get(i).getCurr_position() + " " + data.getSelectedTeam().getPlayers().get(i).getPlayerName());
+            }
+        }
+
         return _players;
     }
 

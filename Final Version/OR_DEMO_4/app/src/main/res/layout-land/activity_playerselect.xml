@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@drawable/stripedgrass"
->
+    android:background="@drawable/stripedgrass">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent" android:layout_height="match_parent">
@@ -15,7 +14,9 @@
             android:choiceMode="none"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/playerText"
-            tools:listitem="@android:layout/simple_list_item_1" />
+            tools:listitem="@android:layout/simple_list_item_1"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10.0sp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -24,6 +25,7 @@
             android:id="@+id/playerText"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textStyle="bold" />
     </RelativeLayout>
 </RelativeLayout>

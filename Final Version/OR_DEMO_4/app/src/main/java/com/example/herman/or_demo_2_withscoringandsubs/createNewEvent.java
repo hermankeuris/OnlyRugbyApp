@@ -20,7 +20,7 @@ public class createNewEvent extends Activity
     private Button tryBtn;
     private Button penaltyBtn;
     private Button dropBtn;
-    private Button ruckBtn;
+    private Button scrumBtn;
     private Button substituteBtn;
     private Button disciplineBtn;
     private Button turnoverBtn;
@@ -38,7 +38,7 @@ public class createNewEvent extends Activity
         penaltyBtn = (Button) findViewById(R.id.penaltyBtn);
         dropBtn = (Button) findViewById(R.id.dropBtn);
         lineOutBtn = (Button) findViewById(R.id.lineOutBtn);
-        ruckBtn = (Button) findViewById(R.id.ruckBtn);
+        scrumBtn = (Button) findViewById(R.id.scrumBtn);
         substituteBtn = (Button) findViewById(R.id.substituteBtn);
         disciplineBtn = (Button) findViewById(R.id.disciplineBtn);
         turnoverBtn = (Button) findViewById(R.id.turnoverBtn);
@@ -163,8 +163,8 @@ public class createNewEvent extends Activity
                         }
                         startActivity(intent);
                         break;
-                    case R.id.ruckBtn:
-                        data.setFunctionType("Ruck");
+                    case R.id.scrumBtn:
+                        data.setFunctionType("Scrum");
                         et = (EditText) findViewById(R.id.timeText);
 
                         if(isValidString(et.getText().toString())) {
@@ -211,7 +211,7 @@ public class createNewEvent extends Activity
         penaltyBtn.setOnClickListener(listener);
         dropBtn.setOnClickListener(listener);
         lineOutBtn.setOnClickListener(listener);
-        ruckBtn.setOnClickListener(listener);
+        scrumBtn.setOnClickListener(listener);
         substituteBtn.setOnClickListener(listener);
         disciplineBtn.setOnClickListener(listener);
         turnoverBtn.setOnClickListener(listener);
