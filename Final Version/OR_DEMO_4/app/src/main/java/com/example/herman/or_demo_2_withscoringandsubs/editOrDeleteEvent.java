@@ -313,8 +313,12 @@ public class editOrDeleteEvent extends Activity
 
                                         if (data.getTeamOne().getPlayers().get(playerIndexOne).getYellowCard()) {
                                             data.getTeamOne().getPlayers().get(playerIndexOne).removeYellowCard();
+<<<<<<< HEAD
                                         } else
                                         {
+=======
+                                        } else {
+>>>>>>> origin/master
                                             data.getTeamOne().getPlayers().get(playerIndexOne).removeRedCard();
                                         }
                                     } else {
@@ -328,8 +332,12 @@ public class editOrDeleteEvent extends Activity
 
                                         if (data.getTeamTwo().getPlayers().get(playerIndexOne).getYellowCard()) {
                                             data.getTeamTwo().getPlayers().get(playerIndexOne).removeYellowCard();
+<<<<<<< HEAD
                                         } else
                                         {System.out.println("rrrrrrrrrrrrrrr" + data.getTeamTwo().getPlayers().get(playerIndexOne).getName());
+=======
+                                        } else {
+>>>>>>> origin/master
                                             data.getTeamTwo().getPlayers().get(playerIndexOne).removeRedCard();
                                         }
                                     }

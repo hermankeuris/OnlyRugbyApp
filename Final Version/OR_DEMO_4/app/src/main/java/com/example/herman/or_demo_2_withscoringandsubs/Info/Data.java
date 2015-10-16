@@ -563,19 +563,31 @@ public class Data {
         }
         else if(temp.getEvent().equals("Discipline"))
         {
+<<<<<<< HEAD
             if (temp.getTeamOne().hashCode() == getTeamOne().hashCode())
             {
                 for (int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
+=======
+            if (temp.getTeamOne().hashCode() == getTeamOne().hashCode()) {
+                for (int i = 0; i < getTeamOne().getPlayers().size(); i++) {
+>>>>>>> origin/master
                     if (temp.getPlayerOne().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
                 System.out.println("Index " + playerIndexOne);
 
+<<<<<<< HEAD
                 if (getTeamOne().getPlayers().get(playerIndexOne).getYellowCard())
                 {
                     getTeamOne().getPlayers().get(playerIndexOne).removeYellowCard();
+=======
+                if (getTeamOne().getPlayers().get(playerIndexOne).getYellowCard()) {
+                    getTeamOne().getPlayers().get(playerIndexOne).removeYellowCard();
+                } else {
+                    getTeamOne().getPlayers().get(playerIndexOne).removeRedCard();
+>>>>>>> origin/master
                 }
                 else
                 {   System.out.println("Remove mah card, yo " + playerIndexOne);
@@ -586,8 +598,12 @@ public class Data {
             {
                 System.out.println("Team " + temp.getTeamOne().getTeamName());
 
+<<<<<<< HEAD
                 for (int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
+=======
+                for (int i = 0; i < getTeamOne().getPlayers().size(); i++) {
+>>>>>>> origin/master
                     if (temp.getPlayerOne().hashCode() == getTeamTwo().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }

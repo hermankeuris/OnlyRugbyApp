@@ -128,7 +128,11 @@ public class PlayerSelect extends Activity {
                 else {
                     if (data.getFunctionType() == "Score") {
                         data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
+<<<<<<< HEAD
                         if (!(data.getSelectedScoreType() == "Conversion Kick" || data.getSelectedScoreType() == "Penalty Kick"))
+=======
+                        if (data.getSelectedScoreType() != "Conversion Kick")
+>>>>>>> origin/master
                             data.getSelectedTeam().addScore(data.getSelectedScoreType());
                         switch (data.getSelectedScoreType()) {
                             case "Try":
@@ -141,7 +145,10 @@ public class PlayerSelect extends Activity {
                                 playerText.setText("Select the player which scored the " + String.valueOf(data.getSelectedScoreType()).toLowerCase() + ":");
                                 break;
                             case "Conversion Kick":
+<<<<<<< HEAD
                                 data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
+=======
+>>>>>>> origin/master
                                 data.getSelectedPlayer().playerAttemptConversion();
 
                                 //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
@@ -181,6 +188,7 @@ public class PlayerSelect extends Activity {
                                 alertDialog.show();
                                 break;
                             case "Penalty Kick":
+<<<<<<< HEAD
                                 data.getSelectedPlayer().playerAttemptPenalty();
                                 //AlertDialog.Builder alertDialog = new AlertDialog.Builder(AlertDialogActivity.this);
                                 AlertDialog.Builder alertDialog2 = new AlertDialog.Builder(PlayerSelect.this);
@@ -216,6 +224,12 @@ public class PlayerSelect extends Activity {
 
                                 // Showing Alert Message
                                 alertDialog2.show();
+=======
+                                data.addPenaltyKick(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedTeam().getPlayers().get(position));
+                                data.setEndOfFunction(true);
+                                data.getSelectedPlayer().playerScore("Penalty Kick");
+                                finish();
+>>>>>>> origin/master
                                 break;
                             case "Drop Kick":
                                 data.addDropKick(data.generateTimeStamp(), data.getSelectedTeam(), data.getSelectedTeam().getPlayers().get(position));
@@ -245,7 +259,12 @@ public class PlayerSelect extends Activity {
                             finish();
                         }
                     }
+<<<<<<< HEAD
                     else if (data.getFunctionType() == "Discipline") {
+=======
+                    else if (data.getFunctionType() == "Discipline")
+                    {
+>>>>>>> origin/master
                         data.setSelectedPlayer(data.getSelectedTeam().getPlayers().get(position));
                         Intent intent = new Intent(new Intent(PlayerSelect.this, AssignDiscipline.class));
                         startActivity(intent);
