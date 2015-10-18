@@ -50,12 +50,13 @@ public class editOrDeleteEvent extends Activity
                         int index1 = data.getEventIndex();
                         Event temp1 = data.getEventAtIndex(index1);
 
-                        //data.setFunctionType("Discipline");
                         Intent intent = new Intent(new Intent(editOrDeleteEvent.this, TeamSelect.class));
-                        //startActivity(intent);
+                        data.setAlteredAt(index1);
 
+                        System.out.println("Altered at " + index1);
                         data.setSwapIndex(index1);
                         data.setSwapTimestamp(temp1.getTimeStamp());
+
 
                         if(temp1.getEvent().equals("Try"))
                         {
@@ -313,12 +314,8 @@ public class editOrDeleteEvent extends Activity
 
                                         if (data.getTeamOne().getPlayers().get(playerIndexOne).getYellowCard()) {
                                             data.getTeamOne().getPlayers().get(playerIndexOne).removeYellowCard();
-<<<<<<< HEAD
                                         } else
                                         {
-=======
-                                        } else {
->>>>>>> origin/master
                                             data.getTeamOne().getPlayers().get(playerIndexOne).removeRedCard();
                                         }
                                     } else {
@@ -332,12 +329,8 @@ public class editOrDeleteEvent extends Activity
 
                                         if (data.getTeamTwo().getPlayers().get(playerIndexOne).getYellowCard()) {
                                             data.getTeamTwo().getPlayers().get(playerIndexOne).removeYellowCard();
-<<<<<<< HEAD
                                         } else
                                         {System.out.println("rrrrrrrrrrrrrrr" + data.getTeamTwo().getPlayers().get(playerIndexOne).getName());
-=======
-                                        } else {
->>>>>>> origin/master
                                             data.getTeamTwo().getPlayers().get(playerIndexOne).removeRedCard();
                                         }
                                     }
@@ -394,6 +387,7 @@ public class editOrDeleteEvent extends Activity
                                 }
 
                                 data.removeEventAtIndex(index);
+                                data.setDeletedAt(index);
                                 data.setEndOfFunction(true);
                                 finish();
                             }

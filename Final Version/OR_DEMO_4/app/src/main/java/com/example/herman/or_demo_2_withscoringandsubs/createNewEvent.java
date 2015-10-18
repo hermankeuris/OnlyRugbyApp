@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.android.onlyrugbyDemo2.R;
 import com.example.herman.or_demo_2_withscoringandsubs.Info.Data;
+import com.example.herman.or_demo_2_withscoringandsubs.Info.Event;
 
 public class createNewEvent extends Activity
 {
@@ -219,6 +220,7 @@ public class createNewEvent extends Activity
 
     public Boolean isValidString(String time)
     {
+        String inTime = time;
         String hours, minutes,seconds;
         int intHours, intMinutes, intSeconds;
         int j = 0;
@@ -244,6 +246,12 @@ public class createNewEvent extends Activity
         intHours = Integer.parseInt(hours);
         intMinutes = Integer.parseInt(minutes);
         intSeconds = Integer.parseInt(seconds);
+
+        Event startTime = data.getEventAtIndex(0);
+        String startTimeStamp = startTime.getDescription().substring(0,8);
+
+        if(inTime.compareTo(startTimeStamp) < 0)
+            return false;
 
         if(intHours > 23)
             return false;

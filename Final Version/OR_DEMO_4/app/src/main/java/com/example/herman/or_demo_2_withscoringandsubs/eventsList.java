@@ -23,8 +23,6 @@ public class eventsList extends Activity implements View.OnClickListener
 {
     private Data data = Data.getInstance();
 
-    private boolean started = false;
-
     public ArrayAdapter<String> eventsAdapter;
     private ArrayList<String> eventsList;
 
@@ -39,6 +37,7 @@ public class eventsList extends Activity implements View.OnClickListener
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
+        data.getSizes();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_list);
 
@@ -128,6 +127,9 @@ public class eventsList extends Activity implements View.OnClickListener
     @Override
     public void onResume()
     {
+        //data.getSizes();
+
+        data.sortEventsByTime();
         if(data.getAlterSwap())
         {
             //System.out.println("swapAtIndexAndEnd222");
@@ -135,10 +137,12 @@ public class eventsList extends Activity implements View.OnClickListener
         }
         super.onResume();
         eventsList.clear();
+
         for(int i = 0; i < data.getEvents().size();i++)
         {
-            eventsList.add(data.getDescriptionAt(i));
+                eventsList.add(data.getDescriptionAt(i));
         }
+
         list.setAdapter(eventsAdapter);
         eventsAdapter.notifyDataSetChanged();
         data.setFunctionType("EventList");

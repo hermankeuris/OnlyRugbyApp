@@ -68,11 +68,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:text="Scrum"
-=======
-        android:text="Ruck"
->>>>>>> origin/master
         android:id="@+id/scrumBtn"
         android:layout_below="@+id/dropBtn"
         android:layout_alignParentLeft="true"

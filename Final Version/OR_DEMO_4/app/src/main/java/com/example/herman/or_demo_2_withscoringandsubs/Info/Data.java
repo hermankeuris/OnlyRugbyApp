@@ -7,41 +7,45 @@ import com.example.android.onlyrugbyDemo2.R;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Data {
+public class Data
+{
+    private static Intent mainIntent;
 
     private static Data instance = null;
+
     private static String selectedTeam = null;
+    private static String functionType = null;
+    private static String selectedScoreType = null;
+    public static String swapTimestamp;
+    private static String timeStampString;
+
     private static Team teamOne = null;
     private static Team teamTwo = null;
-    private static String selectedScoreType = null;
+
+    private static Player conversionTryPlayer;
+    private static Player substitutePlayer;
     private static Player selectedPlayer = null;
+
     private static Boolean onFieldTeam = true;
-    private static String functionType = null;
     private static Boolean setLineOutTeam = false;
     private static Boolean offlineMode = false;
     private static Boolean endOfFunction = false;
-
-    //==========================================================================
-    //                              NEW EVENT STUFF
-    //==========================================================================
-    private static ArrayList<Event> eventsList = new ArrayList();
-    private static int eventIndex;
-    private static int eventsListSize;
-    private static Player conversionTryPlayer;
-    private static Player substitutePlayer;
-
     private static Boolean alterSwap = false;
-    public static String swapTimestamp;
     private static Boolean customTimeStamp = false;
-    private static String timeStampString;
-    private static String currentEventString = "Current events";
 
+    private static int eventIndex;
     public int swapIndex;
+
     public int[] timeEventIndexes = new int[3];
 
-    private static Intent mainIntent;
+    private static ArrayList<Event> eventsList = new ArrayList();
+    private static ArrayList<Event> eventsListAll = new ArrayList();
 
     private Data() {}
+
+    //==========================================================================
+    //                              GETTERS
+    //==========================================================================
 
     public static synchronized Data getInstance() {
         if (instance == null) {
@@ -155,15 +159,21 @@ public class Data {
         return endOfFunction;
     }
 
-    //==========================================================================
-    //                              NEW EVENT STUFF
-    //==========================================================================
 
+
+    public void getSizes()
+    {
+        System.out.println("=============================");
+        System.out.println(eventsList.size());
+        System.out.println(eventsListAll.size());
+        System.out.println("=============================");
+    }
     public ArrayList getEvents(){return eventsList;}
 
     public void resetEventsList()
     {
         eventsList = new ArrayList();
+        eventsListAll = new ArrayList();
     }
 
     public void addToEvents(String eventType, String time ,Team teamOne, Team teamTwo, Player playerOne, Player platerTwo,String disciplineType)
@@ -171,6 +181,7 @@ public class Data {
         Event temp = new Event();
         temp.setEventValues(eventType, time, teamOne, teamTwo, playerOne, platerTwo, disciplineType);
         eventsList.add(temp);
+        eventsListAll.add(temp);
     }
 
     public void addTry(String time, Team teamOne, Player playerOne)
@@ -178,6 +189,7 @@ public class Data {
         Event temp = new Event();
         temp.addTry(time, teamOne, playerOne);
         eventsList.add(temp);
+        eventsListAll.add(temp);
     }
 
     public void addTryConversion(String time, Team teamOne, Player playerOne, Player playerTwo)
@@ -185,6 +197,7 @@ public class Data {
         Event temp = new Event();
         temp.addTryConversion(time, teamOne, playerOne, playerTwo);
         eventsList.add(temp);
+        eventsListAll.add(temp);
     }
 
     public void addPenaltyKick(String time, Team teamOne, Player playerOne)
@@ -192,6 +205,7 @@ public class Data {
         Event temp = new Event();
         temp.addPenaltyKick(time, teamOne, playerOne);
         eventsList.add(temp);
+        eventsListAll.add(temp);
     }
 
     public void addDropKick(String time, Team teamOne, Player playerOne)
@@ -199,6 +213,7 @@ public class Data {
         Event temp = new Event();
         temp.addDropKick(time, teamOne, playerOne);
         eventsList.add(temp);
+        eventsListAll.add(temp);
     }
 
     public void addScrum(String time, Team teamOne, Team teamTwo)
@@ -206,6 +221,7 @@ public class Data {
         Event temp = new Event();
         temp.addScrum(time, teamOne, teamTwo);
         eventsList.add(temp);
+        eventsListAll.add(temp);
     }
 
     public void addLineOut(String time, Team teamOne,Team teamTwo)
@@ -213,6 +229,7 @@ public class Data {
         Event temp = new Event();
         temp.addLineOut(time, teamOne, teamTwo);
         eventsList.add(temp);
+        eventsListAll.add(temp);
     }
 
     public void addDiscipline(String time, Team teamOne,Player playerOne, String card)
@@ -220,6 +237,7 @@ public class Data {
         Event temp = new Event();
         temp.addDiscipline(time, teamOne, playerOne, card);
         eventsList.add(temp);
+        eventsListAll.add(temp);
     }
 
     public void addTurnover(String time, Team teamOne,Team teamTwo)
@@ -227,6 +245,7 @@ public class Data {
         Event temp = new Event();
         temp.addTurnover(time, teamOne, teamTwo);
         eventsList.add(temp);
+        eventsListAll.add(temp);
     }
 
     public void addSubstitution(String time, Team teamOne, Player playerOne,Player playerTwo)
@@ -234,6 +253,7 @@ public class Data {
         Event temp = new Event();
         temp.addSubstitution(time, teamOne, playerOne, playerTwo);
         eventsList.add(temp);
+        eventsListAll.add(temp);
     }
 
     public void addClockEvent(String time, String event)
@@ -241,6 +261,7 @@ public class Data {
         Event temp = new Event();
         temp.addClockEvent(time, event);
         eventsList.add(temp);
+        eventsListAll.add(temp);
 
         timeEventIndexes[0] = 0;
 
@@ -260,9 +281,13 @@ public class Data {
 
     public String getDescriptionAt(int index)
     {
-        currentEventString = eventsList.get(index).getDescription();
+
         return eventsList.get(index).getDescription();
     }
+
+    public void setDeletedAt(int index) {eventsListAll.get(eventsListAll.size() - 1).setDeleted();}
+
+    public void setAlteredAt(int index) {eventsListAll.get(eventsListAll.size() - 1).setAltered();}
 
     public void removeEventAtIndex(int index)
     {
@@ -340,8 +365,6 @@ public class Data {
 
     public Intent getMainIntent() {return mainIntent;}
 
-    public int getEventsListSize() {return eventsListSize;}
-
     //==========================================================================
     //                              ALTER EVENT STUFF
     //==========================================================================
@@ -356,14 +379,17 @@ public class Data {
     public void swapAtIndexAndEnd()
     {
         Event temp = eventsList.get(eventsList.size() - 1);
+        Event temp2 = eventsList.get(swapIndex);
 
-        System.out.println("swapIndex  " + swapIndex);
+        //System.out.println("swapIndex  " + swapIndex);
 
         temp.setTimeStamp(eventsList.get(swapIndex).getTimeStamp());
         eventsList.set(swapIndex, temp);
+        eventsList.set(eventsList.size() - 1, temp2);
 
         deleteEventAtIndex(eventsList.size() - 1);
         eventsList.remove(eventsList.size() - 1);
+        eventsListAll.get(eventsListAll.size() - 1).setAltered();
 
         alterSwap = false;
     }
@@ -385,7 +411,6 @@ public class Data {
 
     private void deleteEventAtIndex(int in)
     {
-        int index = in;
         Event temp = eventsList.get(in);//getEventAtIndex(index);
         int playerIndexOne = 0, playerIndexTwo = 0;
 
@@ -399,7 +424,6 @@ public class Data {
                 for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
                     if(temp.getPlayerOne().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
-                        System.out.println("Player " + temp.getPlayerOne().getPlayerName());
                         playerIndexOne = i;
                     }
                 }
@@ -423,6 +447,8 @@ public class Data {
         }
         else if(temp.getEvent().equals("TryConversion"))
         {
+            System.out.println("-----Try conversion-----" + in);
+            System.out.println(temp.getDescription());
             if(temp.getTeamOne().hashCode() == getTeamOne().hashCode())
             {
                 getTeamOne().decreaseTries();
@@ -431,19 +457,24 @@ public class Data {
 
                 for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
-                    if(temp.getPlayerOne().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
+                    if(temp.getPlayerOne().hashCode() == getTeamOne().getPlayers().get(i).hashCode())
+                    {
                         playerIndexOne = i;
                     }
                 }
+
+                System.out.println("-----Player one index-----" + playerIndexOne);
 
                 getTeamOne().getPlayers().get(playerIndexOne).decreaseTries();
 
                 for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
                     if(temp.getPlayerTwo().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
-                        playerIndexOne = i;
+                        playerIndexTwo = i;
                     }
                 }
+
+                System.out.println("-----Player Two index-----" + playerIndexTwo);
                 getTeamOne().getPlayers().get(playerIndexTwo).decreaseConversionKicks();
             }
             else
@@ -458,16 +489,16 @@ public class Data {
                         playerIndexOne = i;
                     }
                 }
-
+                System.out.println("-----Player one index-----" + playerIndexOne);
                 getTeamTwo().getPlayers().get(playerIndexOne).decreaseTries();
 
                 for(int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
                     if(temp.getPlayerTwo().hashCode() == getTeamTwo().getPlayers().get(i).hashCode()) {
-                        playerIndexOne = i;
+                        playerIndexTwo = i;
                     }
                 }
-
+                System.out.println("-----Player Two index-----" + playerIndexTwo);
                 getTeamOne().getPlayers().get(playerIndexTwo).decreaseConversionKicks();
             }
         }
@@ -563,31 +594,19 @@ public class Data {
         }
         else if(temp.getEvent().equals("Discipline"))
         {
-<<<<<<< HEAD
             if (temp.getTeamOne().hashCode() == getTeamOne().hashCode())
             {
                 for (int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
-=======
-            if (temp.getTeamOne().hashCode() == getTeamOne().hashCode()) {
-                for (int i = 0; i < getTeamOne().getPlayers().size(); i++) {
->>>>>>> origin/master
                     if (temp.getPlayerOne().hashCode() == getTeamOne().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
                 }
                 System.out.println("Index " + playerIndexOne);
 
-<<<<<<< HEAD
                 if (getTeamOne().getPlayers().get(playerIndexOne).getYellowCard())
                 {
                     getTeamOne().getPlayers().get(playerIndexOne).removeYellowCard();
-=======
-                if (getTeamOne().getPlayers().get(playerIndexOne).getYellowCard()) {
-                    getTeamOne().getPlayers().get(playerIndexOne).removeYellowCard();
-                } else {
-                    getTeamOne().getPlayers().get(playerIndexOne).removeRedCard();
->>>>>>> origin/master
                 }
                 else
                 {   System.out.println("Remove mah card, yo " + playerIndexOne);
@@ -598,12 +617,8 @@ public class Data {
             {
                 System.out.println("Team " + temp.getTeamOne().getTeamName());
 
-<<<<<<< HEAD
                 for (int i = 0; i < getTeamOne().getPlayers().size(); i++)
                 {
-=======
-                for (int i = 0; i < getTeamOne().getPlayers().size(); i++) {
->>>>>>> origin/master
                     if (temp.getPlayerOne().hashCode() == getTeamTwo().getPlayers().get(i).hashCode()) {
                         playerIndexOne = i;
                     }
@@ -668,5 +683,47 @@ public class Data {
         }
 
     }
+
+    public void sortEventsByTime()
+    {
+        Event temp;
+
+        for(int j = 0;j < eventsList.size(); j++)
+        {
+            for (int i=j+1 ; i < eventsList.size(); i++)
+            {
+                if(eventsList.get(i).getDescription().compareTo(eventsList.get(j).getDescription()) < 0)
+                {
+                    temp = eventsList.get(j);
+                    eventsList.set(j, eventsList.get(i));
+                    eventsList.set(i, temp);
+                }
+            }
+
+            System.out.println(eventsList.get(j).getDescription());
+        }
+
+        for(int j = 0;j < eventsListAll.size(); j++)
+        {
+            for (int i=j+1 ; i < eventsListAll.size(); i++)
+            {
+                if(eventsListAll.get(i).getDescription().compareTo(eventsListAll.get(j).getDescription()) < 0)
+                {
+                    temp = eventsListAll.get(j);
+                    eventsListAll.set(j, eventsListAll.get(i));
+                    eventsListAll.set(i, temp);
+                }
+            }
+        }
+    }
+
+    public String getDescriptionAtAll(int index)
+    {
+        return eventsListAll.get(index).getDescription();
+    }
+
+
+
+
 }
 

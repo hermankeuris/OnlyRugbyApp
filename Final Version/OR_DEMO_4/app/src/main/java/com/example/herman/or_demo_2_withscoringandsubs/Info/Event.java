@@ -15,8 +15,8 @@ public class Event
 
     private String disciplineType;
 
-
-
+    private Boolean deleted = false;
+    private Boolean altered = false;
 
     public void setEventValues(String eventType, String time ,Team teamOne, Team teamTwo, Player playerOne, Player playerTwo, String disciplineType )
     {
@@ -144,19 +144,18 @@ public class Event
         return teamOne;
     }
 
-    public Team getTeamTwo()
-    {
-        return teamTwo;
-    }
-
     public String getDescription()
     {
-        System.out.println("Desc");
         String description = "";
 
         if(eventType.equals("Try"))
         {
             description = timeStamp.substring(timeStamp.indexOf(" ") + 1) + " " + teamOne.getTeamName() + ": Try by " + playerOne.getPlayerName();
+
+            if(deleted)
+                description += " deleted";
+            if(altered)
+                description += " altered";
             return description;
         }
         else if(eventType.equals("TryConversion"))
@@ -252,6 +251,12 @@ public class Event
 
         return timeIn;
     }
+
+    public void setDeleted(){deleted = true;}
+    public void setAltered(){altered = true;}
+
+    public Boolean isDeleted(){return deleted;}
+    public Boolean isAltered(){return altered;}
 
 
 }
