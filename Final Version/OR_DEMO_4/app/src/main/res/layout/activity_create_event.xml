@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stripedgrass">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Set the time"
+        android:id="@+id/textView4"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/timeText"
+        android:layout_below="@+id/textView4"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Try"
+        android:id="@+id/tryBtn"
+        android:layout_marginTop="47dp"
+        android:layout_below="@+id/timeText"
+        android:layout_toLeftOf="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Penalty Kick"
+        android:id="@+id/penaltyBtn"
+        android:layout_alignTop="@+id/tryBtn"
+        android:layout_toRightOf="@+id/textView4"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drop-Kick"
+        android:id="@+id/dropBtn"
+        android:layout_below="@+id/tryBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="38dp"
+        android:layout_alignRight="@+id/tryBtn"
+        android:layout_alignEnd="@+id/tryBtn" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Substitution"
+        android:id="@+id/substituteBtn"
+        android:layout_alignTop="@+id/dropBtn"
+        android:layout_alignRight="@+id/penaltyBtn"
+        android:layout_alignEnd="@+id/penaltyBtn"
+        android:layout_alignLeft="@+id/penaltyBtn"
+        android:layout_alignStart="@+id/penaltyBtn" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scrum"
+        android:id="@+id/scrumBtn"
+        android:layout_below="@+id/dropBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="34dp"
+        android:layout_alignRight="@+id/dropBtn"
+        android:layout_alignEnd="@+id/dropBtn" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Line-Out"
+        android:id="@+id/lineOutBtn"
+        android:layout_alignTop="@+id/scrumBtn"
+        android:layout_alignRight="@+id/substituteBtn"
+        android:layout_alignEnd="@+id/substituteBtn"
+        android:layout_alignLeft="@+id/penaltyBtn"
+        android:layout_alignStart="@+id/penaltyBtn" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Discipline"
+        android:id="@+id/disciplineBtn"
+        android:layout_below="@+id/scrumBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="34dp"
+        android:layout_alignRight="@+id/scrumBtn"
+        android:layout_alignEnd="@+id/scrumBtn" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turnover"
+        android:id="@+id/turnoverBtn"
+        android:layout_alignBottom="@+id/disciplineBtn"
+        android:layout_alignLeft="@+id/substituteBtn"
+        android:layout_alignStart="@+id/substituteBtn"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

@@ -1,0 +1,100 @@
+Post to /openrugby/public/index.php/dbInteract example
+************
+user_id -> 4
+JWT -> eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
+interact -> {"instructs":[{"instruct":"score","parameters":{"timestamp":"2015-09-30 16:00:00", "match":1,"type":"try", "conversion":{"playerNumber": 12,"success":true}, "team": 1, "player":12, "assist":0, "penaltySuccess": false}}]}
+************
+
+gametime // <-- instruction string, this one only sent at end of game
+{
+	"timestamp": "YYYY-MM-DD HH:MM:SS", // <- time this instruct gets created
+	"match": match_id,
+	"start": "YYYY-MM-DD HH:MM:SS",
+	"start_second": "YYYY-MM-DD HH:MM:SS",
+	"overtime_first": "HH:MM:SS",
+	"overtime_second": "HH:MM:SS",
+	"end_time": "YYYY-MM-DD HH:MM:SS",
+	"pauses": //<- optional
+	[
+		{
+			"timestamp": "YYYY-MM-DD HH:MM:SS",
+			"reason": "Substitution",
+			"resumeTime": "YYYY-MM-DD HH:MM:SS"
+		},
+		{
+			"timestamp": "YYYY-MM-DD HH:MM:SS",
+			"reason": "Injury",
+			"resumeTime": "YYYY-MM-DD HH:MM:SS"
+		},
+		{
+			"timestamp": "YYYY-MM-DD HH:MM:SS",
+			"reason": "Others as appropriate",
+			"resumeTime": "YYYY-MM-DD HH:MM:SS"
+		}
+	]
+}
+
+score // <-- instruction string 
+{
+	"match": match_id,
+	"timestamp": "YYYY-MM-DD HH:MM:SS",
+	"type": "try"/"penaltyKick"/"fieldGoal",
+	"conversion": //note: conversion is only an expected field if(type == "try")
+	{
+		"playerNumber": 0-23,
+		"success": true/false
+	},
+	"team": "teamID",
+	"player": "playerNumber",
+	"assist": "playerNumber",//note: assist is only an expected field if(type == "try"), playerNumber 0 indicates no assist occurred
+	"success": true/false //expected only if(type == "penaltyKick")
+}
+
+substitution // <-- instruction string 
+{
+	"match": match_id,
+	"timestamp": "YYYY-MM-DD HH:MM:SS",
+	"team": "teamID",
+	"playerOff": "playerNumber",
+	"playerOn": "playerNumber"
+}
+
+discipline // <-- instruction string 
+{
+	"match": match_id,
+	"timestamp": "YYYY-MM-DD HH:MM:SS",
+	"team": "teamID",
+	"player": "playerNumber",
+	"type": "white"/"yellow"/"red"
+}
+
+lineout // <-- instruction string 
+{
+	"match": match_id,
+	"timestamp": "YYYY-MM-DD HH:MM:SS",
+	"team": "teamID",//team which is responsible for performing the line out
+	"player": "playerNumber",//player throwing in
+	"teamWon": "teamID" //team which actually won the lineout
+}
+
+ruck // <-- instruction string 
+{
+	"match": match_id,
+	"timestamp": "YYYY-MM-DD HH:MM:SS",
+	"team": "teamID"
+}
+
+scrum // <-- instruction string 
+{
+	"match": match_id,
+	"timestamp": "YYYY-MM-DD HH:MM:SS",
+	"team": "teamID"
+}
+
+possession // <-- instruction string
+{
+	"match": match_id,
+	"timestamp": "YYYY-MM-DD HH:MM:SS",
+	"team": "teamID", //team now in possession of ball
+	"player": "playerNumber" //player responsible for the change in possession, playerNumber 0 indicates some other reason for the turnover
+}
