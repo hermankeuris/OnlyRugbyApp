@@ -1,0 +1,51 @@
+table{
+	text-align: center;
+	width:100%;
+	height:100%;
+}
+.matchRow
+{
+	border:1px solid black;
+}
+
+#menu_head{
+	
+	width:33%;
+	height:12vh;
+}
+
+#title_head{
+	
+	width:33%;
+	height:12vh;
+}
+
+#logout_head{
+	
+	width:33%;
+	height:12vh;
+}
+
+#content{
+	overflow: auto;
+	height:83vh;
+}
+
+.team_div
+{
+	min-height:12vh;
+	border:1px solid #000;
+}
+.playerTable
+{
+	text-align:left;
+}
+tr.playerRow
+{
+  border:1pt solid black;
+}
+button{
+	
+	height:40px;
+	width:80px;
+}

@@ -1,0 +1,32 @@
+body {
+    position:relative;
+}
+#menu {
+    margin: 15px 0 15px 15px;
+	position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    width: 98%;
+    height:40px;
+}
+#header {
+    border:1px solid #000;
+	text-align:center;
+	min-height: 40px;
+}
+#content {
+    border:1px solid #000;
+    height:100%;
+    bottom:50px;
+    min-height: 810px;
+	overflow: auto;
+}
+#footer {
+    border:1px solid #000;
+    width: 99%;
+    margin:5px 0 0 0;
+    position:fixed;
+    bottom:5px;
+    height:50px;
+}

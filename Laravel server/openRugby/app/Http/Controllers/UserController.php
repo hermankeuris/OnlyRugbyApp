@@ -24,10 +24,10 @@ class UserController extends Controller
             $response = 
             [
               'created' => 'false',
-              'users'  => []
+              //'users'  => []
             ];
 
-            $users = DB::table('users')->get();
+            /*$users = DB::table('users')->get();
             foreach ($users as $user)
             {
                 $response['users'][] = 
@@ -40,7 +40,7 @@ class UserController extends Controller
                     'password' => $user->password,
                     'syncsts' => $user->syncsts,
                 ];
-            }
+            }*/
             $response['created']=true;
 
         }catch (Exception $e){
@@ -91,11 +91,13 @@ class UserController extends Controller
         $emptyPayload = ['test' => 'test'];
         $payload = JWTFactory::make($emptyPayload);
         $token = JWTAuth::encode($payload);
-        //echo $token;
+        echo $token;
+        var_dump($token);
         $response['JWT']=$token;
         $response['JWTCreated'] =true;
         return response()->json($response,$statusCode);
     }
+    
     public function register()
     {
         $statusCode = 200;
@@ -115,7 +117,8 @@ class UserController extends Controller
                 'surname' => $_POST['surname'],
                 'email' => $_POST['email'],
                 'username' => $_POST['username'],
-                'password' => $_POST['password'])
+                'password' => $_POST['password']),
+                'user_id'
                 );
                 if($id!=0)
                 {
