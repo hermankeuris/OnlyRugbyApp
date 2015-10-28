@@ -25,6 +25,7 @@ public class PlayerSelect extends Activity {
 
     private Data data = Data.getInstance();
     private Activity activity = this;
+    private boolean StillToLogTry = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,6 +136,7 @@ public class PlayerSelect extends Activity {
                                 data.getSelectedPlayer().playerScore("Try");
                                 data.setConversionTryPlayer(data.getSelectedPlayer());
                                 Toast.makeText(activity, data.getSelectedPlayer().getName() + " scored a try", Toast.LENGTH_SHORT).show();
+                                StillToLogTry = true;
 
                                 data.setSelectedScoreType("Conversion Kick");
                                 TextView playerText = (TextView) findViewById(R.id.playerText);
@@ -171,6 +173,7 @@ public class PlayerSelect extends Activity {
                                 alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         data.addTry(data.generateTimeStamp(), data.getSelectedTeam(), data.getConversionTryPlayer());
+                                        StillToLogTry = false;
                                         data.setEndOfFunction(true);
                                         Toast.makeText(activity, data.getSelectedPlayer().getName() + " missed the conversion kick", Toast.LENGTH_SHORT).show();
                                         finish();
@@ -308,5 +311,11 @@ public class PlayerSelect extends Activity {
         if (data.getSelectedScoreType() != "Conversion kick")
             super.onBackPressed();
         data.setOnFieldPlayers(true);
+
+        if (StillToLogTry)
+        {
+            data.addTry(data.generateTimeStamp(), data.getSelectedTeam(), data.getConversionTryPlayer());
+            StillToLogTry = false;
+        }
     }
 }
