@@ -159,6 +159,7 @@ The OnlyRugby App will be used to log various types of match time data and then 
   \item Offloads
   \item Rucks
   \item Mauls
+  \item Events List
 \end{itemize}
 \newpage
 \subsection{Use case/Service contracts}
@@ -187,6 +188,7 @@ player's profile. & This use case provides a way of quickly logging both the pla
     Offloads & The app must be aware that a match is currently in play (i.e. offloads can only occur during game time) and the app must be aware of which teams are playing. & The team and identity (name or player number) of the player that made a successful offload should be persisted to the database. & This use case provides a way of quickly logging information about offloads.\\ \hline
     Rucks & The app must be aware that a match is currently being played (i.e. rucks can only occur during game time) and the app must be aware of which teams are playing. & This function gathers information on when a ruck occurred during game time, which team was defending in the ruck and which team "won" the ruck (i.e. if possession of the ball changed then the Possession function will also be notified). & This use case provides a way of quickly logging information about rucks.\\ \hline
     Mauls & The app must be aware that a match is currently being played which teams are currently playing (individual players are not a necessity). & It should be logged which team won the maul and if the ball was turned over (the other team won the ball) or not. & This use case provides a way to represent how many mauls were present in the match, by logging each time a player tried to defend the ball on the ground.\\ \hline
+    Events List & The app must be aware that a match is currently being played which teams are currently playing. & The user has a sorted list of events that have happened during match time. & The eventes list will allow the user to see a chronological list of events which have so far occured during the match. It will also allow the user to edit or delete these events as well as add new events manually.\\ \hline
 
     \hline
   \end{longtable}
@@ -307,6 +309,14 @@ player's profile. & This use case provides a way of quickly logging both the pla
 		\begin{center}
 		\includegraphics[width=1\textwidth]{./Diagrams/Mauls.jpg}\\[0.4cm]
 		\end{center}
+
+	\item \textbf{Events List}
+		\begin{flushleft}
+			This use case will allow the user to view a time-sorted list of events that have so far been logged in the match. It will also facilitate the alteration and deletion of these events as well as the addition of new events to the list. Once an event has been deleted or altered all the previously logged information of that event will be erased (and in the case of alteration, be replaced with new log info).
+		\end{flushleft}
+		\begin{center}
+		\includegraphics[width=1\textwidth]{./Diagrams/EventsList.jpg}\\[0.4cm]
+		\end{center}
 \end{itemize}
 \newpage
 \subsection{Process specification}
@@ -343,9 +353,5 @@ The processes followed when using some of the more important functions of the On
   	 	\includegraphics[width=1\textwidth] {./HermanDiagrams/DomainModel.jpg}\\[0.4cm]    
 	\end{center}
 \index{Vision}
-\newpage
 
-
-\bibliography{myrefs}{} 
-\bibliographystyle{ieeetr}
 \end{document}
