@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	
+	<script src="visualizer.js"></script>
+	<script type="text/javascript" src="http://visjs.org/dist/vis.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    
+	<style>
+		#draggable { width: 150px; background-color: white; border-radius: 5px; box-shadow: 0px 0px 20px #888888; display: inline-block;}
+		#draggableTwo { width: 150px; background-color: white; border-radius: 5px; box-shadow: 0px 0px 20px #888888; display: inline-block;}
+	</style>
+	
+
+	<script>
+		$(function () 
+		{
+			$("#draggable").draggable();
+		});
+		$(function () 
+		{
+			$("#draggableTwo").draggable();
+		});
+	</script>
+	
+	<body onload="draw();" style="background-image: url('Images/cloud.jpg'); background-repeat: no-repeat; background-attachment: fixed;background-size: 100%;">
+		<nav class="w3-sidenav w3-white w3-card-2" style="display:none" id="mySidenav">
+			<a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large">Close &times;</a>
+			<p>Info goes here</p>
+		</nav>
+		
+		<input id='hideMe' type='file' accept='text/plain' class="w3-btn" style="width:100%; background-color: #146eb4;" onchange='openFile(event)'>
+			<button type="button" id='hideMe2' onclick="hideForManual()">Hide content of p</button>
+
+	
+		<div id="main">
+			<div id = "hierarchyVisualizerDiv"style="position: absolute; height: 90%; width: 100%;">
+			</div>	
+		</div>
+
+		<script>
+			function hideForManual()
+			{
+				document.getElementById("hideMe").style.visibility = "hidden";
+				document.getElementById("hideMe2").style.visibility = "hidden";
+			}
+	
+			function w3_open() 
+			{
+				document.getElementById("main").style.marginLeft = "25%";
+				document.getElementById("mySidenav").style.width = "25%";
+				document.getElementById("mySidenav").style.display = "block";
+				document.getElementById("openNav").style.display = 'none';
+			}
+			
+			function w3_close() 
+			{
+				document.getElementById("main").style.marginLeft = "0%";
+				document.getElementById("mySidenav").style.display = "none";
+				document.getElementById("openNav").style.display = "inline-block";
+			}
+
+			function mouseover(obj)
+			{
+				obj.style.boxShadow = "0px 0px 10px #555555";
+				obj.style.zIndex = "1";
+			}
+
+			function mouseleave(obj)
+			{
+				obj.style.boxShadow = "0px 0px 0px white";
+				obj.style.zIndex = "0";
+			}
+
+			function scanNetwork() 
+			{
+				var accessKey = prompt("Please enter your access key", "");
+				var secretKey = prompt("Please enter your secret key", "");
+				var xhttp = new XMLHttpRequest();
+				
+				xhttp.open("GET", "http://localhost:8080/NotLikeThisRESTServer_war_exploded/services/startScanner?a_key=" + accessKey + "&s_key=" + secretKey, true);
+				xhttp.send();
+				
+				setTimeout(function () 
+				{
+					startTimer();
+				}, 10000);
+			}
+		</script>
+
+
+		<div id="draggable" class="ui-widget-content">
+				<div id="toolbar" style="height: 15px; background-color: #146eb4; "></div>
+				
+				<button id="scanNetworkButton" class="w3-btn" onclick="scanNetwork()" style="width:100%; background-color: orange; position:relative;" onmouseover="mouseover(this)" onmouseleave="mouseleave(this)">Scan Network</button>
+				<button id="stopScanButton" class="w3-btn" style="width:100%; background-color: orange; position:relative;" onmouseover="mouseover(this)" onmouseleave="mouseleave(this)">Stop Scan</button>
+				<button id="pauseScanButton" class="w3-btn" style="width:100%; background-color: orange; position:relative;" onmouseover="mouseover(this)" onmouseleave="mouseleave(this)">Pause Scan</button>
+				<button id="resumeScanButton" class="w3-btn" style="width:100%; background-color: orange; position:relative;" onmouseover="mouseover(this)" onmouseleave="mouseleave(this)">Resume Scan</button>
+				<button id="scanUpButton" class="w3-btn" style="width:100%; background-color: orange; position:relative;" onmouseover="mouseover(this)" onmouseleave="mouseleave(this)">Scan Up</button>
+				<button id="scanDownButton" class="w3-btn" style="width:100%; background-color: orange; position:relative;" onmouseover="mouseover(this)" onmouseleave="mouseleave(this)">Scan Down</button>
+			<div class="w3-dropdown-hover" style="width:100%">
+				<button class="w3-btn" style="width:100%; background-color: orange;">Scan From</button>
+
+				<div class="w3-dropdown-content w3-border">
+					<a href="#">VPC</a>
+					<a href="#">Subnetwork</a>
+					<a href="#">Instance</a>
+				</div>
+			</div>
+			
+			<div class="w3-dropdown-hover" style="width:100%">
+				<button class="w3-btn w3-orange" style="width:100%">Region</button>
+					<div class="w3-dropdown-content w3-border">
+						<a href="#">US East (N. Virginia)</a>
+						<a href="#">US West (Oregon)</a>
+						<a href="#">Asia Pacific (Seoul)</a>
+						<a href="#">Asia Pacific (Singapore)</a>
+						<a href="#">Asia Pacific (Sydney)</a>
+						 <a href="#">Asia Pacific (Tokyo)</a>
+						<a href="#">EU (Frankfurt)</a>
+						<a href="#">EU (Ireland)</a>
+					</div>
+			</div>
+		</div>
+		
+		<div id="draggableTwo" class="ui-widget-content">
+			<div style="height: 15px; background-color: darkgray; "></div>
+			<div style="height: 185px; background-color: white; "><p>Information:</p></div>
+		</div>
+	</body>
+</html>

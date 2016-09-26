@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+	<head>
+		<title>User Interface</title>
+		
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+		.test:hover { 
+			background-color: orange;
+				}
+		</style>
+		
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<script type="text/javascript" src="http://visjs.org/dist/vis.js"></script>
+		<script type="text/javascript" src="http://visjs.org/dist/exampleUtils.js"></script>
+		<link href="http://visjs.org/dist/vis.css" rel="stylesheet" type="text/css" />
+		
+		<script type="text/javascript"  charset="UTF-8">
+		
+			var visNodes, visEdges, edgesMouseOver, networkHierarchy, networkMouseOver;
+			
+			var parentEdges = new Array();
+			var siblingEdges = new Array();
+			
+			var nodeInfo = new Array();
+			//var siblingEdges = new Array();
+			
+			var edgeNum = 0;
+			var nodeCount = 1;
+			
+			function addNode(idIn, labelIn, levelIn) 
+			{
+				try
+				{
+					visNodes.add(
+					{
+						id: idIn,
+						label: labelIn,
+						level: levelIn,
+						shape: 'dot',  
+						color: {background:'white', border:'black'},
+						font: {background: 'white'}						
+					});
+				}
+				catch (err) 
+				{
+					alert(err);
+				}
+			}
+			
+			function updateNode(idIn, labelIn) 
+			{
+				try {
+					visNodes.update({
+					    id: idIn,
+					    label: labelIn
+					});
+				}
+				catch (err)
+				{
+					alert(err);
+				}
+			}
+			
+			function removeNode(idIn) 
+			{
+				try 
+				{
+					visNodes.remove({id: idIn});
+				}
+				catch (err) 
+				{
+					alert(err);
+				}
+			}
+			
+			function addEdgeParent(idIn, fromIn, toIn)
+			{
+				try 
+				{
+					visEdges.add({
+						id: idIn,
+						from: fromIn,
+						to: toIn,
+						});
+						
+					parentEdges.push(idIn);
+				}
+				catch (err) 
+				{
+					alert(err);
+				}
+			}
+			
+			function addEdgeSibling(idIn, fromIn, toIn)
+			{
+				try 
+				{
+					visEdges.add({
+						id: idIn,
+						from: fromIn,
+						to: toIn,
+						});
+						
+					siblingEdges.push(idIn);
+				}
+				catch (err) 
+				{
+					alert(err);
+				}
+			}
+			
+			function updateEdge(idIn, fromIn, inTo)
+			{
+				try 
+				{
+					visEdges.update({
+						id: idIn,
+						from: fromIn,
+						to: inTo
+					});
+				}
+				catch (err) 
+				{
+					alert(err);
+				}
+			}
+			
+			function removeEdge(idIn)
+			{
+				try 
+				{
+					visEdges.remove({id: idIn});
+					var a = fruits.indexOf("Apple1");
+					
+					if(parentEdges.indexOf(idIn) != -1)
+					{
+						parentEdges.splice(indexOf(idIn), 1);
+					}
+					
+					if(siblingEdges.indexOf(idIn) != -1)
+					{
+						siblingEdges.splice(indexOf(idIn), 1);
+					}
+				}
+				catch (err)
+				{
+					alert(err);
+				}
+			}
+			
+			
+			function setParentEdgesVisible()
+			{
+				var i = 0;
+				var temp;
+				
+				for(i = 0; i < parentEdges.length; i++)
+				{
+					try 
+					{
+						temp = parentEdges[i];
+						
+						visEdges.update({
+							id: temp,
+							hidden: false
+						});
+					}
+					catch (err) 
+					{
+						alert(err);
+					}
+				}
+				
+				for(i = 0; i < siblingEdges.length; i++)
+				{
+					try 
+					{
+						visEdges.update({
+							id: siblingEdges[i],
+							hidden: true
+						});
+					}
+					catch (err) 
+					{
+						alert(err);
+					}
+				}	
+			}
+			
+			function setSiblingEdgesVisible()
+			{
+				var i = 0;
+				var temp;
+				
+				for(i = 0; i < parentEdges.length; i++)
+				{
+					try 
+					{
+						temp = parentEdges[i];
+						
+						visEdges.update({
+							id: temp,
+							hidden: true
+						});
+					}
+					catch (err) 
+					{
+						alert(err);
+					}
+				}
+				
+				for(i = 0; i < siblingEdges.length; i++)
+				{
+					try 
+					{
+						visEdges.update({
+							id: siblingEdges[i],
+							hidden: false
+						});
+					}
+					catch (err) 
+					{
+						alert(err);
+					}
+				}	
+			}
+			
+			
+			var JSONThings;
+			
+			var openFile = function(event)
+			{
+				var input = event.target;
+				var reader = new FileReader();
+				reader.onload = function()
+				{
+					var text = reader.result;
+					console.log(reader.result.substring(0, 200));
+					setJSONThings(text);
+				};
+				reader.readAsText(input.files[0]);
+			};
+			
+			function setJSONThings(jsonIn)
+			{
+				JSONThings = jsonIn;
+				var obj = JSON.parse(jsonIn);
+				var j, i = 0;
+				
+				//alert(obj.NodesArray[0].Name);
+				
+
+				/*addNode(nodeCount, obj.NodesArray[i].Name, 1) ;
+				nodeInfo.push(obj.NodesArray[i].Information);
+				nodeCount++;
+				
+				
+				for(i = 0; i < obj.NodesArray[0].length; i++)
+				{
+					if(obj.NodesArray[i].Children.length != 0)
+					{
+						for(j = 0; j < obj.NodesArray[i].Children.length; j++)
+						{
+							addEdgeParent(edgeNum, obj.NodesArray[i].UUID, obj.NodesArray[i].Children[j]);
+							edgeNum++;
+						}
+					}
+				}*/
+				traverse(obj.NodesArray[0],1);
+				
+			}
+			var block = 0;
+			
+			
+			
+			function traverse(node,level)
+			{
+			if(block < 100)
+			{
+				block++;
+				addNode(node.UUID, node.Name, level);
+				
+				level = level + 1;
+				    for (var i = 0, len = node.Children.length; i < len; i++)
+				    {
+										//parent		child
+					addEdgeParent(edgeNum, node.UUID,	node.Children[i].UUID 	);
+					
+					edgeNum = edgeNum + 1;
+					traverse(node.Children[i],level);
+					
+				    }
+				   
+				}
+			}
+
+			
+			
+			
+			
+			function draw() 
+			{
+				visNodes = new vis.DataSet();
+				
+				visNodes.on('*', function () 
+				{
+					//document.getElementById('nodes').innerHTML = JSON.stringify(nodes.get(), null, 4);
+				});
+			/*
+				visNodes.add([
+				//level 1
+					{id: '1', label: 'Node 1', level: '1' , shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+				//level 2	
+					{id: '2', label: 'Node 2', level: '2', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '3', label: 'Node 3', level: '2', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+				//level 3
+					{id: '4', label: 'Node 4', level: '3', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '5', label: 'Node 5', level: '3', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '6', label: 'Node 6', level: '3', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '7', label: 'Node 7', level: '3', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+				//level 4
+					{id: '8', label: 'Node 8', level: '4', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '9', label: 'Node 9', level: '4', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '10', label: 'Node 10', level: '4', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '11', label: 'Node 11', level: '4', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '12', label: 'Node 12', level: '4', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '13', label: 'Node 13', level: '4', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '14', label: 'Node 14', level: '4', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '15', label: 'Node 15', level: '4', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+				//level 5
+					{id: '16', label: 'Node 16', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '17', label: 'Node 17', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '18', label: 'Node 18', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '19', label: 'Node 19', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '20', label: 'Node 20', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '21', label: 'Node 21', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '22', label: 'Node 22', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '23', label: 'Node 23', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					
+					{id: '24', label: 'Node 24', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '25', label: 'Node 25', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '26', label: 'Node 26', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '27', label: 'Node 27', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '28', label: 'Node 28', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '29', label: 'Node 29', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '30', label: 'Node 30', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+					{id: '31', label: 'Node 31', level: '5', shape: 'dot',  color: {background:'white', border:'black'} ,font: {background: 'white'}},
+				]);*/
+				visEdges = new vis.DataSet();
+				
+				visEdges.on('*', function () 
+				{
+					//document.getElementById('edges').innerHTML = JSON.stringify(edges.get(), null, 4);
+				});
+				/*
+				visEdges.add([
+					{id: '1', from: '1', to: '2'},
+					{id: '2', from: '1', to: '3'},
+					
+					{id: '3', from: '2', to: '4'},
+					{id: '4', from: '2', to: '5'},
+					{id: '5', from: '3', to: '6'},
+					{id: '6', from: '3', to: '7'},
+					
+					{id: '7', from: '4', to: '8'},
+					{id: '8', from: '4', to: '9'},
+					{id: '9', from: '5', to: '10'},
+					{id: '10', from: '5', to: '11'},
+					{id: '11', from: '6', to: '12'},
+					{id: '12', from: '6', to: '13'},
+					{id: '13', from: '7', to: '14'},
+					{id: '14', from: '7', to: '15'},
+					
+					{id: '15', from: '8', to: '16'},
+					{id: '16', from: '8', to: '17'},
+					{id: '17', from: '9', to: '18'},
+					{id: '18', from: '9', to: '19'},
+					{id: '19', from: '10', to: '20'},
+					{id: '20', from: '10', to: '21'},				
+					{id: '21', from: '11', to: '22'},
+					{id: '22', from: '11', to: '23'},				
+					{id: '23', from: '12', to: '24'},
+					{id: '24', from: '12', to: '25'},				
+					{id: '25', from: '13', to: '26'},
+					{id: '26', from: '13', to: '27'},
+					{id: '27', from: '14', to: '28'},
+					{id: '28', from: '14', to: '29'},				
+					{id: '29', from: '15', to: '30'},
+					{id: '30', from: '15', to: '31'},
+				//same line
+					{id: 's1', from: '2', to: '3'},		
+					{id: 's2', from: '4', to: '5'},						
+					{id: 's3', from: '6', to: '7'},		
+					{id: 's4', from: '8', to: '9'},		
+					{id: 's5', from: '10', to: '11'},		
+					{id: 's6', from: '12', to: '13'},						
+					{id: 's7', from: '14', to: '15'},		
+					{id: 's8', from: '16', to: '17'},		
+					{id: 's9', from: '18', to: '19'},		
+					{id: 's10', from: '20', to: '21'},		
+					{id: 's11', from: '22', to: '23'},		
+					{id: 's12', from: '24', to: '25'},		
+					{id: 's13', from: '26', to: '27'},		
+					{id: 's14', from: '28', to: '29'},		
+					{id: 's15', from: '30', to: '31'},			
+				]);*/
+				var options = 
+				{
+					interaction: { navigationButtons: true,  keyboard: true, hover:true},
+					layout: {hierarchical: {direction: 'UD'}}, 
+					nodes: {borderWidth: 2}, 
+					edges: {width: 2},
+					physics: {enabled: false},
+					interaction:{hover:true},
+				};
+				
+				var data = 
+				{
+					nodes: visNodes,
+					edges: visEdges
+				};
+				
+				
+				var container = document.getElementById('hierarchyVisualizerDiv');
+				networkHierarchy = new vis.Network(container, data, options);
+				
+				networkHierarchy.on("selectNode", function (params) 
+				{
+					//alert(nodeInfo[params.nodes]);
+				});
+				/*
+				parentEdges.push('1');		parentEdges.push('2');		parentEdges.push('3');		parentEdges.push('4');		parentEdges.push('5');
+				parentEdges.push('6');		parentEdges.push('7');		parentEdges.push('8');		parentEdges.push('9');		parentEdges.push('10');
+				parentEdges.push('11');	parentEdges.push('12');	parentEdges.push('13');	parentEdges.push('14');	parentEdges.push('15');
+				parentEdges.push('16');	parentEdges.push('17');	parentEdges.push('18');	parentEdges.push('19');	parentEdges.push('20');
+				parentEdges.push('21');	parentEdges.push('22');	parentEdges.push('23');	parentEdges.push('24');	parentEdges.push('25');
+				parentEdges.push('26');	parentEdges.push('27');	parentEdges.push('28');	parentEdges.push('29');	parentEdges.push('30');	
+				siblingEdges.push('s1');	siblingEdges.push('s2');	siblingEdges.push('s3');	siblingEdges.push('s4');	siblingEdges.push('s5');
+				siblingEdges.push('s6');	siblingEdges.push('s7');	siblingEdges.push('s8');	siblingEdges.push('s9');	siblingEdges.push('s10');
+				siblingEdges.push('s11');	siblingEdges.push('s12');	siblingEdges.push('s13');	siblingEdges.push('s14');	siblingEdges.push('s15');
+				
+				networkHierarchy.on("hoverNode", function (params) 
+				{
+					setSiblingEdgesVisible();
+				});
+				
+				networkHierarchy.on("blurNode", function (params) 
+				{
+					setParentEdgesVisible();						
+				});*/
+			}
+			
+			
+		</script>
+		
+	</head>
+	
+	<body style="background-color: lightgray" onload="draw();">
+	
+			
+			<input type='file' accept='text/plain' class="w3-btn" style="width:100%; background-color: #146eb4;" onchange='openFile(event)'>
+			
+
+			<div id = "hierarchyVisualizerDiv"  style="position: absolute; height: 90%; width: 90%; ">
+			</div>	
+		
+		
+		    
+	    </body>
+</html>
